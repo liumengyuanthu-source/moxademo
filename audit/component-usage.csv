@@ -1,0 +1,121 @@
+page,component
+analytics.html,Analytics chart
+analytics.html,Footer
+analytics.html,Header
+analytics.html,Mega menu
+analytics.html,Subheader
+article.html,Article body
+article.html,Article sidebar
+article.html,FAQ accordion
+article.html,Footer
+article.html,Header
+article.html,Mega menu
+article.html,Subheader
+backend-compliance.html,Backend search
+backend-compliance.html,Contact form
+backend-compliance.html,Footer
+backend-compliance.html,Header
+backend-compliance.html,Mega menu
+backend-compliance.html,Subheader
+chatbot.html,AI Assistant
+chatbot.html,Footer
+chatbot.html,Header
+chatbot.html,Mega menu
+chatbot.html,Subheader
+compare-lv-hv.html,Footer
+compare-lv-hv.html,Header
+compare-lv-hv.html,Mega menu
+compare-quote.html,Card
+compare-quote.html,Footer
+compare-quote.html,Header
+compare-quote.html,Mega menu
+compare-quote.html,Subheader
+contact-distributor.html,Contact sales form
+contact-distributor.html,Footer
+contact-distributor.html,Header
+contact-distributor.html,Mega menu
+contact-distributor.html,Subheader
+demo-map.html,Footer
+demo-map.html,Header
+demo-map.html,Mega menu
+demo-map.html,Subheader
+design-system.html,Buttons and tags
+design-system.html,Color tokens
+design-system.html,Footer
+design-system.html,Genai
+design-system.html,Header
+design-system.html,Logo
+design-system.html,Mega menu
+design-system.html,Navigation
+design-system.html,Page anatomy
+design-system.html,Requirement table
+design-system.html,Search
+design-system.html,Subheader
+design-system.html,Tabs
+homepage.html,AI product search
+homepage.html,Card
+homepage.html,Footer
+homepage.html,Guided result preview
+homepage.html,Header
+homepage.html,Mega menu
+homepage.html,Online Campaign Popup
+homepage.html,Subheader
+journey.html,Footer
+journey.html,Header
+journey.html,Journey timeline
+journey.html,Mega menu
+journey.html,Subheader
+manual.html,Footer
+manual.html,Header
+manual.html,Mega menu
+manual.html,Subheader
+microsite.html,Card
+microsite.html,Footer
+microsite.html,Header
+microsite.html,Lead form
+microsite.html,Mega menu
+microsite.html,Subheader
+pdp.html,360 viewer
+pdp.html,Footer
+pdp.html,Header
+pdp.html,Mega menu
+pdp.html,PDP tabs
+pdp.html,Quote flow
+pdp.html,Subheader
+product-category-ethernet-switches.html,Card
+product-category-ethernet-switches.html,Category filter
+product-category-ethernet-switches.html,Compare drawer
+product-category-ethernet-switches.html,Footer
+product-category-ethernet-switches.html,Header
+product-category-ethernet-switches.html,Mega menu
+product-category-ethernet-switches.html,Product card
+product-category-ethernet-switches.html,Subheader
+product-model-eds-4008-lv-hv.html,Footer
+product-model-eds-4008-lv-hv.html,Header
+product-model-eds-4008-lv-hv.html,Mega menu
+product-model-eds-4008-lv-hv.html,Model gallery
+product-model-eds-4008-lv-hv.html,Subheader
+product-series-eds-4008.html,Footer
+product-series-eds-4008.html,Header
+product-series-eds-4008.html,Mega menu
+product-series-eds-4008.html,Series product image
+product-series-eds-4008.html,Series tabs
+product-series-eds-4008.html,Subheader
+products.html,Compare drawer
+products.html,Footer
+products.html,Header
+products.html,Mega menu
+products.html,Product card
+products.html,Product filter
+products.html,Product list
+products.html,Subheader
+search.html,Footer
+search.html,Header
+search.html,Mega menu
+search.html,Search input
+search.html,Subheader
+video.html,Footer
+video.html,Header
+video.html,Mega menu
+video.html,Subheader
+video.html,Video player
