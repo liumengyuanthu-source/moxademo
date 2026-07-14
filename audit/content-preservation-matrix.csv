@@ -1,0 +1,14 @@
+Target,HTML,Primary Source,Audit Note,Status
+Homepage,homepage.html,1-Homepage assets,Allowed to restructure,PASS
+Search result page,search.html,Existing search page + local assets,Allowed to restructure,PASS
+Ethernet Switches category,product-category-ethernet-switches.html,Official Moxa category reference + local assets,Replicated IA: breadcrumb/category hero/filter/results,PASS
+EDS-4008 Series,product-series-eds-4008.html,6-Architecture sample JSON + datasheet v1.8,Body product facts retained; POC notes removed,PASS
+EDS-4008-LV/HV Model Pages,product-model-eds-4008-lv-hv.html,Product sample JSON,LV/HV facts retained; compare routed,PASS
+NPort 5100 Series,nport-5100-series.html,Official current Moxa page,Testing folder has no NPort-specific asset; content source flagged,WATCH
+HXML Manual Page,manual.html,RKS-G4000 XHTML source zip,Updated from source HXML package instead of EDS placeholder,PASS
+LV/HV Compare UI,compare-lv-hv.html,Product sample JSON,Comparison values retained,PASS
+Campaign Page,campaign.html,Homepage pop-up banner assets,New landing page created from supplied banner,PASS
+Controller & I/O Microsite,microsite.html,remote-io-portfolio.zip,Uses real microsite imagery and product cards,PASS
+Pop-up banner,homepage.html,1-Homepage/Pop-up Banner,Homepage pop-up links to campaign page,PASS
+Video page,video.html,5-Video poster/docx,Large MP4 not copied; poster and chapters retained,PASS
+360-degree product image,product-360.html,IPC_X86_3D_Image.zip,Interactive component created from extracted frames,PASS
