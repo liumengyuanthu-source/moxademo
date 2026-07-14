@@ -1,0 +1,13 @@
+Moxa Component,GenScript Starting Point,Reuse Decision,Notes
+Header/MegaNav,SiteNav,Refactor,Same taxonomy shell; Moxa-specific nav/visuals needed
+Footer,Footer,Refactor,"Reuse structure, replace content and brand tokens"
+Breadcrumb,Breadcrumb,Reuse/reskin,Strong fit for product hierarchy
+Homepage Hero,"HeroBanner, SplitContentBanner",Refactor,Use Moxa hero media and campaign entry
+Campaign Banner/Popup,"SiteCta, Modal",Adapt,"Add campaign state, dismiss, analytics fields"
+Product Category Filter,SelectorProduct,New/Adapt,"Needs industrial filters, certifications, compare"
+Series Detail,"SiteTabs, PriceComparisonTable",Adapt,Good fit for specs/resources/models
+LV/HV Compare,PriceComparisonTable,Reuse/reskin,Sticky table and difference highlighting needed
+Manual TOC,"SideBarMenu, Accordions",Adapt,HXML-driven TOC and anchored sections
+Microsite Cards,"ImageCardGrid, SplitMediaBlock",Reuse/reskin,Real remote I/O campaign assets
+Video Detail,"VideoPlayer, YoutubeVideoPlayer",Adapt,Local video/poster metadata and chapters
+360 Viewer,No direct equivalent,New,Frame-based product viewer

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Final Page Index | Moxa SitecoreAI POC</title>
+  <title>360-degree Product Image | Moxa SitecoreAI POC</title>
   <style>
 :root {
   --moxa-green: #008787;
@@ -106,18 +106,23 @@ th { background: #edf5f5; color: #123e44; }
 </div></header>
 
 
-<section class="hero compact">
+<section class="hero">
   <div class="container">
     <div>
-      <p class="eyebrow">SitecoreAI final POC</p>
-      <h1>Moxa target page package</h1>
-      <p class="lead">Final scoped pages for the SitecoreAI proof of concept.</p>
-      
+      <p class="eyebrow">360-degree product image</p>
+      <h1>Interactive product image viewer</h1>
+      <p class="lead">The 360 component uses the provided IPC_X86_3D_Image frame package and can be reused on product detail pages.</p>
+      <div class="actions"><a class="btn" href="#viewer">Rotate product</a><a class="btn secondary" href="product-model-eds-4008-lv-hv.html">Back to product</a></div>
     </div>
-    <figure class="hero-media"><img src="assets/home/June-2026.png" alt="Moxa homepage campaign content"></figure>
+    <figure class="hero-media"><img src="assets/360/frame-01.png" alt="360 degree product image frame"></figure>
   </div>
 </section>
-<main><section class="section"><div class="container grid three"><article class="card"><h3>Homepage</h3><p class="muted">Final POC page</p><a class="btn secondary" href="homepage.html">Open</a></article><article class="card"><h3>Search result page</h3><p class="muted">Final POC page</p><a class="btn secondary" href="search.html">Open</a></article><article class="card"><h3>Ethernet Switches category</h3><p class="muted">Final POC page</p><a class="btn secondary" href="product-category-ethernet-switches.html">Open</a></article><article class="card"><h3>EDS-4008 Series</h3><p class="muted">Final POC page</p><a class="btn secondary" href="product-series-eds-4008.html">Open</a></article><article class="card"><h3>EDS-4008-LV/HV Model Pages</h3><p class="muted">Final POC page</p><a class="btn secondary" href="product-model-eds-4008-lv-hv.html">Open</a></article><article class="card"><h3>NPort 5100 Series</h3><p class="muted">Final POC page</p><a class="btn secondary" href="nport-5100-series.html">Open</a></article><article class="card"><h3>HXML Manual Page</h3><p class="muted">Final POC page</p><a class="btn secondary" href="manual.html">Open</a></article><article class="card"><h3>LV/HV Compare UI</h3><p class="muted">Final POC page</p><a class="btn secondary" href="compare-lv-hv.html">Open</a></article><article class="card"><h3>Campaign Page</h3><p class="muted">Final POC page</p><a class="btn secondary" href="campaign.html">Open</a></article><article class="card"><h3>Controller &amp; I/O Microsite</h3><p class="muted">Final POC page</p><a class="btn secondary" href="microsite.html">Open</a></article><article class="card"><h3>Video Page</h3><p class="muted">Final POC page</p><a class="btn secondary" href="video.html">Open</a></article><article class="card"><h3>360-degree Product Image</h3><p class="muted">Final POC page</p><a class="btn secondary" href="product-360.html">Open</a></article></div></section></main>
+
+<main><section id="viewer" class="section soft"><div class="container viewer" data-frames="assets/360/frame-01.png|assets/360/frame-02.png|assets/360/frame-03.png|assets/360/frame-04.png|assets/360/frame-05.png|assets/360/frame-06.png|assets/360/frame-07.png|assets/360/frame-08.png|assets/360/frame-09.png|assets/360/frame-10.png|assets/360/frame-11.png|assets/360/frame-12.png|assets/360/frame-13.png|assets/360/frame-14.png|assets/360/frame-15.png|assets/360/frame-16.png|assets/360/frame-17.png|assets/360/frame-18.png|assets/360/frame-19.png|assets/360/frame-20.png|assets/360/frame-21.png|assets/360/frame-22.png|assets/360/frame-23.png|assets/360/frame-24.png|assets/360/frame-25.png|assets/360/frame-26.png|assets/360/frame-27.png|assets/360/frame-28.png|assets/360/frame-29.png|assets/360/frame-30.png|assets/360/frame-31.png|assets/360/frame-32.png|assets/360/frame-33.png|assets/360/frame-34.png|assets/360/frame-35.png|assets/360/frame-36.png">
+<div class="viewer-main"><img id="spin-image" src="assets/360/frame-01.png" alt="Interactive 360 product frame"></div>
+<div class="card"><h2>360 viewer</h2><p class="muted">Drag the slider to rotate through the product image frames extracted from the testing-materials folder.</p><input id="spin-range" class="slider" type="range" min="0" max="35" value="0" aria-label="Rotate product image"><div class="tagrow"><span class="tag green">36 frames</span><span class="tag">Reusable component</span></div></div>
+</div></section></main>
+
 
 <footer class="footer"><div class="container grid">
   <div><div class="brand"><span class="brand-mark"></span><span>MOXA</span></div><p class="muted">Reliable networks for industrial automation, transportation, energy, and edge connectivity.</p></div>

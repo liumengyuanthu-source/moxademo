@@ -1,0 +1,145 @@
+[
+  {
+    "file": "homepage.html",
+    "screenshot": "/Users/christinaliu/Documents/Moxa/20260714 POC readiness/sitecoreai-final-moxa-pages/screenshots/01-homepage.png",
+    "body": 1333,
+    "broken": [],
+    "h1": "Every device, every site, one reliable bond.",
+    "imgs": 5,
+    "scrollH": 1976,
+    "title": "Homepage | Moxa SitecoreAI POC",
+    "url": "http://127.0.0.1:8766/homepage.html"
+  },
+  {
+    "file": "search.html",
+    "screenshot": "/Users/christinaliu/Documents/Moxa/20260714 POC readiness/sitecoreai-final-moxa-pages/screenshots/02-search.png",
+    "body": 955,
+    "broken": [],
+    "h1": "Search across products, resources, PDFs, and videos.",
+    "imgs": 4,
+    "scrollH": 1615,
+    "title": "Search Results | Moxa SitecoreAI POC",
+    "url": "http://127.0.0.1:8766/search.html"
+  },
+  {
+    "file": "product-category-ethernet-switches.html",
+    "screenshot": "/Users/christinaliu/Documents/Moxa/20260714 POC readiness/sitecoreai-final-moxa-pages/screenshots/03-ethernet-switches.png",
+    "body": 1228,
+    "broken": [],
+    "h1": "Ethernet Switches",
+    "imgs": 4,
+    "scrollH": 1682,
+    "title": "Ethernet Switches | Moxa SitecoreAI POC",
+    "url": "http://127.0.0.1:8766/product-category-ethernet-switches.html"
+  },
+  {
+    "file": "product-series-eds-4008.html",
+    "screenshot": "/Users/christinaliu/Documents/Moxa/20260714 POC readiness/sitecoreai-final-moxa-pages/screenshots/04-eds-4008-series.png",
+    "body": 2121,
+    "broken": [],
+    "h1": "EDS-4008 Series",
+    "imgs": 1,
+    "scrollH": 2479,
+    "title": "EDS-4008 Series | Moxa SitecoreAI POC",
+    "url": "http://127.0.0.1:8766/product-series-eds-4008.html"
+  },
+  {
+    "file": "product-model-eds-4008-lv-hv.html",
+    "screenshot": "/Users/christinaliu/Documents/Moxa/20260714 POC readiness/sitecoreai-final-moxa-pages/screenshots/05-eds-4008-lv-hv.png",
+    "body": 1267,
+    "broken": [],
+    "h1": "EDS-4008-LV / EDS-4008-HV",
+    "imgs": 1,
+    "scrollH": 1674,
+    "title": "EDS-4008 LV/HV Model Pages | Moxa SitecoreAI POC",
+    "url": "http://127.0.0.1:8766/product-model-eds-4008-lv-hv.html"
+  },
+  {
+    "file": "nport-5100-series.html",
+    "screenshot": "/Users/christinaliu/Documents/Moxa/20260714 POC readiness/sitecoreai-final-moxa-pages/screenshots/06-nport-5100.png",
+    "body": 1495,
+    "broken": [],
+    "h1": "NPort 5100 Series",
+    "imgs": 1,
+    "scrollH": 1863,
+    "title": "NPort 5100 Series | Moxa SitecoreAI POC",
+    "url": "http://127.0.0.1:8766/nport-5100-series.html"
+  },
+  {
+    "file": "manual.html",
+    "screenshot": "/Users/christinaliu/Documents/Moxa/20260714 POC readiness/sitecoreai-final-moxa-pages/screenshots/07-manual.png",
+    "body": 2984,
+    "broken": [],
+    "h1": "RKS-G4000 Series Web Help Manual",
+    "imgs": 1,
+    "scrollH": 1854,
+    "title": "HXML Manual Page | Moxa SitecoreAI POC",
+    "url": "http://127.0.0.1:8766/manual.html"
+  },
+  {
+    "file": "compare-lv-hv.html",
+    "screenshot": "/Users/christinaliu/Documents/Moxa/20260714 POC readiness/sitecoreai-final-moxa-pages/screenshots/08-compare-lv-hv.png",
+    "body": 894,
+    "broken": [],
+    "h1": "EDS-4008-LV vs EDS-4008-HV",
+    "imgs": 1,
+    "scrollH": 1216,
+    "title": "LV/HV Compare UI | Moxa SitecoreAI POC",
+    "url": "http://127.0.0.1:8766/compare-lv-hv.html"
+  },
+  {
+    "file": "campaign.html",
+    "screenshot": "/Users/christinaliu/Documents/Moxa/20260714 POC readiness/sitecoreai-final-moxa-pages/screenshots/09-campaign.png",
+    "body": 939,
+    "broken": [],
+    "h1": "Secure Networking Solutions",
+    "imgs": 1,
+    "scrollH": 1389,
+    "title": "Campaign Page | Moxa SitecoreAI POC",
+    "url": "http://127.0.0.1:8766/campaign.html"
+  },
+  {
+    "file": "microsite.html",
+    "screenshot": "/Users/christinaliu/Documents/Moxa/20260714 POC readiness/sitecoreai-final-moxa-pages/screenshots/10-microsite.png",
+    "body": 1026,
+    "broken": [],
+    "h1": "Remote I/O portfolio",
+    "imgs": 7,
+    "scrollH": 2204,
+    "title": "Controller & I/O Microsite | Moxa SitecoreAI POC",
+    "url": "http://127.0.0.1:8766/microsite.html"
+  },
+  {
+    "file": "video.html",
+    "screenshot": "/Users/christinaliu/Documents/Moxa/20260714 POC readiness/sitecoreai-final-moxa-pages/screenshots/11-video.png",
+    "body": 816,
+    "broken": [],
+    "h1": "Get Acquainted With the MGate G2 New Web GUI",
+    "imgs": 2,
+    "scrollH": 1460,
+    "title": "Video Page | Moxa SitecoreAI POC",
+    "url": "http://127.0.0.1:8766/video.html"
+  },
+  {
+    "file": "product-360.html",
+    "screenshot": "/Users/christinaliu/Documents/Moxa/20260714 POC readiness/sitecoreai-final-moxa-pages/screenshots/12-product-360.png",
+    "body": 721,
+    "broken": [],
+    "h1": "Interactive product image viewer",
+    "imgs": 2,
+    "scrollH": 1335,
+    "title": "360-degree Product Image | Moxa SitecoreAI POC",
+    "url": "http://127.0.0.1:8766/product-360.html"
+  },
+  {
+    "file": "index.html",
+    "screenshot": "/Users/christinaliu/Documents/Moxa/20260714 POC readiness/sitecoreai-final-moxa-pages/screenshots/13-index.png",
+    "body": 969,
+    "broken": [],
+    "h1": "Moxa target page package",
+    "imgs": 1,
+    "scrollH": 2125,
+    "title": "Final Page Index | Moxa SitecoreAI POC",
+    "url": "http://127.0.0.1:8766/index.html"
+  }
+]

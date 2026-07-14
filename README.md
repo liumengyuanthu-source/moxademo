@@ -1,7 +1,5 @@
-# Moxa PoC Daily Delivery Dashboard
+# Moxa SitecoreAI Final POC Pages
 
-This repository hosts the Moxa PoC daily delivery tracker HTML page.
+Open `index.html` to browse the final scoped page package.
 
-- Entry page: `index.html`
-- Purpose: daily progress, deliverables, blockers, decisions, risks, and mitigation tracking
-- Updated: 2026-07-14
+This folder intentionally contains only the final SitecoreAI target pages and supporting assets/audit files.
