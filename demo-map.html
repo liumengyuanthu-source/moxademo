@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Moxa PoC Demo Map</title>
-    <link rel="canonical" href="https://www.moxa.com/en/demo-map.html">
     <meta name="description" content="Numbered page and component map for the Moxa PoC demo, including scenario coverage and jump relationships.">
     <style>
 :root {
@@ -272,47 +271,6 @@ textarea {
 .hero-copy.wide {
   max-width: 940px;
 }
-
-/* === POC HERO MEDIA COMPLETION === */
-.hero.has-media .hero-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.82fr);
-  gap: clamp(32px, 5vw, 68px);
-  align-items: center;
-}
-.hero.has-media .hero-copy {
-  max-width: none;
-}
-.hero-media {
-  margin: 0;
-  min-width: 0;
-  border: 1px solid rgba(221, 232, 235, 0.9);
-  border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.86);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-.hero-media img {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
-.hero-media figcaption {
-  padding: 12px 14px;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.4;
-  border-top: 1px solid rgba(221, 232, 235, 0.86);
-}
-@media (max-width: 920px) {
-  .hero.has-media .hero-inner {
-    grid-template-columns: 1fr;
-  }
-  .hero-media {
-    max-width: 640px;
-  }
-}
-/* === END POC HERO MEDIA COMPLETION === */
 
 .eyebrow {
   margin: 0 0 14px;
@@ -1662,210 +1620,752 @@ h4 {
 .header .navitem>button{white-space:nowrap}
 /* === END ALIGNMENT FIX === */
 
+<!-- MOXA POC OPTIMIZATION CSS START -->
+
+.moxa-locale-shell{position:sticky;top:0;z-index:110;background:#102d30;color:#d8eeee;border-bottom:1px solid rgba(255,255,255,.12);font-family:"Helvetica Neue",Arial,sans-serif}
+.moxa-locale-inner{max-width:1240px;margin:0 auto;padding:7px clamp(20px,4vw,64px);display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:12px}
+.moxa-locale-brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.moxa-locale-brand::before{content:"";width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:11px solid #00a6a6}
+.moxa-locale-tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.moxa-locale-tools label{color:#a9cccc;font-weight:700}
+.moxa-locale-tools select{height:30px;border-radius:6px;border:1px solid rgba(255,255,255,.24);background:#173b3f;color:#fff;padding:0 28px 0 10px;font:inherit}
+.moxa-locale-status{color:#fff;font-weight:700}
+.moxa-demo-criteria{max-width:1240px;margin:18px auto 0;padding:0 clamp(20px,4vw,64px);font-family:"Helvetica Neue",Arial,sans-serif}
+.moxa-demo-criteria-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;padding:14px 16px;border:1px solid #dce8e8;background:linear-gradient(180deg,#fff,#f7fbfb);border-radius:8px;box-shadow:0 18px 48px -42px rgba(0,80,80,.38)}
+.moxa-demo-criteria span{display:inline-flex;margin-bottom:4px;color:#008787;font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:800}
+.moxa-demo-criteria h2{font-size:18px;line-height:1.18;margin:0;color:#172323;letter-spacing:-.01em}
+.moxa-demo-criteria p{margin:4px 0 0;color:#5d6b6b;font-size:13px;line-height:1.42}
+.moxa-criteria-pills{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.moxa-criteria-pills b{display:inline-flex;align-items:center;min-height:30px;border-radius:999px;padding:6px 10px;background:#e2f1f1;color:#006d6d;font-size:12px;white-space:nowrap}
+.moxa-global-advisor-launch{position:fixed;right:22px;bottom:22px;width:76px;height:76px;border:0;background:transparent;z-index:95;cursor:pointer;padding:0;transition:transform .18s cubic-bezier(.22,.61,.36,1)}
+.moxa-global-advisor-launch:hover{transform:translateY(-4px) scale(1.03)}
+.moxa-global-advisor-label{position:absolute;right:84px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.96);color:#006d6d;border:1px solid #dce8e8;padding:8px 14px;border-radius:999px;font-size:12px;font-weight:900;white-space:nowrap;box-shadow:0 10px 28px rgba(24,42,48,.12);backdrop-filter:blur(8px)}
+.moxa-global-advisor-core{position:relative;width:76px;height:76px;display:block}
+.moxa-global-advisor-core::before{content:"";position:absolute;inset:4px;border-radius:50%;background:conic-gradient(from 210deg,rgba(111,240,232,.85),rgba(0,166,166,.95),rgba(0,123,124,.95),rgba(111,240,232,.85));box-shadow:0 14px 32px rgba(0,96,97,.30);animation:moxaOrbit 8s linear infinite}
+.moxa-global-advisor-core::after{content:"";position:absolute;inset:10px;border-radius:50%;background:linear-gradient(145deg,#10bebe 0%,#00989a 45%,#007a7c 100%);border:3px solid rgba(255,255,255,.9)}
+.moxa-global-advisor-glyph{position:absolute;inset:18px;z-index:2;color:#fff;display:grid;place-items:center;font-weight:900;font-size:18px}
+.moxa-global-advisor-panel{position:fixed;right:22px;bottom:108px;z-index:96;width:400px;max-width:calc(100vw - 28px);background:rgba(255,255,255,.97);border:1px solid #dce8e8;border-radius:24px;box-shadow:0 28px 70px rgba(18,32,38,.20);overflow:hidden;display:none;font-family:"Helvetica Neue",Arial,sans-serif}
+.moxa-global-advisor-panel.is-open{display:block;animation:moxaChatIn .18s ease-out}
+.moxa-global-advisor-head{background:radial-gradient(circle at top left,rgba(42,214,214,.20),transparent 35%),linear-gradient(135deg,#183238 0%,#213f45 100%);color:#fff;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.moxa-global-advisor-head strong{display:block;font-size:15px;color:#fff}
+.moxa-global-advisor-head span{display:block;font-size:12px;color:#bdd4d8;margin-top:3px}
+.moxa-global-advisor-close{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;font-size:18px;cursor:pointer}
+.moxa-global-advisor-body{padding:16px;background:linear-gradient(180deg,#f8fbfb,#f3f7f8)}
+.moxa-global-advisor-bubble{max-width:90%;padding:11px 14px;border:1px solid #dce8e8;background:#fff;color:#263838;border-radius:18px 18px 18px 8px;box-shadow:0 6px 14px rgba(24,42,48,.06);font-size:13px;line-height:1.42}
+.moxa-global-advisor-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.moxa-global-advisor-options a{border:1px solid #66baba;background:#fff;color:#006d6d;font-weight:800;padding:8px 12px;font-size:12px;border-radius:999px;text-decoration:none}
+body .card,body .path,body .family,body .result-card{border-radius:8px}
+body .btn{border-radius:8px}
+body .hero .lead,body .hero-copy .lead{max-width:720px}
+@keyframes moxaOrbit{to{transform:rotate(360deg)}}
+@keyframes moxaChatIn{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:760px){.moxa-locale-inner{align-items:flex-start;flex-direction:column;gap:8px}.moxa-demo-criteria-inner{grid-template-columns:1fr}.moxa-criteria-pills{justify-content:flex-start}.moxa-global-advisor-label{display:none}.moxa-global-advisor-launch{right:14px;bottom:14px;width:66px;height:66px}.moxa-global-advisor-core{width:66px;height:66px}.moxa-global-advisor-panel{right:10px;bottom:92px;width:calc(100vw - 20px)}}
+
+<!-- MOXA POC OPTIMIZATION CSS END -->
+
+/* MOXA_CLAUDE_DS_SYNC_START */
+:root{
+  --moxa-green:#008787;
+  --moxa-green-700:#006d6d;
+  --moxa-green-300:#66baba;
+  --moxa-green-100:#e2f1f1;
+  --moxa-green-050:#f0f8f8;
+  --moxa-gray:#727171;
+  --moxa-ink:#172323;
+  --moxa-gray-ink:#4d4d4d;
+  --moxa-line:#e4e6e6;
+  --moxa-line-strong:#b8c0c0;
+  --moxa-mist:#f4f6f6;
+  --moxa-deep:#102d30;
+  --moxa-orange:#fa943e;
+  --moxa-radius-ui:2px;
+  --moxa-radius-panel:4px;
+  --green:#008787;
+  --green-700:#006d6d;
+  --green-300:#66baba;
+  --green-100:#e2f1f1;
+  --green-050:#f0f8f8;
+  --gray:#727171;
+  --ink:#172323;
+  --gray-ink:#4d4d4d;
+  --line:#e4e6e6;
+  --line-strong:#b8c0c0;
+  --mist:#f4f6f6;
+  --deep:#102d30;
+  --orange:#fa943e;
+  --radius:4px;
+  --radius-lg:4px;
+}
+html{scroll-padding-top:88px}
+body{
+  background:#fff;
+  color:var(--moxa-gray-ink);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.moxa-locale-shell,
+.moxa-demo-criteria,
+.logo-note,
+.prototype-note,
+.handoff-note,
+.figma-note,
+[data-component="PoCTestCriteria"]{
+  display:none!important;
+}
+h1,h2,h3,h4,h5,h6{color:var(--moxa-ink);letter-spacing:0}
+p,li,td,th,dd,dt{letter-spacing:0}
+a{color:var(--moxa-green-700)}
+.header,.site-header,.global-header{
+  background:rgba(255,255,255,.94);
+  border-bottom:1px solid var(--moxa-line);
+  box-shadow:0 16px 42px -36px rgba(0,40,40,.36);
+}
+.header-in,.nav-inner,.topbar-inner{position:relative}
+.logo,.brand,.footer-logo{letter-spacing:.04em;color:var(--moxa-green-700)}
+.mainnav,.header .mainnav,nav.mainnav{
+  flex-wrap:nowrap;
+  gap:0;
+}
+.navitem,.header-actions,.header-link{flex:0 0 auto}
+.navitem>button,.header-link,.mainnav a,.mega-col a,.mega-col h5,.mega h4,.mega a,.topnav a{
+  white-space:nowrap;
+}
+.navitem>button,.mainnav>button,.mainnav>a{
+  border-radius:0!important;
+  min-height:44px;
+  color:var(--moxa-ink);
+  font-weight:750;
+}
+.navitem>button:hover,.navitem>button[aria-expanded="true"],.mainnav>a:hover{
+  color:var(--moxa-green);
+  background:var(--moxa-green-050);
+  box-shadow:inset 0 -3px 0 var(--moxa-green);
+}
+.mega,.mega-menu,.dropdown-panel{
+  border-top:1px solid var(--moxa-line);
+  border-bottom:1px solid var(--moxa-line-strong);
+  box-shadow:0 34px 64px -46px rgba(0,45,45,.45);
+}
+.mega-intro,.menu-intro{
+  background:var(--moxa-deep)!important;
+  border-left:4px solid var(--moxa-green)!important;
+  border-radius:0!important;
+}
+.mega-col h5,.mega-menu h5{
+  border-bottom:2px solid var(--moxa-line);
+  color:var(--moxa-ink);
+}
+.btn,button,.button,.chip,.tag,.pill,input,select,textarea{
+  border-radius:var(--moxa-radius-ui)!important;
+}
+.btn,.button,button{
+  font-weight:800;
+  letter-spacing:0;
+}
+.btn.primary,.btn-primary,.primary,.button.primary{
+  background:var(--moxa-green)!important;
+  border-color:var(--moxa-green)!important;
+  color:#fff!important;
+}
+.btn.primary:hover,.btn-primary:hover,.primary:hover,.button.primary:hover{
+  background:var(--moxa-green-700)!important;
+  border-color:var(--moxa-green-700)!important;
+}
+.btn.ghost,.btn-ghost,.button.ghost{
+  background:#fff!important;
+  border-color:var(--moxa-green)!important;
+  color:var(--moxa-green)!important;
+}
+.btn-cta,.cta,.button.cta{
+  background:var(--moxa-orange)!important;
+  border-color:var(--moxa-orange)!important;
+  color:var(--moxa-ink)!important;
+}
+.card,.tile,.panel,.surface,.quote-card,.product-card,.solution-card,.resource-card,.metric-card,.filter-panel,.result-card,.module,.spec-card{
+  border-radius:var(--moxa-radius-panel)!important;
+  border-color:var(--moxa-line)!important;
+  box-shadow:none!important;
+}
+.card:hover,.tile:hover,.product-card:hover,.solution-card:hover,.resource-card:hover,.result-card:hover{
+  border-color:var(--moxa-line-strong)!important;
+  box-shadow:0 20px 44px -36px rgba(0,50,50,.42)!important;
+}
+.hero,.page-hero,.pdp-hero,.category-hero{
+  background-color:#fff;
+}
+.hero-light,.page-hero.light{
+  background:linear-gradient(120deg,#fff 0%,var(--moxa-green-050) 58%,#eef3f1 100%)!important;
+}
+.eyebrow,.kicker,.section-label{
+  color:var(--moxa-green-700)!important;
+  letter-spacing:.14em!important;
+  font-weight:850!important;
+}
+img{max-width:100%;height:auto}
+.media img,.image img,.hero-media img,.card img,.product-image img{
+  object-fit:cover;
+}
+table,thead,tbody,tr,td,th{border-color:var(--moxa-line)}
+input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{
+  outline:3px solid #009ddb!important;
+  outline-offset:2px;
+}
+.site-footer,footer{
+  background:var(--moxa-deep);
+  color:#d9eeee;
+}
+.site-footer a,footer a{color:#d9eeee}
+.site-footer h3,footer h3{color:#fff}
+@media (min-width:1041px){
+  .header .mainnav,nav.mainnav{display:flex;align-items:stretch;min-width:0}
+  .header-actions{white-space:nowrap}
+}
+@media (max-width:1040px){
+  .mainnav,.header .mainnav,nav.mainnav{flex-wrap:wrap}
+  .navitem>button,.header-link,.mainnav a,.mega-col a{white-space:normal}
+}
+/* MOXA_CLAUDE_DS_SYNC_END */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MOXA_GLOBAL_SHELL_20260714_START */
+:root{
+  --moxa-green:#008787;
+  --moxa-green-dark:#006d6d;
+  --moxa-ink:#172323;
+  --moxa-text:#4e666d;
+  --moxa-line:#d8e5e7;
+  --moxa-panel:#f4faf9;
+}
+.moxa-locale-shell{display:none!important}
+.ai-chat-launcher,
+.chatbot{display:none!important}
+.logo{
+  display:flex!important;
+  align-items:center!important;
+  gap:10px!important;
+  color:var(--moxa-green)!important;
+}
+.logo-tri{
+  width:0!important;
+  height:0!important;
+  border-left:10px solid transparent!important;
+  border-right:10px solid transparent!important;
+  border-bottom:22px solid var(--moxa-green)!important;
+}
+.logo-word{
+  color:var(--moxa-green)!important;
+  font-size:30px!important;
+  line-height:1!important;
+  font-weight:950!important;
+  letter-spacing:.02em!important;
+}
+.logo-word sup{font-size:12px!important;top:-.8em!important;position:relative!important}
+.header{
+  position:sticky!important;
+  top:0!important;
+  z-index:120!important;
+  background:rgba(255,255,255,.96)!important;
+  border-bottom:1px solid var(--moxa-line)!important;
+  box-shadow:0 14px 32px rgba(16,39,45,.08)!important;
+  backdrop-filter:blur(16px) saturate(160%)!important;
+}
+.header .header-in{
+  height:72px!important;
+  max-width:1240px!important;
+  margin-inline:auto!important;
+  padding-inline:clamp(20px,4vw,48px)!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:22px!important;
+}
+.header .logo{min-width:190px!important;text-decoration:none!important}
+.header .logo-note{display:none!important}
+.header .mainnav{
+  display:flex!important;
+  align-items:stretch!important;
+  gap:4px!important;
+  min-width:0!important;
+  flex:1 1 auto!important;
+  margin:0!important;
+}
+.header .navitem{position:static!important}
+.header .navitem>button{
+  height:72px!important;
+  padding:0 11px!important;
+  border:0!important;
+  background:transparent!important;
+  color:#16272b!important;
+  font-size:14px!important;
+  font-weight:850!important;
+  white-space:nowrap!important;
+  letter-spacing:0!important;
+}
+.header .navitem>button:hover,
+.header .navitem>button[aria-expanded="true"]{color:var(--moxa-green-dark)!important;background:#eef8f7!important}
+.header .mega{
+  position:absolute!important;
+  left:0!important;
+  right:0!important;
+  top:72px!important;
+  display:none!important;
+  background:#fff!important;
+  border-top:1px solid var(--moxa-line)!important;
+  border-bottom:1px solid var(--moxa-line)!important;
+  box-shadow:0 28px 52px rgba(16,39,45,.14)!important;
+}
+.header .navitem[aria-expanded="true"] .mega{display:block!important}
+.header .mega-in{
+  max-width:1240px!important;
+  margin-inline:auto!important;
+  padding:22px clamp(20px,4vw,48px)!important;
+  display:grid!important;
+  grid-template-columns:minmax(240px,1.1fr) repeat(3,minmax(150px,1fr))!important;
+  gap:18px!important;
+}
+.header .mega-intro,
+.header .mega-col{
+  border:1px solid var(--moxa-line)!important;
+  background:#fff!important;
+  border-radius:4px!important;
+  padding:16px!important;
+}
+.header .mega h4,
+.header .mega h5{margin:0 0 10px!important;color:var(--moxa-ink)!important;font-weight:900!important}
+.header .mega p{margin:0 0 14px!important;color:var(--moxa-text)!important;line-height:1.55!important}
+.header .mega ul{list-style:none!important;padding:0!important;margin:0!important;display:grid!important;gap:8px!important}
+.header .mega a{color:var(--moxa-green-dark)!important;text-decoration:none!important;font-weight:760!important}
+.header .mega a:hover{text-decoration:underline!important}
+.header .header-actions{
+  margin-left:auto!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  flex:0 0 auto!important;
+}
+.header .header-actions .btn{
+  height:38px!important;
+  padding:0 14px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  white-space:nowrap!important;
+  border-radius:2px!important;
+  font-size:13px!important;
+  font-weight:850!important;
+}
+.header .header-actions .btn-ghost{border:1px solid var(--moxa-line)!important;color:var(--moxa-green-dark)!important;background:#fff!important}
+.header .header-actions .btn-primary,
+.header .header-actions > a.btn.btn-primary{
+  border:1px solid var(--moxa-green)!important;
+  background:var(--moxa-green)!important;
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  opacity:1!important;
+  min-width:116px!important;
+  box-shadow:none!important;
+}
+.header .header-actions .btn-primary:hover,
+.header .header-actions > a.btn.btn-primary:hover{
+  background:var(--moxa-green-dark)!important;
+  border-color:var(--moxa-green-dark)!important;
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+}
+.header .icon-btn{
+  width:42px!important;
+  height:42px!important;
+  border:1px solid var(--moxa-line)!important;
+  border-radius:2px!important;
+  display:grid!important;
+  place-items:center!important;
+  background:#fff!important;
+  color:var(--moxa-ink)!important;
+}
+.header .menu-toggle{display:none!important}
+.site-footer{
+  margin-top:0!important;
+  padding:54px 0 28px!important;
+  background:#f5faf9!important;
+  color:var(--moxa-text)!important;
+  border-top:4px solid var(--moxa-green)!important;
+}
+.site-footer .container{
+  max-width:1240px!important;
+  margin-inline:auto!important;
+  padding-inline:clamp(20px,4vw,48px)!important;
+}
+.site-footer .footer-grid{
+  display:grid!important;
+  grid-template-columns:1.3fr repeat(4,1fr)!important;
+  gap:34px!important;
+}
+.site-footer .footer-logo{
+  color:var(--moxa-green)!important;
+  font-size:24px!important;
+  font-weight:950!important;
+  letter-spacing:.08em!important;
+}
+.site-footer p{max-width:260px!important;margin:12px 0 0!important;color:var(--moxa-text)!important;line-height:1.65!important}
+.site-footer h3{margin:0 0 14px!important;color:var(--moxa-ink)!important;font-size:13px!important;text-transform:uppercase!important;letter-spacing:.1em!important}
+.site-footer a{
+  display:block!important;
+  margin:0 0 10px!important;
+  color:var(--moxa-green-dark)!important;
+  text-decoration:none!important;
+  font-weight:740!important;
+}
+.site-footer a:hover{color:var(--moxa-ink)!important;text-decoration:underline!important}
+.site-footer .footer-bottom{
+  margin-top:40px!important;
+  padding-top:18px!important;
+  padding-right:96px!important;
+  border-top:1px solid var(--moxa-line)!important;
+  display:flex!important;
+  justify-content:space-between!important;
+  gap:18px!important;
+  color:#6a7f85!important;
+  font-size:13px!important;
+}
+.hero.hero-image .hero-copy h1,
+.hero.hero-image .hero-copy .lead,
+.hero.hero-image .hero-copy .eyebrow{
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  text-shadow:0 2px 12px rgba(0,0,0,.26)!important;
+}
+.moxa-global-advisor-launch{
+  position:fixed!important;
+  right:24px!important;
+  bottom:22px!important;
+  z-index:145!important;
+  width:62px!important;
+  height:62px!important;
+  padding:0!important;
+  border:1px solid rgba(221,232,235,.92)!important;
+  border-radius:50%!important;
+  background:rgba(255,255,255,.94)!important;
+  box-shadow:0 18px 48px rgba(16,39,45,.18)!important;
+  backdrop-filter:blur(18px) saturate(150%)!important;
+  display:grid!important;
+  place-items:center!important;
+  cursor:pointer!important;
+}
+.moxa-global-advisor-launch:hover{transform:translateY(-3px)!important}
+.moxa-global-advisor-launch.is-open{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  transform:translateY(8px) scale(.94)!important;
+}
+.moxa-global-advisor-core{
+  width:52px!important;
+  height:52px!important;
+  border-radius:50%!important;
+  display:grid!important;
+  place-items:center!important;
+  overflow:hidden!important;
+  background:linear-gradient(145deg,#efffff,#d5f1f1)!important;
+  box-shadow:0 12px 28px rgba(0,135,135,.22)!important;
+}
+.moxa-global-advisor-core::before,
+.moxa-global-advisor-core::after{display:none!important}
+.moxa-global-advisor-core img{width:52px!important;height:52px!important;object-fit:cover!important}
+.moxa-global-advisor-glyph{display:none!important}
+.moxa-global-advisor-label{
+  position:absolute!important;
+  right:72px!important;
+  bottom:8px!important;
+  top:auto!important;
+  transform:translateX(8px)!important;
+  width:260px!important;
+  padding:12px 14px!important;
+  border:1px solid rgba(221,232,235,.92)!important;
+  border-radius:4px!important;
+  background:rgba(255,255,255,.96)!important;
+  box-shadow:0 18px 44px rgba(16,39,45,.14)!important;
+  color:var(--moxa-ink)!important;
+  font-size:13px!important;
+  font-weight:650!important;
+  line-height:1.35!important;
+  white-space:normal!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+.moxa-global-advisor-label strong{display:block!important;font-size:16px!important;line-height:1.12!important;color:var(--moxa-ink)!important}
+.moxa-global-advisor-label span{display:block!important;margin-top:4px!important;color:var(--moxa-text)!important}
+.moxa-global-advisor-launch:hover .moxa-global-advisor-label,
+.moxa-global-advisor-launch:focus-visible .moxa-global-advisor-label{
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+}
+.moxa-global-advisor-panel{
+  position:fixed!important;
+  right:24px!important;
+  bottom:100px!important;
+  z-index:146!important;
+  width:min(520px,calc(100vw - 48px))!important;
+  max-height:calc(100vh - 126px)!important;
+  overflow:auto!important;
+  display:block!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  transform:translateY(18px) scale(.98)!important;
+  transform-origin:bottom right!important;
+  background:rgba(255,255,255,.96)!important;
+  border:1px solid rgba(221,232,235,.92)!important;
+  border-radius:4px!important;
+  box-shadow:0 30px 90px rgba(16,39,45,.24)!important;
+  backdrop-filter:blur(24px) saturate(150%)!important;
+  font-family:"Helvetica Neue",Arial,sans-serif!important;
+}
+.moxa-global-advisor-panel.is-open{
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+  transform:none!important;
+}
+.moxa-global-advisor-head{
+  padding:18px!important;
+  display:flex!important;
+  justify-content:space-between!important;
+  align-items:center!important;
+  gap:14px!important;
+  background:#12373e!important;
+  color:#fff!important;
+}
+.moxa-global-advisor-title{display:flex!important;align-items:center!important;gap:12px!important}
+.moxa-global-advisor-title img{width:42px!important;height:42px!important;border-radius:50%!important;background:#e8f7f7!important}
+.moxa-global-advisor-head strong{display:block!important;color:#fff!important;font-size:16px!important}
+.moxa-global-advisor-head span{display:block!important;margin-top:3px!important;color:#bdd9dd!important;font-size:12px!important}
+.moxa-global-advisor-close{
+  width:34px!important;
+  height:34px!important;
+  border:1px solid rgba(255,255,255,.22)!important;
+  border-radius:2px!important;
+  background:rgba(255,255,255,.08)!important;
+  color:#fff!important;
+  cursor:pointer!important;
+}
+.moxa-global-advisor-body{padding:18px!important;background:#f7fbfb!important}
+.moxa-advisor-welcome{
+  display:grid!important;
+  grid-template-columns:42px 1fr!important;
+  gap:12px!important;
+  align-items:start!important;
+  padding:14px!important;
+  border:1px solid var(--moxa-line)!important;
+  border-left:4px solid var(--moxa-green)!important;
+  background:#fff!important;
+  border-radius:4px!important;
+}
+.moxa-advisor-welcome img{width:42px!important;height:42px!important;border-radius:50%!important}
+.moxa-advisor-welcome strong{display:block!important;color:var(--moxa-ink)!important}
+.moxa-advisor-welcome p{margin:4px 0 0!important;color:var(--moxa-text)!important;line-height:1.45!important}
+.moxa-advisor-workbench{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;margin-top:12px!important}
+.moxa-advisor-workbench a{
+  display:block!important;
+  min-height:76px!important;
+  padding:12px!important;
+  border:1px solid var(--moxa-line)!important;
+  border-radius:4px!important;
+  background:#fff!important;
+  color:var(--moxa-ink)!important;
+  text-decoration:none!important;
+}
+.moxa-advisor-workbench a:hover{border-color:var(--moxa-green)!important;box-shadow:0 10px 24px rgba(0,135,135,.12)!important}
+.moxa-advisor-workbench b{display:block!important;color:var(--moxa-green-dark)!important;font-size:13px!important;text-transform:uppercase!important;letter-spacing:.08em!important}
+.moxa-advisor-workbench span{display:block!important;margin-top:6px!important;color:var(--moxa-text)!important;font-size:13px!important;line-height:1.35!important}
+.moxa-advisor-primary{
+  margin-top:12px!important;
+  display:flex!important;
+  gap:10px!important;
+  flex-wrap:wrap!important;
+}
+.moxa-advisor-primary a{
+  min-height:40px!important;
+  padding:10px 12px!important;
+  border-radius:2px!important;
+  text-decoration:none!important;
+  font-weight:850!important;
+  border:1px solid var(--moxa-green)!important;
+}
+.moxa-advisor-primary a:first-child{background:var(--moxa-green)!important;color:#fff!important}
+.moxa-advisor-primary a:not(:first-child){background:#fff!important;color:var(--moxa-green-dark)!important}
+@media(max-width:1120px){
+  .header .mainnav{
+    position:fixed!important;
+    inset:72px 0 auto 0!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    max-height:calc(100vh - 72px)!important;
+    overflow:auto!important;
+    background:#fff!important;
+    border-bottom:1px solid var(--moxa-line)!important;
+    box-shadow:0 28px 44px rgba(16,39,45,.14)!important;
+    transform:translateY(-120%)!important;
+    transition:transform .22s ease!important;
+  }
+  .header .mainnav.open{transform:translateY(0)!important}
+  .header .navitem>button{width:100%!important;justify-content:space-between!important;height:48px!important;padding:0 clamp(20px,4vw,48px)!important}
+  .header .mega{position:static!important;box-shadow:none!important;border-top:1px solid var(--moxa-line)!important}
+  .header .mega-in{grid-template-columns:1fr!important;padding:14px clamp(20px,4vw,48px)!important}
+  .header .menu-toggle{display:grid!important}
+  .header .header-actions .btn-ghost{display:none!important}
+}
+@media(max-width:760px){
+  .header .logo{min-width:auto!important}
+  .header .header-in{gap:12px!important}
+  .site-footer .footer-grid{grid-template-columns:1fr 1fr!important}
+  .site-footer .footer-grid>div:first-child{grid-column:1 / -1!important}
+  .site-footer .footer-bottom{display:grid!important}
+  .moxa-global-advisor-label{display:none!important}
+  .moxa-global-advisor-launch{right:14px!important;bottom:14px!important;width:58px!important;height:58px!important}
+  .moxa-global-advisor-core{width:48px!important;height:48px!important}
+  .moxa-global-advisor-core img{width:48px!important;height:48px!important}
+  .moxa-global-advisor-panel{right:10px!important;bottom:84px!important;width:calc(100vw - 20px)!important}
+  .moxa-advisor-workbench{grid-template-columns:1fr!important}
+}
+/* MOXA_GLOBAL_SHELL_20260714_END */
+
 </style>
   <meta name="figma-static-export" content="self-contained HTML with inline CSS and embedded images">
   </head>
   <body data-figma-static="true">
+<!-- MOXA GLOBAL LOCALE SHELL START -->
+<div class="moxa-locale-shell" data-component="MoxaRegionLanguageSelector">
+  <div class="moxa-locale-inner">
+    <div class="moxa-locale-brand">MOXA PoC · Unified Site Shell</div>
+    <div class="moxa-locale-tools">
+      <label for="moxaLocaleSelect">Language / Region</label>
+      <select id="moxaLocaleSelect" data-moxa-locale>
+        <option value="en-GB">English - UK</option>
+        <option value="zh-CN">Chinese - 中国大陆</option>
+        <option value="zh-TW">Chinese - 台灣</option>
+      </select>
+      <span class="moxa-locale-status" data-moxa-locale-status>English - UK</span>
+    </div>
+  </div>
+</div>
+<!-- MOXA GLOBAL LOCALE SHELL END -->
     <div class="page-shell" data-page="demo-map">
       
-    <header class="header">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <header class="header" data-component="GlobalHeader">
   <div class="wrap header-in">
     <a class="logo" href="homepage.html" aria-label="Moxa home">
       <span class="logo-tri" aria-hidden="true"></span>
       <span class="logo-word">MOXA<sup>®</sup></span>
-      <span class="logo-note">Placeholder wordmark — replace with official logo artwork in production</span>
+      <span class="logo-note">demo evidence wordmark - replace with official logo artwork in production</span>
     </a>
 
     <nav class="mainnav" id="mainnav" aria-label="Primary">
-      <!-- PRODUCTS -->
       <div class="navitem" data-nav>
         <button aria-expanded="false" aria-haspopup="true">Products <span class="chev" aria-hidden="true"></span></button>
         <div class="mega" role="region" aria-label="Products menu">
           <div class="wrap mega-in">
             <div class="mega-intro">
               <h4>Start with what you're building</h4>
-              <p>Not sure which family fits? Describe your application and let the finder route you to the right hardware.</p>
-              <a class="btn btn-ghost" href="product-category-ethernet-switches.html">Open the finder</a>
+              <p>Move from application intent to product family, model comparison, and datasheet validation.</p>
+              <a class="btn btn-ghost" href="product-category-ethernet-switches.html">Open Product Finder</a>
             </div>
-            <div class="mega-col">
-              <h5>Network Infrastructure</h5>
-              <ul>
-                <li><a href="product-category-ethernet-switches.html">Industrial Ethernet Switches</a></li>
-                <li><a href="product-category-ethernet-switches.html">Secure Routers &amp; Firewalls</a></li>
-                <li><a href="product-category-ethernet-switches.html">Wireless AP / Bridge / Client</a></li>
-                <li><a href="product-category-ethernet-switches.html">Network Management</a></li>
-              </ul>
-            </div>
-            <div class="mega-col">
-              <h5>Edge Connectivity</h5>
-              <ul>
-                <li><a href="products.html">Protocol Gateways</a></li>
-                <li><a href="product-category-ethernet-switches.html">Serial-to-Ethernet</a></li>
-                <li><a href="products.html">Remote I/O</a></li>
-                <li><a href="product-category-ethernet-switches.html">Media Converters</a></li>
-              </ul>
-            </div>
-            <div class="mega-col">
-              <h5>Industrial Computing</h5>
-              <ul>
-                <li><a href="products.html">Edge Computers</a></li>
-                <li><a href="product-category-ethernet-switches.html">Panel Computers &amp; Displays</a></li>
-                <li><a href="product-category-ethernet-switches.html">Embedded Computers</a></li>
-                <li><a href="product-category-ethernet-switches.html">Software &amp; Edge AI</a></li>
-              </ul>
-            </div>
+            <div class="mega-col"><h5>Network Infrastructure</h5><ul><li><a href="product-category-ethernet-switches.html">Industrial Ethernet Switches</a></li><li><a href="product-series-eds-4008.html">EDS-4008 Series</a></li><li><a href="compare-lv-hv.html">Compare LV / HV Models</a></li></ul></div>
+            <div class="mega-col"><h5>Edge Connectivity</h5><ul><li><a href="products.html">Protocol Gateways</a></li><li><a href="products.html">Remote I/O</a></li><li><a href="manual.html">Manuals &amp; Downloads</a></li></ul></div>
+            <div class="mega-col"><h5>Evaluation</h5><ul><li><a href="search.html?q=Ethernet%20Switches">Search Products</a></li><li><a href="product-model-eds-4008-lv-hv.html">Model Details</a></li><li><a href="contact-distributor.html#contact">Ask an Engineer</a></li></ul></div>
           </div>
         </div>
       </div>
-
-      <!-- SOLUTIONS -->
       <div class="navitem" data-nav>
         <button aria-expanded="false" aria-haspopup="true">Solutions <span class="chev" aria-hidden="true"></span></button>
         <div class="mega" role="region" aria-label="Solutions menu">
           <div class="wrap mega-in">
-            <div class="mega-intro">
-              <h4>Built for your industry</h4>
-              <p>Field-proven architectures for the environments where downtime isn't an option.</p>
-              <a class="btn btn-ghost" href="microsite.html">Explore industries</a>
-            </div>
-            <div class="mega-col">
-              <h5>Manufacturing</h5>
-              <ul>
-                <li><a href="microsite.html">Smart Factory</a></li>
-                <li><a href="product-category-ethernet-switches.html">Machine Connectivity</a></li>
-                <li><a href="product-category-ethernet-switches.html">Industrial IIoT</a></li>
-              </ul>
-            </div>
-            <div class="mega-col">
-              <h5>Power &amp; Energy</h5>
-              <ul>
-                <li><a href="product-category-ethernet-switches.html">Smart Grid</a></li>
-                <li><a href="product-category-ethernet-switches.html">Renewables</a></li>
-                <li><a href="product-category-ethernet-switches.html">Substation Automation</a></li>
-              </ul>
-            </div>
-            <div class="mega-col">
-              <h5>Transportation</h5>
-              <ul>
-                <li><a href="microsite.html">Rail &amp; Metro</a></li>
-                <li><a href="product-category-ethernet-switches.html">Marine &amp; Port</a></li>
-                <li><a href="product-category-ethernet-switches.html">Intelligent Transport</a></li>
-              </ul>
-            </div>
+            <div class="mega-intro"><h4>Built for industrial scenarios</h4><p>Connect field devices, control networks, and operating teams through reliable architectures.</p><a class="btn btn-ghost" href="microsite.html">Explore Scenario Hub</a></div>
+            <div class="mega-col"><h5>Industries</h5><ul><li><a href="microsite.html">Manufacturing</a></li><li><a href="microsite.html">Power &amp; Energy</a></li><li><a href="microsite.html">Rail &amp; Transportation</a></li></ul></div>
+            <div class="mega-col"><h5>Architecture</h5><ul><li><a href="microsite.html#architecture">Controller &amp; I/O</a></li><li><a href="product-category-ethernet-switches.html">Industrial Networking</a></li><li><a href="article.html">TSN Applications</a></li></ul></div>
+            <div class="mega-col"><h5>Proof</h5><ul><li><a href="video.html">Video Stories</a></li><li><a href="article.html">Application Notes</a></li><li><a href="homepage.html#proof">Reliability Proof</a></li></ul></div>
           </div>
         </div>
       </div>
-
-      <!-- RESOURCES -->
       <div class="navitem" data-nav>
         <button aria-expanded="false" aria-haspopup="true">Resources <span class="chev" aria-hidden="true"></span></button>
         <div class="mega" role="region" aria-label="Resources menu">
           <div class="wrap mega-in">
-            <div class="mega-intro">
-              <h4>Design with confidence</h4>
-              <p>Documentation, tools, and reference designs to help you specify and deploy faster.</p>
-              <a class="btn btn-ghost" href="article.html">Visit the resource hub</a>
-            </div>
-            <div class="mega-col">
-              <h5>Learn</h5>
-              <ul>
-                <li><a href="article.html">White Papers</a></li>
-                <li><a href="article.html">Case Studies</a></li>
-                <li><a href="video.html">Webinars</a></li>
-              </ul>
-            </div>
-            <div class="mega-col">
-              <h5>Build</h5>
-              <ul>
-                <li><a href="manual.html">Datasheets &amp; Manuals</a></li>
-                <li><a href="product-category-ethernet-switches.html">Firmware &amp; Drivers</a></li>
-                <li><a href="product-category-ethernet-switches.html">Selection Tools</a></li>
-              </ul>
-            </div>
-            <div class="mega-col">
-              <h5>Certify</h5>
-              <ul>
-                <li><a href="product-category-ethernet-switches.html">Compliance &amp; Standards</a></li>
-                <li><a href="product-category-ethernet-switches.html">Cybersecurity (IEC 62443)</a></li>
-                <li><a href="product-category-ethernet-switches.html">Training &amp; Academy</a></li>
-              </ul>
-            </div>
+            <div class="mega-intro"><h4>Validate before specifying</h4><p>Bring datasheets, manuals, articles, video, and search behavior into one journey.</p><a class="btn btn-ghost" href="manual.html">Open Resource Center</a></div>
+            <div class="mega-col"><h5>Documents</h5><ul><li><a href="asset/moxa-eds-4008-series-datasheet-v1.8.pdf">EDS-4008 Datasheet</a></li><li><a href="manual.html">User Manual</a></li><li><a href="search.html?q=IEC%2062443">IEC 62443 Resources</a></li></ul></div>
+            <div class="mega-col"><h5>Content</h5><ul><li><a href="article.html">Articles</a></li><li><a href="video.html">Videos</a></li><li><a href="search.html?q=EDS-4008">Search All</a></li></ul></div>
+            <div class="mega-col"><h5>Tools</h5><ul><li><a href="search.html">Product Search</a></li><li><a href="product-category-ethernet-switches.html">Selection Guide</a></li><li><a href="contact-distributor.html#support">Technical Support</a></li></ul></div>
           </div>
         </div>
       </div>
-
-      <!-- SUPPORT -->
       <div class="navitem" data-nav>
         <button aria-expanded="false" aria-haspopup="true">Support <span class="chev" aria-hidden="true"></span></button>
         <div class="mega" role="region" aria-label="Support menu">
           <div class="wrap mega-in">
-            <div class="mega-intro">
-              <h4>Sincere service, 24/7</h4>
-              <p>A global engineering network stands behind every device we ship.</p>
-              <a class="btn btn-ghost" href="contact-distributor.html#support">Contact support</a>
-            </div>
-            <div class="mega-col">
-              <h5>Get Help</h5>
-              <ul>
-                <li><a href="contact-distributor.html#support">Technical Support</a></li>
-                <li><a href="product-category-ethernet-switches.html">RMA &amp; Repair</a></li>
-                <li><a href="product-category-ethernet-switches.html">Warranty</a></li>
-              </ul>
-            </div>
-            <div class="mega-col">
-              <h5>Services</h5>
-              <ul>
-                <li><a href="product-category-ethernet-switches.html">Professional Services</a></li>
-                <li><a href="product-category-ethernet-switches.html">Extended Warranty</a></li>
-                <li><a href="product-category-ethernet-switches.html">Managed Support</a></li>
-              </ul>
-            </div>
-            <div class="mega-col">
-              <h5>Community</h5>
-              <ul>
-                <li><a href="product-category-ethernet-switches.html">Knowledge Base</a></li>
-                <li><a href="product-category-ethernet-switches.html">Developer Forum</a></li>
-                <li><a href="contact-distributor.html#distributor">Find a Distributor</a></li>
-              </ul>
-            </div>
+            <div class="mega-intro"><h4>Sincere service, connected</h4><p>Keep product context intact when a visitor moves from search to support, quote, or distributor handoff.</p><a class="btn btn-ghost" href="contact-distributor.html#support">Contact Support</a></div>
+            <div class="mega-col"><h5>Get Help</h5><ul><li><a href="contact-distributor.html#support">Technical Support</a></li><li><a href="chatbot.html">AI Advisor</a></li><li><a href="manual.html">Manual Lookup</a></li></ul></div>
+            <div class="mega-col"><h5>Buy</h5><ul><li><a href="contact-distributor.html#contact">Contact Sales</a></li><li><a href="contact-distributor.html#distributor">Find Distributor</a></li><li><a href="compare-quote.html">Compare &amp; Quote</a></li></ul></div>
+            <div class="mega-col"><h5>Journey</h5><ul><li><a href="journey.html">Customer Journey</a></li><li><a href="analytics.html">Analytics</a></li><li><a href="backend-compliance.html">Compliance</a></li></ul></div>
           </div>
         </div>
       </div>
-
-      <!-- WHY MOXA -->
       <div class="navitem" data-nav>
         <button aria-expanded="false" aria-haspopup="true">Why Moxa <span class="chev" aria-hidden="true"></span></button>
         <div class="mega" role="region" aria-label="Why Moxa menu">
           <div class="wrap mega-in">
-            <div class="mega-intro">
-              <h4>Reliable networks. Sincere service.</h4>
-              <p>Three decades of focus on industrial connectivity — and the bond between Moxa, our partners, and our customers.</p>
-              <a class="btn btn-ghost" href="homepage.html#proof">See the proof</a>
-            </div>
-            <div class="mega-col">
-              <h5>Company</h5>
-              <ul>
-                <li><a href="homepage.html#bond">About Moxa</a></li>
-                <li><a href="product-category-ethernet-switches.html">Leadership</a></li>
-                <li><a href="product-category-ethernet-switches.html">Careers</a></li>
-              </ul>
-            </div>
-            <div class="mega-col">
-              <h5>Commitment</h5>
-              <ul>
-                <li><a href="product-category-ethernet-switches.html">Quality &amp; Reliability</a></li>
-                <li><a href="product-category-ethernet-switches.html">Sustainability</a></li>
-                <li><a href="product-category-ethernet-switches.html">Trust &amp; Security</a></li>
-              </ul>
-            </div>
-            <div class="mega-col">
-              <h5>Newsroom</h5>
-              <ul>
-                <li><a href="product-category-ethernet-switches.html">Press Releases</a></li>
-                <li><a href="product-category-ethernet-switches.html">Events</a></li>
-                <li><a href="product-category-ethernet-switches.html">Partner Network</a></li>
-              </ul>
-            </div>
+            <div class="mega-intro"><h4>Reliable networks. Sincere service.</h4><p>The design system keeps the experience bright, industrial, structured, and credible.</p><a class="btn btn-ghost" href="homepage.html#bond">See Moxa Story</a></div>
+            <div class="mega-col"><h5>Trust</h5><ul><li><a href="homepage.html#proof">Reliability Proof</a></li><li><a href="article.html">Application Stories</a></li><li><a href="contact-distributor.html#support">Service Commitment</a></li></ul></div>
+            <div class="mega-col"><h5>Customers</h5><ul><li><a href="journey.html">Journey Map</a></li><li><a href="analytics.html">Behavior Signals</a></li><li><a href="microsite.html">Scenario Hub</a></li></ul></div>
+            <div class="mega-col"><h5>Updates</h5><ul><li><a href="article.html">News &amp; Articles</a></li><li><a href="video.html">Videos</a></li><li><a href="contact-distributor.html">Talk to Moxa</a></li></ul></div>
           </div>
         </div>
       </div>
@@ -1875,15 +2375,32 @@ h4 {
       <button class="icon-btn search" aria-label="Search">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       </button>
-      <a class="btn btn-ghost" href="demo-map.html">Demo Map</a><a class="btn btn-ghost" href="design-system.html">Design System</a><a class="btn btn-primary" href="contact-distributor.html#contact">Contact Us</a>
+      <a class="btn btn-primary" href="contact-distributor.html#contact">Contact Us</a>
       <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="mainnav">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
     </div>
   </div>
 </header>
+<!-- MOXA POC CRITERIA STRIP START -->
+<section class="moxa-demo-criteria" data-component="PoCTestCriteria" data-test-cases="All scenario navigation">
+  <div class="moxa-demo-criteria-inner">
+    <div>
+      <span data-locale-key="scenarioLabel">Scenario / test coverage</span>
+      <h2>PoC demo map</h2>
+      <p data-i18n-en-gb="Presenter route map across homepage, product, content, AI, analytics" data-i18n-zh-cn="此页面用于演示：Presenter route map across homepage, product, content, AI, analytics" data-i18n-zh-tw="此頁面用於演示：Presenter route map across homepage, product, content, AI, analytics">Presenter route map across homepage, product, content, AI, analytics</p>
+    </div>
+    <div class="moxa-criteria-pills" aria-label="PoC criteria">
+      <b>All scenario navigation</b>
+      <b>Shared header/footer</b>
+      <b>Locale ready</b>
+      <b>../img/connection-abstract.jpg</b>
+    </div>
+  </div>
+</section>
+<!-- MOXA POC CRITERIA STRIP END -->
       
-    <section class="hero hero-light has-media">
+    <section class="hero hero-image" style="--hero-image:url('asset/generated-hero/hero-search-docs.png')">
       <div class="container hero-inner">
         <div class="hero-copy wide">
           <p class="eyebrow">Demo map</p>
@@ -1891,10 +2408,6 @@ h4 {
           <p class="lead">This launchpad turns the GPT scenario analysis into a clickable demo route for Figma review, HTML review, and later SitecoreAI componentization.</p>
           <div class="button-row"><a class="btn primary" href="#pages">View Pages</a><a class="btn ghost" href="#components">View Components</a><a class="btn ghost" href="homepage.html">Start Demo</a></div>
         </div>
-        <figure class="hero-media" data-component="POC hero visual">
-          <img src="banner/hero-media/17-demo-map.png" alt="Demo map hero visual showing POC pages, component sets, and jump paths." loading="eager">
-          <figcaption>POC banner visual aligned to the Moxa website design system.</figcaption>
-        </figure>
       </div>
     </section>
       
@@ -2054,7 +2567,7 @@ h4 {
           </div>
           <p class="lead">Use this route for the live HTML demo or as the page order when importing into Figma.</p>
         </div>
-        <div class="card card-pad reveal"><div class="tag-row"><a class="tag" href="homepage.html">P01 Homepage</a><a class="tag" href="microsite.html">P02 Controller & I/O Microsite</a><a class="tag" href="article.html">P03 Article Page</a><a class="tag" href="video.html">P04 Video Page</a><a class="tag" href="product-category-ethernet-switches.html">P05 Product Category: Ethernet Switches</a><a class="tag" href="search.html">P06 Search Result Page</a><a class="tag" href="product-series-eds-4008.html">P07 EDS-4008 Series Page</a><a class="tag" href="manual.html">P07b HXML Manual</a><a class="tag" href="product-model-eds-4008-lv-hv.html">P08 EDS-4008-LV / HV Model Page</a><a class="tag" href="compare-lv-hv.html">P06b LV/HV Compare</a><a class="tag" href="compare-quote.html">P09 Product Compare / Quote Flow</a><a class="tag" href="contact-distributor.html">P10 Contact Sales / Find Distributor</a><a class="tag" href="chatbot.html">P11 AI Assistant Panel</a><a class="tag" href="analytics.html">P12 Analytics Dashboard</a><a class="tag" href="journey.html">P13 Customer Journey</a><a class="tag" href="backend-compliance.html">P14 Backend / Compliance Mock</a></div></div>
+        <div class="card card-pad reveal"><div class="tag-row"><a class="tag" href="homepage.html">P01 Homepage</a><a class="tag" href="microsite.html">P02 Controller & I/O Microsite</a><a class="tag" href="article.html">P03 Article Page</a><a class="tag" href="video.html">P04 Video Page</a><a class="tag" href="product-category-ethernet-switches.html">P05 Product Category: Ethernet Switches</a><a class="tag" href="search.html">P06 Search Result Page</a><a class="tag" href="product-series-eds-4008.html">P07 EDS-4008 Series Page</a><a class="tag" href="manual.html">P07b DITA-backed Manual</a><a class="tag" href="product-model-eds-4008-lv-hv.html">P08 EDS-4008-LV / HV Model Page</a><a class="tag" href="compare-lv-hv.html">P06b LV/HV Compare</a><a class="tag" href="compare-quote.html">P09 Product Compare / Quote Flow</a><a class="tag" href="contact-distributor.html">P10 Contact Sales / Find Distributor</a><a class="tag" href="chatbot.html">P11 AI Assistant Panel</a><a class="tag" href="analytics.html">P12 Analytics Dashboard</a><a class="tag" href="journey.html">P13 Customer Journey</a><a class="tag" href="backend-compliance.html">P14 Backend / Compliance Mock</a></div></div>
       </div>
     </section>
       
@@ -2273,7 +2786,20 @@ h4 {
     
       </main>
       
-    <footer class="site-footer" data-component="Footer">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <footer class="site-footer" data-component="GlobalFooter">
       <div class="container">
         <div class="footer-grid">
           <div>
@@ -2283,31 +2809,35 @@ h4 {
           <div class="footer-col">
             <h3>Products</h3>
             <a href="product-category-ethernet-switches.html">Ethernet Switches</a>
+            <a href="product-series-eds-4008.html">EDS-4008 Series</a>
+            <a href="compare-lv-hv.html">Compare LV / HV</a>
             <a href="products.html">Protocol Gateways</a>
-            <a href="products.html">Industrial Computers</a>
           </div>
           <div class="footer-col">
             <h3>Solutions</h3>
-            <a href="homepage.html#scenarios">Manufacturing</a>
-            <a href="homepage.html#scenarios">Power</a>
-            <a href="homepage.html#scenarios">Rail</a>
+            <a href="microsite.html">Manufacturing</a>
+            <a href="microsite.html">Power &amp; Energy</a>
+            <a href="microsite.html">Rail</a>
+            <a href="homepage.html#proof">Reliability Proof</a>
           </div>
           <div class="footer-col">
             <h3>Resources</h3>
-            <a href="article.html">Latest News</a>
+            <a href="search.html">Search</a>
+            <a href="manual.html">Datasheets &amp; Manuals</a>
             <a href="article.html">Application Notes</a>
             <a href="video.html">Videos</a>
           </div>
           <div class="footer-col">
             <h3>Support</h3>
+            <a href="chatbot.html">AI Advisor</a>
             <a href="contact-distributor.html#support">Technical Support</a>
             <a href="contact-distributor.html#contact">Contact Us</a>
             <a href="contact-distributor.html#distributor">Distributor Network</a>
           </div>
         </div>
         <div class="footer-bottom">
-          <span>&copy; 2026 Moxa PoC internal demo. All rights reserved.</span>
-          <span>Glass UI prototype for HTML to Figma handoff.</span>
+          <span>&copy; 2026 Moxa. All rights reserved.</span>
+          <span>Reliable networks. Sincere service.</span>
         </div>
       </div>
     </footer>
@@ -2381,119 +2911,212 @@ h4 {
 })();
 </script>
 
-<script data-moxa-header="true">
-/* MOXA unified header — mega menu (hover + click/keyboard) and mobile toggle.
-   Self-contained and guarded so it works on every page. */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- MOXA GLOBAL AI ADVISOR START -->
+<button class="moxa-global-advisor-launch" type="button" data-moxa-advisor-toggle aria-label="Open Moxa AI Advisor" aria-expanded="false" aria-controls="moxaGlobalAdvisor">
+  <span class="moxa-global-advisor-core"><img src="img/ai-advisor-icon.png" alt=""></span>
+  <span class="moxa-global-advisor-label"><strong>Need help selecting an industrial switch?</strong><span>Open the product-selection workbench.</span></span>
+</button>
+<aside class="moxa-global-advisor-panel" id="moxaGlobalAdvisor" data-moxa-advisor-panel aria-label="Moxa AI Advisor" aria-hidden="true">
+  <div class="moxa-global-advisor-head">
+    <div class="moxa-global-advisor-title">
+      <img src="img/ai-advisor-icon.png" alt="">
+      <div><strong>Moxa Solution Advisor</strong><span>Product-selection workbench</span></div>
+    </div>
+    <button class="moxa-global-advisor-close" type="button" data-moxa-advisor-close aria-label="Close AI Advisor">×</button>
+  </div>
+  <div class="moxa-global-advisor-body">
+    <div class="moxa-advisor-welcome">
+      <img src="img/ai-advisor-icon.png" alt="">
+      <div><strong>Start from the requirement, not a generic service form.</strong><p>Choose a path and keep the visitor moving through search, model comparison, datasheet review, and engineering handoff.</p></div>
+    </div>
+    <div class="moxa-advisor-workbench" aria-label="Product selection workbench">
+      <a href="search.html?q=Ethernet%20Switches"><b>Search</b><span>Find industrial Ethernet switches, documents, and related resources.</span></a>
+      <a href="product-category-ethernet-switches.html"><b>Finder</b><span>Narrow by port count, redundancy, power input, and standards.</span></a>
+      <a href="compare-lv-hv.html"><b>Compare</b><span>Evaluate EDS-4008 LV and HV model differences.</span></a>
+      <a href="manual.html"><b>Validate</b><span>Open manuals and datasheets before contacting sales.</span></a>
+    </div>
+    <div class="moxa-advisor-primary">
+      <a href="chatbot.html">Open full advisor</a>
+      <a href="contact-distributor.html#contact">Ask an engineer</a>
+    </div>
+  </div>
+</aside>
+<!-- MOXA GLOBAL AI ADVISOR END -->
+<!-- MOXA POC OPTIMIZATION JS START -->
+<script>
 (function(){
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var items = Array.prototype.slice.call(document.querySelectorAll('.mainnav [data-nav]'));
-  var isMobile = function(){ return window.matchMedia('(max-width:760px)').matches; };
-  function closeAll(except){
-    items.forEach(function(it){
-      if(it!==except){ it.setAttribute('aria-expanded','false'); var b=it.querySelector('button'); if(b) b.setAttribute('aria-expanded','false'); }
+  var localeMap = {
+    "en-GB": { status:"English - UK", label:"Scenario / test coverage", lang:"en-GB" },
+    "zh-CN": { status:"Chinese - 中国大陆", label:"场景 / 测试覆盖", lang:"zh-CN" },
+    "zh-TW": { status:"Chinese - 台灣", label:"場景 / 測試覆蓋", lang:"zh-TW" }
+  };
+  function applyLocale(value){
+    var cfg = localeMap[value] || localeMap["en-GB"];
+    document.documentElement.lang = cfg.lang;
+    try { localStorage.setItem("moxa-poc-locale", value); } catch(e) {}
+    document.querySelectorAll("[data-moxa-locale]").forEach(function(sel){ sel.value = value; });
+    document.querySelectorAll("[data-moxa-locale-status]").forEach(function(el){ el.textContent = cfg.status; });
+    document.querySelectorAll("[data-locale-key='scenarioLabel']").forEach(function(el){ el.textContent = cfg.label; });
+    document.querySelectorAll("[data-i18n-en-gb]").forEach(function(el){
+      var key = value.toLowerCase();
+      el.textContent = el.getAttribute("data-i18n-" + key) || el.getAttribute("data-i18n-en-gb");
     });
   }
-  items.forEach(function(it){
-    var btn = it.querySelector('button'); if(!btn) return;
-    btn.addEventListener('click', function(e){
-      e.stopPropagation();
-      var open = it.getAttribute('aria-expanded')==='true';
-      closeAll(it);
-      it.setAttribute('aria-expanded', open?'false':'true');
-      btn.setAttribute('aria-expanded', open?'false':'true');
-    });
-    if(!('ontouchstart' in window)){
-      it.addEventListener('mouseenter', function(){ if(!isMobile()){ closeAll(it); it.setAttribute('aria-expanded','true'); btn.setAttribute('aria-expanded','true'); }});
-      it.addEventListener('mouseleave', function(){ if(!isMobile()){ it.setAttribute('aria-expanded','false'); btn.setAttribute('aria-expanded','false'); }});
-    }
+  var saved = "en-GB";
+  try { saved = localStorage.getItem("moxa-poc-locale") || saved; } catch(e) {}
+  applyLocale(saved);
+  document.querySelectorAll("[data-moxa-locale]").forEach(function(sel){
+    sel.addEventListener("change", function(){ applyLocale(sel.value); });
   });
-  document.addEventListener('click', function(){ closeAll(null); });
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeAll(null); });
+  
+})();
+</script>
+<!-- MOXA POC OPTIMIZATION JS END -->
 
-  var mt = document.getElementById('menuToggle');
-  var nav = document.getElementById('mainnav');
-  if(mt && nav){
-    mt.addEventListener('click', function(e){
-      e.stopPropagation();
-      var open = nav.classList.toggle('open');
-      mt.setAttribute('aria-expanded', open?'true':'false');
-    });
-    document.addEventListener('click', function(e){
-      if(nav.classList.contains('open') && !nav.contains(e.target) && !mt.contains(e.target)){
-        nav.classList.remove('open'); mt.setAttribute('aria-expanded','false');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script data-moxa-global-advisor-script>
+(function(){
+  var toggle = document.querySelector("[data-moxa-advisor-toggle]");
+  var panel = document.querySelector("[data-moxa-advisor-panel]");
+  var close = document.querySelector("[data-moxa-advisor-close]");
+  if(!toggle || !panel){ return; }
+  function setOpen(open){
+    panel.classList.toggle("is-open", open);
+    panel.setAttribute("aria-hidden", open ? "false" : "true");
+    toggle.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+  toggle.addEventListener("click", function(event){ event.stopPropagation(); setOpen(!panel.classList.contains("is-open")); });
+  if(close){ close.addEventListener("click", function(){ setOpen(false); }); }
+  document.addEventListener("click", function(event){
+    if(panel.classList.contains("is-open") && !panel.contains(event.target) && !toggle.contains(event.target)){ setOpen(false); }
+  });
+  document.addEventListener("keydown", function(event){ if(event.key === "Escape"){ setOpen(false); } });
+})();
+</script>
+
+<script data-moxa-global-shell-script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var items = Array.prototype.slice.call(document.querySelectorAll(".mainnav [data-nav]"));
+  var isMobile = function(){ return window.matchMedia("(max-width:1120px)").matches; };
+  function closeAll(except){
+    items.forEach(function(item){
+      if(item !== except){
+        item.setAttribute("aria-expanded","false");
+        var button = item.querySelector("button");
+        if(button){ button.setAttribute("aria-expanded","false"); }
       }
     });
-    nav.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', function(){ nav.classList.remove('open'); mt.setAttribute('aria-expanded','false'); closeAll(null); });
+  }
+  items.forEach(function(item){
+    var button = item.querySelector("button");
+    if(!button){ return; }
+    item.setAttribute("aria-expanded","false");
+    button.addEventListener("click", function(event){
+      event.stopPropagation();
+      var open = item.getAttribute("aria-expanded") === "true";
+      closeAll(item);
+      item.setAttribute("aria-expanded", open ? "false" : "true");
+      button.setAttribute("aria-expanded", open ? "false" : "true");
+    });
+    if(!("ontouchstart" in window)){
+      item.addEventListener("mouseenter", function(){
+        if(!isMobile()){ closeAll(item); item.setAttribute("aria-expanded","true"); button.setAttribute("aria-expanded","true"); }
+      });
+      item.addEventListener("mouseleave", function(){
+        if(!isMobile()){ item.setAttribute("aria-expanded","false"); button.setAttribute("aria-expanded","false"); }
+      });
+    }
+  });
+  document.addEventListener("click", function(){ closeAll(null); });
+  document.addEventListener("keydown", function(event){ if(event.key === "Escape"){ closeAll(null); } });
+
+  var menuToggle = document.getElementById("menuToggle");
+  var nav = document.getElementById("mainnav");
+  if(menuToggle && nav){
+    menuToggle.addEventListener("click", function(event){
+      event.stopPropagation();
+      var open = nav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    nav.querySelectorAll("a").forEach(function(link){
+      link.addEventListener("click", function(){ nav.classList.remove("open"); menuToggle.setAttribute("aria-expanded","false"); closeAll(null); });
     });
   }
 
-  /* Search icon: focus an on-page search field if present, else go to search page */
-  document.querySelectorAll('.icon-btn.search').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var field = document.querySelector('input[type="search"], .finder-input input, .search-shell input');
-      if(field){ field.scrollIntoView({behavior: reduce?'auto':'smooth', block:'center'}); setTimeout(function(){field.focus();}, reduce?0:300); }
-      else { window.location.href = 'search.html'; }
+  document.querySelectorAll(".icon-btn.search").forEach(function(button){
+    button.addEventListener("click", function(){
+      var field = document.querySelector("#sxSearchInput, .finder-input input, input[type='search'], .search-shell input, [role='search'] input");
+      if(field){
+        field.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+        window.setTimeout(function(){ field.focus(); }, reduce ? 0 : 220);
+      } else {
+        window.location.href = "search.html";
+      }
     });
   });
 })();
 </script>
-
-<script data-moxa-search-routing="true">
-(function(){
-  if (window.__moxaSearchRouting) return;
-  window.__moxaSearchRouting = true;
-  var SEARCH_PAGE = 'search.html';
-  function pageName(){ return (window.location.pathname.split('/').pop() || 'index.html').toLowerCase(); }
-  function isSearchInput(input){
-    if (!input || !input.matches || !input.matches('input, textarea')) return false;
-    var hay = [input.type, input.className, input.getAttribute('aria-label'), input.getAttribute('placeholder'), input.name, input.id].join(' ').toLowerCase();
-    return input.type === 'search' || hay.indexOf('search') >= 0 || hay.indexOf('finder') >= 0 || hay.indexOf('keyword') >= 0 || input.closest('.search-shell, .finder-input, [data-search-scope]');
-  }
-  function scopedInput(el){
-    var scope = el && el.closest && el.closest('.search-shell, .finder-input, form, [data-search-scope], .header, main');
-    var input = scope && scope.querySelector('input[type="search"], input.js-suggest-input, .search-shell input, .finder-input input, input[aria-label*="Search"], input[placeholder*="Search"], input[placeholder*="search"], input[placeholder*="keyword"], input[placeholder*="Keyword"]');
-    if (!input) input = document.querySelector('main input[type="search"], main input.js-suggest-input, main .search-shell input, main .finder-input input');
-    return input;
-  }
-  function currentQuery(el){
-    var input = scopedInput(el);
-    return input && input.value ? input.value.trim() : '';
-  }
-  function goToSearch(query){
-    var q = query || '';
-    var url = SEARCH_PAGE + (q ? '?q=' + encodeURIComponent(q) : '') + '#results';
-    window.location.href = url;
-  }
-  document.addEventListener('keydown', function(event){
-    var input = event.target;
-    if (event.key === 'Enter' && isSearchInput(input)) {
-      event.preventDefault();
-      goToSearch(input.value.trim());
-    }
-  }, true);
-  document.addEventListener('click', function(event){
-    var target = event.target.closest && event.target.closest('.icon-btn.search, .search-shell .btn, .finder-input .btn, [data-search-submit]');
-    if (!target) return;
-    var href = target.getAttribute && target.getAttribute('href');
-    var isSearchControl = target.matches('.icon-btn.search, [data-search-submit]') || target.closest('.search-shell, .finder-input');
-    if (!isSearchControl) return;
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    goToSearch(currentQuery(target));
-  }, true);
-  if (pageName() === 'search.html') {
-    var params = new URLSearchParams(window.location.search);
-    var q = params.get('q') || '';
-    if (q) {
-      document.querySelectorAll('input[type="search"], input.js-suggest-input, .search-shell input').forEach(function(input){ input.value = q; });
-      var resultCount = document.querySelector('.result-count');
-      if (resultCount) resultCount.textContent = 'Showing results for "' + q + '"';
-      var title = document.querySelector('#results .section-head h2');
-      if (title) title.innerHTML = 'Results tuned for <strong>' + q.replace(/[&<>]/g, function(ch){ return ({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]); }) + '</strong>';
-    }
-  }
-})();
-</script>
-  </body>
+</body>
 </html>
