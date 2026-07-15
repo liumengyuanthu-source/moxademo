@@ -1,0 +1,38 @@
+[
+  {
+    "footerRect": {
+      "h": 331.984375,
+      "w": 1440,
+      "x": 0,
+      "y": 4675.921875
+    },
+    "footerText": "MOXA Industrial connectivity, networking, computing, and automation solutions for mission-critical environments. PRODUCTS Ethernet Switches EDS-4008 Series Compare LV / HV Protocol Gateways SOLUTIONS Manufacturing Power & Energy Rail Reliability Proof RESOURCES Search Datasheets & Manuals Application Notes Videos SUPPORT AI Advisor Technical Support Contact Us Distributor Network © 2026 Moxa. All rights reserved. Reliable networks. Sincere service.",
+    "scrollY": 1266,
+    "url": "http://127.0.0.1:8771/homepage.html",
+    "screenshot": "/Users/christinaliu/Documents/Moxa/20260714 POC readiness/moxademo-github/audit/design-qa-20260715/10-source-footer-focused.png"
+  },
+  {
+    "footerRect": {
+      "h": 331.984375,
+      "w": 1440,
+      "x": 0,
+      "y": 1164.734375
+    },
+    "footerText": "MOXA Industrial connectivity, networking, computing, and automation solutions for mission-critical environments. PRODUCTS Ethernet Switches EDS-4008 Series Compare LV / HV Protocol Gateways SOLUTIONS Manufacturing Power & Energy Rail Reliability Proof RESOURCES Search Datasheets & Manuals Application Notes Videos SUPPORT AI Advisor Technical Support Contact Us Distributor Network © 2026 Moxa. All rights reserved. Reliable networks. Sincere service.",
+    "scrollY": 964.5,
+    "url": "http://127.0.0.1:8770/search.html",
+    "screenshot": "/Users/christinaliu/Documents/Moxa/20260714 POC readiness/moxademo-github/audit/design-qa-20260715/11-search-footer-focused.png"
+  },
+  {
+    "footerRect": {
+      "h": 331.984375,
+      "w": 1440,
+      "x": 0,
+      "y": 1278.125
+    },
+    "footerText": "MOXA Industrial connectivity, networking, computing, and automation solutions for mission-critical environments. PRODUCTS Ethernet Switches EDS-4008 Series Compare LV / HV Protocol Gateways SOLUTIONS Manufacturing Power & Energy Rail Reliability Proof RESOURCES Search Datasheets & Manuals Application Notes Videos SUPPORT AI Advisor Technical Support Contact Us Distributor Network © 2026 Moxa. All rights reserved. Reliable networks. Sincere service.",
+    "scrollY": 1033,
+    "url": "http://127.0.0.1:8770/product-series-eds-4008.html",
+    "screenshot": "/Users/christinaliu/Documents/Moxa/20260714 POC readiness/moxademo-github/audit/design-qa-20260715/12-eds-footer-focused.png"
+  }
+]
