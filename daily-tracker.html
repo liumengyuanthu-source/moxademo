@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MOXA PoC Daily Delivery Dashboard</title>
+  <style>
+    :root {
+      --moxa-deep: #003f3c;
+      --moxa-teal: #007a78;
+      --moxa-cyan: #00a6a6;
+      --moxa-orange: #f47a20;
+      --moxa-ink: #172526;
+      --moxa-muted: #526668;
+      --moxa-line: #b8d8d8;
+      --moxa-soft: #eef7f7;
+      --moxa-amber: #fff2e8;
+      --moxa-red: #b42318;
+      --moxa-green: #0f766e;
+      --page: #f7fbfb;
+      --white: #ffffff;
+      --shadow: 0 16px 38px rgba(0, 63, 60, 0.10);
+      --radius: 6px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--moxa-ink);
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      min-height: 100vh;
+      background:
+        linear-gradient(90deg, rgba(0, 122, 120, 0.08) 0, transparent 360px),
+        linear-gradient(180deg, #ffffff 0, #f2f8f8 62%, #ffffff 100%);
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(0, 63, 60, 0.14);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      width: min(1420px, calc(100vw - 48px));
+      margin: 0 auto;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      color: var(--moxa-teal);
+      letter-spacing: 0;
+      font-size: 28px;
+    }
+
+    .mark {
+      width: 0;
+      height: 0;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-bottom: 24px solid var(--moxa-teal);
+    }
+
+    .top-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--moxa-muted);
+      font-size: 13px;
+      text-align: right;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      border: 1px solid rgba(0, 122, 120, 0.24);
+      background: var(--moxa-soft);
+      color: var(--moxa-deep);
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    main {
+      width: min(1420px, calc(100vw - 48px));
+      margin: 0 auto;
+      padding: 34px 0 64px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(360px, 0.6fr);
+      gap: 28px;
+      align-items: stretch;
+      margin-bottom: 24px;
+    }
+
+    .hero-panel {
+      background: linear-gradient(135deg, var(--moxa-deep), #0f5a58);
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: var(--shadow);
+      min-height: 270px;
+      padding: 32px;
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent 0 70%, rgba(255, 255, 255, 0.08) 70% 71%, transparent 71%),
+        repeating-linear-gradient(0deg, transparent 0 30px, rgba(255, 255, 255, 0.05) 31px);
+      pointer-events: none;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: #bce5e4;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 4vw, 58px);
+      line-height: 1.02;
+      letter-spacing: 0;
+      font-weight: 800;
+    }
+
+    .hero-copy p {
+      margin: 18px 0 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 17px;
+      line-height: 1.55;
+      max-width: 720px;
+    }
+
+    .today-card {
+      background: var(--white);
+      border: 1px solid var(--moxa-line);
+      border-left: 5px solid var(--moxa-orange);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .today-card h2,
+    .section h2 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .today-card dl {
+      margin: 18px 0 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .today-card dt {
+      color: var(--moxa-teal);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .today-card dd {
+      margin: 4px 0 0;
+      color: var(--moxa-ink);
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .kpi {
+      background: var(--white);
+      border: 1px solid var(--moxa-line);
+      border-top: 4px solid var(--moxa-teal);
+      border-radius: var(--radius);
+      padding: 18px 18px 16px;
+      box-shadow: 0 10px 24px rgba(0, 63, 60, 0.07);
+    }
+
+    .kpi.warn { border-top-color: var(--moxa-orange); }
+
+    .kpi span {
+      display: block;
+      color: var(--moxa-muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .kpi strong {
+      display: block;
+      margin-top: 9px;
+      font-size: 36px;
+      line-height: 1;
+      color: var(--moxa-deep);
+    }
+
+    .kpi small {
+      display: block;
+      margin-top: 10px;
+      color: var(--moxa-muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .section {
+      margin-top: 24px;
+      background: var(--white);
+      border: 1px solid var(--moxa-line);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 24px rgba(0, 63, 60, 0.06);
+      overflow: hidden;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 20px 22px;
+      border-bottom: 1px solid var(--moxa-line);
+      background: linear-gradient(90deg, var(--moxa-soft), #ffffff);
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tab {
+      border: 1px solid rgba(0, 122, 120, 0.28);
+      background: var(--white);
+      color: var(--moxa-deep);
+      padding: 9px 12px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .tab.active {
+      background: var(--moxa-teal);
+      color: var(--white);
+      border-color: var(--moxa-teal);
+    }
+
+    .view { display: none; }
+    .view.active { display: block; }
+
+    .table-wrap {
+      width: 100%;
+      overflow: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 980px;
+    }
+
+    th {
+      background: var(--moxa-teal);
+      color: var(--white);
+      text-align: left;
+      padding: 11px 12px;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #d8e9e9;
+      vertical-align: top;
+      color: var(--moxa-ink);
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    tr:hover td { background: #f8fcfc; }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #d2e5e5;
+      min-height: 26px;
+      padding: 4px 8px;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+      background: var(--white);
+    }
+
+    .status.done { color: var(--moxa-green); background: #eefaf6; border-color: #b8ded2; }
+    .status.progress { color: var(--moxa-teal); background: var(--moxa-soft); border-color: var(--moxa-line); }
+    .status.risk, .status.decision { color: #8a430b; background: var(--moxa-amber); border-color: #ffd2a8; }
+    .status.blocked { color: var(--moxa-red); background: #fff1f0; border-color: #ffc9c4; }
+
+    .priority-high { color: var(--moxa-red); font-weight: 800; }
+    .priority-medium { color: #8a430b; font-weight: 800; }
+
+    .bar {
+      display: grid;
+      grid-template-columns: 64px minmax(120px, 1fr);
+      gap: 10px;
+      align-items: center;
+      min-width: 190px;
+    }
+
+    .track {
+      height: 9px;
+      background: #dceeee;
+      border-radius: 0;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      background: var(--moxa-teal);
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 20px;
+      padding: 22px;
+    }
+
+    .panel {
+      border: 1px solid var(--moxa-line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--white);
+    }
+
+    .panel h3 {
+      margin: 0;
+      padding: 12px 14px;
+      color: var(--white);
+      background: var(--moxa-deep);
+      font-size: 15px;
+    }
+
+    .panel ul {
+      margin: 0;
+      padding: 12px 18px 16px 28px;
+      color: var(--moxa-ink);
+      line-height: 1.45;
+      font-size: 14px;
+    }
+
+    .progress-list {
+      display: grid;
+      gap: 12px;
+      padding: 18px 22px 22px;
+    }
+
+    .progress-item {
+      display: grid;
+      grid-template-columns: 260px minmax(150px, 1fr) 86px;
+      gap: 16px;
+      align-items: center;
+      border-bottom: 1px solid #d8e9e9;
+      padding-bottom: 12px;
+    }
+
+    .progress-item:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .progress-item b {
+      font-size: 14px;
+    }
+
+    .footer-note {
+      margin-top: 28px;
+      color: var(--moxa-muted);
+      font-size: 12px;
+      text-align: right;
+    }
+
+    @media (max-width: 980px) {
+      .header-inner,
+      main {
+        width: min(100% - 28px, 1420px);
+      }
+
+      .hero,
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .kpis {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .progress-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .kpis { grid-template-columns: 1fr; }
+      .brand { font-size: 24px; }
+      .top-meta { display: none; }
+      .hero-panel,
+      .today-card { padding: 22px; }
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="header">
+      <div class="header-inner">
+        <div class="brand"><span class="mark" aria-hidden="true"></span><span>MOXA</span></div>
+        <div class="top-meta">
+          <span>PoC Daily Delivery Tracker</span>
+          <span class="pill">Updated 2026-07-14</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-panel">
+          <div class="hero-copy">
+            <p class="eyebrow">Reliable networks. Sincere service.</p>
+            <h1>Daily delivery dashboard for the Moxa PoC.</h1>
+            <p>Use this as the opening view for daily communication: what is complete, what is blocked, what we decide today, what moves tomorrow, and how the PoC is tracking toward July 31 completion.</p>
+          </div>
+        </div>
+        <aside class="today-card">
+          <p class="eyebrow">Today / July 15</p>
+          <h2>Design system cutoff + Stephen handoff</h2>
+          <dl>
+            <div><dt>Today focus</dt><dd>Cut off the design system, complete pages, and match pages to component evaluation.</dd></div>
+            <div><dt>Output</dt><dd>Design system freeze + completed pages + component evaluation package for Stephen.</dd></div>
+            <div><dt>Decision needed</dt><dd>Confirm Stephen handoff scope and page/component evaluation criteria.</dd></div>
+          </dl>
+        </aside>
+      </section>
+
+      <section class="kpis" aria-label="Project KPIs">
+        <div class="kpi"><span>Overall progress</span><strong id="overallProgress">0%</strong><small>Average current completion across workstreams.</small></div>
+        <div class="kpi warn"><span>Open blockers</span><strong id="openBlockers">0</strong><small>Blocked delivery items or daily tasks.</small></div>
+        <div class="kpi warn"><span>High risks</span><strong id="highRisks">0</strong><small>Open or monitoring risks with high impact.</small></div>
+        <div class="kpi"><span>Open decisions</span><strong id="openDecisions">0</strong><small>Items requiring Christina / Moxa / client confirmation.</small></div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Operating View</p>
+            <h2>Today, tomorrow, blockers, risks, and mitigation.</h2>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Tracker views">
+            <button class="tab active" data-view="overview" type="button">Overview</button>
+            <button class="tab" data-view="daily" type="button">Daily Check-in</button>
+            <button class="tab" data-view="deliverables" type="button">Deliverables</button>
+            <button class="tab" data-view="risks" type="button">Risks</button>
+            <button class="tab" data-view="decisions" type="button">Decisions</button>
+            <button class="tab" data-view="workstreams" type="button">Workstreams</button>
+          </div>
+        </div>
+
+        <div class="view active" id="view-overview">
+          <div class="summary-grid">
+            <div class="panel">
+              <h3>Current blockers / decisions</h3>
+              <ul id="blockerList"></ul>
+            </div>
+            <div class="panel">
+              <h3>Risk & mitigation plan</h3>
+              <ul id="riskList"></ul>
+            </div>
+          </div>
+          <div class="progress-list" id="progressList"></div>
+        </div>
+
+        <div class="view" id="view-daily"><div class="table-wrap" id="dailyTable"></div></div>
+        <div class="view" id="view-deliverables"><div class="table-wrap" id="deliverablesTable"></div></div>
+        <div class="view" id="view-risks"><div class="table-wrap" id="risksTable"></div></div>
+        <div class="view" id="view-decisions"><div class="table-wrap" id="decisionsTable"></div></div>
+        <div class="view" id="view-workstreams"><div class="table-wrap" id="workstreamsTable"></div></div>
+      </section>
+
+      <p class="footer-note">MOXA PoC internal delivery tracker. HTML view mirrors the daily Excel tracker.</p>
+    </main>
+  </div>
+
+  <script>
+    const workstreams = [
+      ["Design System", "Moxa industrial visual rules and component behavior", 75, 100, "2026-07-16", "Codex", "In Progress", "Final page audit and criteria alignment"],
+      ["Scenario", "Customer behavior and demo narrative spine", 85, 100, "2026-07-17", "Codex + Christina", "In Progress", "Confirm final story order"],
+      ["Use Case", "Use case mapping, expected response, gap/decision status", 82, 100, "2026-07-17", "Codex", "In Progress", "Search filter rule still needs decision"],
+      ["Pages & Features & Journey HTML", "Customer-facing pages and linked journeys", 68, 100, "2026-07-17", "Codex", "In Progress", "Finish scenario 4 and 5 pages"],
+      ["Component Mapping", "100% reuse / partial reuse / new build / demo-only mapping", 35, 100, "2026-07-17", "Codex + Christina", "At Risk", "Need component library truth from Moxa"],
+      ["Implementation Analysis", "Script / manual / iframe path by page", 25, 60, "2026-07-17", "Codex", "At Risk", "Only partial expected by July 17"],
+      ["Overall Plan & QA", "Task plan, QA report, daily tracking", 65, 90, "2026-07-15", "Codex + Christina", "In Progress", "Daily tracker created"],
+      ["Deployment", "Prototype packaging and deployment", 0, 100, "2026-07-21", "Codex + Moxa", "Blocked", "Need deployment environment"],
+      ["Settings / Tracking / Analysis", "Events, settings, analytics testing", 20, 100, "2026-07-31", "Codex + Moxa", "Decision Needed", "Need real tracking vs demo instrumentation decision"]
+    ];
+
+    const dailyRows = [
+      ["2026-07-14", "Tue", "Planning + tracker", "Finalize daily delivery tracker and align owner split", "MOXA_Daily_Delivery_Progress_Tracker_20260714.xlsx", "Codex", 90, "In Progress", "None", "Confirm owner split and milestone feasibility", "Design system audit + page fix list", "Tracker generated from current PoC plan"],
+      ["2026-07-15", "Wed", "Design system cutoff + page/component package", "Cut off the design system, complete all pages, match pages to component evaluation, and prepare Stephen handoff", "Design system freeze + completed pages + component evaluation package for Stephen", "Codex + Christina", 0, "In Progress", "Stephen input is needed for full-page handling analysis", "Confirm Stephen handoff scope and page/component evaluation criteria", "Stephen analysis on how to handle all pages", "Today goals: 1) design system cutoff 2) pages complete and matched to component evaluation 3) submit to Stephen 4) Stephen assists page handling analysis"],
+      ["2026-07-16", "Thu", "Scenario 4/5 HTML + component mapping", "Finish Product Evaluation and AI-assisted Technical Guidance journeys", "Updated HTML + component mapping draft", "Codex", 0, "Not Started", "Component library truth not confirmed", "Confirm page order and customer behavior logic", "Milestone freeze for item 4/5", "Map reuse/new build/demo-only"],
+      ["2026-07-17", "Fri", "Milestone: item 4 + item 5 + part of 6", "Freeze scenario 4/5 demo and complete core implementation analysis", "HTML demo freeze + component mapping + partial implementation plan", "Codex + Christina", 0, "Decision Needed", "Search filter default and backend-only demo policy", "Decide deferred backend-only states", "Deployment readiness", "Target: item 4/5 complete, item 6 at least 60% mapped"],
+      ["2026-07-20", "Mon", "Deployment readiness", "Run page QA, link checks, screenshots, asset loading, PDF checks", "QA report v1 + deployment checklist", "Codex", 0, "Not Started", "Need deployment target and access", "Moxa/client confirms hosting target", "Deploy prototype", "No blocker for July 21 deployment"],
+      ["2026-07-21", "Tue", "Deployment", "Deploy prototype and verify URL/routes/assets", "Deployed prototype URL + deployment report", "Codex + Moxa", 0, "Not Started", "Hosting/access dependency", "Moxa provides/approves environment", "Start settings/tracking testing", "Deployment should be live around this date"],
+      ["2026-07-22", "Wed", "Start item 9 testing", "Define event taxonomy, campaign/search/product/AI/journey tracking points", "Tracking taxonomy + settings test plan", "Codex + Moxa", 0, "Decision Needed", "Need real tracking tool vs demo instrumentation", "Choose tracking implementation mode", "QA pass 1", "Testing/adjustment period begins"],
+      ["2026-07-23", "Thu", "QA pass 1", "Run scenario walkthroughs, responsive checks, search use cases, PDP/manual/AI flows", "QA report v2 + bug backlog", "Codex", 0, "Not Started", "Defects may affect July 31 freeze", "Christina prioritizes defects", "Fix pass + implementation analysis completion", "Focus on critical journey defects"],
+      ["2026-07-24", "Fri", "Fix pass + implementation analysis completion", "Resolve QA blockers and complete script/manual/iframe mapping for all pages", "Fixed HTML + full item 6 implementation analysis", "Codex", 0, "Not Started", "Implementation path decisions may still be open", "Decide iframe/manual/script tradeoffs", "Scenario rehearsal", "All pages should have implementation mode and risk"],
+      ["2026-07-27", "Mon", "Scenario rehearsal", "Run full scenario demo with talking points", "Demo script v1 + narrative gap list", "Codex + Christina", 0, "Not Started", "Client-facing language may need edits", "Approve demo language", "PoC polish", "Demo flow should be end-to-end"],
+      ["2026-07-28", "Tue", "PoC polish", "Polish visuals/content gaps/screenshots/product data consistency", "Polished HTML + updated screenshots", "Codex", 0, "Not Started", "Client content corrections if any", "Confirm content corrections", "Tracking validation", "No obvious visual/content inconsistency"],
+      ["2026-07-29", "Wed", "Tracking validation", "Validate settings/tracking/analytics behavior and report story", "Tracking QA report + analytics narrative", "Codex + Moxa", 0, "Not Started", "Tracking may remain simulated", "Confirm tracking assumptions", "Final bug fix", "Metrics story credible even if simulated"],
+      ["2026-07-30", "Thu", "Final bug fix + package", "Close bugs, refresh workbook, prepare final package and backup demo route", "Final package candidate + issue closure list", "Codex", 0, "Not Started", "Last-minute defects", "Approve package readiness", "PoC completion", "No high-priority open defects"],
+      ["2026-07-31", "Fri", "PoC completion", "Freeze PoC, final QA, client-ready outputs, decision log", "PoC final package + final QA report + decision log", "All", 0, "Not Started", "Go/no-go risk", "Final go/no-go", "PPT/demo enhancement week", "PoC complete and ready for August demo polish"],
+      ["2026-08-03", "Mon", "PPT/demo enhancement week starts", "Fill missing PPT story pages with latest screenshots and mappings", "PPT content gap list + slide asset plan", "Codex + Christina", 0, "Not Started", "Deck emphasis not decided", "Choose final deck emphasis", "Deck visuals and evidence", "Use existing PPT framework"],
+      ["2026-08-04", "Tue", "Deck visuals and evidence", "Add design-system support visuals, component mapping, journey screenshots, QA proof", "Updated deck assets", "Codex", 0, "Not Started", "Client tone review", "Review client tone", "Demo script and rehearsal", "Slides support the demo"],
+      ["2026-08-05", "Wed", "Demo script and rehearsal", "Create/adjust demo script, fallback paths, talking points, expected questions", "Demo script v2 + Q&A prep", "Codex + Christina", 0, "Not Started", "Presenter split not confirmed", "Confirm who presents each part", "Final polish", "Demo can run without improvising core claims"],
+      ["2026-08-06", "Thu", "Final polish", "Fix deck/HTML mismatches, refresh screenshots, verify deployment", "Near-final deck/demo package", "Codex", 0, "Not Started", "Backup artifacts decision", "Decision on backup artifacts", "Demo readiness", "No deck/page mismatch remains"],
+      ["2026-08-07", "Fri", "Demo readiness", "Final dry run and package handoff", "Final demo package + dry-run notes", "All", 0, "Not Started", "Final go/no-go", "Final go/no-go", "External presentation", "Ready for external presentation"]
+    ];
+
+    const deliverables = [
+      ["D-001", "Daily delivery tracker", "2026-07-14", "Codex", "MOXA_Daily_Delivery_Progress_Tracker_20260714.xlsx", "Done", 100, "First sheet dashboard; daily communication structure ready", ""],
+      ["D-002", "Use case mapping workbook", "2026-07-14", "Codex", "MOXA_scenario_use_case_mapping_20260714.xlsx", "Done", 100, "Products-4 DITA manual reflected as implemented; Search docs partial remains backend gap", ""],
+      ["D-003", "PoC master plan workbook", "2026-07-14", "Codex", "MOXA_PoC_Master_Plan_20260714.xlsx", "Done", 100, "Full 1-9 framework and daily plan created", ""],
+      ["D-004", "Design system cutoff + Stephen handoff package", "2026-07-15", "Codex + Christina", "Design system freeze, completed pages, component evaluation mapping, Stephen handoff notes", "In Progress", 0, "Design system is cut off; pages are complete; each page is matched to component evaluation; Stephen has enough context to analyze all-page handling", "Stephen support needed for implementation handling analysis"],
+      ["D-005", "Scenario 4/5 HTML freeze", "2026-07-17", "Codex", "Updated HTML pages for product evaluation and AI guidance", "In Progress", 65, "Pages linked, customer journey coherent, design-system compliant", "Search filter/default behavior decision pending"],
+      ["D-006", "Component mapping draft", "2026-07-17", "Codex + Christina", "Reuse/new build/demo-only component inventory", "At Risk", 35, "Every core component mapped with implementation implication", "Need Moxa component library truth"],
+      ["D-007", "Implementation path analysis", "2026-07-24", "Codex", "Script/manual/iframe recommendation for all pages", "In Progress", 25, "Core pages by July 17; all pages by July 24", ""],
+      ["D-008", "Deployment package", "2026-07-21", "Codex + Moxa", "Deployable static prototype package and URL", "Blocked", 0, "Live URL works, assets load, routes pass smoke test", "Need hosting target/access"],
+      ["D-009", "Tracking and settings test plan", "2026-07-22", "Codex + Moxa", "Event taxonomy + QA plan", "Decision Needed", 20, "Search/product/manual/AI/quote/campaign/journey events mapped", "Need real tool vs demo instrumentation"],
+      ["D-010", "Final PoC package", "2026-07-31", "All", "Final HTML, QA report, decision log, demo route", "Not Started", 0, "No high-priority blockers open", ""],
+      ["D-011", "Demo/PPT completion", "2026-08-07", "Codex + Christina", "Completed presentation assets and demo script", "Not Started", 0, "Deck supports final demo and evidence story", ""]
+    ];
+
+    const risks = [
+      ["R-001", "Search filter default rule unresolved", "High", "High", "Open", "Decide whether filters auto-select by query intent, remain suggested-only, or show counts only.", "Christina + Moxa", "2026-07-17"],
+      ["R-002", "Deployment target/access not confirmed", "High", "High", "Open", "Confirm hosting target by July 20; keep local package fallback for demo.", "Moxa / Client", "2026-07-20"],
+      ["R-003", "Tracking implementation mode unclear", "High", "Medium", "Open", "Choose real tool vs demo instrumentation before July 22 testing starts.", "Moxa / Client", "2026-07-22"],
+      ["R-004", "Component library truth missing", "Medium", "High", "Open", "Use HTML/design-system inference now; replace with client component library facts when available.", "Moxa / Client", "2026-07-16"],
+      ["R-005", "Schedule compression before July 17", "High", "Medium", "Monitoring", "Finish item 4/5 first; keep item 6 partial by design and label remaining analysis for July 24.", "Codex + Christina", "2026-07-17"],
+      ["R-006", "Static demo may overclaim backend capability", "Medium", "Medium", "Monitoring", "Separate HTML implemented vs production backend requirement in criteria and demo language.", "Codex", "2026-07-24"],
+      ["R-007", "Product source claims may blur datasheet vs DITA", "High", "Low", "Monitoring", "Keep DITA as manual evidence only; keep PDP/model specs tied to datasheet/PDIM.", "Codex", "2026-07-17"]
+    ];
+
+    const decisions = [
+      ["D1", "Search filter default rule", "Should filters auto-select based on query intent, show suggested filters unchecked, or show counts only?", "High", "Christina + Moxa", "2026-07-17", "Open", "Impacts search UX and implementation"],
+      ["D2", "Tracking implementation mode", "Use real tracking tool or demo instrumentation for July 22 testing?", "High", "Moxa / Client", "2026-07-22", "Open", "Impacts item 9 QA and analytics credibility"],
+      ["D3", "Deployment target", "Where will the July 21 prototype be deployed?", "High", "Moxa / Client", "2026-07-20", "Open", "Required for deployment"],
+      ["D4", "Component library truth", "Which existing Sitecore/component library elements can be counted as reusable?", "Medium", "Moxa / Client", "2026-07-16", "Open", "Improves item 5 mapping accuracy"],
+      ["D5", "Backend-only demo policy", "Represent backend-only features as static evidence screens or keep as discussion items?", "Medium", "Christina", "2026-07-17", "Open", "Affects scope and client expectation"],
+      ["D6", "August deck emphasis", "Should the deck emphasize design system, customer journey, implementation feasibility, or tracking/ROI?", "Medium", "Christina", "2026-08-03", "Open", "Guides August 3-7 slide completion"]
+    ];
+
+    const headers = {
+      daily: ["Date", "Day", "Milestone", "Today Focus", "Output", "Owner", "Progress", "Status", "Blocker", "Decision Needed", "Tomorrow Handoff", "Notes"],
+      deliverables: ["ID", "Deliverable", "Due Date", "Owner", "Output / Artifact", "Status", "Progress", "Criteria", "Risk / Note"],
+      risks: ["ID", "Risk", "Impact", "Likelihood", "Status", "Mitigation Plan", "Owner", "Needed By"],
+      decisions: ["ID", "Decision", "Question", "Priority", "Owner", "Needed By", "Status", "Impact"],
+      workstreams: ["Workstream", "Scope", "Current", "Target", "Target Date", "Owner", "Status", "Notes"]
+    };
+
+    function statusClass(value) {
+      const normalized = String(value || "").toLowerCase();
+      if (normalized.includes("done")) return "done";
+      if (normalized.includes("blocked")) return "blocked";
+      if (normalized.includes("risk")) return "risk";
+      if (normalized.includes("decision")) return "decision";
+      if (normalized.includes("progress")) return "progress";
+      return "";
+    }
+
+    function statusBadge(value) {
+      return `<span class="status ${statusClass(value)}">${value || "Open"}</span>`;
+    }
+
+    function priorityClass(value) {
+      const normalized = String(value || "").toLowerCase();
+      if (normalized === "high") return "priority-high";
+      if (normalized === "medium") return "priority-medium";
+      return "";
+    }
+
+    function progressBar(value) {
+      const pct = Math.max(0, Math.min(100, Number(value) || 0));
+      return `<div class="bar"><b>${pct}%</b><span class="track"><span class="fill" style="width:${pct}%"></span></span></div>`;
+    }
+
+    function renderTable(targetId, heads, rows, options = {}) {
+      const html = [
+        "<table>",
+        `<thead><tr>${heads.map(h => `<th>${h}</th>`).join("")}</tr></thead>`,
+        "<tbody>",
+        ...rows.map(row => `<tr>${row.map((cell, index) => {
+          const head = heads[index] || "";
+          if (head === "Status") return `<td>${statusBadge(cell)}</td>`;
+          if (head === "Priority" || head === "Impact") return `<td class="${priorityClass(cell)}">${cell}</td>`;
+          if (head === "Progress" || head === "Current" || head === "Target") return `<td>${progressBar(cell)}</td>`;
+          return `<td>${cell || ""}</td>`;
+        }).join("")}</tr>`),
+        "</tbody></table>"
+      ].join("");
+      document.getElementById(targetId).innerHTML = html;
+    }
+
+    function renderOverview() {
+      const overall = Math.round(workstreams.reduce((sum, row) => sum + row[2], 0) / workstreams.length);
+      const blockers = deliverables.filter(row => row[5] === "Blocked").length + dailyRows.filter(row => row[7] === "Blocked").length;
+      const highRisks = risks.filter(row => row[2] === "High" && row[4] !== "Closed").length;
+      const openDecisions = decisions.filter(row => row[6] === "Open").length;
+
+      document.getElementById("overallProgress").textContent = `${overall}%`;
+      document.getElementById("openBlockers").textContent = blockers;
+      document.getElementById("highRisks").textContent = highRisks;
+      document.getElementById("openDecisions").textContent = openDecisions;
+
+      document.getElementById("blockerList").innerHTML = decisions.slice(0, 5).map(row =>
+        `<li><b>${row[1]}</b> — ${row[4]}, needed by ${row[5]}. ${row[7]}</li>`
+      ).join("");
+
+      document.getElementById("riskList").innerHTML = risks.filter(row => row[2] === "High").map(row =>
+        `<li><b>${row[1]}</b> — ${row[5]}</li>`
+      ).join("");
+
+      document.getElementById("progressList").innerHTML = workstreams.map(row => `
+        <div class="progress-item">
+          <b>${row[0]}</b>
+          ${progressBar(row[2])}
+          ${statusBadge(row[6])}
+        </div>
+      `).join("");
+    }
+
+    function wireTabs() {
+      document.querySelectorAll(".tab").forEach(button => {
+        button.addEventListener("click", () => {
+          const view = button.dataset.view;
+          document.querySelectorAll(".tab").forEach(tab => tab.classList.toggle("active", tab === button));
+          document.querySelectorAll(".view").forEach(panel => panel.classList.toggle("active", panel.id === `view-${view}`));
+        });
+      });
+    }
+
+    renderOverview();
+    renderTable("dailyTable", headers.daily, dailyRows);
+    renderTable("deliverablesTable", headers.deliverables, deliverables);
+    renderTable("risksTable", headers.risks, risks);
+    renderTable("decisionsTable", headers.decisions, decisions);
+    renderTable("workstreamsTable", headers.workstreams, workstreams);
+    wireTabs();
+  </script>
+</body>
+</html>
