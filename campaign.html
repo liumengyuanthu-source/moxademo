@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moxa Secure Networking Campaign</title>
+<title>Secure Your OT Networks | Moxa</title>
 <style>
 /* =========================================================
    MOXA — "The Bond Line"
@@ -1962,14 +1962,29 @@ nav.mainnav{gap:0}
 .detail-hero .hero-grid{min-height:520px}
 .detail-page{background:#fff}
 .detail-page section{padding-block:clamp(56px,7vw,96px)}
+.detail-page .compact-section{padding-block:clamp(34px,5vw,64px)}
 .detail-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
 .detail-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.detail-grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}
 .detail-card{position:relative;border:1px solid var(--gray-line);border-radius:14px;background:#fff;padding:1.35rem;overflow:hidden}
 .detail-card::after{content:"";position:absolute;right:-28px;bottom:-28px;width:82px;height:82px;background:var(--green-050);clip-path:polygon(100% 0,100% 100%,0 100%)}
 .detail-card h3{font-size:1.18rem;margin:.5rem 0 .45rem}
 .detail-card p,.detail-card li{color:var(--gray);font-size:.94rem}
 .detail-card ul{padding-left:1.05rem;margin:.75rem 0 0}
 .detail-card .go{position:relative;z-index:2;margin-top:1rem;color:var(--green);font-weight:800;font-size:.86rem;display:inline-flex;gap:.4rem}
+.official-copy{max-width:940px}
+.official-copy h2{font-size:clamp(1.9rem,3vw,3rem);letter-spacing:-.02em;margin:0 0 1rem;color:var(--ink)}
+.official-copy h3{font-size:1.18rem;margin:1.5rem 0 .55rem;color:var(--ink)}
+.official-copy p,.official-copy li{color:var(--gray);line-height:1.72}
+.official-copy ul{margin:.8rem 0 0;padding-left:1.1rem}
+.tabbar{display:flex;gap:.45rem;flex-wrap:wrap;border-bottom:1px solid var(--gray-line);margin-bottom:1.4rem}
+.tabbar a{padding:.75rem .95rem;color:var(--gray-ink);font-weight:800;border-bottom:3px solid transparent}
+.tabbar a.is-active{color:var(--green);border-bottom-color:var(--green)}
+.filter-panel{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.filter-group{border:1px solid var(--gray-line);border-radius:14px;background:#fff;padding:1.1rem}
+.filter-group h3{font-size:.95rem;text-transform:uppercase;letter-spacing:.08em;margin:0 0 .75rem;color:var(--ink)}
+.filter-tags{display:flex;gap:.45rem;flex-wrap:wrap}
+.filter-tags span{font-size:.83rem;color:var(--green);background:var(--green-050);border:1px solid var(--green-100);padding:.42rem .58rem;border-radius:999px}
 .detail-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--gray-line);border-radius:14px;overflow:hidden}
 .detail-table th,.detail-table td{padding:1rem;border-bottom:1px solid var(--gray-line);text-align:left;vertical-align:top}
 .detail-table th{background:var(--green-050);color:#173333;font-size:.82rem;text-transform:uppercase;letter-spacing:.08em}
@@ -1983,6 +1998,13 @@ nav.mainnav{gap:0}
 .media-card .body{padding:1.2rem}
 .product-row{display:grid;grid-template-columns:170px minmax(0,1fr) auto;gap:1.1rem;align-items:center;border:1px solid var(--gray-line);border-radius:14px;background:#fff;padding:1rem}
 .product-row img{width:100%;height:118px;object-fit:cover;border-radius:10px;background:var(--green-050)}
+.search-results-list{display:grid;gap:1rem}
+.search-results-list .product-row{grid-template-columns:180px minmax(0,1fr) auto}
+.spec-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+.spec-item{border:1px solid var(--gray-line);border-radius:12px;padding:1rem;background:#fff}
+.spec-item strong{display:block;color:var(--ink);margin-bottom:.3rem}
+.model-card{display:grid;grid-template-columns:150px minmax(0,1fr);gap:1rem;align-items:center}
+.model-card img{width:100%;max-height:120px;object-fit:contain}
 .viewer-box{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:1.2rem;align-items:center}
 .viewer-stage{min-height:440px;border:1px solid var(--gray-line);border-radius:16px;background:linear-gradient(180deg,#fff,var(--green-050));display:grid;place-items:center;overflow:hidden}
 .viewer-stage img{width:min(760px,100%);height:auto}
@@ -1990,7 +2012,9 @@ nav.mainnav{gap:0}
 .search-line{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.4rem}
 .search-line input{flex:1;min-width:260px;border:1.5px solid var(--gray-line);border-radius:12px;padding:.9rem 1rem;font:inherit}
 .campaign-shot{width:min(380px,100%);margin:auto;filter:drop-shadow(0 28px 48px rgba(0,80,80,.18))}
-@media(max-width:900px){.detail-grid,.detail-grid.two,.detail-layout,.viewer-box,.product-row{grid-template-columns:1fr}.detail-aside{position:static}}
+.video-frame{width:100%;aspect-ratio:16/9;border:0;border-radius:16px;background:#101818;object-fit:cover;box-shadow:0 28px 60px -42px rgba(0,40,40,.6)}
+.page-note{font-size:.86rem;color:var(--gray);margin-top:1rem}
+@media(max-width:900px){.detail-grid,.detail-grid.two,.detail-grid.four,.detail-layout,.viewer-box,.product-row,.search-results-list .product-row,.filter-panel,.spec-list,.model-card{grid-template-columns:1fr}.detail-aside{position:static}}
 </style>
 
 </head>
@@ -2076,18 +2100,18 @@ nav.mainnav{gap:0}
     </div>
   </div>
 </header>
-<section class="hero hero-carousel image-hero-carousel detail-hero" aria-label="Moxa Secure Networking Campaign hero">
+<section class="hero hero-carousel image-hero-carousel detail-hero" aria-label="Secure Your OT Networks | Moxa hero">
   <article class="hero-slide hero-slide-eds is-active" aria-hidden="false">
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <span class="eyebrow">Campaign</span>
-        <h1>Secure Networking<br>Solutions</h1>
-        <p class="hero-sub">Campaign landing page connected from the homepage pop-up, using the same bright Moxa visual language.</p>
+        <h1>Secure Your OT Networks</h1>
+        <p class="hero-sub">Campaign landing page connected from the homepage pop-up banner and Moxa secure networking content path.</p>
         <div class="hero-cta"><a class="btn btn-primary btn-lg" href="microsite.html">Explore microsite</a><a class="btn btn-ghost btn-lg" href="product-category-ethernet-switches.html">Ethernet switches</a></div>
       </div>
       <div class="hero-visual" aria-hidden="true">
         <div class="hero-imgslot">
-          <img class="asset-img hero-photo" src="asset/generated-hero/hero-backend-compliance.png" alt="Secure Networking Solutions">
+          <img class="asset-img hero-photo" src="asset/generated-hero/hero-backend-compliance.png" alt="Secure Your OT Networks">
         </div>
       </div>
     </div>
@@ -2095,8 +2119,8 @@ nav.mainnav{gap:0}
 </section>
 <main class="detail-page">
 
-<section><div class="wrap detail-grid two"><div class="detail-card"><span class="state-pill">Homepage banner</span><h3>Campaign entry</h3><p>The homepage pop-up routes directly here so marketing can measure campaign visits and onward product interest.</p><a class="go" href="homepage.html">Back to homepage <span>&rarr;</span></a></div><div><img class="campaign-shot" src="assets/popup/Secure-Networking-Solutions-banner-380px.png" alt="Secure Networking Solutions banner"></div></div></section>
-<section class="resource-proof"><div class="wrap detail-grid"><article class="detail-card"><span class="state-pill">Component</span><h3>Reusable block</h3><p>The same campaign module can appear in homepage pop-up, search result promotion, and landing page hero.</p></article><article class="detail-card"><span class="state-pill">Campaign</span><h3>Secure networking</h3><p>Route high-intent traffic into industrial cybersecurity and product-evaluation paths.</p></article><article class="detail-card"><span class="state-pill">Journey</span><h3>Next handoff</h3><p>Continue to Controller &amp; I/O microsite, product category, or support contact.</p></article></div></div></section>
+<section><div class="wrap detail-grid two"><div class="official-copy"><span class="eyebrow">Homepage popup destination</span><h2>Secure networking content path.</h2><p>The homepage pop-up banner routes to this campaign page. The page keeps the campaign creative visible, then guides visitors into product evaluation, secure Ethernet switching, and related resources.</p><p class="page-note">Popup banner assets are copied from the Moxa PoC testing materials package.</p><a class="go" href="homepage.html">Back to homepage <span>&rarr;</span></a></div><div><img class="campaign-shot" src="assets/popup/Secure-Networking-Solutions-banner-380px.png" alt="Secure Networking Solutions banner"></div></div></section>
+<section class="resource-proof"><div class="wrap"><div class="sec-head"><span class="eyebrow">Campaign modules</span><h2>Reusable campaign components</h2></div><div class="detail-grid"><article class="detail-card"><span class="state-pill">Component</span><h3>Popup banner</h3><p>Three supplied banner sizes support homepage pop-up display and responsive campaign placement.</p></article><article class="detail-card"><span class="state-pill">Campaign</span><h3>Secure OT networks</h3><p>The campaign directs high-intent visitors to OT network security guidance and secure product evaluation.</p></article><article class="detail-card"><span class="state-pill">Journey</span><h3>Product handoff</h3><p>Continue to Ethernet Switches, EDS-4008 Series, LV/HV compare, or support contact.</p></article></div></div></section>
 
 </main>
 <footer class="site-footer" data-component="GlobalFooter">
