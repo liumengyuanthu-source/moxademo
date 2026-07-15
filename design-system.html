@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moxa — Design System Clarification</title>
+<style>
+:root{
+  /* ---- Moxa brand (Corporate Identity Guidebook) ---- */
+  --green:#008787;
+  --green-700:#006d6d;
+  --green-300:#66baba;
+  --green-100:#e2f1f1;
+  --green-050:#f0f8f8;
+  --gray:#727171;
+  --ink:#172323;
+  --gray-ink:#4d4d4d;
+  --line:#e4e6e6;
+  --line-strong:#b8c0c0;
+  --mist:#f4f6f6;
+  --white:#fff;
+  --soft-1:#c9d0c6;
+  --soft-2:#d6d6d4;
+  --lime:#77b800;
+  --cyan:#009ddb;
+  --orange:#fa943e;
+  --deep:#102d30;
+
+  --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;
+  --s-5:24px;--s-6:32px;--s-7:48px;--s-8:64px;
+
+  --r-ui:2px;--r-panel:4px;
+
+  --font:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:"SF Mono",ui-monospace,"Cascadia Mono",Menlo,Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0;background:#e9edee;font-family:var(--font);color:var(--ink);
+  -webkit-font-smoothing:antialiased;line-height:1.5;
+  padding:32px 20px 64px;
+}
+.sheet{
+  max-width:1180px;margin:0 auto;background:var(--white);
+  border:1px solid var(--line-strong);
+  box-shadow:0 40px 90px -50px rgba(0,40,40,.35);
+}
+
+/* ---------- masthead ---------- */
+.mast{
+  display:grid;grid-template-columns:1.15fr 1fr;
+  border-bottom:2px solid var(--ink);
+}
+.mast-l{padding:var(--s-8) var(--s-7) var(--s-7);border-right:1px solid var(--line)}
+.chip{
+  display:inline-flex;align-items:center;gap:.5em;
+  font-size:.66rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--green-700);background:var(--green-050);
+  border:1px solid var(--green-100);
+  padding:.5rem .7rem;border-radius:999px;margin-bottom:var(--s-6);
+}
+.chip::before{
+  content:"";width:0;height:0;
+  border-left:5px solid transparent;border-right:5px solid transparent;
+  border-bottom:9px solid var(--green);
+}
+h1{
+  margin:0;font-size:clamp(2.2rem,4.4vw,3.5rem);line-height:1.02;
+  letter-spacing:-.035em;font-weight:700;color:var(--ink);
+}
+h1 em{font-style:normal;color:var(--green);display:block}
+.tagline{
+  margin:var(--s-5) 0 0;font-size:1rem;color:var(--green-700);
+  font-weight:600;letter-spacing:.01em;
+  border-left:4px solid var(--green);padding-left:var(--s-4);
+}
+.lede{margin:var(--s-5) 0 0;max-width:44ch;color:var(--gray-ink);font-size:.95rem}
+.mast-r{padding:var(--s-8) var(--s-7) var(--s-7);background:var(--mist);display:flex;flex-direction:column;gap:var(--s-4);justify-content:center}
+.meta-row{display:flex;justify-content:space-between;gap:var(--s-4);padding:.7rem 0;border-bottom:1px solid var(--line);font-size:.84rem}
+.meta-row:last-child{border-bottom:0}
+.meta-row dt{color:var(--gray);font-weight:600;margin:0}
+.meta-row dd{margin:0;font-weight:700;color:var(--ink);font-family:var(--mono);font-size:.8rem}
+
+/* ---------- section scaffold ---------- */
+.sec{border-bottom:1px solid var(--line);padding:var(--s-7)}
+.sec-h{display:flex;align-items:baseline;gap:var(--s-4);margin-bottom:var(--s-6)}
+.sec-n{font-family:var(--mono);font-size:.9rem;font-weight:700;color:var(--green-300)}
+.sec-t{font-size:.78rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+.sec-rule{flex:1;height:1px;background:var(--line)}
+.sub{font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin:0 0 var(--s-3)}
+
+/* ---------- component library ---------- */
+.grid{display:grid;gap:var(--s-4)}
+.cards-3{grid-template-columns:repeat(3,1fr)}
+.cards-2{grid-template-columns:repeat(2,1fr)}
+.card{border:1px solid var(--line);border-radius:var(--r-panel);padding:var(--s-5);background:var(--white)}
+.card.dim{background:var(--mist)}
+.stackv{display:flex;flex-direction:column;gap:var(--s-3);align-items:flex-start}
+
+/* buttons — real Moxa specs */
+.btn{
+  font:inherit;font-weight:800;font-size:.88rem;letter-spacing:.01em;cursor:pointer;
+  padding:.62rem 1.1rem;border:1px solid transparent;border-radius:var(--r-ui);
+  transition:background .2s,transform .15s;
+}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--green);color:#fff}
+.btn-primary:hover{background:var(--green-700)}
+.btn-ghost{background:#fff;color:var(--green);border-color:var(--green)}
+.btn-ghost:hover{background:var(--green-050)}
+.btn-cta{background:var(--orange);color:var(--ink);border-color:var(--orange)}
+.btn-text{background:none;border:0;color:var(--green);padding:.4rem 0;font-weight:800}
+.btn-text::after{content:" →"}
+
+/* form fields */
+.field{
+  width:100%;font:inherit;font-size:.88rem;padding:.6rem .75rem;
+  border:1px solid var(--line-strong);border-radius:var(--r-ui);background:#fff;color:var(--ink);
+}
+.field::placeholder{color:#9aa3a3}
+.field:focus{outline:3px solid var(--cyan);outline-offset:2px;border-color:var(--green)}
+
+/* nav item spec */
+.navdemo{display:flex;border:1px solid var(--line);border-radius:var(--r-panel);overflow:hidden}
+.navdemo span{
+  padding:.85rem 1rem;font-size:.86rem;font-weight:800;color:var(--gray-ink);
+  border-right:1px solid var(--line);
+}
+.navdemo span.on{
+  color:var(--green);box-shadow:inset 0 -4px 0 var(--green);background:#fff;
+}
+.navdemo span:last-child{border-right:0}
+
+/* mega link spec */
+.mlist{list-style:none;margin:0;padding:0}
+.mlist li{border-bottom:1px solid #eef1f1}
+.mlist li:last-child{border-bottom:0}
+.mlist a{
+  display:flex;align-items:center;gap:.5rem;min-height:38px;
+  font-size:.9rem;font-weight:650;color:var(--gray-ink);text-decoration:none;
+}
+.mlist a::before{
+  content:"";width:0;height:0;flex:0 0 auto;
+  border-left:4px solid var(--green);
+  border-top:4px solid transparent;border-bottom:4px solid transparent;
+  opacity:0;transition:opacity .15s;
+}
+.mlist a:hover{color:var(--green);gap:.8rem}
+.mlist a:hover::before{opacity:1}
+.mlist .h5{
+  font-size:.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink);border-bottom:2px solid var(--line);
+  min-height:38px;display:flex;align-items:center;margin-bottom:.6rem;
+}
+
+/* intro panel spec */
+.intro-demo{
+  background:var(--deep);color:#d8eeee;border-left:4px solid var(--green);
+  padding:1.2rem 1.1rem;border-radius:0;
+}
+.intro-demo h4{margin:0 0 .4rem;color:#fff;font-size:1.05rem;line-height:1.15}
+.intro-demo p{margin:0 0 .9rem;color:#bdd4d8;font-size:.85rem;line-height:1.45}
+.intro-demo .btn{background:transparent;color:#fff;border-color:rgba(255,255,255,.48)}
+
+/* alerts */
+.alert{display:flex;gap:.7rem;align-items:flex-start;padding:.75rem .85rem;border-radius:var(--r-ui);font-size:.84rem;border-left:4px solid}
+.alert b{display:block;font-size:.86rem}
+.a-ok{background:#f2f9ef;border-color:var(--lime);color:#3d5c14}
+.a-info{background:#eef8fd;border-color:var(--cyan);color:#0d4d68}
+.a-warn{background:#fff5ec;border-color:var(--orange);color:#7a4413}
+
+/* badges */
+.badge{display:inline-block;padding:.28rem .6rem;border-radius:var(--r-ui);font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.b-green{background:var(--green-100);color:var(--green-700)}
+.b-lime{background:#eef7e0;color:#4b7005}
+.b-gray{background:var(--mist);color:var(--gray)}
+.b-orange{background:#fff0e2;color:#8a4a12}
+
+/* ---------- color ---------- */
+.swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-3)}
+.sw{border:1px solid var(--line);border-radius:var(--r-panel);overflow:hidden}
+.sw .chipc{height:64px}
+.sw .lab{padding:.55rem .6rem;font-size:.7rem;line-height:1.35}
+.sw .nm{font-weight:800;display:block;color:var(--ink)}
+.sw .hx{font-family:var(--mono);color:var(--gray);font-size:.66rem}
+.ratio{display:grid;grid-template-columns:80fr 20fr;height:36px;border-radius:var(--r-ui);overflow:hidden;margin-top:var(--s-4);border:1px solid var(--line)}
+.ratio i{display:grid;place-items:center;font-size:.66rem;font-weight:800;letter-spacing:.1em;font-style:normal}
+.ratio .g{background:var(--green);color:#fff}
+.ratio .y{background:var(--gray);color:#fff}
+
+/* ---------- type ---------- */
+.type-wrap{display:grid;grid-template-columns:.75fr 1.25fr;gap:var(--s-6);align-items:start}
+.aa{font-size:5.5rem;font-weight:700;letter-spacing:-.04em;line-height:.9;color:var(--ink)}
+.tscale{width:100%;border-collapse:collapse}
+.tscale td{padding:.62rem 0;border-bottom:1px solid var(--line);vertical-align:baseline}
+.tscale tr:last-child td{border-bottom:0}
+.tscale .spec{text-align:right;font-family:var(--mono);font-size:.7rem;color:var(--gray);white-space:nowrap;padding-left:var(--s-4)}
+.t-h1{font-size:2rem;font-weight:700;letter-spacing:-.03em}
+.t-h2{font-size:1.5rem;font-weight:700;letter-spacing:-.02em}
+.t-h3{font-size:1.15rem;font-weight:700}
+.t-h5{font-size:.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.t-body{font-size:1rem}
+.t-link{font-size:.9rem;font-weight:650}
+.t-cap{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--gray)}
+
+/* ---------- spacing ---------- */
+.spacing-wrap{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-6)}
+.bars{display:flex;flex-direction:column;gap:.45rem}
+.bar{display:flex;align-items:center;gap:.7rem;font-family:var(--mono);font-size:.7rem;color:var(--gray)}
+.bar i{display:block;height:12px;background:var(--green-300);border-radius:1px}
+.bar b{color:var(--ink);width:34px}
+.gridbox{border:1px dashed var(--line-strong);border-radius:var(--r-panel);padding:var(--s-5);background:var(--mist)}
+.gridbox .row{display:grid;grid-template-columns:1.05fr repeat(3,1fr);gap:var(--s-6);height:104px}
+.gridbox .cell{background:#fff;border:1px solid var(--line);border-radius:2px;display:grid;place-items:center;font-family:var(--mono);font-size:.62rem;color:var(--gray)}
+.gridbox .cell.dark{background:var(--deep);color:#8fc3c3;border-color:var(--deep);border-left:4px solid var(--green)}
+.note{font-family:var(--mono);font-size:.68rem;color:var(--gray);margin-top:var(--s-3);text-align:center}
+
+/* ---------- do / don't ---------- */
+.dd{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-6)}
+.dd h4{display:flex;align-items:center;gap:.5rem;margin:0 0 var(--s-4);font-size:.76rem;letter-spacing:.16em;text-transform:uppercase}
+.dd .mark{width:20px;height:20px;border-radius:999px;display:grid;place-items:center;color:#fff;font-size:.7rem;font-weight:800}
+.do .mark{background:var(--green)}
+.dont .mark{background:#c0392b}
+.dd ul{list-style:none;margin:0;padding:0;display:grid;gap:var(--s-3)}
+.dd li{display:flex;gap:.7rem;font-size:.85rem;line-height:1.45}
+.dd li b{display:block;color:var(--ink)}
+.dd li span{color:var(--gray-ink)}
+.dd .dot{width:6px;height:6px;flex:0 0 auto;margin-top:.5rem;border-radius:1px;transform:rotate(45deg)}
+.do .dot{background:var(--green)}
+.dont .dot{background:#c0392b}
+
+/* ---------- fix log ---------- */
+.fix{width:100%;border-collapse:collapse;font-size:.84rem}
+.fix th{
+  text-align:left;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);
+  padding:0 var(--s-4) var(--s-3) 0;border-bottom:2px solid var(--line);font-weight:800;
+}
+.fix td{padding:.75rem var(--s-4) .75rem 0;border-bottom:1px solid var(--line);vertical-align:top}
+.fix tr:last-child td{border-bottom:0}
+.fix .sev{
+  font-family:var(--mono);font-size:.64rem;font-weight:700;padding:.2rem .45rem;border-radius:2px;white-space:nowrap;
+}
+.s-hi{background:#fdecea;color:#a5281b}
+.s-md{background:#fff2e3;color:#8a4a12}
+.s-lo{background:var(--mist);color:var(--gray)}
+.fix code{font-family:var(--mono);font-size:.76rem;background:var(--mist);padding:.1rem .3rem;border-radius:2px;color:var(--green-700)}
+
+/* ---------- footer ---------- */
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:var(--s-5);padding:var(--s-6) var(--s-7);background:var(--deep);color:#bdd4d8}
+.foot .q{display:flex;gap:var(--s-4);align-items:flex-start}
+.foot .q .qm{font-size:2.4rem;line-height:.8;color:var(--green-300);font-weight:700}
+.foot .q p{margin:0;font-size:.85rem;line-height:1.5;color:#d8eeee}
+.foot .q cite{display:block;margin-top:.6rem;font-style:normal;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--green-300);font-weight:800}
+.pill{border-left:1px solid rgba(255,255,255,.14);padding-left:var(--s-5)}
+.pill b{display:block;color:#fff;font-size:.8rem;margin-bottom:.2rem}
+.pill span{font-size:.75rem;line-height:1.45;display:block}
+
+@media (max-width:900px){
+  .mast,.type-wrap,.spacing-wrap,.dd,.cards-3,.cards-2,.foot{grid-template-columns:1fr}
+  .swatches{grid-template-columns:repeat(2,1fr)}
+  .mast-l{border-right:0;border-bottom:1px solid var(--line)}
+  .pill{border-left:0;padding-left:0}
+  .gridbox .row{grid-template-columns:1fr;height:auto;gap:var(--s-3)}
+  .gridbox .cell{height:44px}
+}
+
+/* MOXA_CLAUDE_DS_SYNC_START */
+:root{
+  --moxa-green:#008787;
+  --moxa-green-700:#006d6d;
+  --moxa-green-300:#66baba;
+  --moxa-green-100:#e2f1f1;
+  --moxa-green-050:#f0f8f8;
+  --moxa-gray:#727171;
+  --moxa-ink:#172323;
+  --moxa-gray-ink:#4d4d4d;
+  --moxa-line:#e4e6e6;
+  --moxa-line-strong:#b8c0c0;
+  --moxa-mist:#f4f6f6;
+  --moxa-deep:#102d30;
+  --moxa-orange:#fa943e;
+  --moxa-radius-ui:2px;
+  --moxa-radius-panel:4px;
+  --green:#008787;
+  --green-700:#006d6d;
+  --green-300:#66baba;
+  --green-100:#e2f1f1;
+  --green-050:#f0f8f8;
+  --gray:#727171;
+  --ink:#172323;
+  --gray-ink:#4d4d4d;
+  --line:#e4e6e6;
+  --line-strong:#b8c0c0;
+  --mist:#f4f6f6;
+  --deep:#102d30;
+  --orange:#fa943e;
+  --radius:4px;
+  --radius-lg:4px;
+}
+html{scroll-padding-top:88px}
+body{
+  background:#fff;
+  color:var(--moxa-gray-ink);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.moxa-locale-shell,
+.moxa-demo-criteria,
+.logo-note,
+.prototype-note,
+.handoff-note,
+.figma-note,
+[data-component="PoCTestCriteria"]{
+  display:none!important;
+}
+h1,h2,h3,h4,h5,h6{color:var(--moxa-ink);letter-spacing:0}
+p,li,td,th,dd,dt{letter-spacing:0}
+a{color:var(--moxa-green-700)}
+.header,.site-header,.global-header{
+  background:rgba(255,255,255,.94);
+  border-bottom:1px solid var(--moxa-line);
+  box-shadow:0 16px 42px -36px rgba(0,40,40,.36);
+}
+.header-in,.nav-inner,.topbar-inner{position:relative}
+.logo,.brand,.footer-logo{letter-spacing:.04em;color:var(--moxa-green-700)}
+.mainnav,.header .mainnav,nav.mainnav{
+  flex-wrap:nowrap;
+  gap:0;
+}
+.navitem,.header-actions,.header-link{flex:0 0 auto}
+.navitem>button,.header-link,.mainnav a,.mega-col a,.mega-col h5,.mega h4,.mega a,.topnav a{
+  white-space:nowrap;
+}
+.navitem>button,.mainnav>button,.mainnav>a{
+  border-radius:0!important;
+  min-height:44px;
+  color:var(--moxa-ink);
+  font-weight:750;
+}
+.navitem>button:hover,.navitem>button[aria-expanded="true"],.mainnav>a:hover{
+  color:var(--moxa-green);
+  background:var(--moxa-green-050);
+  box-shadow:inset 0 -3px 0 var(--moxa-green);
+}
+.mega,.mega-menu,.dropdown-panel{
+  border-top:1px solid var(--moxa-line);
+  border-bottom:1px solid var(--moxa-line-strong);
+  box-shadow:0 34px 64px -46px rgba(0,45,45,.45);
+}
+.mega-intro,.menu-intro{
+  background:var(--moxa-deep)!important;
+  border-left:4px solid var(--moxa-green)!important;
+  border-radius:0!important;
+}
+.mega-col h5,.mega-menu h5{
+  border-bottom:2px solid var(--moxa-line);
+  color:var(--moxa-ink);
+}
+.btn,button,.button,.chip,.tag,.pill,input,select,textarea{
+  border-radius:var(--moxa-radius-ui)!important;
+}
+.btn,.button,button{
+  font-weight:800;
+  letter-spacing:0;
+}
+.btn.primary,.btn-primary,.primary,.button.primary{
+  background:var(--moxa-green)!important;
+  border-color:var(--moxa-green)!important;
+  color:#fff!important;
+}
+.btn.primary:hover,.btn-primary:hover,.primary:hover,.button.primary:hover{
+  background:var(--moxa-green-700)!important;
+  border-color:var(--moxa-green-700)!important;
+}
+.btn.ghost,.btn-ghost,.button.ghost{
+  background:#fff!important;
+  border-color:var(--moxa-green)!important;
+  color:var(--moxa-green)!important;
+}
+.btn-cta,.cta,.button.cta{
+  background:var(--moxa-orange)!important;
+  border-color:var(--moxa-orange)!important;
+  color:var(--moxa-ink)!important;
+}
+.card,.tile,.panel,.surface,.quote-card,.product-card,.solution-card,.resource-card,.metric-card,.filter-panel,.result-card,.module,.spec-card{
+  border-radius:var(--moxa-radius-panel)!important;
+  border-color:var(--moxa-line)!important;
+  box-shadow:none!important;
+}
+.card:hover,.tile:hover,.product-card:hover,.solution-card:hover,.resource-card:hover,.result-card:hover{
+  border-color:var(--moxa-line-strong)!important;
+  box-shadow:0 20px 44px -36px rgba(0,50,50,.42)!important;
+}
+.hero,.page-hero,.pdp-hero,.category-hero{
+  background-color:#fff;
+}
+.hero-light,.page-hero.light{
+  background:linear-gradient(120deg,#fff 0%,var(--moxa-green-050) 58%,#eef3f1 100%)!important;
+}
+.eyebrow,.kicker,.section-label{
+  color:var(--moxa-green-700)!important;
+  letter-spacing:.14em!important;
+  font-weight:850!important;
+}
+img{max-width:100%;height:auto}
+.media img,.image img,.hero-media img,.card img,.product-image img{
+  object-fit:cover;
+}
+table,thead,tbody,tr,td,th{border-color:var(--moxa-line)}
+input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{
+  outline:3px solid #009ddb!important;
+  outline-offset:2px;
+}
+.site-footer,footer{
+  background:var(--moxa-deep);
+  color:#d9eeee;
+}
+.site-footer a,footer a{color:#d9eeee}
+.site-footer h3,footer h3{color:#fff}
+@media (min-width:1041px){
+  .header .mainnav,nav.mainnav{display:flex;align-items:stretch;min-width:0}
+  .header-actions{white-space:nowrap}
+}
+@media (max-width:1040px){
+  .mainnav,.header .mainnav,nav.mainnav{flex-wrap:wrap}
+  .navitem>button,.header-link,.mainnav a,.mega-col a{white-space:normal}
+}
+/* MOXA_CLAUDE_DS_SYNC_END */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MOXA_GLOBAL_SHELL_20260714_START */
+:root{
+  --moxa-green:#008787;
+  --moxa-green-dark:#006d6d;
+  --moxa-ink:#172323;
+  --moxa-text:#4e666d;
+  --moxa-line:#d8e5e7;
+  --moxa-panel:#f4faf9;
+}
+.moxa-locale-shell{display:none!important}
+.ai-chat-launcher,
+.chatbot{display:none!important}
+.logo{
+  display:flex!important;
+  align-items:center!important;
+  gap:10px!important;
+  color:var(--moxa-green)!important;
+}
+.logo-tri{
+  width:0!important;
+  height:0!important;
+  border-left:10px solid transparent!important;
+  border-right:10px solid transparent!important;
+  border-bottom:22px solid var(--moxa-green)!important;
+}
+.logo-word{
+  color:var(--moxa-green)!important;
+  font-size:30px!important;
+  line-height:1!important;
+  font-weight:950!important;
+  letter-spacing:.02em!important;
+}
+.logo-word sup{font-size:12px!important;top:-.8em!important;position:relative!important}
+.header{
+  position:sticky!important;
+  top:0!important;
+  z-index:120!important;
+  background:rgba(255,255,255,.96)!important;
+  border-bottom:1px solid var(--moxa-line)!important;
+  box-shadow:0 14px 32px rgba(16,39,45,.08)!important;
+  backdrop-filter:blur(16px) saturate(160%)!important;
+}
+.header .header-in{
+  height:72px!important;
+  max-width:1240px!important;
+  margin-inline:auto!important;
+  padding-inline:clamp(20px,4vw,48px)!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:22px!important;
+}
+.header .logo{min-width:190px!important;text-decoration:none!important}
+.header .logo-note{display:none!important}
+.header .mainnav{
+  display:flex!important;
+  align-items:stretch!important;
+  gap:4px!important;
+  min-width:0!important;
+  flex:1 1 auto!important;
+  margin:0!important;
+}
+.header .navitem{position:static!important}
+.header .navitem>button{
+  height:72px!important;
+  padding:0 11px!important;
+  border:0!important;
+  background:transparent!important;
+  color:#16272b!important;
+  font-size:14px!important;
+  font-weight:850!important;
+  white-space:nowrap!important;
+  letter-spacing:0!important;
+}
+.header .navitem>button:hover,
+.header .navitem>button[aria-expanded="true"]{color:var(--moxa-green-dark)!important;background:#eef8f7!important}
+.header .mega{
+  position:absolute!important;
+  left:0!important;
+  right:0!important;
+  top:72px!important;
+  display:none!important;
+  background:#fff!important;
+  border-top:1px solid var(--moxa-line)!important;
+  border-bottom:1px solid var(--moxa-line)!important;
+  box-shadow:0 28px 52px rgba(16,39,45,.14)!important;
+}
+.header .navitem[aria-expanded="true"] .mega{display:block!important}
+.header .mega-in{
+  max-width:1240px!important;
+  margin-inline:auto!important;
+  padding:22px clamp(20px,4vw,48px)!important;
+  display:grid!important;
+  grid-template-columns:minmax(240px,1.1fr) repeat(3,minmax(150px,1fr))!important;
+  gap:18px!important;
+}
+.header .mega-intro,
+.header .mega-col{
+  border:1px solid var(--moxa-line)!important;
+  background:#fff!important;
+  border-radius:4px!important;
+  padding:16px!important;
+}
+.header .mega h4,
+.header .mega h5{margin:0 0 10px!important;color:var(--moxa-ink)!important;font-weight:900!important}
+.header .mega p{margin:0 0 14px!important;color:var(--moxa-text)!important;line-height:1.55!important}
+.header .mega ul{list-style:none!important;padding:0!important;margin:0!important;display:grid!important;gap:8px!important}
+.header .mega a{color:var(--moxa-green-dark)!important;text-decoration:none!important;font-weight:760!important}
+.header .mega a:hover{text-decoration:underline!important}
+.header .header-actions{
+  margin-left:auto!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  flex:0 0 auto!important;
+}
+.header .header-actions .btn{
+  height:38px!important;
+  padding:0 14px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  white-space:nowrap!important;
+  border-radius:2px!important;
+  font-size:13px!important;
+  font-weight:850!important;
+}
+.header .header-actions .btn-ghost{border:1px solid var(--moxa-line)!important;color:var(--moxa-green-dark)!important;background:#fff!important}
+.header .header-actions .btn-primary,
+.header .header-actions > a.btn.btn-primary{
+  border:1px solid var(--moxa-green)!important;
+  background:var(--moxa-green)!important;
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  opacity:1!important;
+  min-width:116px!important;
+  box-shadow:none!important;
+}
+.header .header-actions .btn-primary:hover,
+.header .header-actions > a.btn.btn-primary:hover{
+  background:var(--moxa-green-dark)!important;
+  border-color:var(--moxa-green-dark)!important;
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+}
+.header .icon-btn{
+  width:42px!important;
+  height:42px!important;
+  border:1px solid var(--moxa-line)!important;
+  border-radius:2px!important;
+  display:grid!important;
+  place-items:center!important;
+  background:#fff!important;
+  color:var(--moxa-ink)!important;
+}
+.header .menu-toggle{display:none!important}
+.site-footer{
+  margin-top:0!important;
+  padding:54px 0 28px!important;
+  background:#f5faf9!important;
+  color:var(--moxa-text)!important;
+  border-top:4px solid var(--moxa-green)!important;
+}
+.site-footer .container{
+  max-width:1240px!important;
+  margin-inline:auto!important;
+  padding-inline:clamp(20px,4vw,48px)!important;
+}
+.site-footer .footer-grid{
+  display:grid!important;
+  grid-template-columns:1.3fr repeat(4,1fr)!important;
+  gap:34px!important;
+}
+.site-footer .footer-logo{
+  color:var(--moxa-green)!important;
+  font-size:24px!important;
+  font-weight:950!important;
+  letter-spacing:.08em!important;
+}
+.site-footer p{max-width:260px!important;margin:12px 0 0!important;color:var(--moxa-text)!important;line-height:1.65!important}
+.site-footer h3{margin:0 0 14px!important;color:var(--moxa-ink)!important;font-size:13px!important;text-transform:uppercase!important;letter-spacing:.1em!important}
+.site-footer a{
+  display:block!important;
+  margin:0 0 10px!important;
+  color:var(--moxa-green-dark)!important;
+  text-decoration:none!important;
+  font-weight:740!important;
+}
+.site-footer a:hover{color:var(--moxa-ink)!important;text-decoration:underline!important}
+.site-footer .footer-bottom{
+  margin-top:40px!important;
+  padding-top:18px!important;
+  padding-right:96px!important;
+  border-top:1px solid var(--moxa-line)!important;
+  display:flex!important;
+  justify-content:space-between!important;
+  gap:18px!important;
+  color:#6a7f85!important;
+  font-size:13px!important;
+}
+.hero.hero-image .hero-copy h1,
+.hero.hero-image .hero-copy .lead,
+.hero.hero-image .hero-copy .eyebrow{
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  text-shadow:0 2px 12px rgba(0,0,0,.26)!important;
+}
+.moxa-global-advisor-launch{
+  position:fixed!important;
+  right:24px!important;
+  bottom:22px!important;
+  z-index:145!important;
+  width:62px!important;
+  height:62px!important;
+  padding:0!important;
+  border:1px solid rgba(221,232,235,.92)!important;
+  border-radius:50%!important;
+  background:rgba(255,255,255,.94)!important;
+  box-shadow:0 18px 48px rgba(16,39,45,.18)!important;
+  backdrop-filter:blur(18px) saturate(150%)!important;
+  display:grid!important;
+  place-items:center!important;
+  cursor:pointer!important;
+}
+.moxa-global-advisor-launch:hover{transform:translateY(-3px)!important}
+.moxa-global-advisor-launch.is-open{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  transform:translateY(8px) scale(.94)!important;
+}
+.moxa-global-advisor-core{
+  width:52px!important;
+  height:52px!important;
+  border-radius:50%!important;
+  display:grid!important;
+  place-items:center!important;
+  overflow:hidden!important;
+  background:linear-gradient(145deg,#efffff,#d5f1f1)!important;
+  box-shadow:0 12px 28px rgba(0,135,135,.22)!important;
+}
+.moxa-global-advisor-core::before,
+.moxa-global-advisor-core::after{display:none!important}
+.moxa-global-advisor-core img{width:52px!important;height:52px!important;object-fit:cover!important}
+.moxa-global-advisor-glyph{display:none!important}
+.moxa-global-advisor-label{
+  position:absolute!important;
+  right:72px!important;
+  bottom:8px!important;
+  top:auto!important;
+  transform:translateX(8px)!important;
+  width:260px!important;
+  padding:12px 14px!important;
+  border:1px solid rgba(221,232,235,.92)!important;
+  border-radius:4px!important;
+  background:rgba(255,255,255,.96)!important;
+  box-shadow:0 18px 44px rgba(16,39,45,.14)!important;
+  color:var(--moxa-ink)!important;
+  font-size:13px!important;
+  font-weight:650!important;
+  line-height:1.35!important;
+  white-space:normal!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+.moxa-global-advisor-label strong{display:block!important;font-size:16px!important;line-height:1.12!important;color:var(--moxa-ink)!important}
+.moxa-global-advisor-label span{display:block!important;margin-top:4px!important;color:var(--moxa-text)!important}
+.moxa-global-advisor-launch:hover .moxa-global-advisor-label,
+.moxa-global-advisor-launch:focus-visible .moxa-global-advisor-label{
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+}
+.moxa-global-advisor-panel{
+  position:fixed!important;
+  right:24px!important;
+  bottom:100px!important;
+  z-index:146!important;
+  width:min(520px,calc(100vw - 48px))!important;
+  max-height:calc(100vh - 126px)!important;
+  overflow:auto!important;
+  display:block!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  transform:translateY(18px) scale(.98)!important;
+  transform-origin:bottom right!important;
+  background:rgba(255,255,255,.96)!important;
+  border:1px solid rgba(221,232,235,.92)!important;
+  border-radius:4px!important;
+  box-shadow:0 30px 90px rgba(16,39,45,.24)!important;
+  backdrop-filter:blur(24px) saturate(150%)!important;
+  font-family:"Helvetica Neue",Arial,sans-serif!important;
+}
+.moxa-global-advisor-panel.is-open{
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+  transform:none!important;
+}
+.moxa-global-advisor-head{
+  padding:18px!important;
+  display:flex!important;
+  justify-content:space-between!important;
+  align-items:center!important;
+  gap:14px!important;
+  background:#12373e!important;
+  color:#fff!important;
+}
+.moxa-global-advisor-title{display:flex!important;align-items:center!important;gap:12px!important}
+.moxa-global-advisor-title img{width:42px!important;height:42px!important;border-radius:50%!important;background:#e8f7f7!important}
+.moxa-global-advisor-head strong{display:block!important;color:#fff!important;font-size:16px!important}
+.moxa-global-advisor-head span{display:block!important;margin-top:3px!important;color:#bdd9dd!important;font-size:12px!important}
+.moxa-global-advisor-close{
+  width:34px!important;
+  height:34px!important;
+  border:1px solid rgba(255,255,255,.22)!important;
+  border-radius:2px!important;
+  background:rgba(255,255,255,.08)!important;
+  color:#fff!important;
+  cursor:pointer!important;
+}
+.moxa-global-advisor-body{padding:18px!important;background:#f7fbfb!important}
+.moxa-advisor-welcome{
+  display:grid!important;
+  grid-template-columns:42px 1fr!important;
+  gap:12px!important;
+  align-items:start!important;
+  padding:14px!important;
+  border:1px solid var(--moxa-line)!important;
+  border-left:4px solid var(--moxa-green)!important;
+  background:#fff!important;
+  border-radius:4px!important;
+}
+.moxa-advisor-welcome img{width:42px!important;height:42px!important;border-radius:50%!important}
+.moxa-advisor-welcome strong{display:block!important;color:var(--moxa-ink)!important}
+.moxa-advisor-welcome p{margin:4px 0 0!important;color:var(--moxa-text)!important;line-height:1.45!important}
+.moxa-advisor-workbench{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;margin-top:12px!important}
+.moxa-advisor-workbench a{
+  display:block!important;
+  min-height:76px!important;
+  padding:12px!important;
+  border:1px solid var(--moxa-line)!important;
+  border-radius:4px!important;
+  background:#fff!important;
+  color:var(--moxa-ink)!important;
+  text-decoration:none!important;
+}
+.moxa-advisor-workbench a:hover{border-color:var(--moxa-green)!important;box-shadow:0 10px 24px rgba(0,135,135,.12)!important}
+.moxa-advisor-workbench b{display:block!important;color:var(--moxa-green-dark)!important;font-size:13px!important;text-transform:uppercase!important;letter-spacing:.08em!important}
+.moxa-advisor-workbench span{display:block!important;margin-top:6px!important;color:var(--moxa-text)!important;font-size:13px!important;line-height:1.35!important}
+.moxa-advisor-primary{
+  margin-top:12px!important;
+  display:flex!important;
+  gap:10px!important;
+  flex-wrap:wrap!important;
+}
+.moxa-advisor-primary a{
+  min-height:40px!important;
+  padding:10px 12px!important;
+  border-radius:2px!important;
+  text-decoration:none!important;
+  font-weight:850!important;
+  border:1px solid var(--moxa-green)!important;
+}
+.moxa-advisor-primary a:first-child{background:var(--moxa-green)!important;color:#fff!important}
+.moxa-advisor-primary a:not(:first-child){background:#fff!important;color:var(--moxa-green-dark)!important}
+@media(max-width:1120px){
+  .header .mainnav{
+    position:fixed!important;
+    inset:72px 0 auto 0!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    max-height:calc(100vh - 72px)!important;
+    overflow:auto!important;
+    background:#fff!important;
+    border-bottom:1px solid var(--moxa-line)!important;
+    box-shadow:0 28px 44px rgba(16,39,45,.14)!important;
+    transform:translateY(-120%)!important;
+    transition:transform .22s ease!important;
+  }
+  .header .mainnav.open{transform:translateY(0)!important}
+  .header .navitem>button{width:100%!important;justify-content:space-between!important;height:48px!important;padding:0 clamp(20px,4vw,48px)!important}
+  .header .mega{position:static!important;box-shadow:none!important;border-top:1px solid var(--moxa-line)!important}
+  .header .mega-in{grid-template-columns:1fr!important;padding:14px clamp(20px,4vw,48px)!important}
+  .header .menu-toggle{display:grid!important}
+  .header .header-actions .btn-ghost{display:none!important}
+}
+@media(max-width:760px){
+  .header .logo{min-width:auto!important}
+  .header .header-in{gap:12px!important}
+  .site-footer .footer-grid{grid-template-columns:1fr 1fr!important}
+  .site-footer .footer-grid>div:first-child{grid-column:1 / -1!important}
+  .site-footer .footer-bottom{display:grid!important}
+  .moxa-global-advisor-label{display:none!important}
+  .moxa-global-advisor-launch{right:14px!important;bottom:14px!important;width:58px!important;height:58px!important}
+  .moxa-global-advisor-core{width:48px!important;height:48px!important}
+  .moxa-global-advisor-core img{width:48px!important;height:48px!important}
+  .moxa-global-advisor-panel{right:10px!important;bottom:84px!important;width:calc(100vw - 20px)!important}
+  .moxa-advisor-workbench{grid-template-columns:1fr!important}
+}
+/* MOXA_GLOBAL_SHELL_20260714_END */
+
+</style>
+</head>
+<body>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <header class="header" data-component="GlobalHeader">
+  <div class="wrap header-in">
+    <a class="logo" href="homepage.html" aria-label="Moxa home">
+      <span class="logo-tri" aria-hidden="true"></span>
+      <span class="logo-word">MOXA<sup>®</sup></span>
+      <span class="logo-note">demo evidence wordmark - replace with official logo artwork in production</span>
+    </a>
+
+    <nav class="mainnav" id="mainnav" aria-label="Primary">
+      <div class="navitem" data-nav>
+        <button aria-expanded="false" aria-haspopup="true">Products <span class="chev" aria-hidden="true"></span></button>
+        <div class="mega" role="region" aria-label="Products menu">
+          <div class="wrap mega-in">
+            <div class="mega-intro">
+              <h4>Start with what you're building</h4>
+              <p>Move from application intent to product family, model comparison, and datasheet validation.</p>
+              <a class="btn btn-ghost" href="product-category-ethernet-switches.html">Open Product Finder</a>
+            </div>
+            <div class="mega-col"><h5>Network Infrastructure</h5><ul><li><a href="product-category-ethernet-switches.html">Industrial Ethernet Switches</a></li><li><a href="product-series-eds-4008.html">EDS-4008 Series</a></li><li><a href="compare-lv-hv.html">Compare LV / HV Models</a></li></ul></div>
+            <div class="mega-col"><h5>Edge Connectivity</h5><ul><li><a href="products.html">Protocol Gateways</a></li><li><a href="products.html">Remote I/O</a></li><li><a href="manual.html">Manuals &amp; Downloads</a></li></ul></div>
+            <div class="mega-col"><h5>Evaluation</h5><ul><li><a href="search.html?q=Ethernet%20Switches">Search Products</a></li><li><a href="product-model-eds-4008-lv-hv.html">Model Details</a></li><li><a href="contact-distributor.html#contact">Ask an Engineer</a></li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="navitem" data-nav>
+        <button aria-expanded="false" aria-haspopup="true">Solutions <span class="chev" aria-hidden="true"></span></button>
+        <div class="mega" role="region" aria-label="Solutions menu">
+          <div class="wrap mega-in">
+            <div class="mega-intro"><h4>Built for industrial scenarios</h4><p>Connect field devices, control networks, and operating teams through reliable architectures.</p><a class="btn btn-ghost" href="microsite.html">Explore Scenario Hub</a></div>
+            <div class="mega-col"><h5>Industries</h5><ul><li><a href="microsite.html">Manufacturing</a></li><li><a href="microsite.html">Power &amp; Energy</a></li><li><a href="microsite.html">Rail &amp; Transportation</a></li></ul></div>
+            <div class="mega-col"><h5>Architecture</h5><ul><li><a href="microsite.html#architecture">Controller &amp; I/O</a></li><li><a href="product-category-ethernet-switches.html">Industrial Networking</a></li><li><a href="article.html">TSN Applications</a></li></ul></div>
+            <div class="mega-col"><h5>Proof</h5><ul><li><a href="video.html">Video Stories</a></li><li><a href="article.html">Application Notes</a></li><li><a href="homepage.html#proof">Reliability Proof</a></li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="navitem" data-nav>
+        <button aria-expanded="false" aria-haspopup="true">Resources <span class="chev" aria-hidden="true"></span></button>
+        <div class="mega" role="region" aria-label="Resources menu">
+          <div class="wrap mega-in">
+            <div class="mega-intro"><h4>Validate before specifying</h4><p>Bring datasheets, manuals, articles, video, and search behavior into one journey.</p><a class="btn btn-ghost" href="manual.html">Open Resource Center</a></div>
+            <div class="mega-col"><h5>Documents</h5><ul><li><a href="asset/moxa-eds-4008-series-datasheet-v1.8.pdf">EDS-4008 Datasheet</a></li><li><a href="manual.html">User Manual</a></li><li><a href="search.html?q=IEC%2062443">IEC 62443 Resources</a></li></ul></div>
+            <div class="mega-col"><h5>Content</h5><ul><li><a href="article.html">Articles</a></li><li><a href="video.html">Videos</a></li><li><a href="search.html?q=EDS-4008">Search All</a></li></ul></div>
+            <div class="mega-col"><h5>Tools</h5><ul><li><a href="search.html">Product Search</a></li><li><a href="product-category-ethernet-switches.html">Selection Guide</a></li><li><a href="contact-distributor.html#support">Technical Support</a></li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="navitem" data-nav>
+        <button aria-expanded="false" aria-haspopup="true">Support <span class="chev" aria-hidden="true"></span></button>
+        <div class="mega" role="region" aria-label="Support menu">
+          <div class="wrap mega-in">
+            <div class="mega-intro"><h4>Sincere service, connected</h4><p>Keep product context intact when a visitor moves from search to support, quote, or distributor handoff.</p><a class="btn btn-ghost" href="contact-distributor.html#support">Contact Support</a></div>
+            <div class="mega-col"><h5>Get Help</h5><ul><li><a href="contact-distributor.html#support">Technical Support</a></li><li><a href="chatbot.html">AI Advisor</a></li><li><a href="manual.html">Manual Lookup</a></li></ul></div>
+            <div class="mega-col"><h5>Buy</h5><ul><li><a href="contact-distributor.html#contact">Contact Sales</a></li><li><a href="contact-distributor.html#distributor">Find Distributor</a></li><li><a href="compare-quote.html">Compare &amp; Quote</a></li></ul></div>
+            <div class="mega-col"><h5>Journey</h5><ul><li><a href="journey.html">Customer Journey</a></li><li><a href="analytics.html">Analytics</a></li><li><a href="backend-compliance.html">Compliance</a></li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="navitem" data-nav>
+        <button aria-expanded="false" aria-haspopup="true">Why Moxa <span class="chev" aria-hidden="true"></span></button>
+        <div class="mega" role="region" aria-label="Why Moxa menu">
+          <div class="wrap mega-in">
+            <div class="mega-intro"><h4>Reliable networks. Sincere service.</h4><p>The design system keeps the experience bright, industrial, structured, and credible.</p><a class="btn btn-ghost" href="homepage.html#bond">See Moxa Story</a></div>
+            <div class="mega-col"><h5>Trust</h5><ul><li><a href="homepage.html#proof">Reliability Proof</a></li><li><a href="article.html">Application Stories</a></li><li><a href="contact-distributor.html#support">Service Commitment</a></li></ul></div>
+            <div class="mega-col"><h5>Customers</h5><ul><li><a href="journey.html">Journey Map</a></li><li><a href="analytics.html">Behavior Signals</a></li><li><a href="microsite.html">Scenario Hub</a></li></ul></div>
+            <div class="mega-col"><h5>Updates</h5><ul><li><a href="article.html">News &amp; Articles</a></li><li><a href="video.html">Videos</a></li><li><a href="contact-distributor.html">Talk to Moxa</a></li></ul></div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn search" aria-label="Search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <a class="btn btn-primary" href="contact-distributor.html#contact">Contact Us</a>
+      <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="mainnav">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="sheet">
+
+  <!-- ================= MASTHEAD ================= -->
+  <header class="mast">
+    <div class="mast-l">
+      <span class="chip">Design System Clarification</span>
+      <h1>The Moxa<br>Interface<br><em>System</em></h1>
+      <p class="tagline">Reliable networks. Sincere service.</p>
+      <p class="lede">One grid, one green, one rhythm. This sheet fixes the rules the
+      homepage and mega menu are built on — so every future page lands on the same
+      line without a designer having to re-decide it.</p>
+    </div>
+    <div class="mast-r">
+      <div class="meta-row"><dt>Scope</dt><dd>Homepage · Mega Menu</dd></div>
+      <div class="meta-row"><dt>Brand source</dt><dd>Moxa CIS Guidebook</dd></div>
+      <div class="meta-row"><dt>Grid</dt><dd>1240 / 4-col</dd></div>
+      <div class="meta-row"><dt>Base unit</dt><dd>8pt</dd></div>
+      <div class="meta-row"><dt>Corner radius</dt><dd>2px UI / 4px panel</dd></div>
+      <div class="meta-row"><dt>Status</dt><dd>Audited &amp; corrected</dd></div>
+    </div>
+  </header>
+
+  <!-- ================= 01 COMPONENTS ================= -->
+  <section class="sec">
+    <div class="sec-h">
+      <span class="sec-n">01</span>
+      <span class="sec-t">Component Library</span>
+      <span class="sec-rule"></span>
+    </div>
+
+    <div class="grid cards-3">
+      <div class="card">
+        <p class="sub">Buttons</p>
+        <div class="stackv">
+          <button class="btn btn-primary">Primary action</button>
+          <button class="btn btn-ghost">Secondary action</button>
+          <button class="btn btn-cta">Hero CTA</button>
+          <button class="btn btn-text">Text link</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <p class="sub">Input fields</p>
+        <div class="stackv">
+          <input class="field" placeholder="Search products…">
+          <input class="field" placeholder="Work email">
+          <select class="field">
+            <option>Select an industry</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="card">
+        <p class="sub">Badges</p>
+        <div class="stackv" style="flex-direction:row;flex-wrap:wrap;gap:.5rem">
+          <span class="badge b-green">New</span>
+          <span class="badge b-lime">In stock</span>
+          <span class="badge b-orange">EOL</span>
+          <span class="badge b-gray">Legacy</span>
+        </div>
+        <p class="sub" style="margin-top:var(--s-5)">Alerts</p>
+        <div class="stackv">
+          <div class="alert a-ok"><span>✓</span><span><b>Compatible</b>Meets IEC 62443.</span></div>
+          <div class="alert a-warn"><span>!</span><span><b>Check rating</b>Verify temp range.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid cards-3" style="margin-top:var(--s-4)">
+      <div class="card dim">
+        <p class="sub">Nav item — L1</p>
+        <div class="navdemo">
+          <span class="on">Products</span>
+          <span>Solutions</span>
+          <span>Support</span>
+        </div>
+        <p class="note" style="text-align:left">Active = 4px green underline,<br>inset — never a fill.</p>
+      </div>
+
+      <div class="card dim">
+        <p class="sub">Mega — intro panel</p>
+        <div class="intro-demo">
+          <h4>Start with what you're building</h4>
+          <p>Describe the application and let the finder route you.</p>
+          <button class="btn btn-ghost">Open the finder</button>
+        </div>
+      </div>
+
+      <div class="card dim">
+        <p class="sub">Mega — link column</p>
+        <div class="h5" style="font-size:.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);border-bottom:2px solid var(--line);min-height:38px;display:flex;align-items:center;margin-bottom:.6rem">Network Infrastructure</div>
+        <ul class="mlist">
+          <li><a href="product-category-ethernet-switches.html">Ethernet Switches</a></li>
+          <li><a href="products.html">Secure Routers</a></li>
+          <li><a href="products.html">Wireless AP</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 02 COLOR ================= -->
+  <section class="sec">
+    <div class="sec-h">
+      <span class="sec-n">02</span>
+      <span class="sec-t">Color System</span>
+      <span class="sec-rule"></span>
+    </div>
+
+    <p class="sub">Primary — Moxa green is the system. Everything else supports it.</p>
+    <div class="swatches">
+      <div class="sw"><div class="chipc" style="background:#008787"></div><div class="lab"><span class="nm">Moxa Green</span><span class="hx">#008787</span></div></div>
+      <div class="sw"><div class="chipc" style="background:#006d6d"></div><div class="lab"><span class="nm">Green 700</span><span class="hx">#006D6D · hover</span></div></div>
+      <div class="sw"><div class="chipc" style="background:#102d30"></div><div class="lab"><span class="nm">Deep Teal</span><span class="hx">#102D30 · panels</span></div></div>
+      <div class="sw"><div class="chipc" style="background:#727171"></div><div class="lab"><span class="nm">Moxa Gray</span><span class="hx">#727171</span></div></div>
+    </div>
+
+    <p class="sub" style="margin-top:var(--s-5)">Tints &amp; neutrals</p>
+    <div class="swatches">
+      <div class="sw"><div class="chipc" style="background:#66baba"></div><div class="lab"><span class="nm">Green 300</span><span class="hx">#66BABA</span></div></div>
+      <div class="sw"><div class="chipc" style="background:#e2f1f1"></div><div class="lab"><span class="nm">Green 100</span><span class="hx">#E2F1F1</span></div></div>
+      <div class="sw"><div class="chipc" style="background:#f0f8f8"></div><div class="lab"><span class="nm">Green 050</span><span class="hx">#F0F8F8</span></div></div>
+      <div class="sw"><div class="chipc" style="background:#e4e6e6"></div><div class="lab"><span class="nm">Line</span><span class="hx">#E4E6E6</span></div></div>
+    </div>
+
+    <p class="sub" style="margin-top:var(--s-5)">Accents — functional only. Never decorative, never two at once.</p>
+    <div class="swatches">
+      <div class="sw"><div class="chipc" style="background:#fa943e"></div><div class="lab"><span class="nm">Orange</span><span class="hx">#FA943E · hero CTA</span></div></div>
+      <div class="sw"><div class="chipc" style="background:#77b800"></div><div class="lab"><span class="nm">Lime</span><span class="hx">#77B800 · success</span></div></div>
+      <div class="sw"><div class="chipc" style="background:#009ddb"></div><div class="lab"><span class="nm">Cyan</span><span class="hx">#009DDB · focus ring</span></div></div>
+      <div class="sw"><div class="chipc" style="background:#172323"></div><div class="lab"><span class="nm">Ink</span><span class="hx">#172323 · text</span></div></div>
+    </div>
+
+    <div class="ratio">
+      <i class="g">80 · GREEN + NEUTRAL</i>
+      <i class="y">20 · GRAY</i>
+    </div>
+    <p class="note">Guidebook ratio. Accents live inside the 20% — they never expand it.</p>
+  </section>
+
+  <!-- ================= 03 TYPE ================= -->
+  <section class="sec">
+    <div class="sec-h">
+      <span class="sec-n">03</span>
+      <span class="sec-t">Typography System</span>
+      <span class="sec-rule"></span>
+    </div>
+
+    <div class="type-wrap">
+      <div>
+        <div class="aa">Aa</div>
+        <p style="margin:var(--s-4) 0 0;font-weight:800;font-size:.9rem">Helvetica Neue / Arial</p>
+        <p style="margin:.4rem 0 0;font-size:.85rem;color:var(--gray);line-height:1.5">
+          One family, full stop. Neutral, industrial, legible at a glance on a
+          plant floor. Personality comes from weight and rhythm — not a second face.
+        </p>
+      </div>
+
+      <table class="tscale">
+        <tr><td class="t-h1">Hero headline</td><td class="spec">clamp(2.55–4.9rem) · 700 · −.035em</td></tr>
+        <tr><td class="t-h2">Section heading</td><td class="spec">1.5rem · 700 · −.02em</td></tr>
+        <tr><td class="t-h3">Card title</td><td class="spec">1.15rem · 700</td></tr>
+        <tr><td class="t-h5">Mega column head</td><td class="spec">0.9rem · 700 · +.08em · caps</td></tr>
+        <tr><td class="t-link">Mega link</td><td class="spec">0.9rem · 650 · 38px row</td></tr>
+        <tr><td class="t-body">Body copy</td><td class="spec">1rem · 400 · 1.55 lh</td></tr>
+        <tr><td class="t-cap">Eyebrow label</td><td class="spec">0.72rem · 700 · +.22em · caps</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= 04 SPACING & GRID ================= -->
+  <section class="sec">
+    <div class="sec-h">
+      <span class="sec-n">04</span>
+      <span class="sec-t">Spacing &amp; Grid</span>
+      <span class="sec-rule"></span>
+    </div>
+
+    <div class="spacing-wrap">
+      <div>
+        <p class="sub">8pt scale — every gap resolves to one of these</p>
+        <div class="bars">
+          <div class="bar"><b>4</b><i style="width:4px"></i><span>--s-1 · icon nudge</span></div>
+          <div class="bar"><b>8</b><i style="width:8px"></i><span>--s-2 · inline gap</span></div>
+          <div class="bar"><b>12</b><i style="width:12px"></i><span>--s-3 · list rhythm</span></div>
+          <div class="bar"><b>16</b><i style="width:16px"></i><span>--s-4 · card padding</span></div>
+          <div class="bar"><b>24</b><i style="width:24px"></i><span>--s-5 · block gap</span></div>
+          <div class="bar"><b>32</b><i style="width:32px"></i><span>--s-6 · mega column gap</span></div>
+          <div class="bar"><b>48</b><i style="width:48px"></i><span>--s-7 · section padding</span></div>
+          <div class="bar"><b>64</b><i style="width:64px"></i><span>--s-8 · section break</span></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="sub">Mega menu grid — 1.05fr + 3 equal, 32px gutters</p>
+        <div class="gridbox">
+          <div class="row">
+            <div class="cell dark">INTRO<br>1.05fr</div>
+            <div class="cell">1fr</div>
+            <div class="cell">1fr</div>
+            <div class="cell">1fr</div>
+          </div>
+          <p class="note">Intro's left edge = logo's left edge. Always.</p>
+        </div>
+        <p style="margin:var(--s-4) 0 0;font-size:.82rem;color:var(--gray-ink);line-height:1.5">
+          The panel is full-bleed (<code style="font-family:var(--mono);font-size:.76rem;background:var(--mist);padding:.1rem .3rem;color:var(--green-700)">100vw</code>) but its
+          <em>content</em> sits in the same 1240px container as the rest of the page.
+          Column rules are drawn in the gutter, never as a border on the column —
+          that's what used to leave a stray line hanging off the last column.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 05 AUDIT FIXES ================= -->
+  <section class="sec">
+    <div class="sec-h">
+      <span class="sec-n">05</span>
+      <span class="sec-t">Audit — What Was Broken</span>
+      <span class="sec-rule"></span>
+    </div>
+
+    <table class="fix">
+      <thead>
+        <tr><th style="width:88px">Severity</th><th style="width:24%">Issue</th><th>Cause</th><th>Fix</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="sev s-hi">HIGH</span></td>
+          <td>Mega menu had no containing block</td>
+          <td><code>.mega</code> is <code>position:absolute</code>, but neither <code>.header</code> nor <code>.navitem</code> was positioned — so it resolved against the page.</td>
+          <td>Added <code>position:relative</code> to <code>.header-in</code>.</td>
+        </tr>
+        <tr>
+          <td><span class="sev s-hi">HIGH</span></td>
+          <td>Intro block off the page grid</td>
+          <td>Intro started 58px inboard of the container; it aligned to nothing on the page.</td>
+          <td>Rebuilt grid so intro's left edge = logo's left edge (verified 0px delta, 1120–1920px).</td>
+        </tr>
+        <tr>
+          <td><span class="sev s-md">MED</span></td>
+          <td>Stray rule off the last column</td>
+          <td><code>border-right</code> on every <code>.mega-col</code> drew a line into empty gutter.</td>
+          <td>Separators moved into the gutter via <code>::after</code>; content now fills its track.</td>
+        </tr>
+        <tr>
+          <td><span class="sev s-md">MED</span></td>
+          <td>Green top rule clipped</td>
+          <td>Header's 2px bottom border sat over the panel; <code>top:100%</code> landed above it.</td>
+          <td><code>margin-top:2px</code> — panel now flush to header (verified 0px).</td>
+        </tr>
+        <tr>
+          <td><span class="sev s-md">MED</span></td>
+          <td>Header overflowed at 1041–1180px</td>
+          <td>Logo + 5 nav items + actions + gutters = 1077px inside a 1060px viewport.</td>
+          <td>Compact band: secondary links drop, nav padding tightens. Zero overflow at all widths.</td>
+        </tr>
+        <tr>
+          <td><span class="sev s-lo">LOW</span></td>
+          <td>Uneven column rhythm</td>
+          <td><code>gap:0</code> + per-column padding + intro margin gave 24/21.6/0px spacing.</td>
+          <td>Single <code>--mega-gap</code> token (32px) drives all four tracks.</td>
+        </tr>
+        <tr>
+          <td><span class="sev s-lo">LOW</span></td>
+          <td>Dead + duplicated CSS</td>
+          <td>A 980px 2-col mega rule could never fire (drawer takes over at 1040px); the mobile block was pasted twice.</td>
+          <td>Unreachable rules removed; mobile reset applied to both blocks.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ================= 06 DO / DON'T ================= -->
+  <section class="sec">
+    <div class="sec-h">
+      <span class="sec-n">06</span>
+      <span class="sec-t">Do's &amp; Don'ts</span>
+      <span class="sec-rule"></span>
+    </div>
+
+    <div class="dd">
+      <div class="do">
+        <h4><span class="mark">✓</span> Do</h4>
+        <ul>
+          <li><span class="dot"></span><span><b>Anchor to the page grid.</b>If a panel is full-bleed, its content still lands in the 1240px container.</span></li>
+          <li><span class="dot"></span><span><b>Draw rules in the gutter.</b>Separators belong between columns — not as a border that eats content width.</span></li>
+          <li><span class="dot"></span><span><b>Let green carry hierarchy.</b>A 4px underline or left-border says "active" more clearly than a fill.</span></li>
+          <li><span class="dot"></span><span><b>Keep the 38px row.</b>Every mega link is the same height, so scanning is a straight line down.</span></li>
+          <li><span class="dot"></span><span><b>Use one token per decision.</b><code>--mega-gap</code> once beats 32px typed four times.</span></li>
+        </ul>
+      </div>
+
+      <div class="dont">
+        <h4><span class="mark">✕</span> Don't</h4>
+        <ul>
+          <li><span class="dot"></span><span><b>Don't absolutely position without a parent.</b>It'll look fine at your width and drift at every other one.</span></li>
+          <li><span class="dot"></span><span><b>Don't stack accents.</b>Orange, lime, and cyan each have one job. Two at once reads as a warning.</span></li>
+          <li><span class="dot"></span><span><b>Don't round the corners.</b>2px UI / 4px panel. Anything softer stops looking industrial.</span></li>
+          <li><span class="dot"></span><span><b>Don't leave dead breakpoints.</b>A rule below the drawer threshold never fires — it just misleads the next person.</span></li>
+          <li><span class="dot"></span><span><b>Don't let the header overflow.</b>Shed secondary links before you let the page scroll sideways.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <footer class="site-footer" data-component="GlobalFooter">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-logo">MOXA</div>
+            <p>Industrial connectivity, networking, computing, and automation solutions for mission-critical environments.</p>
+          </div>
+          <div class="footer-col">
+            <h3>Products</h3>
+            <a href="product-category-ethernet-switches.html">Ethernet Switches</a>
+            <a href="product-series-eds-4008.html">EDS-4008 Series</a>
+            <a href="compare-lv-hv.html">Compare LV / HV</a>
+            <a href="products.html">Protocol Gateways</a>
+          </div>
+          <div class="footer-col">
+            <h3>Solutions</h3>
+            <a href="microsite.html">Manufacturing</a>
+            <a href="microsite.html">Power &amp; Energy</a>
+            <a href="microsite.html">Rail</a>
+            <a href="homepage.html#proof">Reliability Proof</a>
+          </div>
+          <div class="footer-col">
+            <h3>Resources</h3>
+            <a href="search.html">Search</a>
+            <a href="manual.html">Datasheets &amp; Manuals</a>
+            <a href="article.html">Application Notes</a>
+            <a href="video.html">Videos</a>
+          </div>
+          <div class="footer-col">
+            <h3>Support</h3>
+            <a href="chatbot.html">AI Advisor</a>
+            <a href="contact-distributor.html#support">Technical Support</a>
+            <a href="contact-distributor.html#contact">Contact Us</a>
+            <a href="contact-distributor.html#distributor">Distributor Network</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; 2026 Moxa. All rights reserved.</span>
+          <span>Reliable networks. Sincere service.</span>
+        </div>
+      </div>
+    </footer>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- MOXA GLOBAL AI ADVISOR START -->
+<button class="moxa-global-advisor-launch" type="button" data-moxa-advisor-toggle aria-label="Open Moxa AI Advisor" aria-expanded="false" aria-controls="moxaGlobalAdvisor">
+  <span class="moxa-global-advisor-core"><img src="img/ai-advisor-icon.png" alt=""></span>
+  <span class="moxa-global-advisor-label"><strong>Need help selecting an industrial switch?</strong><span>Open the product-selection workbench.</span></span>
+</button>
+<aside class="moxa-global-advisor-panel" id="moxaGlobalAdvisor" data-moxa-advisor-panel aria-label="Moxa AI Advisor" aria-hidden="true">
+  <div class="moxa-global-advisor-head">
+    <div class="moxa-global-advisor-title">
+      <img src="img/ai-advisor-icon.png" alt="">
+      <div><strong>Moxa Solution Advisor</strong><span>Product-selection workbench</span></div>
+    </div>
+    <button class="moxa-global-advisor-close" type="button" data-moxa-advisor-close aria-label="Close AI Advisor">×</button>
+  </div>
+  <div class="moxa-global-advisor-body">
+    <div class="moxa-advisor-welcome">
+      <img src="img/ai-advisor-icon.png" alt="">
+      <div><strong>Start from the requirement, not a generic service form.</strong><p>Choose a path and keep the visitor moving through search, model comparison, datasheet review, and engineering handoff.</p></div>
+    </div>
+    <div class="moxa-advisor-workbench" aria-label="Product selection workbench">
+      <a href="search.html?q=Ethernet%20Switches"><b>Search</b><span>Find industrial Ethernet switches, documents, and related resources.</span></a>
+      <a href="product-category-ethernet-switches.html"><b>Finder</b><span>Narrow by port count, redundancy, power input, and standards.</span></a>
+      <a href="compare-lv-hv.html"><b>Compare</b><span>Evaluate EDS-4008 LV and HV model differences.</span></a>
+      <a href="manual.html"><b>Validate</b><span>Open manuals and datasheets before contacting sales.</span></a>
+    </div>
+    <div class="moxa-advisor-primary">
+      <a href="chatbot.html">Open full advisor</a>
+      <a href="contact-distributor.html#contact">Ask an engineer</a>
+    </div>
+  </div>
+</aside>
+<!-- MOXA GLOBAL AI ADVISOR END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script data-moxa-global-advisor-script>
+(function(){
+  var toggle = document.querySelector("[data-moxa-advisor-toggle]");
+  var panel = document.querySelector("[data-moxa-advisor-panel]");
+  var close = document.querySelector("[data-moxa-advisor-close]");
+  if(!toggle || !panel){ return; }
+  function setOpen(open){
+    panel.classList.toggle("is-open", open);
+    panel.setAttribute("aria-hidden", open ? "false" : "true");
+    toggle.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+  toggle.addEventListener("click", function(event){ event.stopPropagation(); setOpen(!panel.classList.contains("is-open")); });
+  if(close){ close.addEventListener("click", function(){ setOpen(false); }); }
+  document.addEventListener("click", function(event){
+    if(panel.classList.contains("is-open") && !panel.contains(event.target) && !toggle.contains(event.target)){ setOpen(false); }
+  });
+  document.addEventListener("keydown", function(event){ if(event.key === "Escape"){ setOpen(false); } });
+})();
+</script>
+
+<script data-moxa-global-shell-script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var items = Array.prototype.slice.call(document.querySelectorAll(".mainnav [data-nav]"));
+  var isMobile = function(){ return window.matchMedia("(max-width:1120px)").matches; };
+  function closeAll(except){
+    items.forEach(function(item){
+      if(item !== except){
+        item.setAttribute("aria-expanded","false");
+        var button = item.querySelector("button");
+        if(button){ button.setAttribute("aria-expanded","false"); }
+      }
+    });
+  }
+  items.forEach(function(item){
+    var button = item.querySelector("button");
+    if(!button){ return; }
+    item.setAttribute("aria-expanded","false");
+    button.addEventListener("click", function(event){
+      event.stopPropagation();
+      var open = item.getAttribute("aria-expanded") === "true";
+      closeAll(item);
+      item.setAttribute("aria-expanded", open ? "false" : "true");
+      button.setAttribute("aria-expanded", open ? "false" : "true");
+    });
+    if(!("ontouchstart" in window)){
+      item.addEventListener("mouseenter", function(){
+        if(!isMobile()){ closeAll(item); item.setAttribute("aria-expanded","true"); button.setAttribute("aria-expanded","true"); }
+      });
+      item.addEventListener("mouseleave", function(){
+        if(!isMobile()){ item.setAttribute("aria-expanded","false"); button.setAttribute("aria-expanded","false"); }
+      });
+    }
+  });
+  document.addEventListener("click", function(){ closeAll(null); });
+  document.addEventListener("keydown", function(event){ if(event.key === "Escape"){ closeAll(null); } });
+
+  var menuToggle = document.getElementById("menuToggle");
+  var nav = document.getElementById("mainnav");
+  if(menuToggle && nav){
+    menuToggle.addEventListener("click", function(event){
+      event.stopPropagation();
+      var open = nav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    nav.querySelectorAll("a").forEach(function(link){
+      link.addEventListener("click", function(){ nav.classList.remove("open"); menuToggle.setAttribute("aria-expanded","false"); closeAll(null); });
+    });
+  }
+
+  document.querySelectorAll(".icon-btn.search").forEach(function(button){
+    button.addEventListener("click", function(){
+      var field = document.querySelector("#sxSearchInput, .finder-input input, input[type='search'], .search-shell input, [role='search'] input");
+      if(field){
+        field.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+        window.setTimeout(function(){ field.focus(); }, reduce ? 0 : 220);
+      } else {
+        window.location.href = "search.html";
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
