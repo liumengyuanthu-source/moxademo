@@ -446,7 +446,7 @@
       <div class="moxa-footer-bottom">
         <div class="moxa-legal-links">
           <a href="https://www.moxa.com/en/about-us/legal/do-not-share-my-personal-information">Do not share my personal information</a>
-          <a href="#cookie-preferences">COOKIE PREFERENCES</a>
+          <a id="cookie-preferences" href="#cookie-preferences">COOKIE PREFERENCES</a>
           <a href="https://www.moxa.com/en/about-us/legal/privacy-policy">Privacy policy</a>
           <a href="https://www.moxa.com/en/about-us/legal/terms-of-use">Terms of Use</a>
           <a href="https://www.moxa.com/en/sitemap">Sitemap</a>
@@ -514,8 +514,7 @@
       document.querySelector(".header-v2");
     if (oldHeader) oldHeader.remove();
 
-    const oldFooter = document.querySelector("body > footer") || document.querySelector("footer");
-    if (oldFooter) oldFooter.remove();
+    document.querySelectorAll("footer:not(.moxa-global-footer)").forEach((footer) => footer.remove());
 
     document.querySelectorAll(".community, .community-grid").forEach((element) => {
       (element.closest("section") || element).remove();
@@ -530,7 +529,9 @@
 
   function insertSharedShell() {
     body.insertAdjacentHTML("afterbegin", headerMarkup);
-    body.insertAdjacentHTML("beforeend", footerMarkup);
+    if (!document.querySelector(".moxa-global-footer")) {
+      body.insertAdjacentHTML("beforeend", footerMarkup);
+    }
     body.insertAdjacentHTML("beforeend", advisorMarkup);
   }
 
