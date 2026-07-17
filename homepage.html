@@ -1629,7 +1629,9 @@ nav.mainnav{gap:0}
 .header .navitem>button:hover,
 .header .navitem>button[aria-expanded="true"]{color:var(--moxa-green-dark)!important;background:#eef8f7!important}
 .header .mega{
-  position:absolute!important;
+  position:fixed!important;
+  width:auto!important;
+  margin-left:0!important;
   left:0!important;
   right:0!important;
   top:72px!important;
@@ -1955,11 +1957,529 @@ nav.mainnav{gap:0}
   .moxa-global-advisor-panel{right:10px!important;bottom:84px!important;width:calc(100vw - 20px)!important}
   .moxa-advisor-workbench{grid-template-columns:1fr!important}
 }
+
+/* MOXA_HEADER_V2_20260716_START */
+.sr-only{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+.header.header-v2{height:116px!important}
+.header-v2 .utility-row{
+  height:64px!important;
+  border-bottom:1px solid var(--moxa-line)!important;
+  background:rgba(255,255,255,.98)!important;
+}
+.header-v2 .utility-inner{
+  height:64px!important;
+  max-width:1340px!important;
+  margin-inline:auto!important;
+  padding-inline:clamp(20px,3vw,42px)!important;
+  display:grid!important;
+  grid-template-columns:190px minmax(380px,600px) minmax(390px,1fr)!important;
+  align-items:center!important;
+  gap:24px!important;
+}
+.header-v2 .logo{min-width:0!important}
+.header-v2 .global-search{
+  min-width:0!important;
+  height:44px!important;
+  display:flex!important;
+  align-items:center!important;
+  border:1px solid #aac4c7!important;
+  border-radius:3px!important;
+  background:#f8fbfb!important;
+  box-shadow:inset 0 0 0 1px transparent!important;
+  transition:border-color .18s ease,box-shadow .18s ease,background .18s ease!important;
+}
+.header-v2 .global-search:focus-within{
+  border-color:var(--moxa-green)!important;
+  background:#fff!important;
+  box-shadow:0 0 0 3px rgba(0,135,135,.14)!important;
+}
+.header-v2 .global-search-submit{
+  width:44px!important;
+  height:42px!important;
+  flex:0 0 44px!important;
+  display:grid!important;
+  place-items:center!important;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+  color:var(--moxa-ink)!important;
+  cursor:pointer!important;
+}
+.header-v2 .global-search-submit:hover{color:var(--moxa-green-dark)!important}
+.header-v2 .global-search-submit img,
+.header-v2 .icon-btn img{width:18px!important;height:18px!important;object-fit:contain!important}
+.header-v2 .global-search input{
+  min-width:0!important;
+  flex:1 1 auto!important;
+  height:42px!important;
+  padding:0 10px 0 0!important;
+  border:0!important;
+  outline:0!important;
+  background:transparent!important;
+  color:var(--moxa-ink)!important;
+  font:600 14px/1.2 var(--font)!important;
+}
+.header-v2 .global-search input::placeholder{color:#71868c!important;opacity:1!important}
+.header-v2 .ai-mode-toggle{
+  height:36px!important;
+  margin-right:4px!important;
+  padding:0 12px!important;
+  border:1px solid #9fbcc0!important;
+  border-radius:2px!important;
+  background:#fff!important;
+  color:var(--moxa-ink)!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:7px!important;
+  font:850 12px/1 var(--font)!important;
+  white-space:nowrap!important;
+  cursor:pointer!important;
+  transition:background .18s ease,border-color .18s ease,color .18s ease!important;
+}
+.header-v2 .ai-mode-toggle:hover{border-color:var(--moxa-green)!important;color:var(--moxa-green-dark)!important}
+.header-v2 .ai-mode-toggle[aria-pressed="true"]{
+  border-color:var(--moxa-green)!important;
+  background:var(--moxa-green)!important;
+  color:#fff!important;
+}
+.header-v2 .ai-mode-mark{
+  min-width:22px!important;
+  padding:4px 5px!important;
+  border-radius:2px!important;
+  background:#e5f3f2!important;
+  color:var(--moxa-green-dark)!important;
+  font-size:9px!important;
+  line-height:1!important;
+  letter-spacing:.08em!important;
+  text-align:center!important;
+}
+.header-v2 .ai-mode-toggle[aria-pressed="true"] .ai-mode-mark{background:#fff!important;color:var(--moxa-green-dark)!important}
+.header-v2 .utility-links{
+  min-width:0!important;
+  display:flex!important;
+  justify-content:flex-end!important;
+  align-items:center!important;
+  gap:0!important;
+  white-space:nowrap!important;
+}
+.header-v2 .utility-links a{
+  padding:3px 9px!important;
+  border-right:1px solid var(--moxa-line)!important;
+  color:var(--moxa-ink)!important;
+  font-size:11.5px!important;
+  font-weight:760!important;
+  line-height:1.2!important;
+  text-decoration:none!important;
+}
+.header-v2 .utility-links a:last-child{padding-right:0!important;border-right:0!important}
+.header-v2 .utility-links a:hover{color:var(--moxa-green-dark)!important;text-decoration:underline!important}
+.header-v2 .primary-row{height:52px!important;background:#fff!important}
+.header-v2 .primary-inner{
+  height:52px!important;
+  max-width:1340px!important;
+  margin-inline:auto!important;
+  padding-inline:clamp(20px,3vw,42px)!important;
+  display:flex!important;
+  align-items:stretch!important;
+  justify-content:flex-start!important;
+}
+.header-v2 .mainnav{
+  height:52px!important;
+  display:flex!important;
+  align-items:stretch!important;
+  flex:0 1 auto!important;
+  margin:0!important;
+}
+.header-v2 .navitem>button{height:52px!important;padding-inline:18px!important}
+.header-v2 .mega{top:116px!important}
+.header-v2 .search-expand,
+.header-v2 .account-toggle,
+.header-v2 .menu-toggle{display:none!important}
+.moxa-global-advisor-bubble-user{
+  margin:0 0 12px auto!important;
+  max-width:84%!important;
+  padding:10px 12px!important;
+  background:var(--moxa-green)!important;
+  color:#fff!important;
+  border-radius:4px!important;
+  font-weight:700!important;
+  line-height:1.45!important;
+}
+@media(max-width:1199px){
+  .header.header-v2{height:116px!important}
+  .header-v2 .utility-inner{
+    grid-template-columns:160px minmax(260px,1fr) auto auto auto!important;
+    gap:10px!important;
+  }
+  .header-v2 .utility-links a:not(:first-child){display:none!important}
+  .header-v2 .utility-links.is-open{
+    position:fixed!important;
+    top:116px!important;
+    right:24px!important;
+    width:230px!important;
+    padding:10px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    background:#fff!important;
+    border:1px solid var(--moxa-line)!important;
+    box-shadow:0 18px 44px rgba(16,39,45,.16)!important;
+    z-index:125!important;
+  }
+  .header-v2 .utility-links.is-open a{
+    display:block!important;
+    padding:12px!important;
+    border:0!important;
+    border-bottom:1px solid var(--moxa-line)!important;
+  }
+  .header-v2 .utility-links.is-open a:last-child{border-bottom:0!important}
+  .header-v2 .account-toggle,
+  .header-v2 .menu-toggle{display:grid!important}
+  .header-v2 .mainnav{
+    position:fixed!important;
+    inset:116px 0 auto 0!important;
+    height:auto!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    max-height:calc(100vh - 116px)!important;
+    overflow:auto!important;
+    background:#fff!important;
+    border-bottom:1px solid var(--moxa-line)!important;
+    box-shadow:0 28px 44px rgba(16,39,45,.14)!important;
+    transform:translateY(-120%)!important;
+    transition:transform .22s ease!important;
+  }
+  .header-v2 .mainnav.open{transform:translateY(0)!important}
+  .header-v2 .navitem>button{
+    width:100%!important;
+    height:48px!important;
+    padding:0 clamp(20px,4vw,48px)!important;
+    justify-content:space-between!important;
+  }
+  .header-v2 .mega{position:static!important;top:auto!important;box-shadow:none!important;border-top:1px solid var(--moxa-line)!important}
+  .header-v2 .mega-in{grid-template-columns:1fr!important;padding:14px clamp(20px,4vw,48px)!important}
+}
+@media(max-width:920px){
+  .header-v2 .utility-inner{grid-template-columns:150px minmax(0,1fr) auto auto!important}
+  .header-v2 .utility-links{display:none!important}
+  .header-v2 .utility-links.is-open{display:flex!important}
+}
+@media(max-width:767px){
+  .header.header-v2{height:64px!important}
+  .header-v2 .utility-inner{
+    grid-template-columns:1fr auto auto auto!important;
+    gap:8px!important;
+    padding-inline:14px!important;
+  }
+  .header-v2 .logo-word{font-size:25px!important}
+  .header-v2 .global-search{
+    position:fixed!important;
+    top:64px!important;
+    left:0!important;
+    right:0!important;
+    z-index:118!important;
+    height:64px!important;
+    padding:10px 14px!important;
+    border-width:0 0 1px!important;
+    border-radius:0!important;
+    background:#fff!important;
+    box-shadow:0 18px 32px rgba(16,39,45,.12)!important;
+    transform:translateY(-130%)!important;
+    transition:transform .2s ease!important;
+  }
+  .header-v2 .global-search.is-open{transform:translateY(0)!important}
+  .header-v2 .search-expand{display:grid!important}
+  .header-v2 .primary-row{height:0!important}
+  .header-v2 .mainnav{inset:64px 0 auto 0!important;max-height:calc(100vh - 64px)!important}
+  .header-v2 .utility-links.is-open{top:64px!important;right:12px!important}
+  .header-v2 .ai-mode-toggle{padding-inline:9px!important}
+}
+@media(max-width:430px){
+  .header-v2 .utility-inner{grid-template-columns:minmax(122px,1fr) 38px 38px 38px!important;gap:6px!important}
+  .header-v2 .icon-btn{width:38px!important;height:38px!important}
+  .header-v2 .global-search input{font-size:13px!important}
+  .header-v2 .ai-mode-toggle>span:last-child{display:none!important}
+}
+/* MOXA_HEADER_V2_20260716_END */
+/* MOXA_HOMEPAGE_SCHEME_A_20260716_START */
+.home-module{
+  padding-block:clamp(64px,7vw,104px);
+  background:#fff;
+}
+.home-module.is-soft{background:#f3f8f8}
+.home-module .wrap{max-width:1240px}
+.home-section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:32px;
+  margin-bottom:36px;
+}
+.home-section-head-copy{max-width:720px}
+.home-kicker{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:14px;
+  color:var(--green-700);
+  font-size:12px;
+  font-weight:850;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.home-kicker::before{
+  content:"";
+  width:22px;
+  height:3px;
+  background:var(--green);
+}
+.homepage-section-nav{
+  position:fixed;
+  left:18px;
+  top:50%;
+  z-index:95;
+  display:grid;
+  gap:12px;
+  padding:12px 10px;
+  transform:translateY(-50%);
+  border:1px solid rgba(255,255,255,.9);
+  border-radius:999px;
+  background:rgba(255,255,255,.78);
+  box-shadow:0 18px 46px rgba(19,55,62,.14);
+  -webkit-backdrop-filter:blur(18px) saturate(150%);
+  backdrop-filter:blur(18px) saturate(150%);
+}
+.homepage-section-nav a{display:flex;align-items:center;gap:8px;color:#60757c;font-size:12px;font-weight:800;white-space:nowrap}
+.homepage-section-nav a span{width:9px;height:9px;border-radius:999px;background:#c7d4d8;transition:height .2s ease,background .2s ease}
+.homepage-section-nav a b{max-width:0;overflow:hidden;opacity:0;transition:max-width .2s ease,opacity .2s ease}
+.homepage-section-nav:hover a b,.homepage-section-nav a.active b{max-width:82px;opacity:1}
+.homepage-section-nav a.active{color:#075e62}
+.homepage-section-nav a.active span{height:24px;background:var(--green)}
+.homepage-ai-search-section{
+  padding:72px 0 54px;
+  background:linear-gradient(180deg,#fff 0%,#f3f8f8 100%);
+}
+.homepage-ai-search-panel{
+  display:grid;
+  grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
+  align-items:center;
+  gap:38px;
+  padding:42px;
+  border:1px solid #d9e5e6;
+  border-radius:40px;
+  background:rgba(255,255,255,.94);
+  box-shadow:0 28px 76px rgba(19,55,62,.11);
+}
+.homepage-ai-search-copy .home-kicker{margin-bottom:16px}
+.homepage-ai-search-copy h2{max-width:480px;color:#102f3f;font-size:clamp(2.3rem,4.4vw,4rem);line-height:1.02;letter-spacing:-.045em}
+.homepage-ai-search-copy p{max-width:520px;margin-top:18px;color:#60757c;font-size:17px;line-height:1.65}
+.homepage-ai-search-box{display:grid;gap:18px}
+.homepage-ai-search-field{
+  display:grid;
+  grid-template-columns:24px minmax(0,1fr) auto;
+  align-items:center;
+  gap:14px;
+  padding:12px 14px 12px 22px;
+  border:1px solid #cfe0e2;
+  border-radius:999px;
+  background:#fff;
+  box-shadow:0 18px 45px rgba(26,74,79,.1);
+}
+.homepage-ai-search-field img{width:22px;height:22px}
+.homepage-ai-search-field input{min-width:0;border:0;outline:0;background:transparent;color:#173544;font:inherit;font-size:16px}
+.homepage-ai-search-field input::placeholder{color:#788b90}
+.homepage-ai-search-field button{min-height:52px;padding:0 28px;border:1px solid #078c89;border-radius:999px;background:#078c89;color:#fff;font-size:15px;font-weight:850;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}
+.homepage-ai-search-field button:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(7,140,137,.24)}
+.homepage-intent-chips{display:flex;flex-wrap:wrap;gap:10px}
+.homepage-intent-chips a{padding:10px 14px;border:1px solid #cae4e4;border-radius:999px;background:#effafa;color:#076c6a;font-size:13px;font-weight:800;transition:background .18s ease,border-color .18s ease}
+.homepage-intent-chips a:hover{border-color:#7ec4c2;background:#e2f5f4}
+.home-section-head h2{
+  max-width:760px;
+  color:#102f3f;
+  font-size:clamp(2rem,4vw,3.35rem);
+  line-height:1.04;
+  letter-spacing:-.035em;
+}
+.home-section-head p{
+  max-width:650px;
+  margin-top:16px;
+  color:#60757c;
+  font-size:17px;
+  line-height:1.65;
+}
+.home-text-link{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--green-700);
+  font-size:14px;
+  font-weight:850;
+  white-space:nowrap;
+}
+.home-text-link::after{content:"→";font-size:18px;transition:transform .18s ease}
+.home-text-link:hover::after{transform:translateX(4px)}
+.explore-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:24px;
+}
+.explore-card{
+  position:relative;
+  min-height:430px;
+  overflow:hidden;
+  border:1px solid #d8e4e5;
+  border-radius:3px;
+  background:#123b42;
+  color:#fff;
+  isolation:isolate;
+}
+.explore-card img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .5s var(--ease);
+  z-index:-2;
+}
+.explore-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(4,34,43,.04) 18%,rgba(5,39,48,.88) 100%);
+  z-index:-1;
+}
+.explore-card:hover img{transform:scale(1.035)}
+.explore-card-content{
+  position:absolute;
+  inset:auto 0 0;
+  padding:clamp(24px,4vw,40px);
+}
+.explore-card .content-type{
+  display:inline-block;
+  margin-bottom:13px;
+  color:#9cf1e8;
+  font-size:12px;
+  font-weight:850;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.explore-card h3{max-width:500px;color:#fff;font-size:clamp(1.55rem,2.5vw,2.25rem);line-height:1.1}
+.explore-card .home-text-link{margin-top:20px;color:#fff}
+.featured-layout{
+  display:grid;
+  grid-template-columns:minmax(380px,.88fr) minmax(420px,1.12fr);
+  align-items:center;
+  min-height:520px;
+  border:1px solid #d7e3e4;
+  border-radius:14px;
+  background:#fff;
+  box-shadow:0 28px 70px rgba(22,62,68,.08);
+  overflow:hidden;
+}
+.featured-media{position:relative;aspect-ratio:1;min-height:0;border-radius:12px;background:linear-gradient(145deg,#f4f8f8,#dfecea);overflow:hidden}
+.featured-media img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .5s var(--ease)}
+.featured-layout:hover .featured-media img{transform:scale(1.025)}
+.featured-badge{
+  position:absolute;
+  left:24px;
+  top:24px;
+  padding:10px 13px;
+  background:rgba(255,255,255,.94);
+  color:var(--green-700);
+  border-left:3px solid var(--green);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.featured-copy{padding:clamp(34px,5vw,62px);display:flex;flex-direction:column;justify-content:center}
+.featured-series{color:var(--green-700);font-size:15px;font-weight:850}
+.featured-copy h3{margin-top:14px;color:#102f3f;font-size:clamp(2rem,3.6vw,3.15rem);line-height:1.05;letter-spacing:-.035em}
+.feature-points{display:grid;gap:0;margin:28px 0 30px;padding:0;list-style:none;border-top:1px solid #dce6e7}
+.feature-points li{display:grid;grid-template-columns:22px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid #dce6e7;color:#4f666d;font-size:14px}
+.feature-points li::before{content:"✓";color:var(--green);font-weight:900}
+.trending-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.trend-card{
+  display:flex;
+  flex-direction:column;
+  min-height:100%;
+  border:1px solid #d8e4e5;
+  border-radius:3px;
+  background:#fff;
+  overflow:hidden;
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
+}
+.trend-card:hover{transform:translateY(-5px);border-color:#9ac4c5;box-shadow:0 24px 48px rgba(20,61,67,.11)}
+.trend-media{height:220px;overflow:hidden;background:#dfeceb}
+.trend-media img{width:100%;height:100%;object-fit:cover;transition:transform .45s var(--ease)}
+.trend-card:hover img{transform:scale(1.04)}
+.trend-content{display:flex;flex:1;flex-direction:column;padding:26px}
+.trend-type{margin-bottom:12px;color:var(--green-700);font-size:11px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}
+.trend-content h3{color:#173544;font-size:1.4rem;line-height:1.18}
+.trend-content .home-text-link{margin-top:auto;padding-top:30px}
+.connectivity-band{position:relative;isolation:isolate;padding-block:clamp(62px,7vw,90px);background:linear-gradient(118deg,#052f36 0%,#07515a 42%,#0a6b72 66%,#073f43 100%);color:#fff;overflow:hidden}
+.connectivity-band::before{content:"";position:absolute;inset:-45%;z-index:-2;background:radial-gradient(circle at var(--focus-x,24%) 50%,rgba(118,239,228,.36) 0%,rgba(35,183,178,.18) 16%,rgba(3,50,57,0) 38%);transform:scale(.78);opacity:.42;transition:transform 1.25s var(--ease),opacity .75s ease,background-position 1s ease;animation:connectivityGlow 8s ease-in-out infinite alternate}
+.connectivity-band::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(102deg,transparent 18%,rgba(255,255,255,.08) 48%,transparent 72%);transform:translateX(-72%);opacity:0}
+.connectivity-band.is-animating::before{transform:scale(1.08);opacity:.9}
+.connectivity-band.is-animating::after{opacity:1;animation:connectivitySweep 2.6s var(--ease) both}
+@keyframes connectivityGlow{from{filter:blur(0);transform:scale(.8) translateX(-2%)}to{filter:blur(8px);transform:scale(1.04) translateX(4%)}}
+@keyframes connectivitySweep{0%{transform:translateX(-72%)}100%{transform:translateX(88%)}}
+.connectivity-inner{position:relative;z-index:1;display:grid;grid-template-columns:.9fr 1.6fr;gap:60px;align-items:center}
+.connectivity-band .home-kicker{color:#a4ece4}
+.connectivity-band .home-kicker::before{background:#70d8cf}
+.connectivity-band h2{max-width:520px;color:#fff;font-size:clamp(2.1rem,4vw,3.4rem);line-height:1.04}
+.connectivity-band p{max-width:520px;margin-top:16px;color:#c9dfe0;font-size:16px;line-height:1.65}
+.connectivity-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:10px;border:1px solid rgba(255,255,255,.22);border-radius:18px;background:rgba(226,255,251,.10);-webkit-backdrop-filter:blur(18px) saturate(135%);backdrop-filter:blur(18px) saturate(135%);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 24px 70px rgba(0,25,30,.18)}
+.connectivity-stat{min-height:180px;padding:32px 26px;border:1px solid rgba(255,255,255,.16);border-radius:12px;background:rgba(255,255,255,.045);display:flex;flex-direction:column;justify-content:center;opacity:.56;transform:scale(.94);transform-origin:center;transition:transform .52s var(--ease),opacity .42s ease,background .42s ease,box-shadow .42s ease}
+.connectivity-stat.is-focused{position:relative;z-index:2;opacity:1;transform:scale(1.09);background:linear-gradient(145deg,rgba(137,244,234,.24),rgba(255,255,255,.08));box-shadow:0 24px 60px rgba(0,17,20,.28),inset 0 0 0 1px rgba(187,255,249,.38)}
+.connectivity-stat.is-complete{opacity:.9;transform:scale(1);background:rgba(255,255,255,.035)}
+.connectivity-number{color:#fff;font-size:clamp(2.5rem,5vw,4.6rem);font-weight:300;line-height:1;letter-spacing:-.05em;font-variant-numeric:tabular-nums;transition:text-shadow .3s ease,color .3s ease}
+.connectivity-stat.is-focused .connectivity-number{color:#d8fffb;text-shadow:0 0 26px rgba(119,239,228,.48)}
+.connectivity-label{margin-top:14px;color:#9fe5df;font-size:12px;font-weight:850;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:980px){
+  .homepage-section-nav{display:none}
+  .homepage-ai-search-panel{grid-template-columns:1fr;padding:34px;border-radius:30px}
+  .featured-layout{grid-template-columns:1fr}
+  .featured-media{width:min(100%,620px);min-height:0;margin:24px auto 0}
+  .trending-grid{grid-template-columns:1fr 1fr}
+  .connectivity-inner{grid-template-columns:1fr;gap:34px}
+}
+@media(max-width:700px){
+  .homepage-ai-search-section{padding:44px 0 34px}
+  .homepage-ai-search-panel{padding:26px 20px;border-radius:24px}
+  .homepage-ai-search-field{grid-template-columns:20px minmax(0,1fr);padding:16px 18px;border-radius:24px}
+  .homepage-ai-search-field button{grid-column:1/-1;width:100%}
+  .home-module{padding-block:54px}
+  .home-section-head{display:block;margin-bottom:26px}
+  .home-section-head>.home-text-link{margin-top:20px}
+  .explore-grid,.trending-grid{grid-template-columns:1fr}
+  .explore-card{min-height:380px}
+  .featured-layout{min-height:0}
+  .featured-media{width:100%;min-height:0;margin:0}
+  .featured-copy{padding:30px 24px 34px}
+  .trend-media{height:205px}
+  .connectivity-stats{grid-template-columns:1fr}
+  .connectivity-stat{min-height:130px;border:1px solid rgba(255,255,255,.16)}
+}
+/* MOXA_HOMEPAGE_SCHEME_A_20260716_END */
 /* MOXA_GLOBAL_SHELL_20260714_END */
 
 </style>
+<link rel="stylesheet" href="assets/css/moxa-ds.css?v=20260717-lead-form">
 </head>
-<body>
+<body data-moxa-page="homepage">
 <!-- ================= HEADER ================= -->
 
     
@@ -1974,15 +2494,49 @@ nav.mainnav{gap:0}
     
     
     
-    <header class="header" data-component="GlobalHeader">
-  <div class="wrap header-in">
-    <a class="logo" href="homepage.html" aria-label="Moxa home">
-      <span class="logo-tri" aria-hidden="true"></span>
-      <span class="logo-word">MOXA<sup>®</sup></span>
-      <span class="logo-note">demo evidence wordmark - replace with official logo artwork in production</span>
-    </a>
+    <header class="header header-v2" data-component="GlobalHeader">
+  <div class="utility-row">
+    <div class="wrap utility-inner">
+      <a class="logo" href="homepage.html" aria-label="Moxa home">
+        <span class="logo-tri" aria-hidden="true"></span>
+        <span class="logo-word">MOXA<sup>®</sup></span>
+        <span class="logo-note">demo evidence wordmark - replace with official logo artwork in production</span>
+      </a>
 
-    <nav class="mainnav" id="mainnav" aria-label="Primary">
+      <form class="global-search" id="globalSearchForm" role="search" novalidate>
+        <label class="sr-only" for="globalSearchInput">Search Moxa</label>
+        <button class="global-search-submit" type="submit" aria-label="Submit search">
+          <img src="img/icon-search.svg" alt="" aria-hidden="true">
+        </button>
+        <input id="globalSearchInput" type="search" autocomplete="off" placeholder="Search products, solutions, and resources">
+        <button class="ai-mode-toggle" id="aiModeToggle" type="button" aria-pressed="false">
+          <span class="ai-mode-mark" aria-hidden="true">AI</span>
+          <span>Ask AI</span>
+        </button>
+      </form>
+
+      <nav class="utility-links" id="utilityLinks" aria-label="Account and partner links">
+        <a href="https://www.moxa.com/contact-us">Contact Us</a>
+        <a href="https://partnerzone.moxa.com/">Partner Zone</a>
+        <a href="https://www.moxa.com/en/membership/my-account/profile/personal-info">My Moxa</a>
+        <a href="https://www.moxa.com/membership/sign-in">Sign In</a>
+      </nav>
+
+      <button class="icon-btn search-expand" id="searchExpand" type="button" aria-label="Open search" aria-expanded="false" aria-controls="globalSearchForm">
+        <img src="img/icon-search.svg" alt="" aria-hidden="true">
+      </button>
+      <button class="icon-btn account-toggle" id="accountToggle" type="button" aria-label="Open account links" aria-expanded="false" aria-controls="utilityLinks">
+        <img src="img/icon-person.svg" alt="" aria-hidden="true">
+      </button>
+      <button class="icon-btn menu-toggle" id="menuToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mainnav">
+        <img src="img/icon-menu.svg" alt="" aria-hidden="true">
+      </button>
+    </div>
+  </div>
+
+  <div class="primary-row">
+    <div class="wrap primary-inner">
+      <nav class="mainnav" id="mainnav" aria-label="Primary">
       <div class="navitem" data-nav>
         <button aria-expanded="false" aria-haspopup="true">Products <span class="chev" aria-hidden="true"></span></button>
         <div class="mega" role="region" aria-label="Products menu">
@@ -1993,8 +2547,8 @@ nav.mainnav{gap:0}
               <a class="btn btn-ghost" href="product-category-ethernet-switches.html">Open Product Finder</a>
             </div>
             <div class="mega-col"><h5>Network Infrastructure</h5><ul><li><a href="product-category-ethernet-switches.html">Industrial Ethernet Switches</a></li><li><a href="product-series-eds-4008.html">EDS-4008 Series</a></li><li><a href="compare-lv-hv.html">Compare LV / HV Models</a></li></ul></div>
-            <div class="mega-col"><h5>Edge Connectivity</h5><ul><li><a href="products.html">Protocol Gateways</a></li><li><a href="products.html">Remote I/O</a></li><li><a href="manual.html">Manuals &amp; Downloads</a></li></ul></div>
-            <div class="mega-col"><h5>Evaluation</h5><ul><li><a href="search.html?q=Ethernet%20Switches">Search Products</a></li><li><a href="product-model-eds-4008-lv-hv.html">Model Details</a></li><li><a href="contact-distributor.html#contact">Ask an Engineer</a></li></ul></div>
+            <div class="mega-col"><h5>Edge Connectivity</h5><ul><li><a href="product-category-ethernet-switches.html">Protocol Gateways</a></li><li><a href="product-category-ethernet-switches.html">Remote I/O</a></li><li><a href="manual.html">Manuals &amp; Downloads</a></li></ul></div>
+            <div class="mega-col"><h5>Evaluation</h5><ul><li><a href="search.html?q=Ethernet%20Switches">Search Products</a></li><li><a href="eds-4008-lv.html">Model Details</a></li><li><a href="campaign.html#contact-us">Ask an Engineer</a></li></ul></div>
           </div>
         </div>
       </div>
@@ -2004,8 +2558,8 @@ nav.mainnav{gap:0}
           <div class="wrap mega-in">
             <div class="mega-intro"><h4>Built for industrial scenarios</h4><p>Connect field devices, control networks, and operating teams through reliable architectures.</p><a class="btn btn-ghost" href="microsite.html">Explore Scenario Hub</a></div>
             <div class="mega-col"><h5>Industries</h5><ul><li><a href="microsite.html">Manufacturing</a></li><li><a href="microsite.html">Power &amp; Energy</a></li><li><a href="microsite.html">Rail &amp; Transportation</a></li></ul></div>
-            <div class="mega-col"><h5>Architecture</h5><ul><li><a href="microsite.html#architecture">Controller &amp; I/O</a></li><li><a href="product-category-ethernet-switches.html">Industrial Networking</a></li><li><a href="article.html">TSN Applications</a></li></ul></div>
-            <div class="mega-col"><h5>Proof</h5><ul><li><a href="video.html">Video Stories</a></li><li><a href="article.html">Application Notes</a></li><li><a href="homepage.html#proof">Reliability Proof</a></li></ul></div>
+            <div class="mega-col"><h5>Architecture</h5><ul><li><a href="microsite.html#architecture">Controller &amp; I/O</a></li><li><a href="product-category-ethernet-switches.html">Industrial Networking</a></li><li><a href="campaign.html">TSN Applications</a></li></ul></div>
+            <div class="mega-col"><h5>Proof</h5><ul><li><a href="video.html">Video Stories</a></li><li><a href="campaign.html">Application Notes</a></li><li><a href="homepage.html#proof">Reliability Proof</a></li></ul></div>
           </div>
         </div>
       </div>
@@ -2015,8 +2569,8 @@ nav.mainnav{gap:0}
           <div class="wrap mega-in">
             <div class="mega-intro"><h4>Validate before specifying</h4><p>Bring datasheets, manuals, articles, video, and search behavior into one journey.</p><a class="btn btn-ghost" href="manual.html">Open Resource Center</a></div>
             <div class="mega-col"><h5>Documents</h5><ul><li><a href="asset/moxa-eds-4008-series-datasheet-v1.8.pdf">EDS-4008 Datasheet</a></li><li><a href="manual.html">User Manual</a></li><li><a href="search.html?q=IEC%2062443">IEC 62443 Resources</a></li></ul></div>
-            <div class="mega-col"><h5>Content</h5><ul><li><a href="article.html">Articles</a></li><li><a href="video.html">Videos</a></li><li><a href="search.html?q=EDS-4008">Search All</a></li></ul></div>
-            <div class="mega-col"><h5>Tools</h5><ul><li><a href="search.html">Product Search</a></li><li><a href="product-category-ethernet-switches.html">Selection Guide</a></li><li><a href="contact-distributor.html#support">Technical Support</a></li></ul></div>
+            <div class="mega-col"><h5>Content</h5><ul><li><a href="campaign.html">Articles</a></li><li><a href="video.html">Videos</a></li><li><a href="search.html?q=EDS-4008">Search All</a></li></ul></div>
+            <div class="mega-col"><h5>Tools</h5><ul><li><a href="search.html">Product Search</a></li><li><a href="product-category-ethernet-switches.html">Selection Guide</a></li><li><a href="campaign.html#contact-us">Technical Support</a></li></ul></div>
           </div>
         </div>
       </div>
@@ -2024,10 +2578,10 @@ nav.mainnav{gap:0}
         <button aria-expanded="false" aria-haspopup="true">Support <span class="chev" aria-hidden="true"></span></button>
         <div class="mega" role="region" aria-label="Support menu">
           <div class="wrap mega-in">
-            <div class="mega-intro"><h4>Sincere service, connected</h4><p>Keep product context intact when a visitor moves from search to support, quote, or distributor handoff.</p><a class="btn btn-ghost" href="contact-distributor.html#support">Contact Support</a></div>
-            <div class="mega-col"><h5>Get Help</h5><ul><li><a href="contact-distributor.html#support">Technical Support</a></li><li><a href="chatbot.html">AI Advisor</a></li><li><a href="manual.html">Manual Lookup</a></li></ul></div>
-            <div class="mega-col"><h5>Buy</h5><ul><li><a href="contact-distributor.html#contact">Contact Sales</a></li><li><a href="contact-distributor.html#distributor">Find Distributor</a></li><li><a href="compare-quote.html">Compare &amp; Quote</a></li></ul></div>
-            <div class="mega-col"><h5>Journey</h5><ul><li><a href="journey.html">Customer Journey</a></li><li><a href="analytics.html">Analytics</a></li><li><a href="backend-compliance.html">Compliance</a></li></ul></div>
+            <div class="mega-intro"><h4>Sincere service, connected</h4><p>Keep product context intact when a visitor moves from search to support, quote, or distributor handoff.</p><a class="btn btn-ghost" href="campaign.html#contact-us">Contact Support</a></div>
+            <div class="mega-col"><h5>Get Help</h5><ul><li><a href="campaign.html#contact-us">Technical Support</a></li><li><a href="compare-lv-hv.html">AI Advisor</a></li><li><a href="manual.html">Manual Lookup</a></li></ul></div>
+            <div class="mega-col"><h5>Buy</h5><ul><li><a href="campaign.html#contact-us">Contact Sales</a></li><li><a href="campaign.html#contact-us">Find Distributor</a></li><li><a href="compare-lv-hv.html">Compare &amp; Quote</a></li></ul></div>
+            <div class="mega-col"><h5>Journey</h5><ul><li><a href="homepage.html">Customer Journey</a></li><li><a href="homepage.html#enabling-connectivity">Analytics</a></li><li><a href="manual.html">Compliance</a></li></ul></div>
           </div>
         </div>
       </div>
@@ -2035,26 +2589,24 @@ nav.mainnav{gap:0}
         <button aria-expanded="false" aria-haspopup="true">Why Moxa <span class="chev" aria-hidden="true"></span></button>
         <div class="mega" role="region" aria-label="Why Moxa menu">
           <div class="wrap mega-in">
-            <div class="mega-intro"><h4>Reliable networks. Sincere service.</h4><p>The design system keeps the experience bright, industrial, structured, and credible.</p><a class="btn btn-ghost" href="homepage.html#bond">See Moxa Story</a></div>
-            <div class="mega-col"><h5>Trust</h5><ul><li><a href="homepage.html#proof">Reliability Proof</a></li><li><a href="article.html">Application Stories</a></li><li><a href="contact-distributor.html#support">Service Commitment</a></li></ul></div>
-            <div class="mega-col"><h5>Customers</h5><ul><li><a href="journey.html">Journey Map</a></li><li><a href="analytics.html">Behavior Signals</a></li><li><a href="microsite.html">Scenario Hub</a></li></ul></div>
-            <div class="mega-col"><h5>Updates</h5><ul><li><a href="article.html">News &amp; Articles</a></li><li><a href="video.html">Videos</a></li><li><a href="contact-distributor.html">Talk to Moxa</a></li></ul></div>
+            <div class="mega-intro"><h4>Reliable networks. Sincere service.</h4><p>See how Moxa builds dependable industrial connectivity through long-term partnerships.</p><a class="btn btn-ghost" href="https://www.moxa.com/en/about-us">See Moxa Story</a></div>
+            <div class="mega-col"><h5>Trust</h5><ul><li><a href="homepage.html#proof">Reliability Proof</a></li><li><a href="campaign.html">Application Stories</a></li><li><a href="campaign.html#contact-us">Service Commitment</a></li></ul></div>
+            <div class="mega-col"><h5>Customers</h5><ul><li><a href="homepage.html">Journey Map</a></li><li><a href="homepage.html#enabling-connectivity">Behavior Signals</a></li><li><a href="microsite.html">Scenario Hub</a></li></ul></div>
+            <div class="mega-col"><h5>Updates</h5><ul><li><a href="campaign.html">News &amp; Articles</a></li><li><a href="video.html">Videos</a></li><li><a href="campaign.html#contact-us">Talk to Moxa</a></li></ul></div>
           </div>
         </div>
       </div>
-    </nav>
-
-    <div class="header-actions">
-      <button class="icon-btn search" aria-label="Search">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      </button>
-      <a class="btn btn-primary" href="contact-distributor.html#contact">Contact Us</a>
-      <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="mainnav">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-      </button>
+      </nav>
     </div>
   </div>
 </header>
+<nav class="homepage-section-nav" aria-label="Homepage section navigation">
+  <a class="active" href="#ai-search" data-home-section="ai-search"><span aria-hidden="true"></span><b>Ask</b></a>
+  <a href="#explore-now" data-home-section="explore-now"><span aria-hidden="true"></span><b>Explore</b></a>
+  <a href="#featured-products" data-home-section="featured-products"><span aria-hidden="true"></span><b>Products</b></a>
+  <a href="#trending" data-home-section="trending"><span aria-hidden="true"></span><b>Trending</b></a>
+  <a href="#enabling-connectivity" data-home-section="enabling-connectivity"><span aria-hidden="true"></span><b>Global</b></a>
+</nav>
 <!-- ================= HERO ================= -->
 <section class="hero hero-carousel image-hero-carousel" style="padding-block:0" aria-roledescription="carousel" aria-label="Moxa homepage hero banners">
   <div class="hero-slides">
@@ -2069,7 +2621,7 @@ nav.mainnav{gap:0}
           <p class="hero-sub">Connect machines, people, and sites with industrial networking solutions designed for demanding environments.</p>
           <div class="hero-cta">
             <a class="btn btn-primary btn-lg" href="microsite.html" data-s1-route="microsite">Explore solutions</a>
-            <a class="btn btn-ghost btn-lg" href="contact-distributor.html" data-s1-route="contact">Talk to an engineer</a>
+            <a class="btn btn-ghost btn-lg" href="campaign.html#contact-us" data-s1-route="contact">Talk to an engineer</a>
           </div>
           <div class="hero-state-note">Homepage A · New visitor</div>
           <div class="hero-stats">
@@ -2177,245 +2729,135 @@ nav.mainnav{gap:0}
   </div>
 </section>
 
-<!-- ================= AI FINDER ================= -->
-<section class="finder apex" id="finder">
+<!-- ================= AI-GUIDED SEARCH ================= -->
+<section class="homepage-ai-search-section" id="ai-search" aria-labelledby="homepageAiSearchTitle">
   <div class="wrap">
-    <div class="finder-card reveal">
-      <span class="eyebrow">Guided finder</span>
-      <h2>Tell us what you're building.</h2>
-      <div class="finder-input">
-        <label class="field">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#008787" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-          <input type="text" placeholder="e.g. Ethernet Switches for a redundant factory network" aria-label="Describe what you're building">
-        </label>
-        <button class="btn btn-primary btn-lg" type="button" data-s1-finder-submit data-s1-record-search>Find solutions</button>
+    <div class="homepage-ai-search-panel reveal">
+      <div class="homepage-ai-search-copy">
+        <div class="home-kicker">AI-Guided Search</div>
+        <h2 id="homepageAiSearchTitle">Let me know what you want.</h2>
+        <p>Describe your project, product need, or technical challenge. We’ll guide you to the right product family, scenario, or resource.</p>
       </div>
-      <div class="chips" aria-label="Examples">
-        <button class="chip" data-s1-record-search>Ethernet Switches for a factory floor</button>
-        <button class="chip" data-s1-record-search>EDS-4008 managed switch comparison</button>
-        <button class="chip" data-s1-record-search>Redundant ring for machine networks</button>
-        <button class="chip" data-s1-record-search>IEC 62443 secure industrial Ethernet</button>
-      </div>
+      <form class="homepage-ai-search-box" id="homepageIntentSearchForm" role="search">
+        <div class="homepage-ai-search-field">
+          <img src="img/icon-search.svg" alt="" aria-hidden="true">
+          <input id="homepageIntentSearch" type="search" autocomplete="off" placeholder="Example: reliable Ethernet switches for a factory line" aria-label="Describe your project or product need">
+          <button type="submit">Guide me</button>
+        </div>
+        <div class="homepage-intent-chips" aria-label="Suggested searches">
+          <a href="microsite.html">Factory network</a>
+          <a href="search.html?q=Remote%20site%20monitoring">Remote site monitoring</a>
+          <a href="product-category-ethernet-switches.html">Switch selection guide</a>
+          <a href="campaign.html#contact-us">Talk to an expert</a>
+        </div>
+      </form>
     </div>
   </div>
 </section>
 
-<!-- ================= START PATHS ================= -->
-<section id="paths">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Guided entry</span>
-      <h2>Choose the shortest path to a confident decision.</h2>
-      <p>Each entry point sends the customer to a complete next page, so the Scenario 1 journey can continue without dead ends.</p>
-    </div>
-    <div class="paths">
-      <a class="path reveal" href="search.html?q=Ethernet%20Switches" data-s1-route="searchEthernet" data-s1-record-search><div class="idx">Start by</div><h3>Find a Product</h3><p>Search by product family, application need, or the EDS-4008 series name.</p><div class="go">Explore products <span>&rarr;</span></div></a>
-      <a class="path reveal" href="microsite.html" data-s1-route="microsite"><div class="idx">Start by</div><h3>Explore a Solution</h3><p>Review industrial networking architectures before narrowing the product path.</p><div class="go">View solutions <span>&rarr;</span></div></a>
-      <a class="path reveal" href="contact-distributor.html" data-s1-route="contact"><div class="idx">Start by</div><h3>Get Expert Support</h3><p>Reach an engineer or distributor when the project needs a human recommendation.</p><div class="go">Talk to an expert <span>&rarr;</span></div></a>
-    </div>
-  </div>
-</section>
-
-<!-- ================= RECOMMENDED NEXT STEP ================= -->
-<section class="next-step" id="next-step">
-  <div class="wrap">
-    <div class="next-step-grid">
-      <div class="next-panel reveal">
-        <span class="state-pill" data-s1-next-label>Recommended next step</span>
-        <h3 data-s1-next-title>Start with industrial networking families.</h3>
-        <p data-s1-next-copy>Use the solution overview to understand the architecture, then move into product selection when the need is clear.</p>
-        <div class="next-actions">
-          <a class="btn btn-primary" href="microsite.html" data-s1-next-primary data-s1-route="microsite">Explore solutions</a>
-          <a class="btn btn-ghost" href="search.html?q=Ethernet%20Switches" data-s1-next-secondary data-s1-route="searchEthernet">Search products</a>
-        </div>
+<!-- ================= EXPLORE NOW ================= -->
+<section class="home-module" id="explore-now" aria-labelledby="exploreTitle">
+  <div class="wrap" id="scenarios">
+    <div class="home-section-head reveal">
+      <div class="home-section-head-copy">
+        <div class="home-kicker">Explore Now</div>
+        <h2 id="exploreTitle">Build stronger industrial networks from the edge to the core.</h2>
+        <p>Explore practical guidance for improving wireless resilience and protecting critical operational technology.</p>
       </div>
-      <div class="next-proof reveal" aria-label="Why this recommendation">
-        <div class="next-proof-card"><b data-s1-proof-title-1>Customer signal</b><span data-s1-proof-copy-1>Default homepage visitor with no product history yet.</span></div>
-        <div class="next-proof-card"><b data-s1-proof-title-2>Design-system behavior</b><span data-s1-proof-copy-2>Homepage keeps the industrial network story broad before asking for product commitment.</span></div>
-        <div class="next-proof-card"><b data-s1-proof-title-3>Next page handoff</b><span data-s1-proof-copy-3>All CTAs route to real demo pages used by the Scenario 1 customer journey.</span></div>
-      </div>
+      <a class="home-text-link" href="microsite.html">Explore all solutions</a>
     </div>
-  </div>
-</section>
-
-<!-- ================= PRODUCT FAMILIES ================= -->
-<section id="families">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Product families</span>
-      <h2>Hardware built to outlast the deployment.</h2>
-      <p>Three connected layers — from the backbone network to the field edge — engineered to the same standard of reliability.</p>
-    </div>
-    <div class="families">
-      <article class="fam feature reveal">
-        <div class="fam-media">
-          <img class="asset-img" src="img/family-network.jpg" alt="Rugged industrial DIN-rail Ethernet switch">
+    <div class="explore-grid">
+      <a class="explore-card reveal" href="microsite.html">
+        <img src="img/scenario-manufacturing.jpg" alt="Automated production line using resilient industrial wireless connectivity" loading="lazy">
+        <div class="explore-card-content">
+          <span class="content-type">Industrial Wireless</span>
+          <h3>Achieve Resilience in the Field With WLAN You Can Trust</h3>
+          <span class="home-text-link">Explore the solution</span>
         </div>
-        <div class="fam-body">
-          <h3>Network Infrastructure</h3>
-          <p>Managed and unmanaged industrial Ethernet switches, secure routers, and wireless — the resilient backbone with millisecond ring recovery.</p>
-          <a class="go" href="product-category-ethernet-switches.html" data-s1-route="category" data-s1-record-search>Explore infrastructure <span>&rarr;</span></a>
-        </div>
-      </article>
-      <article class="fam reveal">
-        <div class="fam-media">
-          <img class="asset-img" src="img/family-edge.jpg" alt="Compact industrial protocol gateway with neat field-device cabling">
-        </div>
-        <div class="fam-body">
-          <h3>Edge Connectivity</h3>
-          <p>Protocol gateways, serial servers, and remote I/O that bring legacy field devices onto modern networks.</p>
-          <a class="go" href="search.html?q=Gateways" data-s1-route="search">Explore connectivity <span>&rarr;</span></a>
-        </div>
-      </article>
-      <article class="fam reveal">
-        <div class="fam-media">
-          <img class="asset-img" src="img/family-computing.jpg" alt="Rugged fanless industrial edge computer on a bright work surface">
-        </div>
-        <div class="fam-body">
-          <h3>Industrial Computing</h3>
-          <p>Rugged, fanless edge computers and panels that run analytics and control where the work happens.</p>
-          <a class="go" href="products.html" data-s1-route="products">Explore computing <span>&rarr;</span></a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ================= CUSTOMER RESOURCES ================= -->
-<section class="resource-proof" id="resources">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Resources that follow intent</span>
-      <h2>Keep the customer moving with the right proof.</h2>
-      <p>Homepage resources adapt to the same A/B/C state as the hero, so later pages can inherit a clear journey signal.</p>
-    </div>
-    <div class="resource-grid">
-      <a class="resource-card reveal" href="article.html" data-s1-resource-card="0" data-s1-route="article">
-        <span class="tag" data-s1-resource-tag-0>Guide</span>
-        <h3 data-s1-resource-title-0>Industrial network planning guide</h3>
-        <p data-s1-resource-copy-0>Understand redundant industrial Ethernet architectures before selecting devices.</p>
-        <div class="resource-link">Open resource <span>&rarr;</span></div>
       </a>
-      <a class="resource-card reveal" href="product-category-ethernet-switches.html" data-s1-resource-card="1" data-s1-route="category" data-s1-record-search>
-        <span class="tag" data-s1-resource-tag-1>Products</span>
-        <h3 data-s1-resource-title-1>Industrial Ethernet Switch families</h3>
-        <p data-s1-resource-copy-1>Compare managed and unmanaged switch paths for control cabinets and factory networks.</p>
-        <div class="resource-link">Open resource <span>&rarr;</span></div>
-      </a>
-      <a class="resource-card reveal" href="video.html" data-s1-resource-card="2" data-s1-route="video">
-        <span class="tag" data-s1-resource-tag-2>Video</span>
-        <h3 data-s1-resource-title-2>Reliability in the field</h3>
-        <p data-s1-resource-copy-2>See how rugged connectivity supports uptime in demanding industrial environments.</p>
-        <div class="resource-link">Open resource <span>&rarr;</span></div>
-      </a>
-      <a class="resource-card reveal" href="contact-distributor.html" data-s1-resource-card="3" data-s1-route="contact">
-        <span class="tag" data-s1-resource-tag-3>Support</span>
-        <h3 data-s1-resource-title-3>Talk to a Moxa engineer</h3>
-        <p data-s1-resource-copy-3>Bring the application details and confirm the right next step with a regional expert.</p>
-        <div class="resource-link">Open resource <span>&rarr;</span></div>
+      <a class="explore-card reveal" href="campaign.html">
+        <img src="img/family-edge.jpg" alt="Industrial edge gateway supporting secure operational technology" loading="lazy">
+        <div class="explore-card-content">
+          <span class="content-type">OT Security</span>
+          <h3>7 Checks to Find Out If Your OT Edge Is Secure</h3>
+          <span class="home-text-link">Read the checklist</span>
+        </div>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ================= SCENARIOS ================= -->
-<section class="scenarios apex" id="scenarios">
+<!-- ================= FEATURED PRODUCTS ================= -->
+<section class="home-module is-soft" id="featured-products" aria-labelledby="featuredTitle">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Where Moxa runs</span>
-      <h2>Trusted where downtime<br>isn't an option.</h2>
-      <p>From the factory floor to the trackside cabinet, the same connective reliability carries across every environment.</p>
+    <div class="home-section-head reveal">
+      <div class="home-section-head-copy">
+        <div class="home-kicker">Featured Products</div>
+        <h2 id="featuredTitle">Rugged computing for software-defined substations.</h2>
+      </div>
+      <a class="home-text-link" href="product-category-ethernet-switches.html">View all products</a>
     </div>
-    <div class="scn-grid">
-      <article class="scn reveal">
-        <div class="scn-media"><img class="asset-img" src="img/scenario-manufacturing.jpg" alt="Bright automated production line with robotic arms and industrial connectivity"></div>
-        <div class="scn-body"><div class="k">Manufacturing</div><h3>Smart Manufacturing</h3><p>Deterministic networks connecting machines, robots, and lines with zero-loss redundancy.</p></div>
-      </article>
-      <article class="scn reveal">
-        <div class="scn-media"><img class="asset-img" src="img/scenario-energy.jpg" alt="Solar array and smart-grid cabinet in a bright energy infrastructure setting"></div>
-        <div class="scn-body"><div class="k">Energy</div><h3>Power &amp; Energy</h3><p>Substation-hardened gear for smart grids, renewables, and mission-critical distribution.</p></div>
-      </article>
-      <article class="scn reveal">
-        <div class="scn-media"><img class="asset-img" src="img/scenario-transport.jpg" alt="Modern high-speed train beside industrial network equipment at a bright station"></div>
-        <div class="scn-body"><div class="k">Transportation</div><h3>Rail, Marine &amp; Transport</h3><p>EN 50155 and shock-rated connectivity that keeps moving assets online in motion.</p></div>
-      </article>
+    <article class="featured-layout reveal">
+      <div class="featured-media">
+        <img src="img/family-computing.jpg" alt="DA-920E Series fanless vPAC server for substation automation" loading="lazy">
+        <span class="featured-badge">New Product</span>
+      </div>
+      <div class="featured-copy">
+        <div class="featured-series">DA-920E Series</div>
+        <h3>Improve the Reliability of Software-defined Substations With DA-920E Series Fanless vPAC Servers</h3>
+        <ul class="feature-points">
+          <li>Four hot-swappable SSD slots for resilient data storage</li>
+          <li>Out-of-band management for efficient remote maintenance</li>
+          <li>IEC 61850-3, IEEE 1613, and IEC 60255 compliance</li>
+        </ul>
+        <a class="btn btn-primary btn-lg" href="product-category-ethernet-switches.html">Explore DA-920E Series</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= TRENDING AT MOXA ================= -->
+<section class="home-module" id="trending" aria-labelledby="trendingTitle">
+  <div class="wrap">
+    <div class="home-section-head reveal">
+      <div class="home-section-head-copy">
+        <div class="home-kicker">Trending at Moxa</div>
+        <h2 id="trendingTitle">Insights for the connected industrial future.</h2>
+      </div>
+      <a class="home-text-link" href="campaign.html">View all resources</a>
+    </div>
+    <div class="trending-grid">
+      <a class="trend-card reveal" href="campaign.html">
+        <div class="trend-media"><img src="img/scenario-manufacturing.jpg" alt="Connected AI-enabled manufacturing facility" loading="lazy"></div>
+        <div class="trend-content"><span class="trend-type">Article</span><h3>Engineering the AI Factory for the Generative Era</h3><span class="home-text-link">Read article</span></div>
+      </a>
+      <a class="trend-card reveal" href="campaign.html">
+        <div class="trend-media"><img src="img/family-edge.jpg" alt="Industrial field data connected through edge devices" loading="lazy"></div>
+        <div class="trend-content"><span class="trend-type">Case Study Collection</span><h3>Enabling Smarter Operations With Field Data</h3><span class="home-text-link">Explore case studies</span></div>
+      </a>
+      <a class="trend-card reveal" href="campaign.html">
+        <div class="trend-media"><img src="img/connection-abstract.jpg" alt="Secure connected industrial network foundation" loading="lazy"></div>
+        <div class="trend-content"><span class="trend-type">White Paper</span><h3>Building a Resilient Network Security Foundation for IEC 62443-3-3 Compliance</h3><span class="home-text-link">Download white paper</span></div>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ================= PROOF / WHY MOXA ================= -->
-<section class="proof image-proof" id="proof" aria-labelledby="proofTitle">
-  <div class="wrap">
-    <span class="anchor-target" id="bond" aria-hidden="true"></span>
-    <h2 class="visually-hidden" id="proofTitle">Moxa, partners, and customers working together</h2>
-    <img class="proof-banner-img" src="banner/ChatGPT Image Jul 13, 2026, 05_45_52 PM (4).png" alt="Moxa, partners, and customers connected in a shared success triangle for sustainable growth">
-    <div class="proof-cta reveal">
-      <span class="eyebrow">Let's connect</span>
-      <h3>Talk to an engineer who knows your application.</h3>
-      <p>Tell us the problem and we'll bring the right people and parts. No queues, no scripts — just sincere engineering support.</p>
-      <div class="proof-cta-actions">
-        <a class="btn btn-primary" href="contact-distributor.html" data-s1-route="contact">Talk to an engineer</a>
-        <a class="btn btn-ghost" href="contact-distributor.html#distributor" data-s1-route="distributor">Find a distributor</a>
-      </div>
+<!-- ================= ENABLING CONNECTIVITY ================= -->
+<section class="connectivity-band" id="enabling-connectivity" aria-labelledby="connectivityTitle" data-connectivity-motion>
+  <div class="wrap connectivity-inner" id="proof">
+    <div class="reveal">
+      <div class="home-kicker">Enabling Connectivity</div>
+      <h2 id="connectivityTitle">Connecting industry around the world.</h2>
+      <p>Global reach, proven field experience, and local support help industrial operators keep essential systems connected.</p>
+    </div>
+    <div class="connectivity-stats reveal" aria-label="Moxa global connectivity metrics">
+      <div class="connectivity-stat" aria-label="More than 1,000 distributors"><strong class="connectivity-number" data-counter-target="1000" data-counter-suffix="+" data-counter-format="comma">0</strong><span class="connectivity-label">Distributors</span></div>
+      <div class="connectivity-stat" aria-label="More than 82 million devices connected"><strong class="connectivity-number" data-counter-target="82" data-counter-suffix="M+">0</strong><span class="connectivity-label">Devices Connected</span></div>
+      <div class="connectivity-stat" aria-label="More than 80 countries"><strong class="connectivity-number" data-counter-target="80" data-counter-suffix="+">0</strong><span class="connectivity-label">Countries</span></div>
     </div>
   </div>
 </section>
-
-<!-- ================= FOOTER ================= -->
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <footer class="site-footer" data-component="GlobalFooter">
-      <div class="container">
-        <div class="footer-grid">
-          <div>
-            <div class="footer-logo">MOXA</div>
-            <p>Industrial connectivity, networking, computing, and automation solutions for mission-critical environments.</p>
-          </div>
-          <div class="footer-col">
-            <h3>Products</h3>
-            <a href="product-category-ethernet-switches.html">Ethernet Switches</a>
-            <a href="product-series-eds-4008.html">EDS-4008 Series</a>
-            <a href="compare-lv-hv.html">Compare LV / HV</a>
-            <a href="products.html">Protocol Gateways</a>
-          </div>
-          <div class="footer-col">
-            <h3>Solutions</h3>
-            <a href="microsite.html">Manufacturing</a>
-            <a href="microsite.html">Power &amp; Energy</a>
-            <a href="microsite.html">Rail</a>
-            <a href="homepage.html#proof">Reliability Proof</a>
-          </div>
-          <div class="footer-col">
-            <h3>Resources</h3>
-            <a href="search.html">Search</a>
-            <a href="manual.html">Datasheets &amp; Manuals</a>
-            <a href="article.html">Application Notes</a>
-            <a href="video.html">Videos</a>
-          </div>
-          <div class="footer-col">
-            <h3>Support</h3>
-            <a href="chatbot.html">AI Advisor</a>
-            <a href="contact-distributor.html#support">Technical Support</a>
-            <a href="contact-distributor.html#contact">Contact Us</a>
-            <a href="contact-distributor.html#distributor">Distributor Network</a>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <span>&copy; 2026 Moxa. All rights reserved.</span>
-          <span>Reliable networks. Sincere service.</span>
-        </div>
-      </div>
-    </footer>
 
 <!-- ================= FLOATING CAMPAIGN POP-UP ================= -->
 <aside class="promo-pop" id="promoPop" aria-label="Industrial Network Selection Week">
@@ -2483,22 +2925,22 @@ nav.mainnav{gap:0}
     home: staticPageMatch ? 'homepage.html' : 'moxa_homepage.html',
     search: staticBase + 'search.html',
     searchEthernet: staticBase + 'search.html?q=Ethernet%20Switches',
-    products: staticBase + 'products.html',
+    products: staticBase + 'product-category-ethernet-switches.html',
     microsite: staticBase + 'microsite.html',
     category: staticBase + 'product-category-ethernet-switches.html',
     selector: staticBase + 'product-category-ethernet-switches.html?openSelector=true',
     series: staticBase + 'product-series-eds-4008.html',
     seriesResources: staticBase + 'product-series-eds-4008.html#resources',
     compare: staticBase + 'compare-lv-hv.html',
-    model: staticBase + 'product-model-eds-4008-lv-hv.html',
+    model: staticBase + 'eds-4008-lv.html',
     datasheet: staticBase + 'asset/moxa-eds-4008-series-datasheet-v1.8.pdf',
     manual: staticBase + 'manual.html',
-    article: staticBase + 'article.html',
+    article: staticBase + 'campaign.html',
     video: staticBase + 'video.html',
-    contact: staticBase + 'contact-distributor.html',
-    distributor: staticBase + 'contact-distributor.html#distributor',
-    support: staticBase + 'contact-distributor.html#support',
-    ai: staticBase + 'chatbot.html'
+    contact: staticBase + 'campaign.html#contact-us',
+    distributor: staticBase + 'campaign.html#contact-us',
+    support: staticBase + 'campaign.html#contact-us',
+    ai: staticBase + 'compare-lv-hv.html'
   };
   var s1StateOrder = ['default', 'ethernetInterest', 'eds4008Session'];
   var s1HomepageData = {
@@ -2609,17 +3051,6 @@ nav.mainnav{gap:0}
   function applyS1State(state){
     var cfg = s1HomepageData[state] || s1HomepageData.default;
     document.body.setAttribute('data-s1-homepage-state', state);
-    updateText('[data-s1-next-label]', cfg.label);
-    updateText('[data-s1-next-title]', cfg.nextTitle);
-    updateText('[data-s1-next-copy]', cfg.nextCopy);
-    var primary = document.querySelector('[data-s1-next-primary]');
-    var secondary = document.querySelector('[data-s1-next-secondary]');
-    if(primary){ primary.textContent = cfg.primaryText; primary.setAttribute('data-s1-route', cfg.primaryRoute); primary.toggleAttribute('data-s1-record-search', state === 'ethernetInterest'); primary.toggleAttribute('data-s1-record-compare', state === 'eds4008Session'); }
-    if(secondary){ secondary.textContent = cfg.secondaryText; secondary.setAttribute('data-s1-route', cfg.secondaryRoute); secondary.toggleAttribute('data-s1-record-search', state !== 'eds4008Session'); }
-    cfg.proof.forEach(function(item, i){
-      updateText('[data-s1-proof-title-' + (i+1) + ']', item[0]);
-      updateText('[data-s1-proof-copy-' + (i+1) + ']', item[1]);
-    });
     cfg.resources.forEach(function(item, i){
       updateText('[data-s1-resource-tag-' + i + ']', item[0]);
       updateText('[data-s1-resource-title-' + i + ']', item[1]);
@@ -2636,90 +3067,6 @@ nav.mainnav{gap:0}
   applyRoutes();
   var s1HomepageState = resolveS1State();
   applyS1State(s1HomepageState);
-
-  /* ---- Mega menu: hover (desktop) + click/keyboard (all) ---- */
-  var items = Array.prototype.slice.call(document.querySelectorAll('[data-nav]'));
-  var isMobile = function(){ return window.matchMedia('(max-width:760px)').matches; };
-
-  function closeAll(except){
-    items.forEach(function(it){
-      if(it!==except){
-        it.removeAttribute('data-locked');
-        it.setAttribute('aria-expanded','false');
-        it.querySelector('button').setAttribute('aria-expanded','false');
-      }
-    });
-  }
-  items.forEach(function(it){
-    var btn = it.querySelector('button');
-    btn.addEventListener('click', function(e){
-      e.stopPropagation();
-      if(it.getAttribute('aria-expanded')==='true' && it.getAttribute('data-locked')==='true'){
-        e.preventDefault();
-        it.removeAttribute('data-pointer-toggle');
-        return;
-      }
-      if(it.getAttribute('data-pointer-toggle')==='true'){
-        it.removeAttribute('data-pointer-toggle');
-        return;
-      }
-      var open = it.getAttribute('aria-expanded')==='true';
-      closeAll(it);
-      if(open){ it.removeAttribute('data-locked'); }
-      else{ it.setAttribute('data-locked','true'); }
-      it.setAttribute('aria-expanded', open?'false':'true');
-      btn.setAttribute('aria-expanded', open?'false':'true');
-    });
-    if(!('ontouchstart' in window)){
-      it.addEventListener('mouseenter', function(){ if(!isMobile()){ closeAll(it); it.setAttribute('aria-expanded','true'); btn.setAttribute('aria-expanded','true'); }});
-      it.addEventListener('mouseleave', function(){
-        if(!isMobile() && it.getAttribute('data-locked')!=='true'){
-          it.setAttribute('aria-expanded','false');
-          btn.setAttribute('aria-expanded','false');
-        }
-      });
-    }
-  });
-  document.addEventListener('pointerdown', function(e){
-    var btn = e.target.closest ? e.target.closest('.navitem > button') : null;
-    if(!btn){ return; }
-    var it = btn.closest('[data-nav]');
-    if(!it){ return; }
-    e.stopPropagation();
-    closeAll(it);
-    it.setAttribute('data-locked','true');
-    it.setAttribute('aria-expanded','true');
-    btn.setAttribute('aria-expanded','true');
-    it.setAttribute('data-pointer-toggle','true');
-  }, true);
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeAll(null); });
-
-  /* ---- Mobile menu toggle ---- */
-  var mt = document.getElementById('menuToggle');
-  var nav = document.getElementById('mainnav');
-  document.addEventListener('click', function(e){
-    if(nav && nav.contains(e.target)){ return; }
-    if(mt && mt.contains(e.target)){ return; }
-    closeAll(null);
-  });
-  mt.addEventListener('click', function(e){
-    e.stopPropagation();
-    var open = nav.classList.toggle('open');
-    mt.setAttribute('aria-expanded', open?'true':'false');
-  });
-  document.addEventListener('click', function(e){
-    if(nav.classList.contains('open') && !nav.contains(e.target) && !mt.contains(e.target)){
-      nav.classList.remove('open');
-      mt.setAttribute('aria-expanded','false');
-    }
-  });
-  nav.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      nav.classList.remove('open');
-      mt.setAttribute('aria-expanded','false');
-      closeAll(null);
-    });
-  });
 
   /* ---- Search button routes visitors into the guided finder ---- */
   document.querySelectorAll('.icon-btn.search').forEach(function(btn){
@@ -2957,6 +3304,35 @@ nav.mainnav{gap:0}
     });
   }
 
+  /* ---- Second-screen AI search + floating section navigation ---- */
+  var homepageIntentForm = document.getElementById('homepageIntentSearchForm');
+  var homepageIntentInput = document.getElementById('homepageIntentSearch');
+  if(homepageIntentForm){
+    homepageIntentForm.addEventListener('submit', function(event){
+      event.preventDefault();
+      var query = homepageIntentInput && homepageIntentInput.value.trim()
+        ? homepageIntentInput.value.trim()
+        : 'Ethernet Switches';
+      window.location.href = 'search.html?q=' + encodeURIComponent(query);
+    });
+  }
+  var homepageSectionLinks = Array.prototype.slice.call(document.querySelectorAll('.homepage-section-nav a'));
+  var homepageSectionTargets = homepageSectionLinks.map(function(link){
+    return document.getElementById(link.dataset.homeSection);
+  }).filter(Boolean);
+  if('IntersectionObserver' in window){
+    var homepageSectionObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          homepageSectionLinks.forEach(function(link){
+            link.classList.toggle('active', link.dataset.homeSection === entry.target.id);
+          });
+        }
+      });
+    }, {rootMargin:'-38% 0px -50% 0px', threshold:.01});
+    homepageSectionTargets.forEach(function(target){ homepageSectionObserver.observe(target); });
+  }
+
   /* ---- Scroll reveal ---- */
   var reveals = document.querySelectorAll('.reveal');
   if(reduce || !('IntersectionObserver' in window)){
@@ -2966,6 +3342,50 @@ nav.mainnav{gap:0}
       entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }});
     }, {threshold:.14});
     reveals.forEach(function(r){ io.observe(r); });
+  }
+
+  /* ---- Enabling Connectivity: gradient focus + sequential counters ---- */
+  var connectivity = document.querySelector('[data-connectivity-motion]');
+  function counterValue(el, value){
+    var rounded = Math.round(value);
+    var output = el.getAttribute('data-counter-format') === 'comma' ? rounded.toLocaleString('en-US') : String(rounded);
+    el.textContent = output + (el.getAttribute('data-counter-suffix') || '');
+  }
+  function animateCounter(el, duration){
+    var target = Number(el.getAttribute('data-counter-target')) || 0;
+    if(reduce){ counterValue(el, target); return; }
+    var started = performance.now();
+    function frame(now){
+      var progress = Math.min(1, (now - started) / duration);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      counterValue(el, target * eased);
+      if(progress < 1){ requestAnimationFrame(frame); }
+    }
+    requestAnimationFrame(frame);
+  }
+  function startConnectivityMotion(){
+    if(!connectivity || connectivity.classList.contains('has-run')){ return; }
+    connectivity.classList.add('has-run','is-animating');
+    var stats = Array.prototype.slice.call(connectivity.querySelectorAll('.connectivity-stat'));
+    stats.forEach(function(stat,index){
+      window.setTimeout(function(){
+        connectivity.style.setProperty('--focus-x', (48 + index * 24) + '%');
+        stats.forEach(function(item){ item.classList.remove('is-focused'); });
+        stat.classList.add('is-focused');
+        animateCounter(stat.querySelector('[data-counter-target]'), 1350);
+        window.setTimeout(function(){ stat.classList.remove('is-focused'); stat.classList.add('is-complete'); }, 1450);
+      }, index * 620);
+    });
+    window.setTimeout(function(){ connectivity.classList.remove('is-animating'); }, stats.length * 620 + 1500);
+  }
+  if(connectivity){
+    if(reduce || !('IntersectionObserver' in window)){ startConnectivityMotion(); }
+    else {
+      var connectivityObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){ if(entry.isIntersecting){ startConnectivityMotion(); connectivityObserver.unobserve(entry.target); }});
+      }, {threshold:.35});
+      connectivityObserver.observe(connectivity);
+    }
   }
 
   /* ---- Hero node-network: the "bond line" ---- */
@@ -3132,8 +3552,8 @@ nav.mainnav{gap:0}
       <a href="manual.html"><b>Validate</b><span>Open manuals and datasheets before contacting sales.</span></a>
     </div>
     <div class="moxa-advisor-primary">
-      <a href="chatbot.html">Open full advisor</a>
-      <a href="contact-distributor.html#contact">Ask an engineer</a>
+      <a href="compare-lv-hv.html">Open full advisor</a>
+      <a href="campaign.html#contact-us">Ask an engineer</a>
     </div>
   </div>
 </aside>
@@ -3239,13 +3659,26 @@ nav.mainnav{gap:0}
     }
   });
   document.addEventListener("click", function(){ closeAll(null); });
-  document.addEventListener("keydown", function(event){ if(event.key === "Escape"){ closeAll(null); } });
+  document.addEventListener("keydown", function(event){
+    if(event.key === "Escape"){
+      var openItem = document.querySelector('.mainnav [data-nav][aria-expanded="true"]');
+      closeAll(null);
+      if(openItem){
+        var openButton = openItem.querySelector("button");
+        if(openButton){ openButton.focus(); }
+      }
+    }
+  });
 
   var menuToggle = document.getElementById("menuToggle");
   var nav = document.getElementById("mainnav");
   if(menuToggle && nav){
     menuToggle.addEventListener("click", function(event){
       event.stopPropagation();
+      if(searchForm){ searchForm.classList.remove("is-open"); }
+      if(searchExpand){ searchExpand.setAttribute("aria-expanded", "false"); }
+      if(utilityLinks){ utilityLinks.classList.remove("is-open"); }
+      if(accountToggle){ accountToggle.setAttribute("aria-expanded", "false"); }
       var open = nav.classList.toggle("open");
       menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
@@ -3254,18 +3687,105 @@ nav.mainnav{gap:0}
     });
   }
 
-  document.querySelectorAll(".icon-btn.search").forEach(function(button){
-    button.addEventListener("click", function(){
-      var field = document.querySelector("#sxSearchInput, .finder-input input, input[type='search'], .search-shell input, [role='search'] input");
-      if(field){
-        field.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
-        window.setTimeout(function(){ field.focus(); }, reduce ? 0 : 220);
-      } else {
-        window.location.href = "search.html";
+  var searchForm = document.getElementById("globalSearchForm");
+  var searchInput = document.getElementById("globalSearchInput");
+  var aiModeToggle = document.getElementById("aiModeToggle");
+  var searchExpand = document.getElementById("searchExpand");
+  var accountToggle = document.getElementById("accountToggle");
+  var utilityLinks = document.getElementById("utilityLinks");
+  var aiMode = false;
+
+  function setAiMode(enabled){
+    aiMode = enabled;
+    if(aiModeToggle){ aiModeToggle.setAttribute("aria-pressed", enabled ? "true" : "false"); }
+    if(searchInput){
+      searchInput.placeholder = enabled
+        ? "Ask Moxa AI about products or applications"
+        : "Search products, solutions, and resources";
+    }
+  }
+
+  function openAdvisorWithQuery(query){
+    var panel = document.querySelector("[data-moxa-advisor-panel]");
+    var launcher = document.querySelector("[data-moxa-advisor-toggle]");
+    if(!panel || !launcher){ return; }
+    var oldQuery = panel.querySelector("[data-ai-query]");
+    if(oldQuery){ oldQuery.remove(); }
+    var body = panel.querySelector(".moxa-global-advisor-body");
+    if(body){
+      var bubble = document.createElement("div");
+      bubble.className = "moxa-global-advisor-bubble-user";
+      bubble.setAttribute("data-ai-query", "");
+      bubble.textContent = query;
+      body.insertBefore(bubble, body.firstChild);
+    }
+    panel.classList.add("is-open");
+    panel.setAttribute("aria-hidden", "false");
+    launcher.classList.add("is-open");
+    launcher.setAttribute("aria-expanded", "true");
+  }
+
+  if(aiModeToggle){
+    aiModeToggle.addEventListener("click", function(event){
+      event.stopPropagation();
+      setAiMode(!aiMode);
+      if(searchInput){ searchInput.focus(); }
+    });
+  }
+  if(searchForm){
+    searchForm.addEventListener("submit", function(event){
+      event.preventDefault();
+      var query = searchInput ? searchInput.value.trim() : "";
+      if(!query){ if(searchInput){ searchInput.focus(); } return; }
+      if(aiMode){ openAdvisorWithQuery(query); }
+      else{ window.location.href = "search.html?q=" + encodeURIComponent(query); }
+    });
+  }
+  if(searchInput && searchForm){
+    searchInput.addEventListener("keydown", function(event){
+      if(event.key === "Enter"){
+        event.preventDefault();
+        searchForm.requestSubmit();
       }
     });
+  }
+  if(searchExpand && searchForm){
+    searchExpand.addEventListener("click", function(event){
+      event.stopPropagation();
+      if(nav){ nav.classList.remove("open"); }
+      if(menuToggle){ menuToggle.setAttribute("aria-expanded", "false"); }
+      if(utilityLinks){ utilityLinks.classList.remove("is-open"); }
+      if(accountToggle){ accountToggle.setAttribute("aria-expanded", "false"); }
+      var open = searchForm.classList.toggle("is-open");
+      searchExpand.setAttribute("aria-expanded", open ? "true" : "false");
+      if(open && searchInput){ searchInput.focus(); }
+    });
+  }
+  if(accountToggle && utilityLinks){
+    accountToggle.addEventListener("click", function(event){
+      event.stopPropagation();
+      if(searchForm){ searchForm.classList.remove("is-open"); }
+      if(searchExpand){ searchExpand.setAttribute("aria-expanded", "false"); }
+      if(nav){ nav.classList.remove("open"); }
+      if(menuToggle){ menuToggle.setAttribute("aria-expanded", "false"); }
+      var open = utilityLinks.classList.toggle("is-open");
+      accountToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    utilityLinks.addEventListener("click", function(event){ event.stopPropagation(); });
+  }
+  document.addEventListener("click", function(){
+    if(utilityLinks){ utilityLinks.classList.remove("is-open"); }
+    if(accountToggle){ accountToggle.setAttribute("aria-expanded", "false"); }
+  });
+  document.addEventListener("keydown", function(event){
+    if(event.key !== "Escape"){ return; }
+    if(searchForm){ searchForm.classList.remove("is-open"); }
+    if(searchExpand){ searchExpand.setAttribute("aria-expanded", "false"); }
+    if(utilityLinks){ utilityLinks.classList.remove("is-open"); }
+    if(accountToggle){ accountToggle.setAttribute("aria-expanded", "false"); }
   });
 })();
 </script>
+<script src="assets/js/moxa-shell.js?v=20260717-lead-form"></script>
 </body>
 </html>
