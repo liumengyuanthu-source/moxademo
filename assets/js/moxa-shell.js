@@ -306,27 +306,23 @@
   function megaMarkup(label) {
     const columns = megaColumns[label] || [];
     const meta = megaMeta[label] || {};
-    const feature = meta.feature || {};
-    const quickLinks = columns[2] || { title: "Quick Links", links: [] };
     return `
       <div class="moxa-mega" role="region" aria-label="${escapeHtml(label)} menu">
         <div class="moxa-mega-shell">
-          <div class="moxa-mega-heading">
-            <div>
+          <div class="moxa-mega-card-grid">
+            <article class="moxa-mega-intro">
               <p class="moxa-mega-eyebrow">${escapeHtml(label)}</p>
               <h2>${escapeHtml(meta.heading || label)}</h2>
               <p>${escapeHtml(meta.description || "")}</p>
-            </div>
-            <a class="moxa-mega-view-all" href="${escapeHtml(meta.viewAll?.[1] || "#")}">
-              ${escapeHtml(meta.viewAll?.[0] || `View All ${label}`)}
-            </a>
-          </div>
-          <div class="moxa-mega-grid">
+              <a class="moxa-mega-guide" href="${escapeHtml(meta.viewAll?.[1] || "#")}">
+                <strong>${escapeHtml(meta.viewAll?.[0] || `View All ${label}`)}</strong>
+                <span>Start here for a guided overview.</span>
+              </a>
+            </article>
             ${columns
-              .slice(0, 2)
-            .map(
+              .map(
               (column) => `
-                <section class="moxa-mega-column">
+                <section class="moxa-mega-category-card">
                   <h3>${escapeHtml(column.title)}</h3>
                   ${column.links
                     .map(
@@ -338,25 +334,7 @@
               `
             )
             .join("")}
-            <article class="moxa-mega-feature">
-              <img src="${escapeHtml(feature.image || "")}" alt="">
-              <div class="moxa-mega-feature-body">
-                <span class="moxa-mega-feature-tag">${escapeHtml(feature.tag || "Featured")}</span>
-                <h3>${escapeHtml(feature.title || label)}</h3>
-                <p>${escapeHtml(feature.description || "")}</p>
-                <a href="${escapeHtml(feature.href || "#")}">${escapeHtml(feature.cta || "Explore")}</a>
-              </div>
-            </article>
           </div>
-          <nav class="moxa-mega-quicklinks" aria-label="${escapeHtml(label)} quick links">
-            <strong>${escapeHtml(quickLinks.title)}</strong>
-            ${quickLinks.links
-              .map(
-                ([linkLabel, href]) =>
-                  `<a href="${escapeHtml(href)}">${escapeHtml(linkLabel)}</a>`
-              )
-              .join("")}
-          </nav>
         </div>
       </div>
     `;
@@ -431,7 +409,7 @@
         <section class="moxa-subscribe moxa-subscribe-row" id="moxa-subscribe">
           <div class="moxa-subscribe-copy">
             <h2 class="moxa-footer-compact-title">Stay connected</h2>
-            <p>Product and application updates.</p>
+            <p class="moxa-subscribe-consent">Sign up for the latest updates on Moxa solutions. At Moxa, we have a healthy respect for privacy and will not share your email with anyone.</p>
           </div>
           <div class="moxa-subscribe-action">
             <form class="moxa-subscribe-form" id="moxaSubscribeForm">
@@ -567,7 +545,10 @@
 
   function closeNavigation(except) {
     document.querySelectorAll(".moxa-nav-trigger").forEach((button) => {
-      if (button !== except) button.setAttribute("aria-expanded", "false");
+      if (button !== except) {
+        button.setAttribute("aria-expanded", "false");
+        button.closest(".moxa-nav-item")?.classList.remove("is-pinned");
+      }
     });
   }
 
@@ -578,8 +559,22 @@
     const searchToggle = document.getElementById("moxaSearchToggle");
     const utilities = document.getElementById("moxaUtilityLinks");
     const accountToggle = document.getElementById("moxaAccountToggle");
+    const desktopNavigation = window.matchMedia("(min-width: 769px)");
+    let hoverCloseTimer = 0;
+
+    function setNavigationTrigger(button, open) {
+      if (!(button instanceof HTMLButtonElement)) return;
+      if (open) closeNavigation(button);
+      button.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+
+    function clearHoverCloseTimer() {
+      window.clearTimeout(hoverCloseTimer);
+      hoverCloseTimer = 0;
+    }
 
     function closeNavigationUi() {
+      clearHoverCloseTimer();
       closeNavigation();
       nav?.classList.remove("is-open");
       search?.classList.remove("is-open");
@@ -596,11 +591,35 @@
     }
 
     document.querySelectorAll(".moxa-nav-trigger").forEach((button) => {
+      const item = button.closest(".moxa-nav-item");
       button.addEventListener("click", (event) => {
         event.stopPropagation();
-        const opening = button.getAttribute("aria-expanded") !== "true";
+        clearHoverCloseTimer();
+        const pinned = item?.classList.contains("is-pinned");
         closeNavigation(button);
-        button.setAttribute("aria-expanded", opening ? "true" : "false");
+        item?.classList.toggle("is-pinned", !pinned);
+        setNavigationTrigger(button, !pinned);
+      });
+
+      item?.addEventListener("pointerenter", () => {
+        if (!desktopNavigation.matches) return;
+        clearHoverCloseTimer();
+        setNavigationTrigger(button, true);
+      });
+      item?.addEventListener("pointerleave", () => {
+        if (!desktopNavigation.matches) return;
+        if (item.classList.contains("is-pinned")) return;
+        clearHoverCloseTimer();
+        hoverCloseTimer = window.setTimeout(() => setNavigationTrigger(button, false), 140);
+      });
+      item?.addEventListener("focusin", () => {
+        clearHoverCloseTimer();
+        setNavigationTrigger(button, true);
+      });
+      item?.addEventListener("focusout", (event) => {
+        if (item.contains(event.relatedTarget)) return;
+        if (item.classList.contains("is-pinned")) return;
+        setNavigationTrigger(button, false);
       });
     });
 

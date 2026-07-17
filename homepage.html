@@ -2282,7 +2282,7 @@ nav.mainnav{gap:0}
   box-shadow:0 28px 76px rgba(19,55,62,.11);
 }
 .homepage-ai-search-copy .home-kicker{margin-bottom:16px}
-.homepage-ai-search-copy h2{max-width:480px;color:#102f3f;font-size:clamp(2.3rem,4.4vw,4rem);line-height:1.02;letter-spacing:-.045em}
+.homepage-ai-search-copy h2{max-width:500px;color:#102f3f;font-size:clamp(2.2rem,3.4vw,3.35rem);line-height:1.06;letter-spacing:-.04em;text-wrap:balance}
 .homepage-ai-search-copy p{max-width:520px;margin-top:18px;color:#60757c;font-size:17px;line-height:1.65}
 .homepage-ai-search-box{display:grid;gap:18px}
 .homepage-ai-search-field{
@@ -2335,48 +2335,44 @@ nav.mainnav{gap:0}
   gap:24px;
 }
 .explore-card{
-  position:relative;
-  min-height:430px;
+  display:flex;
+  min-height:100%;
+  flex-direction:column;
   overflow:hidden;
   border:1px solid #d8e4e5;
-  border-radius:3px;
-  background:#123b42;
-  color:#fff;
-  isolation:isolate;
+  border-radius:14px;
+  background:#fff;
+  color:#173544;
+  box-shadow:0 20px 52px rgba(19,55,62,.08);
+  transition:transform .24s ease,box-shadow .24s ease,border-color .24s ease;
 }
-.explore-card img{
-  position:absolute;
-  inset:0;
+.explore-card-media{aspect-ratio:16/9;overflow:hidden;background:#e6efef}
+.explore-card-media img{
   width:100%;
   height:100%;
   object-fit:cover;
   transition:transform .5s var(--ease);
-  z-index:-2;
 }
-.explore-card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(180deg,rgba(4,34,43,.04) 18%,rgba(5,39,48,.88) 100%);
-  z-index:-1;
-}
-.explore-card:hover img{transform:scale(1.035)}
-.explore-card-content{
-  position:absolute;
-  inset:auto 0 0;
-  padding:clamp(24px,4vw,40px);
+.explore-card:hover{transform:translateY(-4px);border-color:#9fc7c7;box-shadow:0 28px 62px rgba(19,55,62,.13)}
+.explore-card:hover img{transform:scale(1.025)}
+.explore-card-body{
+  display:flex;
+  flex:1;
+  flex-direction:column;
+  padding:clamp(24px,3vw,34px);
 }
 .explore-card .content-type{
   display:inline-block;
   margin-bottom:13px;
-  color:#9cf1e8;
+  color:var(--green-700);
   font-size:12px;
   font-weight:850;
   letter-spacing:.12em;
   text-transform:uppercase;
 }
-.explore-card h3{max-width:500px;color:#fff;font-size:clamp(1.55rem,2.5vw,2.25rem);line-height:1.1}
-.explore-card .home-text-link{margin-top:20px;color:#fff}
+.explore-card h3{max-width:560px;color:#173544;font-size:clamp(1.4rem,2vw,1.85rem);line-height:1.16;text-wrap:balance}
+.explore-card-body p{margin-top:14px;color:#60757c;font-size:15px;line-height:1.62}
+.explore-card .home-text-link{margin-top:auto;padding-top:24px;color:var(--green-700)}
 .featured-layout{
   display:grid;
   grid-template-columns:minmax(380px,.88fr) minmax(420px,1.12fr);
@@ -2388,25 +2384,12 @@ nav.mainnav{gap:0}
   box-shadow:0 28px 70px rgba(22,62,68,.08);
   overflow:hidden;
 }
-.featured-media{position:relative;aspect-ratio:1;min-height:0;border-radius:12px;background:linear-gradient(145deg,#f4f8f8,#dfecea);overflow:hidden}
-.featured-media img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .5s var(--ease)}
+.featured-media{position:relative;align-self:stretch;min-height:520px;border-radius:0;background:linear-gradient(145deg,#f8fbfb,#edf4f3);overflow:hidden}
+.featured-media img{width:100%;height:100%;padding:clamp(24px,4vw,50px);object-fit:contain;object-position:center;transition:transform .5s var(--ease)}
 .featured-layout:hover .featured-media img{transform:scale(1.025)}
-.featured-badge{
-  position:absolute;
-  left:24px;
-  top:24px;
-  padding:10px 13px;
-  background:rgba(255,255,255,.94);
-  color:var(--green-700);
-  border-left:3px solid var(--green);
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-}
 .featured-copy{padding:clamp(34px,5vw,62px);display:flex;flex-direction:column;justify-content:center}
 .featured-series{color:var(--green-700);font-size:15px;font-weight:850}
-.featured-copy h3{margin-top:14px;color:#102f3f;font-size:clamp(2rem,3.6vw,3.15rem);line-height:1.05;letter-spacing:-.035em}
+.featured-copy h3{margin-top:14px;color:#102f3f;font-size:clamp(1.85rem,2.8vw,2.65rem);line-height:1.08;letter-spacing:-.03em;text-wrap:balance}
 .feature-points{display:grid;gap:0;margin:28px 0 30px;padding:0;list-style:none;border-top:1px solid #dce6e7}
 .feature-points li{display:grid;grid-template-columns:22px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid #dce6e7;color:#4f666d;font-size:14px}
 .feature-points li::before{content:"✓";color:var(--green);font-weight:900}
@@ -2436,10 +2419,12 @@ nav.mainnav{gap:0}
 .connectivity-band.is-animating::after{opacity:1;animation:connectivitySweep 2.6s var(--ease) both}
 @keyframes connectivityGlow{from{filter:blur(0);transform:scale(.8) translateX(-2%)}to{filter:blur(8px);transform:scale(1.04) translateX(4%)}}
 @keyframes connectivitySweep{0%{transform:translateX(-72%)}100%{transform:translateX(88%)}}
+.connectivity-stars{position:absolute;inset:0;z-index:-1;background:url("img/connection-abstract.jpg") center/cover no-repeat;mix-blend-mode:screen;opacity:.11;transform:scale(1.02);animation:connectivityStarPulse 7s ease-in-out infinite alternate;pointer-events:none}
+@keyframes connectivityStarPulse{0%{opacity:.08;filter:brightness(.76) saturate(.85);transform:scale(1.01)}55%{opacity:.24;filter:brightness(1.18) saturate(1.1);transform:scale(1.045)}100%{opacity:.14;filter:brightness(.92) saturate(1);transform:scale(1.025)}}
 .connectivity-inner{position:relative;z-index:1;display:grid;grid-template-columns:.9fr 1.6fr;gap:60px;align-items:center}
 .connectivity-band .home-kicker{color:#a4ece4}
 .connectivity-band .home-kicker::before{background:#70d8cf}
-.connectivity-band h2{max-width:520px;color:#fff;font-size:clamp(2.1rem,4vw,3.4rem);line-height:1.04}
+.connectivity-band h2{max-width:560px;color:#fff;font-size:clamp(2rem,3.2vw,2.9rem);line-height:1.08;text-wrap:balance}
 .connectivity-band p{max-width:520px;margin-top:16px;color:#c9dfe0;font-size:16px;line-height:1.65}
 .connectivity-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:10px;border:1px solid rgba(255,255,255,.22);border-radius:18px;background:rgba(226,255,251,.10);-webkit-backdrop-filter:blur(18px) saturate(135%);backdrop-filter:blur(18px) saturate(135%);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 24px 70px rgba(0,25,30,.18)}
 .connectivity-stat{min-height:180px;padding:32px 26px;border:1px solid rgba(255,255,255,.16);border-radius:12px;background:rgba(255,255,255,.045);display:flex;flex-direction:column;justify-content:center;opacity:.56;transform:scale(.94);transform-origin:center;transition:transform .52s var(--ease),opacity .42s ease,background .42s ease,box-shadow .42s ease}
@@ -2473,6 +2458,7 @@ nav.mainnav{gap:0}
   .connectivity-stats{grid-template-columns:1fr}
   .connectivity-stat{min-height:130px;border:1px solid rgba(255,255,255,.16)}
 }
+@media(prefers-reduced-motion:reduce){.connectivity-stars{animation:none}.explore-card,.explore-card img,.featured-media img{transition:none}}
 /* MOXA_HOMEPAGE_SCHEME_A_20260716_END */
 /* MOXA_GLOBAL_SHELL_20260714_END */
 
@@ -2768,19 +2754,21 @@ nav.mainnav{gap:0}
     </div>
     <div class="explore-grid">
       <a class="explore-card reveal" href="microsite.html">
-        <img src="img/scenario-manufacturing.jpg" alt="Automated production line using resilient industrial wireless connectivity" loading="lazy">
-        <div class="explore-card-content">
-          <span class="content-type">Industrial Wireless</span>
-          <h3>Achieve Resilience in the Field With WLAN You Can Trust</h3>
-          <span class="home-text-link">Explore the solution</span>
+        <div class="explore-card-media"><img src="img/scenario-manufacturing.jpg" alt="Automated production line using resilient industrial connectivity" loading="lazy"></div>
+        <div class="explore-card-body">
+          <span class="content-type">Machine OEM Solutions</span>
+          <h3>Elevate Machinery Performance With Reliable Connectivity</h3>
+          <p>Modern machines are becoming smarter and more autonomous, and reliable connectivity is the backbone of this evolution. Explore connectivity for applications from AGVs to manufacturing lines.</p>
+          <span class="home-text-link">Explore machinery solutions</span>
         </div>
       </a>
-      <a class="explore-card reveal" href="campaign.html">
-        <img src="img/family-edge.jpg" alt="Industrial edge gateway supporting secure operational technology" loading="lazy">
-        <div class="explore-card-content">
-          <span class="content-type">OT Security</span>
-          <h3>7 Checks to Find Out If Your OT Edge Is Secure</h3>
-          <span class="home-text-link">Read the checklist</span>
+      <a class="explore-card reveal" href="microsite.html#architecture">
+        <div class="explore-card-media"><img src="img/family-edge.jpg" alt="Remote I/O connecting varied field data across an industrial operation" loading="lazy"></div>
+        <div class="explore-card-body">
+          <span class="content-type">Remote I/O</span>
+          <h3>Empowering Essential Industries With Reliable Remote I/O</h3>
+          <p>Dynamic automation environments demand high visibility and resilient edge connectivity. Discover how Remote I/O reliably processes and transmits varied field data across critical sectors.</p>
+          <span class="home-text-link">Explore Remote I/O</span>
         </div>
       </a>
     </div>
@@ -2799,8 +2787,7 @@ nav.mainnav{gap:0}
     </div>
     <article class="featured-layout reveal">
       <div class="featured-media">
-        <img src="img/family-computing.jpg" alt="DA-920E Series fanless vPAC server for substation automation" loading="lazy">
-        <span class="featured-badge">New Product</span>
+        <img src="img/da-920e-series-official.jpg" alt="Official Moxa DA-920E Series 2U rackmount fanless industrial server" loading="lazy">
       </div>
       <div class="featured-copy">
         <div class="featured-series">DA-920E Series</div>
@@ -2845,6 +2832,7 @@ nav.mainnav{gap:0}
 
 <!-- ================= ENABLING CONNECTIVITY ================= -->
 <section class="connectivity-band" id="enabling-connectivity" aria-labelledby="connectivityTitle" data-connectivity-motion>
+  <div class="connectivity-stars" aria-hidden="true"></div>
   <div class="wrap connectivity-inner" id="proof">
     <div class="reveal">
       <div class="home-kicker">Enabling Connectivity</div>
@@ -3800,7 +3788,7 @@ nav.mainnav{gap:0}
     <section class="moxa-subscribe moxa-subscribe-row" id="moxa-subscribe">
       <div class="moxa-subscribe-copy">
         <h2 class="moxa-footer-compact-title">Stay connected</h2>
-        <p>Product and application updates.</p>
+        <p class="moxa-subscribe-consent">Sign up for the latest updates on Moxa solutions. At Moxa, we have a healthy respect for privacy and will not share your email with anyone.</p>
       </div>
       <div class="moxa-subscribe-action">
         <form class="moxa-subscribe-form" id="moxaSubscribeForm">
