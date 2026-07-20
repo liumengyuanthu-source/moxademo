@@ -34,5 +34,9 @@ assert.match(code, /fitAllPages/);
 assert.match(code, /direction === 'HORIZONTAL'/);
 assert.match(code, /function applyAutoLayoutSizing/);
 assert.match(code, /set\.layoutWrap = 'WRAP'/);
+assert.match(code, /function renderComponentSpecimen/);
+assert.match(code, /function renderVariantContent/);
+assert.match(code, /function componentDocumentationCard/);
+assert.match(code, /Visual specimen/);
 
 console.log('Moxa Figma Builder plugin output: PASS');

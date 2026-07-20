@@ -249,6 +249,191 @@ function pluginRuntime() {
     }
   }
 
+  function gradientPaint(from, to) {
+    return {
+      type: 'GRADIENT_LINEAR',
+      gradientTransform: [[1, 0, 0], [0, 1, 0]],
+      gradientStops: [
+        { position: 0, color: { ...from, a: 1 } },
+        { position: 1, color: { ...to, a: 1 } }
+      ]
+    };
+  }
+
+  function visualButton(label, style = 'primary') {
+    const button = autoFrame(`Button / ${label}`, 'HORIZONTAL', { padding: 12, gap: 8, radius: 6, fill: style === 'secondary' ? color.white : color.teal, stroke: style === 'secondary' ? color.teal : null });
+    if (style === 'ai') button.fills = [gradientPaint(color.tealDark, color.cyan)];
+    button.primaryAxisAlignItems = 'CENTER'; button.counterAxisAlignItems = 'CENTER';
+    button.appendChild(textNode(label, { size: 14, lineHeight: 20, style: 'Bold', color: style === 'secondary' ? color.tealDark : color.white }));
+    return button;
+  }
+
+  function visualField(label, value, width = 480, state = 'default') {
+    const stack = autoFrame(`Field / ${label}`, 'VERTICAL', { width, padding: 0, gap: 6, radius: 0, fill: color.white });
+    if (label) appendFill(stack, textNode(label, { size: 12, lineHeight: 18, style: 'Semi Bold', color: color.ink }));
+    const field = autoFrame('Input surface', 'HORIZONTAL', { width, padding: 12, gap: 10, radius: 6, fill: color.white, stroke: state === 'error' ? color.orange : (state === 'focus' ? color.cyan : color.line) });
+    field.counterAxisAlignItems = 'CENTER';
+    field.appendChild(textNode(value, { size: 14, lineHeight: 20, color: state === 'filled' ? color.ink : color.muted }));
+    appendFill(stack, field);
+    if (state === 'error') appendFill(stack, textNode('Please complete this field.', { size: 12, lineHeight: 18, color: color.orange }));
+    return stack;
+  }
+
+  function visualArtwork(label, width = 360, height = 170) {
+    const art = figma.createFrame();
+    art.name = `Industrial image / ${label}`; art.resize(width, height); art.cornerRadius = 8; art.clipsContent = true;
+    art.fills = [gradientPaint(color.navy, color.teal)];
+    const title = textNode(label, { size: 18, lineHeight: 24, style: 'Bold', color: color.white, width: width - 40 });
+    title.x = 20; title.y = height - 54; art.appendChild(title);
+    for (let index = 0; index < 7; index += 1) {
+      const dot = figma.createEllipse(); dot.name = 'Network node'; dot.resize(8 + (index % 3) * 3, 8 + (index % 3) * 3);
+      dot.x = 26 + index * Math.max(34, Math.floor((width - 80) / 7)); dot.y = 28 + (index % 3) * 26;
+      dot.fills = [solid(index % 2 ? color.cyan : color.white, 0.88)]; art.appendChild(dot);
+    }
+    return art;
+  }
+
+  function visualNav(items, active = 0, width = 680) {
+    const nav = autoFrame('Navigation specimen', 'HORIZONTAL', { width, padding: 14, gap: 28, radius: 6, fill: color.white, stroke: color.line });
+    nav.counterAxisAlignItems = 'CENTER';
+    for (let index = 0; index < items.length; index += 1) {
+      const item = autoFrame(`Nav item / ${items[index]}`, 'VERTICAL', { padding: 4, gap: 8, radius: 0, fill: color.white });
+      item.appendChild(textNode(items[index], { size: 14, lineHeight: 20, style: 'Semi Bold', color: index === active ? color.tealDark : color.ink }));
+      if (index === active) { const line = figma.createRectangle(); line.name = 'Active indicator'; line.resize(72, 3); line.fills = [solid(color.teal)]; item.appendChild(line); }
+      nav.appendChild(item);
+    }
+    return nav;
+  }
+
+  function visualTable(columns, rows, width = 760) {
+    const table = autoFrame('Data table specimen', 'VERTICAL', { width, padding: 0, gap: 1, radius: 8, fill: color.line, stroke: color.line });
+    const allRows = [columns, ...rows];
+    for (let rowIndex = 0; rowIndex < allRows.length; rowIndex += 1) {
+      const row = autoFrame(`Table row ${rowIndex + 1}`, 'HORIZONTAL', { width, padding: 12, gap: 12, radius: 0, fill: rowIndex === 0 ? color.navy : color.white });
+      for (const cell of allRows[rowIndex]) row.appendChild(textNode(cell, { size: 12, lineHeight: 18, style: rowIndex === 0 ? 'Bold' : 'Regular', color: rowIndex === 0 ? color.white : color.ink, width: Math.floor((width - 48) / columns.length) }));
+      appendFill(table, row);
+    }
+    return table;
+  }
+
+  function renderComponentSpecimen(component, definition) {
+    const widths = { shell: 900, action: 420, form: 560, navigation: 760, content: 680, card: 420, data: 840, media: 840, conversion: 900, ai: 760 };
+    const width = widths[definition.specimenKind] || 560;
+    applyAutoLayoutSizing(component, 'VERTICAL', width);
+    component.paddingTop = 20; component.paddingRight = 20; component.paddingBottom = 20; component.paddingLeft = 20; component.itemSpacing = 12;
+    component.cornerRadius = 10; component.fills = [solid(color.white)]; component.strokes = [solid(color.line)]; component.strokeWeight = 1;
+
+    const add = node => { component.appendChild(node); node.layoutAlign = 'INHERIT'; return node; };
+    const row = (name, children, rowWidth = width - 40, fill = color.white) => {
+      const frame = autoFrame(name, 'HORIZONTAL', { width: rowWidth, padding: 12, gap: 16, radius: 6, fill, stroke: color.line }); frame.counterAxisAlignItems = 'CENTER';
+      for (const child of children) frame.appendChild(child); return frame;
+    };
+
+    if (definition.id === 'G-001') {
+      add(row('Global header', [textNode('MOXA', { size: 24, lineHeight: 28, style: 'Extra Bold', color: color.teal }), visualField('', 'Search products, solutions, and resources', 430), visualButton('Ask AI', 'ai'), visualButton('Contact Us')], width - 40));
+    } else if (definition.id === 'G-002') {
+      add(row('Brand lockup', [textNode('▲ MOXA®', { size: 40, lineHeight: 46, style: 'Extra Bold', color: color.teal })], 360));
+    } else if (definition.id === 'G-003' || definition.id === 'F-004') {
+      add(visualField('', 'Search products, solutions, and resources', Math.min(680, width - 40), 'focus'));
+    } else if (definition.id === 'G-004') {
+      add(visualButton('AI  Ask AI', 'ai'));
+    } else if (definition.id === 'G-005') {
+      add(row('Utility links', ['Contact Us', 'Partner Zone', 'My Moxa', 'Sign In'].map(item => textNode(item, { size: 13, lineHeight: 18, style: 'Semi Bold', color: color.ink })), 560));
+    } else if (definition.id === 'G-006') {
+      add(visualNav(['Products', 'Solutions', 'Resources', 'Support', 'Why Moxa'], 0, width - 40));
+    } else if (definition.id === 'G-007') {
+      const menu = autoFrame('Mega menu', 'HORIZONTAL', { width: width - 40, padding: 24, gap: 32, radius: 8, fill: color.white, stroke: color.line });
+      for (const [heading, links] of [['Industrial networking', ['Ethernet Switches', 'Secure Routers']], ['Models & validation', ['EDS-4008-LV', 'Compare LV/HV']], ['Product media', ['Manuals', '360° Image']]]) {
+        const column = autoFrame(`Menu column / ${heading}`, 'VERTICAL', { width: 240, padding: 0, gap: 10, radius: 0, fill: color.white }); appendFill(column, textNode(heading, { size: 12, lineHeight: 18, style: 'Bold', color: color.tealDark, textCase: 'UPPER' }));
+        for (const link of links) appendFill(column, textNode(link, { size: 15, lineHeight: 22, style: 'Semi Bold', color: color.ink })); menu.appendChild(column);
+      }
+      add(menu);
+    } else if (definition.id === 'G-008') {
+      add(visualButton('Contact Us'));
+    } else if (definition.id === 'G-009') {
+      add(row('Breadcrumb', ['Home', '›', 'Products', '›', 'EDS-4008 Series'].map((item, index) => textNode(item, { size: 13, lineHeight: 18, style: index === 4 ? 'Semi Bold' : 'Regular', color: index === 4 ? color.ink : color.tealDark })), 620, color.tealSoft));
+    } else if (definition.id === 'G-010') {
+      const footer = autoFrame('Global footer', 'VERTICAL', { width: width - 40, padding: 28, gap: 20, radius: 8, fill: color.navy });
+      const top = autoFrame('Footer action row', 'HORIZONTAL', { width: width - 96, padding: 0, gap: 32, radius: 0, fill: color.navy }); top.appendChild(textNode('FOLLOW MOXA   ●  ●  ●  ●', { size: 14, lineHeight: 20, style: 'Bold', color: color.white })); top.appendChild(textNode('STAY CONNECTED   Business email address   Sign Up', { size: 14, lineHeight: 20, style: 'Semi Bold', color: color.white })); footer.appendChild(top);
+      footer.appendChild(textNode('Privacy  ·  Cookie preferences  ·  Terms  ·  Global / English', { size: 12, lineHeight: 18, color: color.tealSoft })); add(footer);
+    } else if (definition.id === 'G-011') {
+      add(row('Social links', ['f', '𝕏', '▶', 'in'].map(item => { const icon = autoFrame(`Social / ${item}`, 'HORIZONTAL', { padding: 12, gap: 0, radius: 4, fill: color.white, stroke: color.teal }); icon.appendChild(textNode(item, { size: 16, lineHeight: 18, style: 'Bold', color: color.tealDark })); return icon; }), 300));
+    } else if (definition.id === 'G-012') {
+      add(row('Subscription form', [visualField('', 'Business email address', 430), visualButton('Sign Up')], 620, color.tealSoft));
+    } else if (definition.id === 'G-013') {
+      add(visualField('Country / language', 'Global / English           ⌄', 360, 'filled'));
+    } else if (definition.id === 'G-014') {
+      const bot = autoFrame('Moxa bot', 'VERTICAL', { padding: 16, gap: 6, radius: 999, fill: color.white, stroke: color.cyan }); bot.appendChild(textNode('◉', { size: 34, lineHeight: 36, style: 'Bold', color: color.teal })); bot.appendChild(textNode('Ask', { size: 11, lineHeight: 14, style: 'Bold', color: color.tealDark })); add(bot);
+    } else if (definition.id === 'G-015') {
+      const panel = autoFrame('Moxa Solution Advisor', 'VERTICAL', { width: 480, padding: 20, gap: 14, radius: 10, fill: color.white, stroke: color.line }); appendFill(panel, textNode('Moxa Solution Advisor', { size: 18, lineHeight: 24, style: 'Bold', color: color.navy })); appendFill(panel, textNode('What would you like to validate?', { size: 14, lineHeight: 21, color: color.muted })); appendFill(panel, row('Advisor options', [chip('Search'), chip('Product finder'), chip('Compare LV/HV')], 440, color.tealSoft)); add(panel);
+    } else if (definition.id === 'F-002') {
+      add(textNode('Explore EDS-4008 Series  →', { size: 16, lineHeight: 22, style: 'Bold', color: color.tealDark }));
+    } else if (definition.id === 'F-006') {
+      const field = visualField('Project details', 'Describe your application, environment, and technical requirements…', width - 40); field.resize(field.width, 132); add(field);
+    } else if (definition.id === 'F-008') {
+      add(row('Field feedback', [textNode('✓', { size: 18, lineHeight: 20, style: 'Bold', color: color.teal }), textNode('Your request is ready to submit.', { size: 14, lineHeight: 20, color: color.ink })], 420, color.tealSoft));
+    } else if (definition.id === 'N-001') {
+      add(visualNav(['Overview', 'Popular configurations', 'All models', 'Resources', 'Applications'], 0, width - 40));
+    } else if (definition.id === 'N-002') {
+      const rail = autoFrame('Floating navigator', 'VERTICAL', { width: 84, padding: 14, gap: 16, radius: 40, fill: color.white, stroke: color.line }); for (const item of ['Ask', 'Products', 'Solutions', 'Proof']) rail.appendChild(textNode(`●  ${item}`, { size: 12, lineHeight: 18, style: item === 'Products' ? 'Bold' : 'Regular', color: item === 'Products' ? color.tealDark : color.muted })); add(rail);
+    } else if (definition.id === 'N-005') {
+      const modal = autoFrame('Contact modal', 'VERTICAL', { width: 520, padding: 24, gap: 14, radius: 10, fill: color.white, stroke: color.line }); appendFill(modal, textNode('Talk to a Moxa specialist                 ×', { size: 20, lineHeight: 26, style: 'Bold', color: color.navy })); appendFill(modal, visualField('Business email', 'name@company.com', 472)); modal.appendChild(visualButton('Send request')); add(modal);
+    } else if (definition.id === 'N-006') {
+      add(visualButton('↑  Back to top', 'secondary'));
+    } else if (definition.id === 'C-001') {
+      add(textNode('FEATURED PRODUCTS', { size: 12, lineHeight: 16, style: 'Bold', color: color.tealDark, letterSpacing: 2.2, textCase: 'UPPER' })); add(textNode('Engineered for reliable industrial networks.', { size: 32, lineHeight: 38, style: 'Bold', color: color.navy, width: width - 40 })); add(textNode('Explore proven connectivity products, application guidance, and technical evidence.', { size: 16, lineHeight: 25, color: color.muted, width: width - 40 }));
+    } else if (definition.id === 'C-004' || definition.id === 'C-005' || definition.id === 'C-006' || definition.id === 'C-007') {
+      add(visualArtwork(definition.name, width - 40, 180)); add(chip(definition.scope || definition.family)); add(textNode(definition.id === 'C-004' ? 'EDS-4008 Series' : definition.name, { size: 22, lineHeight: 28, style: 'Bold', color: color.navy, width: width - 40 })); add(textNode('Reliable connectivity for demanding industrial environments.', { size: 14, lineHeight: 21, color: color.muted, width: width - 40 })); add(textNode('Explore →', { size: 14, lineHeight: 20, style: 'Bold', color: color.tealDark }));
+    } else if (definition.id === 'C-008') {
+      add(textNode('1,000+', { size: 48, lineHeight: 54, style: 'Light', color: color.tealDark })); add(textNode('DISTRIBUTORS', { size: 12, lineHeight: 16, style: 'Bold', color: color.muted, letterSpacing: 1.8 }));
+    } else if (definition.id === 'C-009') {
+      add(row('Service card', [textNode('◉', { size: 30, lineHeight: 34, color: color.teal }), textNode('Product selection support\nTalk to an engineer about fit and availability.', { size: 16, lineHeight: 24, style: 'Semi Bold', color: color.navy, width: 310 })], width - 40, color.tealSoft));
+    } else if (definition.id === 'D-001') {
+      add(visualTable(['Specification', 'Value'], [['Ports', '8 × 10/100BaseT(X)'], ['Operating voltage', '9.6–60 VDC'], ['Temperature', '−40 to 75°C']], width - 40));
+    } else if (definition.id === 'D-002') {
+      add(visualTable(['Engineering specification', 'EDS-4008-LV', 'EDS-4008-HV'], [['Operating voltage', '9.6–60 VDC', '88–300 VDC'], ['AC input', '—', '85–264 VAC'], ['Power module', 'PWR-100-LV', 'PWR-105-HV-I']], width - 40));
+    } else if (definition.id === 'D-003') {
+      add(row('Search summary', [textNode('Results for “EDS-4008”', { size: 24, lineHeight: 30, style: 'Bold', color: color.navy }), chip('9 results')], width - 40, color.tealSoft));
+    } else if (definition.id === 'D-004') {
+      const filters = autoFrame('Refine results', 'VERTICAL', { width: 300, padding: 20, gap: 12, radius: 8, fill: color.white, stroke: color.line }); appendFill(filters, textNode('REFINE RESULTS', { size: 12, lineHeight: 16, style: 'Bold', color: color.tealDark, letterSpacing: 1.8 })); for (const item of ['☑ Products      4', '☑ Documents   3', '☑ Videos          1', '☐ Support        0']) appendFill(filters, textNode(item, { size: 14, lineHeight: 21, style: 'Semi Bold', color: color.ink })); add(filters);
+    } else if (definition.id === 'D-005' || definition.id === 'D-006' || definition.id === 'D-007') {
+      const result = row(definition.name, [visualArtwork('EDS-4008', 180, 110), textNode(`${definition.id === 'D-007' ? 'EDS-4008-HV' : 'EDS-4008 Series'}\nManaged Ethernet switches for industrial applications.\nIn stock · DIN rail · Managed`, { size: 15, lineHeight: 23, style: 'Semi Bold', color: color.navy, width: 400 }), visualButton(definition.id === 'D-006' ? 'Browse family' : 'View model', 'secondary')], width - 40, color.white); add(result);
+    } else if (definition.id === 'M-001') {
+      const hero = autoFrame('Hero specimen', 'HORIZONTAL', { width: width - 40, padding: 28, gap: 28, radius: 10, fill: color.tealSoft }); const copy = autoFrame('Hero copy', 'VERTICAL', { width: 360, padding: 0, gap: 12, radius: 0, fill: color.tealSoft }); appendFill(copy, textNode('Build resilient industrial networks.', { size: 34, lineHeight: 40, style: 'Bold', color: color.navy, width: 360 })); appendFill(copy, textNode('Secure, reliable infrastructure for demanding environments.', { size: 16, lineHeight: 24, color: color.muted, width: 340 })); copy.appendChild(visualButton('Explore solutions')); hero.appendChild(copy); hero.appendChild(visualArtwork('Industrial connectivity', 360, 230)); add(hero);
+    } else if (definition.id === 'M-002') {
+      const player = visualArtwork('▶  Making Digital the New Current', width - 40, 360); add(player); add(row('Video controls', [textNode('▶   00:00', { size: 14, lineHeight: 20, style: 'Bold', color: color.ink }), textNode('━━━━━━━━━━━━━━━━━━   06:42   ⚙   ⛶', { size: 14, lineHeight: 20, color: color.muted })], width - 40));
+    } else if (definition.id === 'M-003') {
+      add(row('Playlist item', [visualArtwork('Episode 2', 180, 100), textNode('Connect the Energy Ecosystem\nEpisode 2 · 05:28', { size: 17, lineHeight: 24, style: 'Bold', color: color.navy, width: 360 })], 620, color.tealSoft));
+    } else if (definition.id === 'M-004') {
+      add(visualArtwork('360° EDS-4008 product viewer', width - 40, 330)); add(row('360 viewer controls', [visualButton('↶'), textNode('Drag to rotate   ·   Zoom 100%', { size: 14, lineHeight: 20, color: color.muted }), visualButton('↷')], 520));
+    } else if (definition.id === 'V-001') {
+      const cta = autoFrame('CTA band', 'HORIZONTAL', { width: width - 40, padding: 28, gap: 28, radius: 10, fill: color.navy }); cta.appendChild(textNode('Ready to build a more resilient network?', { size: 28, lineHeight: 34, style: 'Bold', color: color.white, width: 520 })); cta.appendChild(visualButton('Talk to an expert')); add(cta);
+    } else if (definition.id === 'V-002') {
+      const lead = autoFrame('Lead capture', 'HORIZONTAL', { width: width - 40, padding: 24, gap: 24, radius: 10, fill: color.tealSoft }); const info = autoFrame('Contact guidance', 'VERTICAL', { width: 300, padding: 20, gap: 10, radius: 8, fill: color.navy }); appendFill(info, textNode('Talk to a Moxa specialist', { size: 22, lineHeight: 28, style: 'Bold', color: color.white, width: 260 })); appendFill(info, textNode('Share your application and technical requirements.', { size: 14, lineHeight: 21, color: color.tealSoft, width: 260 })); lead.appendChild(info); const form = autoFrame('Lead form fields', 'VERTICAL', { width: 480, padding: 0, gap: 10, radius: 0, fill: color.tealSoft }); appendFill(form, visualField('First name', 'Alex', 480, 'filled')); appendFill(form, visualField('Business email', 'alex@company.com', 480, 'filled')); form.appendChild(visualButton('Submit request')); lead.appendChild(form); add(lead);
+    } else if (definition.id === 'AI-001') {
+      add(row('AI message', [textNode('◉', { size: 30, lineHeight: 34, style: 'Bold', color: color.teal }), textNode('The key difference is the power-input range. Choose LV for low-voltage DC environments and HV for high-voltage DC or AC input.', { size: 15, lineHeight: 23, color: color.ink, width: 560 })], width - 40, color.tealSoft));
+    } else if (definition.id === 'AI-002') {
+      add(row('Sources', [textNode('Sources:', { size: 14, lineHeight: 20, style: 'Bold', color: color.navy }), textNode('EDS-4008-LV Datasheet ↗', { size: 14, lineHeight: 20, style: 'Semi Bold', color: color.tealDark }), textNode('EDS-4008-HV Datasheet ↗', { size: 14, lineHeight: 20, style: 'Semi Bold', color: color.tealDark })], width - 40));
+    } else if (definition.id === 'AI-003') {
+      add(row('Follow-up prompts', [chip('Compare power inputs'), chip('Show shared specifications'), chip('Open model pages')], width - 40, color.tealSoft));
+    } else {
+      add(row('Visual specimen', [textNode(definition.name, { size: 18, lineHeight: 24, style: 'Bold', color: color.navy }), chip(definition.states[0] || 'default')], Math.min(width - 40, 620), color.tealSoft));
+    }
+  }
+
+  function componentDocumentationCard(definition, component) {
+    const width = Math.min(1312, Math.max(component.width + 48, 560));
+    const card = autoFrame(`Visual specimen / ${definition.id}`, 'VERTICAL', { width, padding: 24, gap: 16, radius: 12, fill: color.white, stroke: color.line });
+    tag(card, 'phase3', `visual-specimen/${definition.id}`);
+    appendFill(card, textNode(`${definition.id} · ${definition.name}`, { size: 22, lineHeight: 28, style: 'Bold', color: color.navy }));
+    appendFill(card, textNode(`${definition.family} · ${definition.scope} · Sitecore: ${definition.sitecoreRendering}`, { size: 12, lineHeight: 18, style: 'Semi Bold', color: color.tealDark }));
+    card.appendChild(component); component.layoutAlign = 'INHERIT';
+    const meta = autoFrame('Component notes', 'HORIZONTAL', { padding: 0, gap: 8, radius: 0, fill: color.white }); meta.layoutWrap = 'WRAP';
+    for (const state of definition.states.slice(0, 6)) meta.appendChild(chip(state)); card.appendChild(meta);
+    appendFill(card, textNode(definition.responsive, { size: 12, lineHeight: 18, color: color.muted, width: width - 48 }));
+    return card;
+  }
+
   function addFoundationDocumentation(pages) {
     const cover = pageCanvas(pages[PAGE_NAMES[0]], 'A governed operating system for the Moxa PoC, component decomposition, and Sitecore implementation.');
     cover.paddingTop = 112;
@@ -312,23 +497,10 @@ function pluginRuntime() {
   function genericComponent(definition) {
     const component = figma.createComponent();
     component.name = `${definition.id} / ${definition.name}`;
-    applyAutoLayoutSizing(component, 'VERTICAL', 520);
-    component.paddingTop = 24; component.paddingRight = 24; component.paddingBottom = 24; component.paddingLeft = 24;
-    component.itemSpacing = 12;
-    component.cornerRadius = 8;
-    component.fills = [solid(color.white)];
-    component.strokes = [solid(color.line)];
-    component.strokeWeight = 1;
+    renderComponentSpecimen(component, definition);
     tag(component, 'phase3', `component/${definition.id}`);
     component.setSharedPluginData(NS, 'component_id', definition.id);
     component.description = `${definition.family}. Sitecore: ${definition.sitecoreRendering}. Selector: ${definition.selector}. Accessibility: ${definition.accessibility}`;
-    appendFill(component, textNode(definition.name, { size: 20, lineHeight: 26, style: 'Bold', color: color.navy }));
-    appendFill(component, textNode(definition.family, { size: 12, lineHeight: 16, style: 'Bold', color: color.tealDark, letterSpacing: 1.2, textCase: 'UPPER' }));
-    appendFill(component, textNode(definition.responsive, { size: 14, lineHeight: 21, color: color.muted }));
-    const states = autoFrame('States', 'HORIZONTAL', { padding: 0, gap: 8, radius: 0, fill: color.white }); states.layoutWrap = 'WRAP';
-    for (const state of definition.states.slice(0, 8)) states.appendChild(chip(state));
-    appendFill(component, states);
-    appendFill(component, textNode(`Sitecore: ${definition.sitecoreRendering}`, { size: 12, lineHeight: 18, style: 'Medium', color: color.tealDark }));
     return component;
   }
 
@@ -360,6 +532,57 @@ function pluginRuntime() {
     return set;
   }
 
+  function renderVariantContent(component, definition, value) {
+    const isFocus = value === 'Focus';
+    const isError = value === 'Error';
+    const isSelected = value === 'Selected' || value === 'Checked';
+    if (definition.id === 'F-003') {
+      const state = isError ? 'error' : (isFocus ? 'focus' : (value === 'Filled' ? 'filled' : 'default'));
+      appendFill(component, visualField('Business email', value === 'Filled' ? 'alex@company.com' : 'name@company.com', 380, state));
+    } else if (definition.id === 'F-005') {
+      appendFill(component, visualField('Industry', isSelected ? 'Manufacturing' : 'Select an industry                         ⌄', 380, isError ? 'error' : (isFocus ? 'focus' : (isSelected ? 'filled' : 'default'))));
+    } else if (definition.id === 'F-007') {
+      const row = autoFrame('Consent option', 'HORIZONTAL', { width: 380, padding: 10, gap: 12, radius: 6, fill: color.white, stroke: isError ? color.orange : (isFocus ? color.cyan : color.line) });
+      row.counterAxisAlignItems = 'CENTER';
+      const box = autoFrame('Checkbox', 'HORIZONTAL', { width: 24, padding: 3, gap: 0, radius: 4, fill: isSelected ? color.teal : color.white, stroke: isSelected ? color.teal : color.line });
+      box.primaryAxisAlignItems = 'CENTER'; box.counterAxisAlignItems = 'CENTER';
+      if (isSelected) box.appendChild(textNode('✓', { size: 14, lineHeight: 16, style: 'Bold', color: color.white }));
+      row.appendChild(box);
+      row.appendChild(textNode('I agree to the privacy notice and consent to follow-up.', { size: 13, lineHeight: 20, color: color.ink, width: 320 }));
+      appendFill(component, row);
+      if (isError) appendFill(component, textNode('Consent is required to continue.', { size: 12, lineHeight: 18, color: color.orange }));
+    } else if (definition.id === 'N-003') {
+      addVariantNode(component, visualNav(['Overview', 'Specifications', 'Downloads'], isSelected ? 1 : 0, 380));
+    } else if (definition.id === 'N-004') {
+      const accordion = autoFrame('Accordion item', 'VERTICAL', { width: 380, padding: 16, gap: 12, radius: 6, fill: value === 'Open' ? color.tealSoft : color.white, stroke: color.line });
+      const heading = autoFrame('Accordion trigger', 'HORIZONTAL', { width: 348, padding: 0, gap: 12, radius: 0, fill: value === 'Open' ? color.tealSoft : color.white });
+      heading.primaryAxisAlignItems = 'SPACE_BETWEEN'; heading.counterAxisAlignItems = 'CENTER';
+      heading.appendChild(textNode('How Moxa delivers secure devices', { size: 14, lineHeight: 20, style: 'Bold', color: color.navy, width: 290 }));
+      heading.appendChild(textNode(value === 'Open' ? '−' : '+', { size: 24, lineHeight: 24, style: 'Bold', color: color.tealDark }));
+      appendFill(accordion, heading);
+      if (value === 'Open') appendFill(accordion, textNode('Security is built into the product lifecycle through secure development, signed firmware, and hardened configuration.', { size: 13, lineHeight: 20, color: color.muted, width: 348 }));
+      appendFill(component, accordion);
+    } else if (definition.id === 'C-002') {
+      const tones = { Neutral: [color.surface, color.ink], Brand: [color.tealSoft, color.tealDark], Success: [{ r: 232 / 255, g: 248 / 255, b: 235 / 255 }, { r: 30 / 255, g: 112 / 255, b: 58 / 255 }], Warning: [{ r: 1, g: 243 / 255, b: 224 / 255 }, { r: 158 / 255, g: 78 / 255, b: 0 }] };
+      const [fill, ink] = tones[value] || tones.Neutral;
+      addVariantNode(component, chip(value === 'Success' ? 'IN STOCK' : (value === 'Warning' ? 'EOL' : (value === 'Brand' ? 'NEW' : 'LEGACY')), fill, ink));
+    } else if (definition.id === 'C-003') {
+      const tones = { Info: [color.tealSoft, color.tealDark, 'ℹ'], Success: [{ r: 232 / 255, g: 248 / 255, b: 235 / 255 }, { r: 30 / 255, g: 112 / 255, b: 58 / 255 }, '✓'], Warning: [{ r: 1, g: 243 / 255, b: 224 / 255 }, { r: 158 / 255, g: 78 / 255, b: 0 }, '!'], Error: [{ r: 1, g: 235 / 255, b: 232 / 255 }, { r: 178 / 255, g: 45 / 255, b: 38 / 255 }, '×'] };
+      const [fill, ink, icon] = tones[value] || tones.Info;
+      const alert = autoFrame(`Alert / ${value}`, 'HORIZONTAL', { width: 380, padding: 14, gap: 12, radius: 6, fill });
+      alert.counterAxisAlignItems = 'CENTER'; alert.appendChild(textNode(icon, { size: 18, lineHeight: 20, style: 'Bold', color: ink })); alert.appendChild(textNode(`${value} message with a clear next action.`, { size: 13, lineHeight: 20, style: 'Semi Bold', color: ink, width: 310 }));
+      appendFill(component, alert);
+    } else {
+      appendFill(component, textNode(value, { size: 14, lineHeight: 20, style: 'Bold', color: color.tealDark }));
+    }
+  }
+
+  function addVariantNode(component, node) {
+    component.appendChild(node);
+    node.layoutAlign = 'INHERIT';
+    return node;
+  }
+
   function simpleVariantSet(definition, property, values) {
     const variants = [];
     for (const value of values) {
@@ -368,8 +591,8 @@ function pluginRuntime() {
       applyAutoLayoutSizing(component, 'VERTICAL', 420);
       component.paddingTop = 20; component.paddingRight = 20; component.paddingBottom = 20; component.paddingLeft = 20; component.itemSpacing = 10; component.cornerRadius = 8;
       component.fills = [solid(value === 'Open' || value === 'Selected' ? color.tealSoft : color.white)]; component.strokes = [solid(value === 'Error' ? color.orange : color.line)]; component.strokeWeight = 1;
-      appendFill(component, textNode(definition.name, { size: 16, lineHeight: 22, style: 'Semi Bold', color: color.navy }));
-      appendFill(component, textNode(value, { size: 12, lineHeight: 18, style: 'Bold', color: color.tealDark }));
+      appendFill(component, textNode(`${definition.name} · ${value}`, { size: 12, lineHeight: 18, style: 'Bold', color: color.tealDark }));
+      renderVariantContent(component, definition, value);
       variants.push(component);
     }
     const set = figma.combineAsVariants(variants, figma.currentPage);
@@ -400,14 +623,17 @@ function pluginRuntime() {
       if (!page) throw new Error(`Missing component page: ${definition.page}`);
       await figma.setCurrentPageAsync(page);
       const existing = page.findOne(node => (node.type === 'COMPONENT' || node.type === 'COMPONENT_SET') && node.getSharedPluginData(NS, 'component_id') === definition.id);
-      if (existing) { output[definition.id] = existing.id; continue; }
+      const existingDocumentation = page.findOne(node => node.type === 'FRAME' && node.getSharedPluginData(NS, 'key') === `visual-specimen/${definition.id}`);
+      if (existingDocumentation) existingDocumentation.remove();
+      else if (existing) existing.remove();
       const canvas = pageCanvas(page, 'Native Moxa components with anatomy, states, accessibility, responsive rules, and Sitecore mapping.');
       const gallery = componentGallery(canvas);
       let node;
       if (special[definition.id]?.[0] === 'button') node = buttonVariantSet(definition);
       else if (special[definition.id]) node = simpleVariantSet(definition, special[definition.id][0], special[definition.id][1]);
       else node = genericComponent(definition);
-      gallery.appendChild(node); node.layoutAlign = 'INHERIT'; output[definition.id] = node.id;
+      const documentation = componentDocumentationCard(definition, node);
+      gallery.appendChild(documentation); documentation.layoutAlign = 'INHERIT'; output[definition.id] = node.id;
     }
     return output;
   }

@@ -15,13 +15,14 @@ Audit date: 2026-07-20
 - Sitecore crosswalk count: 30.
 - Figma Builder completion: PASS — 10 collections, 54 components, 31 pages.
 - Figma component-gallery Auto Layout sizing: PASS — component masters render at readable heights; Button/Input/Select/Consent/Tab/Accordion/Badge/Alert variant sets expand and wrap without overlap.
+- Figma visual specimen coverage: PASS — all 54 native components now contain editable UI anatomy instead of documentation-only placeholder cards.
 - Pattern/template galleries: PASS — reusable pattern examples and all 12 page templates render as wrapped visual cards.
 
 ## Visual review
 
 Rendered PDF pages were reviewed from the generated PNG output, including cover, foundation color, global header, search results, route matrix, and governance pages. No clipping, missing images, broken table labels, placeholder content, or page-number defects were observed.
 
-The corrected native Figma file was visually inspected in Figma Desktop on 2026-07-20. The Actions component page, Product Discovery Patterns page, and Page Templates / 12 Types page all display complete, readable content. The builder now sizes Auto Layout nodes before applying fixed-axis behavior, resets prior generated canvases on rerun, wraps galleries, and fits every generated page to its canvas.
+The corrected native Figma file was visually inspected in Figma Desktop on 2026-07-20. Actions, Inputs, Header/Mega Menu, Cards, Data, Media, AI, Product Detail Patterns, and Page Templates / 12 Types all display complete, readable content. Component pages now show the actual editable interface specimen inside a separate documentation wrapper. Stateful Input, Select, Consent, Tabs, Accordion, Badge, and Alert sets render their real visual states. The builder replaces obsolete generated masters on rerun, sizes Auto Layout nodes before applying fixed-axis behavior, wraps galleries, and fits every generated page to its canvas.
 
 ## Known platform constraint
 

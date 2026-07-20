@@ -136,6 +136,19 @@ export const pageNames = [
 ];
 
 const componentRows = readCsv('component-inventory.csv');
+const specimenKindByFamily = {
+  'Global shell': 'shell',
+  Actions: 'action',
+  Forms: 'form',
+  Navigation: 'navigation',
+  Disclosure: 'navigation',
+  Content: 'content',
+  Cards: 'card',
+  Data: 'data',
+  Media: 'media',
+  Conversion: 'conversion',
+  AI: 'ai'
+};
 export const componentDefinitions = componentRows.map(row => ({
   id: row.component_id,
   name: row.name,
@@ -147,7 +160,8 @@ export const componentDefinitions = componentRows.map(row => ({
   accessibility: row.accessibility,
   page: row.figma_page,
   sitecoreRendering: row.sitecore_rendering,
-  status: row.status
+  status: row.status,
+  specimenKind: specimenKindByFamily[row.family]
 }));
 
 const routeRows = readCsv('route-template-matrix.csv');

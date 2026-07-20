@@ -35,7 +35,14 @@ for (const collection of collections) {
 for (const component of componentDefinitions) {
   assert.ok(pageNames.includes(component.page), `${component.id} references a missing Figma page`);
   assert.ok(component.sitecoreRendering, `${component.id} needs a Sitecore rendering mapping`);
+  assert.ok(component.specimenKind, `${component.id} needs a visual specimen kind`);
 }
+
+assert.deepEqual(
+  [...new Set(componentDefinitions.map(component => component.specimenKind))].sort(),
+  ['action', 'ai', 'card', 'content', 'conversion', 'data', 'form', 'media', 'navigation', 'shell'],
+  'Component inventory must cover every visual specimen family'
+);
 
 for (const route of routeDefinitions) {
   assert.ok(fs.existsSync(new URL(`../../../${route.file}`, import.meta.url)), `Missing route file: ${route.file}`);

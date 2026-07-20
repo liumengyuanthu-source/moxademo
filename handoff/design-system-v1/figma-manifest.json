@@ -67,7 +67,12 @@
     },
     "styles": {"text": 13, "effect": 3, "grid": 3},
     "pages": {"count": 31, "initialPageRenamed": "00 — Cover & Release Status"},
-    "components": {"count": 54, "nativeVariantSets": ["Button", "Input", "Select", "Consent", "Tabs", "Accordion", "Badge", "Alert"]}
+    "components": {
+      "count": 54,
+      "nativeVariantSets": ["Button", "Input", "Select", "Consent", "Tabs", "Accordion", "Badge", "Alert"],
+      "visualSpecimenFamilies": ["Global shell", "Actions", "Forms", "Navigation", "Disclosure", "Content", "Cards", "Data", "Media", "Conversion", "AI"],
+      "documentationModel": "editable native component nested inside a separate visual-specimen documentation card"
+    }
   },
   "fallback": {
     "decision": "Use separate one-mode collections in Backup Starter plan; approved by the user.",
@@ -78,5 +83,5 @@
     "completionMessage": "Moxa Design System created: 10 collections, 54 components, 31 pages."
   },
   "pendingValidations": [],
-  "completedSteps": ["P0.a", "P0.b", "P0.c", "P0.d", "P0.e", "P0.f", "fallback-approved", "builder-generated", "builder-tested", "visual-handbook-rendered", "builder-imported", "builder-run", "component-gallery-layout-corrected", "pattern-gallery-verified", "template-gallery-verified", "visible-pages-verified"]
+  "completedSteps": ["P0.a", "P0.b", "P0.c", "P0.d", "P0.e", "P0.f", "fallback-approved", "builder-generated", "builder-tested", "visual-handbook-rendered", "builder-imported", "builder-run", "component-gallery-layout-corrected", "real-component-specimens-created", "stateful-variants-visually-rendered", "component-pages-visually-verified", "pattern-gallery-verified", "template-gallery-verified", "visible-pages-verified"]
 }
