@@ -27,10 +27,12 @@ The PoC contains 12 page classes represented by 13 customer-facing routes. The L
 ## Start here
 
 1. Read `COMPONENT_AND_TEMPLATE_MAP.md` before creating Sitecore renderings.
-2. Read `INTEGRATION_CHECKLIST.md` before connecting Search, AI, forms, consent, locale, identity, analytics, and media.
-3. Serve the site over HTTP for review. Direct `file://` viewing can restrict browser behavior.
-4. Use `assets/css/moxa-ds.css` and `assets/js/moxa-shell.js` as the shared design-system and shell references.
-5. Use `assets/css/microsite-remote-io.css`, `assets/js/microsite-remote-io.js`, and `assets/js/moxa-lead-form.js` as the Remote I/O and shared lead-form references.
+2. Use `ROUTE_COMPONENT_TEMPLATE_MATRIX.csv` as the machine-readable implementation matrix.
+3. Read `INTEGRATION_CHECKLIST.md` before connecting Search, AI, forms, consent, locale, identity, analytics, and media.
+4. Read `PACKAGE_CONTENTS.md` before copying or removing files.
+5. Serve the site over HTTP for review. Direct `file://` viewing can restrict browser behavior.
+6. Use `assets/css/moxa-ds.css` and `assets/js/moxa-shell.js` as the shared design-system and shell references.
+7. Use `assets/css/microsite-remote-io.css`, `assets/js/microsite-remote-io.js`, and `assets/js/moxa-lead-form.js` as the Remote I/O and shared lead-form references.
 
 ## Shared contracts that must remain consistent
 
