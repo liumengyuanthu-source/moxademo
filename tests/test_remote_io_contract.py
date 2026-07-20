@@ -10,6 +10,9 @@ class RemoteIOContractTests(unittest.TestCase):
     def setUp(self):
         self.microsite = (ROOT / "microsite.html").read_text(encoding="utf-8")
         self.campaign = (ROOT / "campaign.html").read_text(encoding="utf-8")
+        self.microsite_css = (
+            ROOT / "assets/css/microsite-remote-io.css"
+        ).read_text(encoding="utf-8")
 
     def test_microsite_contains_required_sections(self):
         required = (
@@ -65,6 +68,14 @@ class RemoteIOContractTests(unittest.TestCase):
         self.assertIn("assets/js/moxa-shell.js", self.microsite)
         self.assertNotIn('<header class="header"', self.microsite)
         self.assertNotIn('<footer class="footer"', self.microsite)
+
+    def test_application_card_titles_stay_white_over_images(self):
+        self.assertRegex(
+            self.microsite_css,
+            r'body\[data-moxa-page="microsite"\]\s+'
+            r'\.rio-application-grid\s+h3\s*\{[^}]*color:\s*'
+            r'(?:#fff(?:fff)?|var\(--rio-white\))\s*;',
+        )
 
 
 if __name__ == "__main__":

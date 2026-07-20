@@ -666,8 +666,8 @@ body[data-moxa-page="microsite"] textarea {
   inset: auto 22px 20px;
 }
 
-.rio-application-grid h3 {
-  color: #fff;
+body[data-moxa-page="microsite"] .rio-application-grid h3 {
+  color: var(--rio-white);
   font-size: 20px;
 }
 
