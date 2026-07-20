@@ -2,7 +2,7 @@
 
 Baseline: Git commit `8cf7de1`  
 Audit date: 2026-07-20  
-Status: Code discovery complete; Figma discovery pending plan selection
+Status: Phase 0 complete
 
 ## 1. What exists in code
 
@@ -92,12 +92,15 @@ Generic third-party components will not replace the Moxa visual language merely 
 - 12 page types and 13 routes.
 - 30 initial Sitecore crosswalk mappings.
 
-## 8. Pending Figma discovery
+## 8. Figma discovery result
 
-The authenticated account has multiple editable teams. A target plan must be selected before creating the new design file. After selection, Phase 0 will add:
+- Target plan: `Backup` (`team::1139788975409430625`).
+- File: `Moxa PoC Operational Design System v1.0`.
+- File key: `USRPJHboEejgu78oeZpIlc`.
+- Initial state: one empty page, zero local variables, zero styles, and zero components.
+- Available editable font in the plugin environment: Inter. Helvetica Neue and Arial are unavailable, so editable Figma documentation will use Inter while preserving and labeling the implementation font stack.
+- Material 3 is not used because its mobile-first component model and visual language conflict with the implemented Moxa system.
+- Simple Design System is retained as a structural reference for Button, fields, disclosure, Header/Footer, Dialog, and AI Chat, but no component is imported because its variables and component API are incompatible with Moxa.
+- All 54 Moxa components will therefore be built locally and bound to Moxa variables.
 
-- file key and URL;
-- available/imported library list;
-- reuse/wrap/rebuild decisions;
-- confirmation that the new file contains no conflicting local system objects;
-- final token and component counts after library discovery.
+Phase 0 has no unresolved source conflict. Figma creation can proceed with 7 collections, 64 variables, 54 component/pattern entries, 31 pages, 12 page types, and 13 routes.

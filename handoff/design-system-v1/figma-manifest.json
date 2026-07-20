@@ -1,0 +1,64 @@
+{
+  "runId": "moxa-ds-v1-20260720",
+  "phase": "phase-0-complete",
+  "file": {
+    "name": "Moxa PoC Operational Design System v1.0",
+    "planName": "Backup",
+    "planKey": "team::1139788975409430625",
+    "fileKey": "USRPJHboEejgu78oeZpIlc",
+    "url": "https://www.figma.com/design/USRPJHboEejgu78oeZpIlc"
+  },
+  "discovery": {
+    "initialPages": [{"id": "0:1", "name": "Page 1", "children": 0}],
+    "initialCollections": 0,
+    "initialVariables": 0,
+    "initialTextStyles": 0,
+    "initialEffectStyles": 0,
+    "initialGridStyles": 0,
+    "initialComponents": 0,
+    "availableApprovedFonts": ["Inter"],
+    "fontDecision": "Use Inter for editable Figma documentation because Helvetica Neue and Arial are unavailable in the plugin environment. Preserve Helvetica Neue / Helvetica / Arial as the implementation font stack and label the Figma fallback explicitly."
+  },
+  "libraries": {
+    "subscribed": [
+      {"name": "Material 3 Design Kit", "decision": "do-not-use", "reason": "mobile-first visual language and token model do not match Moxa web implementation"},
+      {"name": "Simple Design System", "decision": "reference-only", "reason": "useful structural examples but incompatible brand variables and component API"}
+    ],
+    "referenceAssets": [
+      "Button",
+      "Input Field",
+      "Textarea Field",
+      "Checkbox Field",
+      "Select Field",
+      "Search",
+      "Accordion Item",
+      "Tabs",
+      "Dialog",
+      "Header",
+      "Footer",
+      "AI Chat Box"
+    ],
+    "importedAssets": [],
+    "decision": "Rebuild Moxa components locally with native Moxa variables. Use Simple Design System only as an API and auto-layout reference."
+  },
+  "lockedScope": {
+    "collections": 7,
+    "variables": 64,
+    "textStylesPlanned": 13,
+    "effectStylesPlanned": 3,
+    "gridStylesPlanned": 3,
+    "components": 54,
+    "pages": 31,
+    "pageTypes": 12,
+    "routes": 13
+  },
+  "entities": {
+    "collections": {},
+    "variables": {},
+    "styles": {},
+    "pages": {"initial": "0:1"},
+    "components": {}
+  },
+  "pendingValidations": [],
+  "completedSteps": ["P0.a", "P0.b", "P0.c", "P0.d", "P0.e", "P0.f"]
+}

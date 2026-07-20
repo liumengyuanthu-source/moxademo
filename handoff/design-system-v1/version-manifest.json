@@ -1,7 +1,7 @@
 {
   "release": "Moxa PoC Operational Design System v1.0",
   "version": "1.0.0",
-  "status": "phase-0-in-progress",
+  "status": "phase-0-complete",
   "auditDate": "2026-07-20",
   "sourceCommit": "8cf7de1",
   "specificationCommit": "ffe39e4",
@@ -17,9 +17,9 @@
   },
   "figma": {
     "fileName": "Moxa PoC Operational Design System v1.0",
-    "planKey": null,
-    "fileKey": null,
-    "url": null
+    "planKey": "team::1139788975409430625",
+    "fileKey": "USRPJHboEejgu78oeZpIlc",
+    "url": "https://www.figma.com/design/USRPJHboEejgu78oeZpIlc"
   },
   "deliverables": {
     "figmaManifest": "handoff/design-system-v1/figma-manifest.json",
