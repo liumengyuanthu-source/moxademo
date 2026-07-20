@@ -1,7 +1,7 @@
 {
   "release": "Moxa PoC Operational Design System v1.0",
   "version": "1.0.0",
-  "status": "package-ready-figma-builder-pending-run",
+  "status": "complete",
   "auditDate": "2026-07-20",
   "sourceCommit": "8cf7de1",
   "specificationCommit": "ffe39e4",
@@ -40,7 +40,7 @@
   "knownBoundaries": [
     "Sitecore backend installation is not included.",
     "Search, CRM submission, and production AI orchestration remain simulated or integration-ready only.",
-    "The native Figma URL becomes authoritative after the included Builder has run.",
+    "The native Figma URL is authoritative; the included Builder completed successfully on 2026-07-20.",
     "The Backup Starter plan uses one-mode collections; theme and viewport modes are split into separate collections.",
     "Offline .fig export depends on Figma account permissions."
   ]

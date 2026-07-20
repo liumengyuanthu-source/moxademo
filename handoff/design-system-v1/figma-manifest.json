@@ -1,6 +1,6 @@
 {
   "runId": "moxa-ds-v1-20260720",
-  "phase": "builder-ready-pending-confirmed-local-run",
+  "phase": "complete",
   "file": {
     "name": "Moxa PoC Operational Design System v1.0",
     "planName": "Backup",
@@ -57,25 +57,26 @@
   "entities": {
     "collections": {
       "Moxa / Primitives": "VariableCollectionId:3:2",
-      "Moxa / Semantic Color": "created; Light mode only; no variables from the interrupted direct-write run"
+      "generatedPhysicalCollections": 10,
+      "modeStrategy": "one-mode collections for Backup Starter compatibility"
     },
     "variables": {
+      "physicalCount": 105,
       "primitiveColorCount": 16,
-      "semanticColorCount": 0
+      "semanticAndFoundationCount": 89
     },
-    "styles": {},
-    "pages": {"initial": "0:1"},
-    "components": {}
+    "styles": {"text": 13, "effect": 3, "grid": 3},
+    "pages": {"count": 31, "initialPageRenamed": "00 — Cover & Release Status"},
+    "components": {"count": 54, "nativeVariantSets": ["Button", "Input", "Select", "Consent", "Tabs", "Accordion", "Badge", "Alert"]}
   },
   "fallback": {
     "decision": "Use separate one-mode collections in Backup Starter plan; approved by the user.",
     "reason": "Starter limits collections to one mode and the direct Figma MCP write quota was reached.",
     "builder": "handoff/design-system-v1/figma-builder",
-    "builderStatus": "generated-and-tested",
-    "userAction": "Explicit confirmation is required immediately before importing and running the local development plugin in Figma Desktop."
+    "builderStatus": "generated-tested-and-run-successfully",
+    "completedAt": "2026-07-20",
+    "completionMessage": "Moxa Design System created: 10 collections, 54 components, 31 pages."
   },
-  "pendingValidations": [
-    "Run the local Builder in the Backup Figma file and verify the generated Cover, Foundations, Components, Templates, Coverage, Mapping, and Changelog pages."
-  ],
-  "completedSteps": ["P0.a", "P0.b", "P0.c", "P0.d", "P0.e", "P0.f", "fallback-approved", "builder-generated", "builder-tested", "visual-handbook-rendered"]
+  "pendingValidations": [],
+  "completedSteps": ["P0.a", "P0.b", "P0.c", "P0.d", "P0.e", "P0.f", "fallback-approved", "builder-generated", "builder-tested", "visual-handbook-rendered", "builder-imported", "builder-run", "visible-pages-verified"]
 }

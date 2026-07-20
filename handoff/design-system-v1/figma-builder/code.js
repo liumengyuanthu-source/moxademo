@@ -164,16 +164,20 @@ const GRID_STYLES = [{"name":"Grid / Desktop / 4 Column","grid":{"pattern":"COLU
     return output;
   }
 
-  function ensurePages() {
+  async function ensurePages() {
     const map = {};
     const first = figma.root.children[0];
-    if (first && first.name === 'Page 1' && first.children.length === 0 && !figma.root.children.some(page => page.name === PAGE_NAMES[0])) first.name = PAGE_NAMES[0];
+    if (first && first.name === 'Page 1' && !figma.root.children.some(page => page.name === PAGE_NAMES[0])) {
+      await first.loadAsync();
+      if (first.children.length === 0) first.name = PAGE_NAMES[0];
+    }
     for (const name of PAGE_NAMES) {
       let page = figma.root.children.find(item => item.name === name);
       if (!page) {
         page = figma.createPage();
         page.name = name;
       }
+      await page.loadAsync();
       tag(page, 'phase2', `page/${name}`);
       map[name] = page;
     }
@@ -415,7 +419,7 @@ const GRID_STYLES = [{"name":"Grid / Desktop / 4 Column","grid":{"pattern":"COLU
     await loadFonts();
     const collections = await ensureCollections();
     const styles = await ensureStyles();
-    const pages = ensurePages();
+    const pages = await ensurePages();
     for (const page of Object.values(pages)) { await figma.setCurrentPageAsync(page); pageCanvas(page, 'Moxa PoC Operational Design System v1.0'); }
     addFoundationDocumentation(pages);
     const components = await ensureComponents(pages);

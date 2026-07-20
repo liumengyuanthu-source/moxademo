@@ -13,6 +13,7 @@ Audit date: 2026-07-20
 - Route count: 13.
 - Component inventory count: 54.
 - Sitecore crosswalk count: 30.
+- Figma Builder completion: PASS — 10 collections, 54 components, 31 pages.
 
 ## Visual review
 
@@ -20,9 +21,8 @@ Rendered PDF pages were reviewed from the generated PNG output, including cover,
 
 ## Known platform constraint
 
-The target Figma file is on the Backup Starter plan. It allows only one mode per variable collection and limits automated MCP writes. The package therefore includes a local Figma development plugin that creates the complete native library inside the same file. Running an unrecognized local plugin requires the user’s explicit confirmation in Figma Desktop.
+The target Figma file is on the Backup Starter plan. It allows only one mode per variable collection and limits automated MCP writes. The user approved the local Builder run; it completed successfully in Figma Desktop. The single-mode collection split remains the intentional Starter-compatible architecture.
 
 ## Integration boundary
 
 This release prepares components, templates, content-field mappings, and acceptance criteria for SitecoreAI. It does not install Sitecore, configure production search/CRM, or connect a production AI orchestration service.
-
