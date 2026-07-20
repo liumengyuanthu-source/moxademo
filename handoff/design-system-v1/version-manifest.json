@@ -1,0 +1,39 @@
+{
+  "release": "Moxa PoC Operational Design System v1.0",
+  "version": "1.0.0",
+  "status": "phase-0-in-progress",
+  "auditDate": "2026-07-20",
+  "sourceCommit": "8cf7de1",
+  "specificationCommit": "ffe39e4",
+  "planCommit": "bcd9bee",
+  "scope": {
+    "pageTypes": 12,
+    "routes": 13,
+    "components": 54,
+    "sitecoreMappings": 30,
+    "figmaPages": 31,
+    "variableCollections": 7,
+    "variableDefinitions": 64
+  },
+  "figma": {
+    "fileName": "Moxa PoC Operational Design System v1.0",
+    "planKey": null,
+    "fileKey": null,
+    "url": null
+  },
+  "deliverables": {
+    "figmaManifest": "handoff/design-system-v1/figma-manifest.json",
+    "tokens": "handoff/design-system-v1/tokens.json",
+    "componentInventory": "handoff/design-system-v1/component-inventory.csv",
+    "routeMatrix": "handoff/design-system-v1/route-template-matrix.csv",
+    "sitecoreCrosswalk": "handoff/design-system-v1/sitecore-crosswalk.csv",
+    "gapAnalysis": "handoff/design-system-v1/gap-analysis.md",
+    "visualHandbookHtml": "design-system-v1.html",
+    "visualHandbookPdf": null
+  },
+  "knownBoundaries": [
+    "Sitecore backend installation is not included.",
+    "Search, CRM submission, and production AI orchestration remain simulated or integration-ready only.",
+    "The native Figma URL is authoritative; offline .fig export depends on Figma account permissions."
+  ]
+}
