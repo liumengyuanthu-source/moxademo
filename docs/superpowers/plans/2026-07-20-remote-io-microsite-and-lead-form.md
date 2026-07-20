@@ -761,10 +761,10 @@ Preview with `python3 -m http.server 8015`, then open:
 - `http://127.0.0.1:8015/microsite.html`
 - `http://127.0.0.1:8015/campaign.html#contact-us`
 
-Shared shell: `assets/js/moxa-shell.js` and `assets/css/moxa-ds.css`  
-Microsite behavior: `assets/js/microsite-remote-io.js`  
-Shared lead-form behavior: `assets/js/moxa-lead-form.js`  
-Microsite styling: `assets/css/microsite-remote-io.css`
+- Shared shell: `assets/js/moxa-shell.js` and `assets/css/moxa-ds.css`
+- Microsite behavior: `assets/js/microsite-remote-io.js`
+- Shared lead-form behavior: `assets/js/moxa-lead-form.js`
+- Microsite styling: `assets/css/microsite-remote-io.css`
 ```
 
 - [ ] **Step 7: Commit verified implementation**

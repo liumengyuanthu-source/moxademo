@@ -1,7 +1,9 @@
 # Remote I/O Microsite and Shared Lead Form Design
 
-Date: 2026-07-17  
-Status: Approved design direction; implementation pending  
+Date: 2026-07-17
+
+Status: Approved design direction; implementation pending
+
 Primary route: `microsite.html`
 
 ## 1. Objective
@@ -253,4 +255,3 @@ The implementation is accepted when:
 - Exercise all core interactions manually in the in-app browser.
 - Run a keyboard-only pass and a reduced-motion pass.
 - Recheck Campaign and Microsite forms together to confirm component consistency.
-
