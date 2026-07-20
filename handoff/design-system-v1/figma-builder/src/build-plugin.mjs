@@ -68,13 +68,22 @@ function pluginRuntime() {
     return node;
   }
 
+  function applyAutoLayoutSizing(node, direction, width) {
+    if (width) node.resize(width, Math.max(node.height, 1));
+    node.layoutMode = direction;
+    if (direction === 'HORIZONTAL') {
+      node.primaryAxisSizingMode = width ? 'FIXED' : 'AUTO';
+      node.counterAxisSizingMode = 'AUTO';
+    } else {
+      node.primaryAxisSizingMode = 'AUTO';
+      node.counterAxisSizingMode = width ? 'FIXED' : 'AUTO';
+    }
+  }
+
   function autoFrame(name, direction = 'VERTICAL', options = {}) {
     const frame = figma.createFrame();
     frame.name = name;
-    frame.layoutMode = direction;
-    frame.primaryAxisSizingMode = 'AUTO';
-    frame.counterAxisSizingMode = options.width ? 'FIXED' : 'AUTO';
-    if (options.width) frame.resize(options.width, Math.max(frame.height, 1));
+    applyAutoLayoutSizing(frame, direction, options.width);
     frame.paddingTop = options.padding ?? 24;
     frame.paddingRight = options.padding ?? 24;
     frame.paddingBottom = options.padding ?? 24;
@@ -191,10 +200,21 @@ function pluginRuntime() {
     return map;
   }
 
+  async function resetGeneratedCanvases(pages) {
+    for (const page of Object.values(pages)) {
+      await page.loadAsync();
+      for (const node of [...page.children]) {
+        if (node.getSharedPluginData(NS, 'key') === `canvas/${page.name}`) node.remove();
+      }
+    }
+  }
+
   function pageCanvas(page, description) {
     let canvas = page.findOne(node => node.type === 'FRAME' && node.getSharedPluginData(NS, 'key') === `canvas/${page.name}`);
     if (canvas) return canvas;
     canvas = autoFrame(`DS Canvas / ${page.name}`, 'VERTICAL', { width: 1440, padding: 64, gap: 32, radius: 0, fill: color.surface });
+    canvas.x = 0;
+    canvas.y = 0;
     tag(canvas, 'phase2', `canvas/${page.name}`);
     page.appendChild(canvas);
     appendFill(canvas, textNode(page.name, { size: 40, lineHeight: 46, style: 'Bold', color: color.ink }));
@@ -205,6 +225,17 @@ function pluginRuntime() {
     rule.fills = [solid(color.teal)];
     canvas.appendChild(rule);
     return canvas;
+  }
+
+  function componentGallery(canvas) {
+    let gallery = canvas.findOne(node => node.type === 'FRAME' && node.getSharedPluginData(NS, 'key') === `gallery/${canvas.parent.name}`);
+    if (gallery) return gallery;
+    gallery = autoFrame('Component gallery', 'HORIZONTAL', { width: 1312, padding: 0, gap: 24, radius: 0, fill: color.surface });
+    gallery.layoutWrap = 'WRAP';
+    gallery.counterAxisSpacing = 24;
+    tag(gallery, 'phase3', `gallery/${canvas.parent.name}`);
+    appendFill(canvas, gallery);
+    return gallery;
   }
 
   function addMetricRow(parent, metrics) {
@@ -281,10 +312,7 @@ function pluginRuntime() {
   function genericComponent(definition) {
     const component = figma.createComponent();
     component.name = `${definition.id} / ${definition.name}`;
-    component.layoutMode = 'VERTICAL';
-    component.primaryAxisSizingMode = 'AUTO';
-    component.counterAxisSizingMode = 'FIXED';
-    component.resize(520, 1);
+    applyAutoLayoutSizing(component, 'VERTICAL', 520);
     component.paddingTop = 24; component.paddingRight = 24; component.paddingBottom = 24; component.paddingLeft = 24;
     component.itemSpacing = 12;
     component.cornerRadius = 8;
@@ -311,7 +339,7 @@ function pluginRuntime() {
     for (const styleName of styles) for (const state of states) {
       const component = figma.createComponent();
       component.name = `Style=${styleName}, State=${state}`;
-      component.layoutMode = 'HORIZONTAL'; component.primaryAxisSizingMode = 'AUTO'; component.counterAxisSizingMode = 'AUTO';
+      applyAutoLayoutSizing(component, 'HORIZONTAL');
       component.paddingTop = 14; component.paddingBottom = 14; component.paddingLeft = 20; component.paddingRight = 20; component.itemSpacing = 8; component.cornerRadius = 4;
       const isText = styleName === 'Text'; const isSecondary = styleName === 'Secondary';
       const fill = styleName === 'Hero' ? color.orange : (isSecondary || isText ? color.white : (state === 'Hover' ? color.tealDark : color.teal));
@@ -324,6 +352,10 @@ function pluginRuntime() {
     const set = figma.combineAsVariants(variants, figma.currentPage);
     set.name = `${definition.id} / ${definition.name}`;
     set.description = `Moxa action system. Sitecore: ${definition.sitecoreRendering}.`;
+    applyAutoLayoutSizing(set, 'HORIZONTAL', 740);
+    set.layoutWrap = 'WRAP'; set.counterAxisSpacing = 12; set.itemSpacing = 12;
+    set.paddingTop = 16; set.paddingRight = 16; set.paddingBottom = 16; set.paddingLeft = 16;
+    for (const variant of set.children) variant.layoutAlign = 'INHERIT';
     tag(set, 'phase3', `component/${definition.id}`); set.setSharedPluginData(NS, 'component_id', definition.id);
     return set;
   }
@@ -333,7 +365,7 @@ function pluginRuntime() {
     for (const value of values) {
       const component = figma.createComponent();
       component.name = `${property}=${value}`;
-      component.layoutMode = 'VERTICAL'; component.primaryAxisSizingMode = 'AUTO'; component.counterAxisSizingMode = 'FIXED'; component.resize(420, 1);
+      applyAutoLayoutSizing(component, 'VERTICAL', 420);
       component.paddingTop = 20; component.paddingRight = 20; component.paddingBottom = 20; component.paddingLeft = 20; component.itemSpacing = 10; component.cornerRadius = 8;
       component.fills = [solid(value === 'Open' || value === 'Selected' ? color.tealSoft : color.white)]; component.strokes = [solid(value === 'Error' ? color.orange : color.line)]; component.strokeWeight = 1;
       appendFill(component, textNode(definition.name, { size: 16, lineHeight: 22, style: 'Semi Bold', color: color.navy }));
@@ -343,6 +375,10 @@ function pluginRuntime() {
     const set = figma.combineAsVariants(variants, figma.currentPage);
     set.name = `${definition.id} / ${definition.name}`;
     set.description = `${definition.family}. Sitecore: ${definition.sitecoreRendering}.`;
+    applyAutoLayoutSizing(set, 'HORIZONTAL', 884);
+    set.layoutWrap = 'WRAP'; set.counterAxisSpacing = 12; set.itemSpacing = 12;
+    set.paddingTop = 16; set.paddingRight = 16; set.paddingBottom = 16; set.paddingLeft = 16;
+    for (const variant of set.children) variant.layoutAlign = 'INHERIT';
     tag(set, 'phase3', `component/${definition.id}`); set.setSharedPluginData(NS, 'component_id', definition.id);
     return set;
   }
@@ -366,39 +402,75 @@ function pluginRuntime() {
       const existing = page.findOne(node => (node.type === 'COMPONENT' || node.type === 'COMPONENT_SET') && node.getSharedPluginData(NS, 'component_id') === definition.id);
       if (existing) { output[definition.id] = existing.id; continue; }
       const canvas = pageCanvas(page, 'Native Moxa components with anatomy, states, accessibility, responsive rules, and Sitecore mapping.');
+      const gallery = componentGallery(canvas);
       let node;
       if (special[definition.id]?.[0] === 'button') node = buttonVariantSet(definition);
       else if (special[definition.id]) node = simpleVariantSet(definition, special[definition.id][0], special[definition.id][1]);
       else node = genericComponent(definition);
-      canvas.appendChild(node); node.layoutAlign = 'STRETCH'; output[definition.id] = node.id;
+      gallery.appendChild(node); node.layoutAlign = 'INHERIT'; output[definition.id] = node.id;
     }
     return output;
   }
 
-  function templateFrame(name, description) {
-    const frame = autoFrame(`Template / ${name}`, 'VERTICAL', { width: 1280, padding: 0, gap: 0, radius: 8, fill: color.white, stroke: color.line });
-    const header = autoFrame('Global Header', 'HORIZONTAL', { padding: 20, gap: 24, radius: 0, fill: color.white }); header.appendChild(textNode('MOXA', { size: 24, lineHeight: 28, style: 'Extra Bold', color: color.teal })); header.appendChild(textNode('Search products, solutions, and resources', { size: 14, lineHeight: 20, color: color.muted })); appendFill(frame, header);
-    const hero = autoFrame('Hero', 'VERTICAL', { padding: 48, gap: 16, radius: 0, fill: color.tealSoft }); appendFill(hero, textNode(name, { size: 40, lineHeight: 46, style: 'Bold', color: color.navy })); appendFill(hero, textNode(description, { size: 16, lineHeight: 25, color: color.muted })); appendFill(frame, hero);
-    const body = autoFrame('Configurable body', 'VERTICAL', { padding: 48, gap: 16, radius: 0, fill: color.white }); for (const label of ['Section header', 'Evidence component collection', 'Decision support pattern', 'Contextual CTA']) { const block=autoFrame(label,'VERTICAL',{padding:20,gap:8,radius:8,fill:color.surface,stroke:color.line});appendFill(block,textNode(label,{size:18,lineHeight:24,style:'Semi Bold'}));appendFill(body,block); } appendFill(frame, body);
-    const footer = autoFrame('Global Footer', 'HORIZONTAL', { padding: 28, gap: 24, radius: 0, fill: color.surface }); footer.appendChild(textNode('Follow Moxa', { size: 14, lineHeight: 20, style: 'Bold', color: color.tealDark })); footer.appendChild(textNode('Stay Connected', { size: 14, lineHeight: 20, style: 'Bold', color: color.tealDark })); appendFill(frame, footer);
+  function templateFrame(name, description, width = 400) {
+    const frame = autoFrame(`Template / ${name}`, 'VERTICAL', { width, padding: 0, gap: 0, radius: 12, fill: color.white, stroke: color.line });
+    frame.clipsContent = true;
+    const header = autoFrame('Global Header', 'HORIZONTAL', { padding: 14, gap: 16, radius: 0, fill: color.white });
+    header.appendChild(textNode('MOXA', { size: 18, lineHeight: 22, style: 'Extra Bold', color: color.teal }));
+    header.appendChild(textNode('Search + Ask AI', { size: 11, lineHeight: 16, color: color.muted }));
+    appendFill(frame, header);
+    const nav = autoFrame('Primary Navigation', 'HORIZONTAL', { padding: 12, gap: 18, radius: 0, fill: color.white });
+    for (const item of ['Products', 'Solutions', 'Resources']) nav.appendChild(textNode(item, { size: 10, lineHeight: 14, style: 'Semi Bold', color: color.ink }));
+    appendFill(frame, nav);
+    const hero = autoFrame('Hero', 'VERTICAL', { padding: 24, gap: 10, radius: 0, fill: color.tealSoft });
+    appendFill(hero, textNode(name, { size: 26, lineHeight: 30, style: 'Bold', color: color.navy, width: width - 48 }));
+    appendFill(hero, textNode(description, { size: 12, lineHeight: 18, color: color.muted, width: width - 48 }));
+    hero.appendChild(chip('Primary action', color.teal, color.white));
+    appendFill(frame, hero);
+    const body = autoFrame('Configurable body', 'VERTICAL', { padding: 20, gap: 10, radius: 0, fill: color.white });
+    for (const label of ['Section header', 'Evidence collection', 'Decision support', 'Contextual CTA']) {
+      const block = autoFrame(label, 'VERTICAL', { padding: 12, gap: 4, radius: 6, fill: color.surface, stroke: color.line });
+      appendFill(block, textNode(label, { size: 12, lineHeight: 18, style: 'Semi Bold', color: color.navy }));
+      appendFill(body, block);
+    }
+    appendFill(frame, body);
+    const footer = autoFrame('Global Footer', 'HORIZONTAL', { padding: 16, gap: 18, radius: 0, fill: color.navy });
+    footer.appendChild(textNode('Follow Moxa', { size: 10, lineHeight: 14, style: 'Bold', color: color.white }));
+    footer.appendChild(textNode('Stay Connected', { size: 10, lineHeight: 14, style: 'Bold', color: color.white }));
+    appendFill(frame, footer);
     return frame;
   }
 
   async function ensurePatternsAndTemplates(pages) {
     const patternPages = PAGE_NAMES.slice(21, 26);
+    const patternExamples = {
+      '22 — Shared Shell Patterns': ['Global Header', 'Breadcrumb + Anchor Nav', 'Lead Capture + Footer'],
+      '23 — Product Discovery Patterns': ['Homepage', 'Search Results', 'Product Category'],
+      '24 — Product Detail Patterns': ['Product Series', 'Product Model', 'NPort 5100'],
+      '25 — Campaign & Microsite Patterns': ['Campaign', 'Microsite', 'Campaign Pop-up'],
+      '26 — Support, Manual & Media Patterns': ['HXML Manual', 'Video Collection', 'AI Comparison', 'Product Media']
+    };
     for (const name of patternPages) {
       const page = pages[name]; await figma.setCurrentPageAsync(page); const canvas = pageCanvas(page, 'Reusable compositions assembled from governed Moxa components.');
       if (!canvas.findOne(node => node.getSharedPluginData(NS, 'key') === `pattern/${name}`)) {
-        const card = autoFrame(`Pattern / ${name}`, 'VERTICAL', { padding: 32, gap: 16, radius: 12, fill: color.white, stroke: color.line }); tag(card, 'phase4', `pattern/${name}`);
-        appendFill(card, textNode(name.replace(/^\d+ — /, ''), { size: 28, lineHeight: 34, style: 'Bold', color: color.navy }));
-        appendFill(card, textNode('Configure content through datasource items; preserve shared spacing, interaction, accessibility, and analytics responsibilities.', { size: 16, lineHeight: 25, color: color.muted }));
-        appendFill(canvas, card);
+        const gallery = autoFrame('Pattern gallery', 'HORIZONTAL', { width: 1312, padding: 0, gap: 20, radius: 0, fill: color.surface });
+        gallery.layoutWrap = 'WRAP'; gallery.counterAxisSpacing = 20; tag(gallery, 'phase4', `pattern/${name}`);
+        for (const example of patternExamples[name]) {
+          const preview = templateFrame(example, 'A reusable composition with shared spacing, interaction, accessibility, analytics, and datasource responsibilities.', 400);
+          gallery.appendChild(preview); preview.layoutAlign = 'INHERIT';
+        }
+        appendFill(canvas, gallery);
       }
     }
 
     const templatePage = pages['27 — Page Templates / 12 Types']; await figma.setCurrentPageAsync(templatePage); const templateCanvas = pageCanvas(templatePage, 'Twelve configurable page templates. Product Model covers both LV and HV routes; Campaign Pop-up is a governed composition.');
     const templates = ['Homepage', 'Search Results', 'Product Category', 'Product Series', 'Product Model', 'Campaign', 'Campaign Pop-up', 'Microsite', 'Video', 'HXML Manual', 'AI Comparison', 'Product Media'];
-    for (const name of templates) if (!templateCanvas.findOne(node => node.name === `Template / ${name}`)) appendFill(templateCanvas, templateFrame(name, 'Shared shell plus configurable evidence, guidance, and conversion modules.'));
+    const templateGallery = autoFrame('Template gallery', 'HORIZONTAL', { width: 1312, padding: 0, gap: 20, radius: 0, fill: color.surface });
+    templateGallery.layoutWrap = 'WRAP'; templateGallery.counterAxisSpacing = 20; appendFill(templateCanvas, templateGallery);
+    for (const name of templates) {
+      const preview = templateFrame(name, 'Shared shell plus configurable evidence, guidance, and conversion modules.', 400);
+      templateGallery.appendChild(preview); preview.layoutAlign = 'INHERIT';
+    }
 
     const routePage = pages['28 — Route Coverage / 13 Routes']; await figma.setCurrentPageAsync(routePage); const routeCanvas = pageCanvas(routePage, 'Every PoC route mapped to a governed page template and shared shell.');
     if (!routeCanvas.findOne(node => node.getSharedPluginData(NS, 'key') === 'route/coverage')) {
@@ -422,15 +494,25 @@ function pluginRuntime() {
     appendFill(changeCanvas, textNode('Backup Starter plan: theme and responsive modes use separate single-mode collections. Implementation services for search, CRM, and AI remain integration-ready, not production-connected.', { size: 16, lineHeight: 25, color: color.muted, width: 1080 }));
   }
 
+  async function fitAllPages(pages) {
+    for (const page of Object.values(pages)) {
+      await figma.setCurrentPageAsync(page);
+      const canvas = page.findOne(node => node.type === 'FRAME' && node.getSharedPluginData(NS, 'key') === `canvas/${page.name}`);
+      if (canvas) figma.viewport.scrollAndZoomIntoView([canvas]);
+    }
+  }
+
   async function main() {
     await loadFonts();
     const collections = await ensureCollections();
     const styles = await ensureStyles();
     const pages = await ensurePages();
+    await resetGeneratedCanvases(pages);
     for (const page of Object.values(pages)) { await figma.setCurrentPageAsync(page); pageCanvas(page, 'Moxa PoC Operational Design System v1.0'); }
     addFoundationDocumentation(pages);
     const components = await ensureComponents(pages);
     await ensurePatternsAndTemplates(pages);
+    await fitAllPages(pages);
     figma.root.setSharedPluginData(NS, 'run_id', RUN_ID);
     figma.root.setSharedPluginData(NS, 'version', '1.0.0');
     figma.root.setSharedPluginData(NS, 'status', 'complete');

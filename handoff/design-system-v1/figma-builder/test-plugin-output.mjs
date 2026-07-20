@@ -27,5 +27,12 @@ assert.match(code, /createTextStyle/);
 assert.match(code, /createComponent/);
 assert.match(code, /setSharedPluginData/);
 assert.match(code, /saveVersionHistoryAsync/);
+assert.match(code, /resetGeneratedCanvases/);
+assert.match(code, /Component gallery/);
+assert.match(code, /Template gallery/);
+assert.match(code, /fitAllPages/);
+assert.match(code, /direction === 'HORIZONTAL'/);
+assert.match(code, /function applyAutoLayoutSizing/);
+assert.match(code, /set\.layoutWrap = 'WRAP'/);
 
 console.log('Moxa Figma Builder plugin output: PASS');

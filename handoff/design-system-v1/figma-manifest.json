@@ -78,5 +78,5 @@
     "completionMessage": "Moxa Design System created: 10 collections, 54 components, 31 pages."
   },
   "pendingValidations": [],
-  "completedSteps": ["P0.a", "P0.b", "P0.c", "P0.d", "P0.e", "P0.f", "fallback-approved", "builder-generated", "builder-tested", "visual-handbook-rendered", "builder-imported", "builder-run", "visible-pages-verified"]
+  "completedSteps": ["P0.a", "P0.b", "P0.c", "P0.d", "P0.e", "P0.f", "fallback-approved", "builder-generated", "builder-tested", "visual-handbook-rendered", "builder-imported", "builder-run", "component-gallery-layout-corrected", "pattern-gallery-verified", "template-gallery-verified", "visible-pages-verified"]
 }
