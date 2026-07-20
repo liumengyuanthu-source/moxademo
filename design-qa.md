@@ -1,73 +1,57 @@
-# Moxa POC Design QA
+# Homepage EDS-4008 Third Banner — Design QA
 
-final result: blocked
+final result: passed
 
 ## Scope
 
-- Source visual truth path: `/Users/christinaliu/Documents/Moxa/20260710 redesign/moxa-figma-static-pages 4/homepage.html`
-- Rendered implementation path: `/Users/christinaliu/Documents/Moxa/20260714 POC readiness/moxademo-github`
-- Intended preview URL: `http://127.0.0.1:8772`
-- Viewport target: `1440x1100`
-- State: desktop, unauthenticated, default page state
+- Source visual truth:
+  - `/var/folders/zw/f8k7tk517b59fthbrlpg_tr00000gn/T/codex-clipboard-8a1bb7fe-d929-41e3-a7d6-8ec096791df8.png`
+  - `banner/ChatGPT Image Jul 13, 2026, 05_45_52 PM (3).png`
+  - `banner/ChatGPT Image Jul 13, 2026, 05_45_51 PM (2).png`
+  - `banner/eds-4008-validation-banner.png`
+- Browser-rendered implementation:
+  - `docs/qa/homepage-banner-third-desktop.png`
+  - `docs/qa/homepage-banner-third-mobile.png`
+- Viewports: `1435 × 795` desktop and `390 × 844` mobile.
+- State: `homepage.html?demoState=eds4008Session`, unauthenticated.
+- Preview URL used for QA: `http://127.0.0.1:8017/homepage.html?demoState=eds4008Session`.
 
-## Browser Evidence
+## Comparison Evidence
 
-- Current browser-rendered screenshot pass: blocked.
-- Blocker: the in-app browser rejected access to `http://127.0.0.1:8772` by security policy during the refined QA run.
-- Previous evidence from the pre-fix audit remains in `audit/design-qa-20260715/`, but it does not represent the final refined pages.
-
-## Static Verification Completed
-
-- HTML files: `26`
-- Missing local references: `0`
-- Files larger than 90MB: `0`
-- Visible text scan for previous garbling tokens: passed
-  - Checked for `documents,and`, `EthernetSwitch`, `LV /EDS`, `SeriesUser`, `setupvideo`, `productimage`, `{{`, `}}`, `pageData`, `productData` after removing scripts/styles.
-- New model pages present:
-  - `eds-4008-lv.html`
-  - `eds-4008-hv.html`
+- Full-view, same-viewport carousel comparison: `docs/qa/homepage-banner-three-state-comparison.png`.
+- Focused source-versus-render comparison: `docs/qa/homepage-banner-source-render-focus-comparison.png`.
+- Mobile three-state comparison: `docs/qa/homepage-banner-three-state-mobile-comparison.png`.
 
 ## Findings
 
-- [P0] Final browser-rendered QA could not be completed
-  Location: all refined pages.
-  Evidence: browser security policy blocked the local preview URL used for the refined pass.
-  Impact: I cannot honestly mark visual QA as passed, even though static checks passed.
-  Fix: re-run browser screenshot QA in an allowed preview context, then update this file to `final result: passed` only if there are no P0/P1/P2 visual findings.
-
-- [P2] Video page cannot publish the 4.3GB MP4 to GitHub
-  Location: `video.html`, `assets/video/`.
-  Evidence: source MP4 in the provided PoC package is approximately 4.3GB. The publishable package includes the supplied FireShot poster and transcript docx, but not the MP4.
-  Impact: GitHub Pages can publish the video page, but the live page is a poster/transcript page rather than embedded playback.
-  Fix: host the MP4 separately or provide a compressed web-ready MP4/WebM if live playback is required.
-
-## Fixes Made Since Prior QA
-
-- Search results now use a single-column `.search-results-list`; product rows are no longer inside the generic three-column `.detail-grid`.
-- Hero titles no longer use forced `<br>` where they caused joined words.
-- `eds-4008-lv.html` and `eds-4008-hv.html` were added as separate model pages.
-- `compare-lv-hv.html` now compares LV, LV-T, HV, and HV-T.
-- `product-series-eds-4008.html` was rebuilt with official-style sections: Overview, Features and Benefits, Specifications, Resources, Models.
-- `product-category-ethernet-switches.html` was rebuilt around the official Ethernet Switches intro and Search By groups.
-- `nport-5100-series.html` was rebuilt with official NPort 5100 intro, features, and specifications.
-- `campaign.html` now uses the Secure Your OT Networks/Secure Networking campaign path and the supplied homepage pop-up banner assets.
-- `video.html` now uses the supplied MGate G2 poster/docx package.
-- `microsite.html` now includes Controller & I/O category context and supplied remote I/O assets.
+- No actionable P0, P1, or P2 visual mismatch remains in the approved Option A scope.
+- [P3] The campaign pop-up covers part of the right-side proof markers at this viewport. This is existing global campaign behavior and does not obscure the title or either CTA.
 
 ## Required Fidelity Surfaces
 
-- Fonts and typography: static source uses homepage shell and tokens. Final visual fidelity still needs browser screenshot confirmation.
-- Spacing and layout rhythm: search layout was fixed statically; final viewport rhythm still needs browser confirmation.
-- Colors and tokens: pages continue to use the homepage token system.
-- Image quality and asset fidelity: campaign, video, microsite, EDS model, and 360 pages now use supplied local assets where available.
-- Copy and content: product/category/model/NPort pages were mapped closer to official Moxa wording and structure.
+- Fonts and typography: the generated desktop banner carries the same bold industrial headline hierarchy, compact eyebrow, body scale, and button labels as banners one and two. Mobile uses live HTML text at readable optical sizes instead of shrinking the desktop artwork.
+- Spacing and layout rhythm: desktop left copy, circular product focal point, right proof markers, and CTA row align with the first two banner compositions. Mobile keeps 20 px side margins, a stable content panel, and 54 px CTA height with no horizontal overflow.
+- Colors and visual tokens: white technical canvas, deep navy type, Moxa green accent, teal primary CTA, and outlined secondary CTA match the existing homepage banner system.
+- Image quality and asset fidelity: the EDS-4008 device is complete, sharp, uncropped, and presented against an industrial-control background. The delivered desktop asset is exactly `1916 × 821`.
+- Copy and content: `Continue with EDS-4008`, `Validate the right model.`, the engineering-oriented supporting sentence, and both requested CTA labels are present without the former “Homepage C” annotation.
 
-## Implementation Checklist Before Marking Passed
+## Interaction and Browser Checks
 
-1. Re-run browser screenshots in an allowed preview environment.
-2. Confirm search results are readable and not vertically compressed.
-3. Confirm homepage popup routes to `campaign.html`.
-4. Confirm LV/HV pages render and link from series/model hub/compare pages.
-5. Confirm video page displays poster/transcript correctly without MP4.
-6. Confirm mobile breakpoint for search, model cards, and comparison table.
+- Third state loads as the active slide and the third tab reports `aria-selected="true"`.
+- Banner A and Banner C tabs switch the active state correctly.
+- `Compare LV/HV Models` navigates to `compare-lv-hv.html`.
+- `Download Datasheet` resolves to `asset/moxa-eds-4008-series-datasheet-v1.8.pdf`.
+- Runtime CTA paths no longer receive the obsolete `moxa-figma-static-pages 4/` prefix.
+- Desktop and mobile horizontal overflow: `0 px`.
+- Browser console warnings/errors during the tested state: none.
 
+## Comparison History
+
+1. Initial implementation used the approved generated asset and transparent desktop hotspots.
+2. Browser interaction testing found a P1 functional issue: the legacy runtime route mapper prefixed both CTA destinations with a removed folder path, producing broken navigation.
+3. The route base was normalized to the current root-page structure.
+4. Post-fix browser evidence confirms the primary CTA reaches `compare-lv-hv.html`, the datasheet link is correct, carousel tab state is accurate, and no console errors remain.
+
+## Residual Test Gaps
+
+- The PDF link target was validated by its resolved URL and local file presence; the browser download prompt was not opened because downloading was not needed for this QA pass.

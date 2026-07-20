@@ -37,6 +37,10 @@ class HomepageThirdBannerContract(unittest.TestCase):
     def test_removes_visible_session_note(self):
         self.assertNotIn("Homepage C", self.banner)
 
+    def test_runtime_routes_use_the_current_page_root(self):
+        self.assertIn("var staticBase = '';", HTML)
+        self.assertNotIn("moxa-figma-static-pages 4/", HTML)
+
 
 if __name__ == "__main__":
     unittest.main()

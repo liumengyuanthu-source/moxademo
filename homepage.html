@@ -287,7 +287,7 @@ nav.mainnav{display:flex;gap:.25rem;margin-left:.5rem}
   display:none;
 }
 .image-hero-carousel .hero-slide-eds .hero-copy{
-  display:block;
+  display:none;
   position:absolute;
   left:clamp(28px,8.8vw,168px);
   bottom:clamp(38px,8.4vw,104px);
@@ -306,7 +306,13 @@ nav.mainnav{display:flex;gap:.25rem;margin-left:.5rem}
   max-width:42ch;
 }
 .image-hero-carousel .hero-slide-eds .banner-hotspots{
-  display:none;
+  display:block;
+}
+.image-hero-carousel .hero-slide-eds .banner-hotspot.primary{
+  left:8.7%;top:70.2%;width:16.7%;height:8.4%;
+}
+.image-hero-carousel .hero-slide-eds .banner-hotspot.secondary{
+  left:26.8%;top:70.2%;width:15.4%;height:8.4%;
 }
 .image-hero-carousel .hero-imgslot{
   background:#fff;
@@ -318,6 +324,36 @@ nav.mainnav{display:flex;gap:.25rem;margin-left:.5rem}
 .image-hero-carousel .hero-photo{
   object-fit:cover;
   object-position:center center;
+}
+@media (max-width:760px){
+  .image-hero-carousel .wrap.hero-grid{
+    aspect-ratio:auto;
+    min-height:620px;
+  }
+  .image-hero-carousel .hero-slide-eds .hero-copy{
+    display:block;
+    left:20px;right:20px;bottom:70px;
+    width:auto;max-width:none;
+    padding:20px;
+    background:linear-gradient(90deg,rgba(0,34,34,.78),rgba(0,34,34,.34));
+    backdrop-filter:blur(5px) saturate(1.08);
+  }
+  .image-hero-carousel .hero-slide-eds .hero-copy h1{
+    font-size:clamp(2.05rem,11vw,3.25rem);
+  }
+  .image-hero-carousel .hero-slide-eds .banner-hotspots{
+    display:none;
+  }
+  .image-hero-carousel .hero-slide-eds .hero-imgslot{
+    background:url("img/family-network.jpg") 68% center / cover no-repeat;
+  }
+  .image-hero-carousel .hero-slide-eds .hero-imgslot::after{
+    display:block;
+    background:linear-gradient(180deg,rgba(0,34,34,.06),rgba(0,34,34,.48));
+  }
+  .image-hero-carousel .hero-slide-eds .hero-photo{
+    display:none;
+  }
 }
 .banner-hotspots{
   position:absolute;
@@ -2670,15 +2706,14 @@ nav.mainnav{gap:0}
         <div class="hero-copy">
           <span class="eyebrow">CONTINUE WITH EDS-4008</span>
           <h1>
-            <span class="lede">Ready to validate</span>
-            the right <span class="accent">model?</span>
+            <span class="lede">Validate the right</span>
+            <span class="accent">model.</span>
           </h1>
-          <p class="hero-sub">Continue from the EDS-4008 series page: compare LV/HV variants, download the datasheet, and confirm fit with an engineer.</p>
+          <p class="hero-sub">Compare LV and HV power options, review the series datasheet, and confirm the right fit for your application.</p>
           <div class="hero-cta">
             <a class="btn btn-primary btn-lg" href="compare-lv-hv.html" data-s1-route="compare" data-s1-record-compare>Compare LV/HV Models</a>
             <a class="btn btn-ghost btn-lg" href="asset/moxa-eds-4008-series-datasheet-v1.8.pdf" data-s1-route="datasheet">Download Datasheet</a>
           </div>
-          <div class="hero-state-note">Homepage C · EDS-4008 session follow-up</div>
           <div class="hero-stats">
             <div class="stat"><div class="num">LV</div><div class="lbl">Model option</div></div>
             <div class="stat"><div class="num">HV</div><div class="lbl">Model option</div></div>
@@ -2688,7 +2723,7 @@ nav.mainnav{gap:0}
 
         <div class="hero-visual">
           <div class="hero-imgslot">
-            <img class="asset-img hero-photo" src="img/family-network.jpg" alt="Validate EDS-4008 industrial Ethernet switch model fit with datasheet and comparison actions">
+            <img class="asset-img hero-photo" src="banner/eds-4008-validation-banner.png" alt="Compare EDS-4008 LV and HV models and validate the right industrial Ethernet switch for an application">
           </div>
           <svg class="hero-net" viewBox="0 0 500 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
           <div class="banner-hotspots" aria-label="Talk to an engineer banner actions">
@@ -2907,10 +2942,10 @@ nav.mainnav{gap:0}
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var params = new URLSearchParams(window.location.search);
-  var staticPageMatch = window.location.pathname.indexOf('moxa-figma-static-pages%204') !== -1 || window.location.pathname.indexOf('moxa-figma-static-pages 4') !== -1;
-  var staticBase = staticPageMatch ? '' : 'moxa-figma-static-pages 4/';
+  var staticPageMatch = true;
+  var staticBase = '';
   var s1Routes = {
-    home: staticPageMatch ? 'homepage.html' : 'moxa_homepage.html',
+    home: 'homepage.html',
     search: staticBase + 'search.html',
     searchEthernet: staticBase + 'search.html?q=Ethernet%20Switches',
     products: staticBase + 'product-category-ethernet-switches.html',
