@@ -1,7 +1,7 @@
 {
   "release": "Moxa PoC Operational Design System v1.0",
   "version": "1.0.0",
-  "status": "phase-0-complete",
+  "status": "package-ready-figma-builder-pending-run",
   "auditDate": "2026-07-20",
   "sourceCommit": "8cf7de1",
   "specificationCommit": "ffe39e4",
@@ -12,8 +12,13 @@
     "components": 54,
     "sitecoreMappings": 30,
     "figmaPages": 31,
-    "variableCollections": 7,
-    "variableDefinitions": 64
+    "logicalVariableCollections": 7,
+    "logicalVariableDefinitions": 64,
+    "physicalVariableCollections": 10,
+    "physicalVariableDefinitions": 105,
+    "textStyles": 13,
+    "effectStyles": 3,
+    "gridStyles": 3
   },
   "figma": {
     "fileName": "Moxa PoC Operational Design System v1.0",
@@ -29,11 +34,14 @@
     "sitecoreCrosswalk": "handoff/design-system-v1/sitecore-crosswalk.csv",
     "gapAnalysis": "handoff/design-system-v1/gap-analysis.md",
     "visualHandbookHtml": "design-system-v1.html",
-    "visualHandbookPdf": null
+    "visualHandbookPdf": "Moxa_Operational_Design_System_v1.0.pdf",
+    "figmaBuilder": "handoff/design-system-v1/figma-builder"
   },
   "knownBoundaries": [
     "Sitecore backend installation is not included.",
     "Search, CRM submission, and production AI orchestration remain simulated or integration-ready only.",
-    "The native Figma URL is authoritative; offline .fig export depends on Figma account permissions."
+    "The native Figma URL becomes authoritative after the included Builder has run.",
+    "The Backup Starter plan uses one-mode collections; theme and viewport modes are split into separate collections.",
+    "Offline .fig export depends on Figma account permissions."
   ]
 }

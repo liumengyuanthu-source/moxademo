@@ -103,4 +103,4 @@ Generic third-party components will not replace the Moxa visual language merely 
 - Simple Design System is retained as a structural reference for Button, fields, disclosure, Header/Footer, Dialog, and AI Chat, but no component is imported because its variables and component API are incompatible with Moxa.
 - All 54 Moxa components will therefore be built locally and bound to Moxa variables.
 
-Phase 0 has no unresolved source conflict. Figma creation can proceed with 7 collections, 64 variables, 54 component/pattern entries, 31 pages, 12 page types, and 13 routes.
+Phase 0 has no unresolved source conflict. The user approved the Backup Starter fallback: logical modes are split into 10 one-mode collections containing 105 physical variables. The local Builder has been generated and tested for 54 component/pattern entries, 31 pages, 12 page types, 13 routes, and 30 Sitecore mappings. Its final run in Figma Desktop requires explicit confirmation because it is an unrecognized local development plugin.

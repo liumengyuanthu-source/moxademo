@@ -1,6 +1,6 @@
 {
   "runId": "moxa-ds-v1-20260720",
-  "phase": "phase-0-complete",
+  "phase": "builder-ready-pending-confirmed-local-run",
   "file": {
     "name": "Moxa PoC Operational Design System v1.0",
     "planName": "Backup",
@@ -42,8 +42,10 @@
     "decision": "Rebuild Moxa components locally with native Moxa variables. Use Simple Design System only as an API and auto-layout reference."
   },
   "lockedScope": {
-    "collections": 7,
-    "variables": 64,
+    "logicalCollections": 7,
+    "logicalVariables": 64,
+    "physicalCollections": 10,
+    "physicalVariables": 105,
     "textStylesPlanned": 13,
     "effectStylesPlanned": 3,
     "gridStylesPlanned": 3,
@@ -53,12 +55,27 @@
     "routes": 13
   },
   "entities": {
-    "collections": {},
-    "variables": {},
+    "collections": {
+      "Moxa / Primitives": "VariableCollectionId:3:2",
+      "Moxa / Semantic Color": "created; Light mode only; no variables from the interrupted direct-write run"
+    },
+    "variables": {
+      "primitiveColorCount": 16,
+      "semanticColorCount": 0
+    },
     "styles": {},
     "pages": {"initial": "0:1"},
     "components": {}
   },
-  "pendingValidations": [],
-  "completedSteps": ["P0.a", "P0.b", "P0.c", "P0.d", "P0.e", "P0.f"]
+  "fallback": {
+    "decision": "Use separate one-mode collections in Backup Starter plan; approved by the user.",
+    "reason": "Starter limits collections to one mode and the direct Figma MCP write quota was reached.",
+    "builder": "handoff/design-system-v1/figma-builder",
+    "builderStatus": "generated-and-tested",
+    "userAction": "Explicit confirmation is required immediately before importing and running the local development plugin in Figma Desktop."
+  },
+  "pendingValidations": [
+    "Run the local Builder in the Backup Figma file and verify the generated Cover, Foundations, Components, Templates, Coverage, Mapping, and Changelog pages."
+  ],
+  "completedSteps": ["P0.a", "P0.b", "P0.c", "P0.d", "P0.e", "P0.f", "fallback-approved", "builder-generated", "builder-tested", "visual-handbook-rendered"]
 }
