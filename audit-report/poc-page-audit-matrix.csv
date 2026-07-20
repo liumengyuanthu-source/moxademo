@@ -1,0 +1,22 @@
+page,title,h1_count,hero_media_count,canonical,description,missing_alt,header,footer,screenshot
+homepage.html,"Moxa — Reliable Networks, Sincere Service",1,0,True,True,0,True,False,01-homepage.png
+product-category-ethernet-switches.html,Moxa Ethernet Switches,1,1,True,True,0,True,True,02-product-category-ethernet-switches.png
+product-series-eds-4008.html,Moxa EDS-4008 Series,1,1,True,True,0,True,True,03-product-series-eds-4008.png
+product-model-eds-4008-lv-hv.html,Moxa EDS-4008-LV / EDS-4008-HV,1,1,True,True,0,True,True,04-product-model-eds-4008-lv-hv.png
+compare-lv-hv.html,Moxa EDS-4008-LV vs EDS-4008-HV,1,1,True,True,0,True,True,05-compare-lv-hv.png
+manual.html,Moxa EDS-4008 Series User Manual,1,1,True,True,0,True,True,06-manual.png
+compare-quote.html,Moxa Product Compare and Quote,1,1,True,True,0,True,True,07-compare-quote.png
+microsite.html,Moxa Campaign Microsite,1,0,True,True,0,True,True,08-microsite.png
+article.html,Moxa Article Page,1,0,True,True,0,True,True,09-article.png
+video.html,Moxa Video Page,1,1,True,True,0,True,True,10-video.png
+search.html,Moxa Search Results,1,1,True,True,0,True,True,11-search.png
+chatbot.html,Moxa AI Chatbot,1,1,True,True,0,True,True,12-chatbot.png
+analytics.html,Moxa Analytics,1,1,True,True,0,True,True,13-analytics.png
+journey.html,Moxa Customer Journey,1,1,True,True,0,True,True,14-journey.png
+backend-compliance.html,Moxa Backend and Compliance,1,1,True,True,0,True,True,15-backend-compliance.png
+contact-distributor.html,Moxa Contact Sales and Find Distributor,1,1,True,True,0,True,True,16-contact-distributor.png
+products.html,Moxa Products,1,1,True,True,0,True,True,17-products.png
+pdp.html,Moxa PDP - EDS-4008,1,1,True,True,0,True,True,18-pdp.png
+design-system.html,Moxa UXUI Design System,1,1,True,True,0,True,True,19-design-system.png
+demo-map.html,Moxa PoC Demo Map,1,1,True,True,0,True,True,20-demo-map.png
+index.html,Moxa Figma Static Pages,1,0,True,True,0,False,False,21-index.png

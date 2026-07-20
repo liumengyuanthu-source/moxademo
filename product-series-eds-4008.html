@@ -1629,7 +1629,9 @@ nav.mainnav{gap:0}
 .header .navitem>button:hover,
 .header .navitem>button[aria-expanded="true"]{color:var(--moxa-green-dark)!important;background:#eef8f7!important}
 .header .mega{
-  position:absolute!important;
+  position:fixed!important;
+  width:auto!important;
+  margin-left:0!important;
   left:0!important;
   right:0!important;
   top:72px!important;
@@ -1985,14 +1987,34 @@ nav.mainnav{gap:0}
 .filter-group h3{font-size:.95rem;text-transform:uppercase;letter-spacing:.08em;margin:0 0 .75rem;color:var(--ink)}
 .filter-tags{display:flex;gap:.45rem;flex-wrap:wrap}
 .filter-tags span{font-size:.83rem;color:var(--green);background:var(--green-050);border:1px solid var(--green-100);padding:.42rem .58rem;border-radius:999px}
+.filter-tags button{font:inherit;font-size:.83rem;color:var(--green);background:var(--green-050);border:1px solid var(--green-100);padding:.42rem .58rem;border-radius:999px;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.filter-tags button[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#fff}
+.filter-tags button:focus-visible{outline:3px solid var(--acc-cyan);outline-offset:3px}
+.active-filter-line{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--gray-line);color:var(--gray);font-size:.9rem}
+.active-filter-line strong{color:var(--ink)}
+.filter-reset{border:0;background:transparent;color:var(--green);font-weight:800;cursor:pointer}
+.media-card.is-hidden{display:none}
 .detail-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--gray-line);border-radius:14px;overflow:hidden}
 .detail-table th,.detail-table td{padding:1rem;border-bottom:1px solid var(--gray-line);text-align:left;vertical-align:top}
 .detail-table th{background:var(--green-050);color:#173333;font-size:.82rem;text-transform:uppercase;letter-spacing:.08em}
 .detail-table tr:last-child td{border-bottom:0}
+.model-builder-head{display:flex;align-items:end;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.2rem}
+.model-toolbar{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}
+.model-toolbar .meta{color:var(--gray);font-size:.86rem;font-weight:700}
+.model-action{border:1px solid var(--green);border-radius:4px;background:#fff;color:var(--green);font-weight:800;padding:.65rem .9rem;cursor:pointer}
+.model-action.primary{background:var(--green);color:#fff}
+.model-action:disabled{opacity:.45;cursor:not-allowed}
+.editable-model-table th:first-child,.editable-model-table td:first-child{width:54px;text-align:center}
+.editable-model-table input[type="checkbox"]{width:18px;height:18px;accent-color:var(--green)}
 .detail-layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:1.2rem;align-items:start}
 .detail-aside{position:sticky;top:96px;border:1px solid var(--gray-line);border-radius:14px;background:#fff;padding:1.2rem}
 .detail-aside a{display:block;padding:.58rem 0;color:var(--green);font-weight:700;font-size:.92rem;border-bottom:1px solid var(--gray-line)}
 .detail-aside a:last-child{border-bottom:0}
+.filter-check{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.62rem 0;border-bottom:1px solid var(--gray-line);color:var(--gray);font-weight:700;font-size:.92rem}
+.filter-check:last-child{border-bottom:0}
+.filter-check input{width:18px;height:18px;accent-color:var(--green)}
+.filter-check.is-hit{color:var(--green)}
+.filter-count{margin-left:auto;color:var(--gray);font-size:.78rem;font-weight:700}
 .media-card{border:1px solid var(--gray-line);border-radius:16px;background:#fff;overflow:hidden}
 .media-card img{width:100%;aspect-ratio:16/10;object-fit:cover;background:var(--green-050)}
 .media-card .body{padding:1.2rem}
@@ -2000,6 +2022,11 @@ nav.mainnav{gap:0}
 .product-row img{width:100%;height:118px;object-fit:cover;border-radius:10px;background:var(--green-050)}
 .search-results-list{display:grid;gap:1rem}
 .search-results-list .product-row{grid-template-columns:180px minmax(0,1fr) auto}
+.result-group{display:grid;gap:.85rem}
+.result-group+.result-group{margin-top:1.6rem}
+.result-group-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;border-bottom:1px solid var(--gray-line);padding-bottom:.7rem}
+.result-group-head h2{font-size:1.25rem;margin:0;color:var(--ink)}
+.result-group-head span{font-size:.82rem;color:var(--gray);font-weight:800;text-transform:uppercase;letter-spacing:.08em}
 .spec-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
 .spec-item{border:1px solid var(--gray-line);border-radius:12px;padding:1rem;background:#fff}
 .spec-item strong{display:block;color:var(--ink);margin-bottom:.3rem}
@@ -2014,11 +2041,156 @@ nav.mainnav{gap:0}
 .campaign-shot{width:min(380px,100%);margin:auto;filter:drop-shadow(0 28px 48px rgba(0,80,80,.18))}
 .video-frame{width:100%;aspect-ratio:16/9;border:0;border-radius:16px;background:#101818;object-fit:cover;box-shadow:0 28px 60px -42px rgba(0,40,40,.6)}
 .page-note{font-size:.86rem;color:var(--gray);margin-top:1rem}
-@media(max-width:900px){.detail-grid,.detail-grid.two,.detail-grid.four,.detail-layout,.viewer-box,.product-row,.search-results-list .product-row,.filter-panel,.spec-list,.model-card{grid-template-columns:1fr}.detail-aside{position:static}}
+.product-detail-hero{background:linear-gradient(180deg,#fff 0%,#f4fbfb 100%);border-bottom:1px solid var(--gray-line);overflow:hidden}
+.product-detail-hero .wrap{display:grid;grid-template-columns:minmax(0,.92fr) minmax(360px,1.08fr);gap:clamp(2rem,5vw,5.5rem);align-items:center;min-height:clamp(480px,58vh,640px);padding-block:clamp(3.5rem,7vw,6rem)}
+.product-detail-copy{position:relative;z-index:2;max-width:600px}
+.product-detail-copy .eyebrow{color:var(--green)}
+.product-detail-copy h1{margin:.75rem 0 1rem;color:var(--ink);font-size:clamp(3rem,6vw,5.8rem);line-height:.95;letter-spacing:0}
+.product-detail-copy p{max-width:520px;color:var(--gray);font-size:clamp(1.05rem,1.5vw,1.28rem);line-height:1.55}
+.product-detail-copy .hero-cta{margin-top:2rem}
+.product-detail-visual{position:relative;display:grid;place-items:center;min-height:360px}
+.product-detail-visual::before{content:"";position:absolute;inset:6% 0 0 10%;border:1px solid rgba(0,130,130,.16);background:linear-gradient(135deg,rgba(0,130,130,.08),rgba(255,255,255,.86));box-shadow:0 38px 90px -60px rgba(0,80,80,.72)}
+.product-detail-visual::after{content:"";position:absolute;right:8%;top:12%;width:32%;aspect-ratio:1;background:radial-gradient(circle,rgba(0,130,130,.13),rgba(0,130,130,0) 68%)}
+.product-detail-visual img{position:relative;z-index:2;width:min(720px,100%);max-height:430px;object-fit:contain;filter:drop-shadow(0 34px 42px rgba(0,45,45,.18))}
+.microsite-hero{position:relative;margin-top:0;background:linear-gradient(180deg,#fff 0%,#eef8f7 100%);border-bottom:1px solid var(--gray-line);overflow:hidden}
+.microsite-hero .wrap{display:grid;grid-template-columns:minmax(0,.96fr) minmax(360px,1.04fr);gap:clamp(2rem,5vw,5rem);align-items:center;min-height:clamp(500px,62vh,680px);padding-block:clamp(3rem,6vw,5.5rem)}
+.microsite-copy{position:relative;z-index:2;max-width:650px}
+.microsite-copy .eyebrow{color:var(--green)}
+.microsite-copy h1{margin:.75rem 0 1rem;color:var(--ink);font-size:clamp(3rem,6.4vw,5.9rem);line-height:.96;letter-spacing:0}
+.microsite-copy p{max-width:560px;color:var(--gray);font-size:clamp(1.05rem,1.5vw,1.25rem);line-height:1.6}
+.microsite-copy .hero-cta{margin-top:2rem}
+.microsite-visual{position:relative;min-height:390px}
+.microsite-visual::before{content:"";position:absolute;inset:8% 0 0 14%;background:linear-gradient(135deg,rgba(0,130,130,.10),rgba(255,255,255,.86));border:1px solid rgba(0,130,130,.16);box-shadow:0 34px 90px -60px rgba(0,72,72,.70)}
+.microsite-product{position:absolute;z-index:2;width:min(35%,210px);filter:drop-shadow(0 24px 32px rgba(0,45,45,.16))}
+.microsite-product.one{left:7%;bottom:8%}
+.microsite-product.two{left:34%;top:4%;width:min(42%,260px)}
+.microsite-product.three{right:4%;bottom:12%}
+.microsite-diagram{position:absolute;z-index:1;right:0;top:14%;width:58%;opacity:.46;border-radius:8px}
+@media(max-width:900px){.detail-grid,.detail-grid.two,.detail-grid.four,.detail-layout,.viewer-box,.product-row,.search-results-list .product-row,.filter-panel,.spec-list,.model-card,.product-detail-hero .wrap,.microsite-hero .wrap{grid-template-columns:1fr}.detail-aside{position:static}.product-detail-hero .wrap,.microsite-hero .wrap{min-height:auto}.product-detail-visual,.microsite-visual{min-height:300px}.product-detail-copy h1,.microsite-copy h1{font-size:clamp(2.65rem,14vw,4.6rem)}}
+
+/* EDS-4008 SERIES — SCHEME A */
+.series-a-page{background:#fff;color:var(--ink)}
+.series-a-page section{padding-block:clamp(64px,7vw,104px)}
+.series-a-page .series-a-compact{padding-block:clamp(38px,5vw,66px)}
+.series-a-hero{position:relative;overflow:hidden;padding:0!important;background:radial-gradient(circle at 84% 12%,rgba(89,213,205,.26),transparent 36%),linear-gradient(145deg,#effafa 0%,#fff 54%,#eef6f7 100%);border-bottom:1px solid var(--gray-line)}
+.series-a-hero::after{content:"";position:absolute;right:-8%;top:-22%;width:52%;aspect-ratio:1;border:1px solid rgba(0,135,135,.12);border-radius:50%;box-shadow:0 0 0 80px rgba(0,135,135,.035),0 0 0 160px rgba(0,135,135,.025)}
+.series-a-hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.95fr) minmax(420px,1.05fr);gap:clamp(2rem,5vw,5.5rem);align-items:center;min-height:620px;padding-block:clamp(54px,7vw,90px)}
+.series-a-hero-copy{max-width:650px}
+.series-a-kicker{display:inline-flex;align-items:center;gap:.55rem;color:var(--green);font-size:.74rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+.series-a-kicker::before{content:"";width:18px;height:2px;background:linear-gradient(90deg,var(--green),#51ccc4)}
+.series-a-hero h1{margin:.7rem 0 .8rem;font-size:clamp(3.2rem,6vw,6rem);line-height:.93;letter-spacing:-.055em;color:#092f3f}
+.series-a-hero h1 span{display:block;margin-bottom:.65rem;font-size:.18em;line-height:1.2;letter-spacing:.11em;text-transform:uppercase;color:var(--green)}
+.series-a-hero .series-a-lede{max-width:650px;color:#526b74;font-size:clamp(1.05rem,1.45vw,1.24rem);line-height:1.62}
+.series-a-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
+.series-a-actions .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px}
+.series-a-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;margin-top:2rem}
+.series-a-stat{min-height:92px;padding:1rem;border:1px solid rgba(0,135,135,.16);border-radius:16px;background:rgba(255,255,255,.72);backdrop-filter:blur(12px);box-shadow:0 18px 50px -42px rgba(0,63,72,.5)}
+.series-a-stat strong{display:block;color:#0b515d;font-size:1.45rem;letter-spacing:-.03em}
+.series-a-stat span{display:block;margin-top:.25rem;color:#60757d;font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.series-a-hero-media{position:relative;min-height:440px;display:grid;place-items:center}
+.series-a-hero-media::before{content:"";position:absolute;inset:8% 2% 3% 9%;border-radius:32px;background:linear-gradient(145deg,rgba(255,255,255,.88),rgba(214,241,239,.78));border:1px solid rgba(0,135,135,.15);box-shadow:0 42px 90px -58px rgba(0,69,78,.75)}
+.series-a-hero-media img{position:relative;width:112%;max-width:none;transform:translateX(-1%);border-radius:26px;clip-path:inset(2% 1% 2% 1% round 26px);filter:saturate(.92) contrast(1.02)}
+.series-a-cert{position:absolute;z-index:2;right:2%;top:7%;display:flex;align-items:center;gap:.55rem;padding:.7rem .9rem;border-radius:999px;background:#fff;color:#0a5c65;font-size:.76rem;font-weight:900;box-shadow:0 18px 45px -28px rgba(0,55,66,.65)}
+.series-a-cert::before{content:"✓";display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#dff7f3;color:var(--green)}
+.series-a-anchor{position:sticky;top:104px;z-index:20;padding:0!important;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--gray-line);box-shadow:0 12px 32px -30px rgba(0,55,60,.4)}
+.series-a-anchor .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:64px}
+.series-a-anchor ul{display:flex;gap:.2rem;align-items:center;list-style:none;margin:0;padding:0;overflow-x:auto}
+.series-a-anchor a{display:block;white-space:nowrap;padding:.76rem .9rem;border-radius:8px;color:#50666f;font-size:.87rem;font-weight:800}
+.series-a-anchor a:hover,.series-a-anchor a:focus-visible{background:#ecf8f7;color:var(--green)}
+.series-a-anchor-actions{display:flex;gap:.55rem;flex-shrink:0}
+.series-a-anchor-actions .btn{padding:.55rem .85rem}
+.series-a-anchor-actions .btn-primary{color:#fff;-webkit-text-fill-color:#fff}
+.series-a-anchor-actions .btn-primary:hover,.series-a-anchor-actions .btn-primary:focus-visible{background:var(--green-700);color:#fff;-webkit-text-fill-color:#fff}
+.series-a-section-head{max-width:820px;margin-bottom:2rem}
+.series-a-section-head.center{margin-inline:auto;text-align:center}
+.series-a-section-head h2{margin:.5rem 0 .8rem;font-size:clamp(2.3rem,4.4vw,4.25rem);line-height:1.02;letter-spacing:-.05em;color:#0a3040}
+.series-a-section-head p{color:#61747c;font-size:1.02rem;line-height:1.7}
+#applications .series-a-section-head{max-width:1120px}
+#applications .series-a-section-head h2{white-space:nowrap}
+.series-a-feature-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.series-a-feature{padding:1.35rem;border:1px solid #dbe8e8;border-radius:18px;background:linear-gradient(150deg,#fff,#f5fbfb);transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease)}
+.series-a-feature:hover{transform:translateY(-4px);border-color:#a8d7d4;box-shadow:0 24px 46px -38px rgba(0,70,72,.45)}
+.series-a-icon{display:grid;place-items:center;width:46px;height:46px;margin-bottom:1.05rem;border-radius:14px;background:linear-gradient(145deg,#dff6f3,#f6ffff);color:var(--green);font-size:1.3rem;font-weight:900;border:1px solid #c7e7e4}
+.series-a-feature h3{font-size:1.1rem;color:#113746}
+.series-a-feature p{margin-top:.55rem;color:#62767e;font-size:.91rem;line-height:1.55}
+.series-a-alt{background:linear-gradient(180deg,#f4f9f9,#fff)}
+.series-a-popular-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.15rem}
+.series-a-popular-card{display:flex;flex-direction:column;overflow:hidden;border:1px solid #d9e6e6;border-radius:22px;background:#fff;box-shadow:0 28px 60px -52px rgba(0,58,66,.6)}
+.series-a-popular-media{position:relative;min-height:190px;display:grid;place-items:center;padding:1.5rem;background:radial-gradient(circle at 50% 20%,#fff 0%,#e9f6f5 72%)}
+.series-a-popular-media::after{content:"";position:absolute;inset:auto 10% 18px;height:22px;border-radius:50%;background:rgba(1,43,48,.14);filter:blur(13px)}
+.series-a-device{position:relative;z-index:1;width:76%;max-width:250px;min-height:112px;padding:16px 14px 14px;border-radius:10px;background:linear-gradient(155deg,#27373a,#101b1e);box-shadow:0 24px 36px -25px rgba(0,30,34,.8);transform:perspective(650px) rotateX(5deg) rotateY(-9deg)}
+.series-a-device::before{content:"MOXA   EDS-4008";display:block;padding-bottom:12px;color:#83e4dc;font:700 9px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em}
+.series-a-ports{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}
+.series-a-ports i{display:block;aspect-ratio:1;border:2px solid #66787c;border-radius:2px;background:#081012;box-shadow:inset 0 0 0 2px #243336}
+.series-a-ports i:nth-last-child(-n+2){border-color:#159f9e;background:#0b4448}
+.series-a-popular-body{display:flex;flex:1;flex-direction:column;padding:1.3rem}
+.series-a-flag{align-self:flex-start;padding:.38rem .55rem;border-radius:999px;background:#e8f7f5;color:#08706f;font-size:.7rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.series-a-popular-card h3{margin:.8rem 0 .75rem;font-size:1.2rem;color:#103746}
+.series-a-popular-card ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem;color:#60747d;font-size:.9rem}
+.series-a-popular-card li{position:relative;padding-left:1.25rem}
+.series-a-popular-card li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:900}
+.series-a-card-foot{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:auto;padding-top:1.25rem}
+.series-a-link{color:var(--green);font-weight:900;font-size:.88rem}
+.series-a-model-tools{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;margin-bottom:1.2rem;padding:1rem;border:1px solid #dbe7e7;border-radius:18px;background:#f9fcfc}
+.series-a-filter{border:1px solid #bed7d7;border-radius:999px;background:#fff;color:#386069;padding:.57rem .8rem;font:800 .82rem/1 var(--font);cursor:pointer;transition:all .2s var(--ease)}
+.series-a-filter:hover{border-color:var(--green);color:var(--green)}
+.series-a-filter[aria-pressed="true"]{border-color:transparent;background:linear-gradient(135deg,#008787,#11aaa3);color:#fff;box-shadow:0 10px 24px -18px #006c6c}
+.series-a-filter:focus-visible{outline:3px solid var(--acc-cyan);outline-offset:3px}
+.series-a-search{position:relative;margin-left:auto;min-width:min(280px,100%)}
+.series-a-search input{width:100%;height:42px;padding:0 1rem 0 2.55rem;border:1px solid #bed7d7;border-radius:999px;background:#fff;font:inherit;color:#163d48}
+.series-a-search svg{position:absolute;left:.9rem;top:50%;transform:translateY(-50%);color:#507078}
+.series-a-model-summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.8rem;color:#61757d;font-size:.88rem}
+.series-a-model-summary strong{color:#0b3a45}
+.series-a-compare-bar{display:flex;align-items:center;gap:.7rem;min-height:42px}
+.series-a-compare-bar .btn{padding:.58rem .85rem}
+.series-a-model-scroll{overflow-x:auto;border:1px solid #d8e5e5;border-radius:18px;background:#fff;box-shadow:0 24px 50px -48px rgba(0,60,65,.5)}
+.series-a-model-table{width:100%;min-width:1040px;border-collapse:collapse}
+.series-a-model-table th,.series-a-model-table td{padding:.95rem .9rem;text-align:left;vertical-align:middle;border-bottom:1px solid #e4eded}
+.series-a-model-table th{background:#0b4d5a;color:#fff;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+.series-a-model-table tbody tr{transition:background .18s}
+.series-a-model-table tbody tr:hover{background:#f2f9f9}
+.series-a-model-table tbody tr:last-child td{border-bottom:0}
+.series-a-model-table td{color:#526a73;font-size:.86rem}
+.series-a-model-table .series-a-model-name{color:#075f69;font-weight:900}
+.series-a-model-table input{width:18px;height:18px;accent-color:var(--green)}
+.series-a-pill{display:inline-flex;padding:.3rem .48rem;border-radius:999px;background:#e9f7f5;color:#07706f;font-size:.72rem;font-weight:900;white-space:nowrap}
+.series-a-pill.neutral{background:#eef2f3;color:#5b6f75}
+.series-a-table-links{display:flex;gap:.55rem;white-space:nowrap}
+.series-a-table-links a{color:var(--green);font-weight:800;font-size:.8rem}
+.series-a-model-empty{display:none;padding:2.5rem;text-align:center;color:#62757d;border:1px dashed #b9d1d1;border-radius:16px;margin-top:1rem}
+.series-a-model-empty.is-visible{display:block}
+.series-a-resource-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.series-a-resource-card{display:flex;min-height:230px;flex-direction:column;padding:1.3rem;border:1px solid #d8e5e5;border-radius:18px;background:#fff}
+.series-a-resource-type{color:#0b8682;font-size:.71rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
+.series-a-resource-card h3{margin:.7rem 0 .55rem;font-size:1.15rem;color:#113846}
+.series-a-resource-card p{color:#65777e;font-size:.87rem;line-height:1.55}
+.series-a-resource-card .series-a-link{margin-top:auto;padding-top:1rem}
+.series-a-application-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.series-a-application-card{position:relative;min-height:310px;overflow:hidden;border-radius:22px;background:#123d47;color:#fff}
+.series-a-application-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.series-a-application-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,40,46,.02) 20%,rgba(4,40,46,.88) 100%)}
+.series-a-application-card:hover img{transform:scale(1.035)}
+.series-a-application-label{position:absolute;z-index:1;left:1.2rem;right:1.2rem;bottom:1.2rem}
+.series-a-application-label h3{color:#fff;font-size:1.2rem}
+.series-a-application-label p{margin-top:.4rem;color:rgba(255,255,255,.8);font-size:.86rem}
+.series-a-cta{position:relative;overflow:hidden;background:radial-gradient(circle at 80% 10%,rgba(65,211,201,.32),transparent 38%),linear-gradient(135deg,#063c49,#087577 70%,#00918c);color:#fff}
+.series-a-cta::after{content:"";position:absolute;right:-7%;bottom:-65%;width:440px;height:440px;border:1px solid rgba(255,255,255,.16);border-radius:50%;box-shadow:0 0 0 70px rgba(255,255,255,.04),0 0 0 140px rgba(255,255,255,.025)}
+.series-a-cta .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2rem;align-items:center}
+.series-a-cta h2{max-width:760px;color:#fff;font-size:clamp(2.35rem,4.6vw,4.8rem);letter-spacing:-.05em}
+.series-a-cta p{max-width:700px;margin-top:.8rem;color:rgba(255,255,255,.78);font-size:1rem}
+.series-a-cta .series-a-actions{margin:0;justify-content:flex-end}
+.series-a-cta .btn-primary{background:#fff;color:#075a61}
+.series-a-cta .btn-ghost{border-color:rgba(255,255,255,.65);background:transparent;color:#fff}
+@media(max-width:1100px){.series-a-feature-grid,.series-a-resource-grid,.series-a-application-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.series-a-hero .wrap{grid-template-columns:1fr 1fr}.series-a-popular-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.series-a-popular-card:last-child{grid-column:1/-1;max-width:calc(50% - .6rem)}}
+@media(max-width:900px){.series-a-hero .wrap,.series-a-cta .wrap{grid-template-columns:1fr}.series-a-hero-media{min-height:360px}.series-a-anchor{top:104px}.series-a-anchor-actions{display:none}.series-a-cta .series-a-actions{justify-content:flex-start}.series-a-search{order:10;width:100%;margin-left:0}.series-a-popular-grid{grid-template-columns:1fr}.series-a-popular-card:last-child{grid-column:auto;max-width:none}}
+@media(max-width:900px){#applications .series-a-section-head h2{white-space:normal}}
+@media(max-width:640px){.series-a-page section{padding-block:54px}.series-a-hero .wrap{padding-block:42px;min-height:auto}.series-a-hero h1{font-size:clamp(2.85rem,16vw,4.4rem)}.series-a-stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:.45rem}.series-a-stat{min-height:90px;padding:.75rem .5rem;text-align:center}.series-a-stat strong{font-size:1.08rem}.series-a-stat span{font-size:.6rem;line-height:1.35}.series-a-hero-media{min-height:240px}.series-a-anchor{top:104px}.series-a-anchor .wrap{padding-inline:12px}.series-a-anchor ul{padding-block:.35rem}.series-a-anchor a{padding:.6rem .7rem}.series-a-feature-grid,.series-a-resource-grid,.series-a-application-grid{grid-template-columns:1fr}.series-a-application-card{min-height:250px}.series-a-model-summary{align-items:flex-start;flex-direction:column}.series-a-compare-bar{width:100%;justify-content:space-between}.series-a-model-tools{padding:.8rem}.series-a-actions{width:100%}.series-a-actions .btn{flex:1;min-width:150px}.series-a-cta .series-a-actions{flex-direction:column;align-items:stretch}.series-a-cta .series-a-actions .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){.series-a-feature,.series-a-application-card img,.series-a-filter{transition:none!important}.series-a-feature:hover,.series-a-application-card:hover img{transform:none!important}}
 </style>
 
+<link rel="stylesheet" href="assets/css/moxa-ds.css?v=20260717-lead-form">
 </head>
-<body>
+<body data-moxa-page="eds-4008-series">
 <header class="header" data-component="GlobalHeader">
   <div class="wrap header-in">
     <a class="logo" href="homepage.html" aria-label="Moxa home">
@@ -2038,8 +2210,8 @@ nav.mainnav{gap:0}
               <a class="btn btn-ghost" href="product-category-ethernet-switches.html">Open Product Finder</a>
             </div>
             <div class="mega-col"><h5>Network Infrastructure</h5><ul><li><a href="product-category-ethernet-switches.html">Industrial Ethernet Switches</a></li><li><a href="product-series-eds-4008.html">EDS-4008 Series</a></li><li><a href="compare-lv-hv.html">Compare LV / HV Models</a></li></ul></div>
-            <div class="mega-col"><h5>Edge Connectivity</h5><ul><li><a href="products.html">Protocol Gateways</a></li><li><a href="products.html">Remote I/O</a></li><li><a href="manual.html">Manuals &amp; Downloads</a></li></ul></div>
-            <div class="mega-col"><h5>Evaluation</h5><ul><li><a href="search.html?q=Ethernet%20Switches">Search Products</a></li><li><a href="product-model-eds-4008-lv-hv.html">Model Details</a></li><li><a href="contact-distributor.html#contact">Ask an Engineer</a></li></ul></div>
+            <div class="mega-col"><h5>Edge Connectivity</h5><ul><li><a href="product-category-ethernet-switches.html">Protocol Gateways</a></li><li><a href="product-category-ethernet-switches.html">Remote I/O</a></li><li><a href="manual.html">Manuals &amp; Downloads</a></li></ul></div>
+            <div class="mega-col"><h5>Evaluation</h5><ul><li><a href="search.html?q=Ethernet%20Switches">Search Products</a></li><li><a href="eds-4008-lv.html">Model Details</a></li><li><a href="campaign.html#contact-us">Ask an Engineer</a></li></ul></div>
           </div>
         </div>
       </div>
@@ -2049,8 +2221,8 @@ nav.mainnav{gap:0}
           <div class="wrap mega-in">
             <div class="mega-intro"><h4>Built for industrial scenarios</h4><p>Connect field devices, control networks, and operating teams through reliable architectures.</p><a class="btn btn-ghost" href="microsite.html">Explore Scenario Hub</a></div>
             <div class="mega-col"><h5>Industries</h5><ul><li><a href="microsite.html">Manufacturing</a></li><li><a href="microsite.html">Power &amp; Energy</a></li><li><a href="microsite.html">Rail &amp; Transportation</a></li></ul></div>
-            <div class="mega-col"><h5>Architecture</h5><ul><li><a href="microsite.html#architecture">Controller &amp; I/O</a></li><li><a href="product-category-ethernet-switches.html">Industrial Networking</a></li><li><a href="article.html">TSN Applications</a></li></ul></div>
-            <div class="mega-col"><h5>Proof</h5><ul><li><a href="video.html">Video Stories</a></li><li><a href="article.html">Application Notes</a></li><li><a href="homepage.html#proof">Reliability Proof</a></li></ul></div>
+            <div class="mega-col"><h5>Architecture</h5><ul><li><a href="microsite.html#architecture">Controller &amp; I/O</a></li><li><a href="product-category-ethernet-switches.html">Industrial Networking</a></li><li><a href="campaign.html">TSN Applications</a></li></ul></div>
+            <div class="mega-col"><h5>Proof</h5><ul><li><a href="video.html">Video Stories</a></li><li><a href="campaign.html">Application Notes</a></li><li><a href="homepage.html#proof">Reliability Proof</a></li></ul></div>
           </div>
         </div>
       </div>
@@ -2060,8 +2232,8 @@ nav.mainnav{gap:0}
           <div class="wrap mega-in">
             <div class="mega-intro"><h4>Validate before specifying</h4><p>Bring datasheets, manuals, articles, video, and search behavior into one journey.</p><a class="btn btn-ghost" href="manual.html">Open Resource Center</a></div>
             <div class="mega-col"><h5>Documents</h5><ul><li><a href="asset/moxa-eds-4008-series-datasheet-v1.8.pdf">EDS-4008 Datasheet</a></li><li><a href="manual.html">User Manual</a></li><li><a href="search.html?q=IEC%2062443">IEC 62443 Resources</a></li></ul></div>
-            <div class="mega-col"><h5>Content</h5><ul><li><a href="article.html">Articles</a></li><li><a href="video.html">Videos</a></li><li><a href="search.html?q=EDS-4008">Search All</a></li></ul></div>
-            <div class="mega-col"><h5>Tools</h5><ul><li><a href="search.html">Product Search</a></li><li><a href="product-category-ethernet-switches.html">Selection Guide</a></li><li><a href="contact-distributor.html#support">Technical Support</a></li></ul></div>
+            <div class="mega-col"><h5>Content</h5><ul><li><a href="campaign.html">Articles</a></li><li><a href="video.html">Videos</a></li><li><a href="search.html?q=EDS-4008">Search All</a></li></ul></div>
+            <div class="mega-col"><h5>Tools</h5><ul><li><a href="search.html">Product Search</a></li><li><a href="product-category-ethernet-switches.html">Selection Guide</a></li><li><a href="campaign.html#contact-us">Technical Support</a></li></ul></div>
           </div>
         </div>
       </div>
@@ -2069,10 +2241,10 @@ nav.mainnav{gap:0}
         <button aria-expanded="false" aria-haspopup="true">Support <span class="chev" aria-hidden="true"></span></button>
         <div class="mega" role="region" aria-label="Support menu">
           <div class="wrap mega-in">
-            <div class="mega-intro"><h4>Sincere service, connected</h4><p>Keep product context intact when a visitor moves from search to support, quote, or distributor handoff.</p><a class="btn btn-ghost" href="contact-distributor.html#support">Contact Support</a></div>
-            <div class="mega-col"><h5>Get Help</h5><ul><li><a href="contact-distributor.html#support">Technical Support</a></li><li><a href="chatbot.html">AI Advisor</a></li><li><a href="manual.html">Manual Lookup</a></li></ul></div>
-            <div class="mega-col"><h5>Buy</h5><ul><li><a href="contact-distributor.html#contact">Contact Sales</a></li><li><a href="contact-distributor.html#distributor">Find Distributor</a></li><li><a href="compare-quote.html">Compare &amp; Quote</a></li></ul></div>
-            <div class="mega-col"><h5>Journey</h5><ul><li><a href="journey.html">Customer Journey</a></li><li><a href="analytics.html">Analytics</a></li><li><a href="backend-compliance.html">Compliance</a></li></ul></div>
+            <div class="mega-intro"><h4>Sincere service, connected</h4><p>Keep product context intact when a visitor moves from search to support, quote, or distributor handoff.</p><a class="btn btn-ghost" href="campaign.html#contact-us">Contact Support</a></div>
+            <div class="mega-col"><h5>Get Help</h5><ul><li><a href="campaign.html#contact-us">Technical Support</a></li><li><a href="compare-lv-hv.html">AI Advisor</a></li><li><a href="manual.html">Manual Lookup</a></li></ul></div>
+            <div class="mega-col"><h5>Buy</h5><ul><li><a href="campaign.html#contact-us">Contact Sales</a></li><li><a href="campaign.html#contact-us">Find Distributor</a></li><li><a href="compare-lv-hv.html">Compare &amp; Quote</a></li></ul></div>
+            <div class="mega-col"><h5>Journey</h5><ul><li><a href="homepage.html">Customer Journey</a></li><li><a href="homepage.html#enabling-connectivity">Analytics</a></li><li><a href="manual.html">Compliance</a></li></ul></div>
           </div>
         </div>
       </div>
@@ -2080,10 +2252,10 @@ nav.mainnav{gap:0}
         <button aria-expanded="false" aria-haspopup="true">Why Moxa <span class="chev" aria-hidden="true"></span></button>
         <div class="mega" role="region" aria-label="Why Moxa menu">
           <div class="wrap mega-in">
-            <div class="mega-intro"><h4>Reliable networks. Sincere service.</h4><p>The design system keeps the experience bright, industrial, structured, and credible.</p><a class="btn btn-ghost" href="homepage.html#bond">See Moxa Story</a></div>
-            <div class="mega-col"><h5>Trust</h5><ul><li><a href="homepage.html#proof">Reliability Proof</a></li><li><a href="article.html">Application Stories</a></li><li><a href="contact-distributor.html#support">Service Commitment</a></li></ul></div>
-            <div class="mega-col"><h5>Customers</h5><ul><li><a href="journey.html">Journey Map</a></li><li><a href="analytics.html">Behavior Signals</a></li><li><a href="microsite.html">Scenario Hub</a></li></ul></div>
-            <div class="mega-col"><h5>Updates</h5><ul><li><a href="article.html">News &amp; Articles</a></li><li><a href="video.html">Videos</a></li><li><a href="contact-distributor.html">Talk to Moxa</a></li></ul></div>
+            <div class="mega-intro"><h4>Reliable networks. Sincere service.</h4><p>The design system keeps the experience bright, industrial, structured, and credible.</p><a class="btn btn-ghost" href="https://www.moxa.com/en/about-us">See Moxa Story</a></div>
+            <div class="mega-col"><h5>Trust</h5><ul><li><a href="homepage.html#proof">Reliability Proof</a></li><li><a href="campaign.html">Application Stories</a></li><li><a href="campaign.html#contact-us">Service Commitment</a></li></ul></div>
+            <div class="mega-col"><h5>Customers</h5><ul><li><a href="homepage.html">Journey Map</a></li><li><a href="homepage.html#enabling-connectivity">Behavior Signals</a></li><li><a href="microsite.html">Scenario Hub</a></li></ul></div>
+            <div class="mega-col"><h5>Updates</h5><ul><li><a href="campaign.html">News &amp; Articles</a></li><li><a href="video.html">Videos</a></li><li><a href="campaign.html#contact-us">Talk to Moxa</a></li></ul></div>
           </div>
         </div>
       </div>
@@ -2093,49 +2265,319 @@ nav.mainnav{gap:0}
       <button class="icon-btn search" aria-label="Search">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       </button>
-      <a class="btn btn-primary" href="contact-distributor.html#contact">Contact Us</a>
+      <a class="btn btn-primary" href="campaign.html#contact-us">Contact Us</a>
       <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="mainnav">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
     </div>
   </div>
 </header>
-<section class="hero hero-carousel image-hero-carousel detail-hero" aria-label="EDS-4008 Series - Layer 2 Managed Switches | Moxa hero">
-  <article class="hero-slide hero-slide-eds is-active" aria-hidden="false">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <span class="eyebrow">Products / Ethernet Switches</span>
-        <h1>EDS-4008 Series</h1>
-        <p class="hero-sub">4 FE, 4 FE-to-1GbE-port managed Ethernet switches with 802.3bt PoE options.</p>
-        <div class="hero-cta"><a class="btn btn-primary btn-lg" href="assets/products/moxa-eds-4008-series-datasheet-v1.8.pdf">Download datasheet</a><a class="btn btn-ghost btn-lg" href="compare-lv-hv.html">Compare LV/HV</a></div>
+
+<div class="moxa-breadcrumb-bar">
+  <nav class="moxa-breadcrumb wrap" aria-label="Breadcrumb">
+    <ol>
+      <li><a class="moxa-breadcrumb-home" href="homepage.html">Home</a></li>
+      <li><span class="moxa-breadcrumb-separator" aria-hidden="true">/</span><a href="product-category-ethernet-switches.html">Products</a></li>
+      <li><span class="moxa-breadcrumb-separator" aria-hidden="true">/</span><a href="product-category-ethernet-switches.html">Ethernet Switches</a></li>
+      <li><span class="moxa-breadcrumb-separator" aria-hidden="true">/</span><span class="moxa-breadcrumb-current" aria-current="page">EDS-4008 Series</span></li>
+    </ol>
+  </nav>
+</div>
+
+<section class="series-a-hero" aria-label="EDS-4008 Series overview">
+  <div class="wrap">
+    <div class="series-a-hero-copy">
+      <span class="series-a-kicker">Layer 2 managed switch series</span>
+      <h1><span>Industrial Ethernet</span>EDS-4008 Series</h1>
+      <p class="series-a-lede">8-port managed Fast Ethernet switches with optional Gigabit uplinks, fiber connectivity, and full 802.3af/at/bt PoE—built for reliable industrial networks in harsh environments.</p>
+      <div class="series-a-actions">
+        <a class="btn btn-primary btn-lg" href="#products">Compare all models</a>
+        <a class="btn btn-ghost btn-lg" href="assets/products/moxa-eds-4008-series-datasheet-v1.8.pdf">Download datasheet</a>
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <div class="hero-imgslot">
-          <img class="asset-img hero-photo" src="assets/360/frame-01.png" alt="EDS-4008 Series">
-        </div>
+      <div class="series-a-stats" aria-label="EDS-4008 series key facts">
+        <div class="series-a-stat"><strong>8</strong><span>Fast Ethernet ports</span></div>
+        <div class="series-a-stat"><strong>12</strong><span>Models in series</span></div>
+        <div class="series-a-stat"><strong>−40–75°C</strong><span>Wide-temp options</span></div>
       </div>
     </div>
-  </article>
+    <div class="series-a-hero-media">
+      <img src="asset/generated-hero/hero-product-selection.png" alt="Moxa industrial Ethernet switch selection">
+      <span class="series-a-cert">IEC 62443-4-2 SL2</span>
+    </div>
+  </div>
 </section>
-<main class="detail-page">
 
-<section class="compact-section"><div class="wrap"><nav class="tabbar" aria-label="Product sections"><a class="is-active" href="#overview">Overview</a><a class="" href="#specifications">Specifications</a><a class="" href="#resources">Resources</a><a class="" href="#models">Models</a></nav><div class="official-copy">
-  <span class="eyebrow">Overview</span>
-  <h2>Compact managed Ethernet switches with PoE options.</h2>
-  <p>The EDS-4008 Series is a range of 8-port managed Fast Ethernet switches with optional 1 Gbps uplink ports or 100M fiber-optic ports. The series is designed for industrial networks that need redundancy, security, and flexible model selection.</p>
-</div></div></section>
-<section class="resource-proof"><div class="wrap"><div class="sec-head"><span class="eyebrow">Features and Benefits</span><h2>Technical facts before model selection</h2></div><div class="detail-grid">
-<article class="detail-card"><span class="state-pill">Feature</span><h3>PoE output</h3><p>PoE models support up to 90 W per port.</p></article><article class="detail-card"><span class="state-pill">Feature</span><h3>Industrial protocols</h3><p>EtherNet/IP, Modbus TCP, and PROFINET IO Device are supported.</p></article><article class="detail-card"><span class="state-pill">Certification</span><h3>Security certified</h3><p>IEC 62443-4-2 Security Level 2 certified.</p></article>
-</div></div></section>
-<section id="specifications"><div class="wrap"><div class="sec-head"><span class="eyebrow">Specifications</span><h2>Shared series specifications</h2></div>
-<div class="spec-list"><div class="spec-item"><strong>Ethernet interface</strong><span>10/100BaseT(X), 100BaseFX, 10/100/1000BaseT(X), and 100/1000BaseSFP options by model</span></div><div class="spec-item"><strong>Redundancy</strong><span>STP, RSTP, Turbo Ring v2, Turbo Chain, Ring Coupling, Dual-Homing, Link Aggregation, MSTP, MRP</span></div><div class="spec-item"><strong>Management</strong><span>IPv4/IPv6, DHCP, LLDP, SNMPv1/v2c/v3, RMON, HTTP, HTTPS, Telnet, Syslog</span></div><div class="spec-item"><strong>Housing</strong><span>Metal housing, IP40, DIN-rail mounting, wall mounting with optional kit</span></div></div>
-</div></section>
-<section id="resources" class="compact-section"><div class="wrap"><div class="sec-head"><span class="eyebrow">Resources</span><h2>Datasheet and related content</h2></div><div class="search-results-list">
-  <article class="product-row"><img src="asset/generated-hero/hero-search-docs.png" alt="Datasheet"><div><span class="state-pill">Datasheet</span><h3>EDS-4008 Series Datasheet v1.8</h3><p>Official PDF from the provided Moxa PoC materials.</p></div><a class="btn btn-primary" href="assets/products/moxa-eds-4008-series-datasheet-v1.8.pdf">PDF</a></article>
-  <article class="product-row"><img src="asset/generated-hero/hero-product-selection.png" alt="Related content"><div><span class="state-pill">Related content</span><h3>Industrial Network Infrastructure Brochure</h3><p>Related brochure entry retained as part of the official Moxa resource pattern.</p></div><a class="btn btn-ghost" href="search.html?q=Industrial%20Network%20Infrastructure%20Brochure">Search</a></article>
-</div></div></section>
-<section id="models"><div class="wrap"><div class="sec-head"><span class="eyebrow">Available Models</span><h2>LV, HV, and expansion variants.</h2></div><table class="detail-table"><thead><tr><th>Model</th><th>Ports</th><th>Operating voltage</th><th>Power module</th><th>Operating temp.</th></tr></thead><tbody><tr><td><a href="eds-4008-lv.html">EDS-4008-LV</a></td><td>8 x 10/100BaseT(X)</td><td>9.6 to 60 VDC</td><td>PWR-100-LV</td><td>-10 to 60 C</td></tr><tr><td>EDS-4008-LV-T</td><td>8 x 10/100BaseT(X)</td><td>9.6 to 60 VDC</td><td>PWR-100-LV</td><td>-40 to 75 C</td></tr><tr><td><a href="eds-4008-hv.html">EDS-4008-HV</a></td><td>8 x 10/100BaseT(X)</td><td>88 to 300 VDC, 85 to 264 VAC</td><td>PWR-105-HV-I</td><td>-10 to 60 C</td></tr><tr><td>EDS-4008-HV-T</td><td>8 x 10/100BaseT(X)</td><td>88 to 300 VDC, 85 to 264 VAC</td><td>PWR-105-HV-I</td><td>-40 to 75 C</td></tr></tbody></table></div></section>
+<main class="series-a-page">
+  <nav class="series-a-anchor" aria-label="On this page">
+    <div class="wrap">
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#highlights">Popular configurations</a></li>
+        <li><a href="#products">All models</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#applications">Applications</a></li>
+      </ul>
+      <div class="series-a-anchor-actions">
+        <a class="btn btn-ghost" href="compare-lv-hv.html">Compare LV/HV</a>
+        <a class="btn btn-primary" href="campaign.html#contact-us">Get a quote</a>
+      </div>
+    </div>
+  </nav>
 
+  <section id="overview">
+    <div class="wrap">
+      <div class="series-a-section-head">
+        <span class="eyebrow">Overview</span>
+        <h2>Managed connectivity for the industrial edge</h2>
+        <p>The EDS-4008 Series is a range of 8-port managed Fast Ethernet switches with the option for four 1 Gbps uplink ports or two 100M ST/SC fiber-optic ports. Models are available with 802.3af (PoE), 802.3at (PoE+), and 802.3bt-compliant ports to power high-bandwidth devices. Security is built on the IEC 62443 standard, with wide-temperature (−40 to 75°C) variants for demanding rail, power, and factory automation deployments.</p>
+      </div>
+      <div class="series-a-feature-grid">
+        <article class="series-a-feature">
+          <span class="series-a-icon" aria-hidden="true">◇</span>
+          <h3>IEC 62443 security</h3>
+          <p>Hardened management with role-based access, secure boot, encrypted protocols, and IEC 62443-4-2 Security Level 2 certification.</p>
+        </article>
+        <article class="series-a-feature">
+          <span class="series-a-icon" aria-hidden="true">↻</span>
+          <h3>Turbo Ring redundancy</h3>
+          <p>Millisecond-level network recovery keeps critical traffic flowing after a link fault, with Turbo Chain and RSTP/STP support.</p>
+        </article>
+        <article class="series-a-feature">
+          <span class="series-a-icon" aria-hidden="true">⚡</span>
+          <h3>Up to 802.3bt PoE</h3>
+          <p>Deliver power and data over one cable to cameras, wireless access points, and high-bandwidth industrial field devices.</p>
+        </article>
+        <article class="series-a-feature">
+          <span class="series-a-icon" aria-hidden="true">°</span>
+          <h3>−40 to 75°C</h3>
+          <p>Fanless wide-temperature variants are designed for harsh rail, power, roadside, and factory environments.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="highlights" class="series-a-alt">
+    <div class="wrap">
+      <div class="series-a-section-head">
+        <span class="eyebrow">Highlighted products</span>
+        <h2>Popular configurations</h2>
+        <p>Start with the most-specified configurations, then use the full model finder to narrow by PoE, fiber, uplink speed, or temperature range.</p>
+      </div>
+      <div class="series-a-popular-grid">
+        <article class="series-a-popular-card">
+          <div class="series-a-popular-media">
+            <div class="series-a-device" aria-hidden="true"><div class="series-a-ports"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          </div>
+          <div class="series-a-popular-body">
+            <span class="series-a-flag">Most popular</span>
+            <h3>EDS-4008-2GT-2GS-LV</h3>
+            <ul>
+              <li>4× 10/100BaseT(X) + 2× Gigabit copper</li>
+              <li>2× 100/1000Base SFP fiber slots</li>
+              <li>Dual 12/24/48 VDC · −10 to 60°C</li>
+            </ul>
+            <div class="series-a-card-foot"><a class="series-a-link" href="#products">View in model list →</a><button class="series-a-filter" type="button" data-jump-model="EDS-4008-2GT-2GS-LV">Find model</button></div>
+          </div>
+        </article>
+        <article class="series-a-popular-card">
+          <div class="series-a-popular-media">
+            <div class="series-a-device" aria-hidden="true"><div class="series-a-ports"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          </div>
+          <div class="series-a-popular-body">
+            <span class="series-a-flag">802.3bt PoE</span>
+            <h3>EDS-4008-4P-2GT-2GS-LVA</h3>
+            <ul>
+              <li>4× 802.3bt PoE ports, up to 90 W per port</li>
+              <li>2× Gigabit copper + 2× SFP fiber</li>
+              <li>Dual power · 48 VDC PoE · −10 to 60°C</li>
+            </ul>
+            <div class="series-a-card-foot"><a class="series-a-link" href="#products">View in model list →</a><button class="series-a-filter" type="button" data-jump-model="EDS-4008-4P-2GT-2GS-LVA">Find model</button></div>
+          </div>
+        </article>
+        <article class="series-a-popular-card">
+          <div class="series-a-popular-media">
+            <div class="series-a-device" aria-hidden="true"><div class="series-a-ports"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          </div>
+          <div class="series-a-popular-body">
+            <span class="series-a-flag">Wide-temperature fiber</span>
+            <h3>EDS-4008-2MSC-LV-T</h3>
+            <ul>
+              <li>6× 10/100BaseT(X) copper ports</li>
+              <li>2× 100BaseFX multi-mode SC connectors</li>
+              <li>Dual 12/24/48 VDC · −40 to 75°C</li>
+            </ul>
+            <div class="series-a-card-foot"><a class="series-a-link" href="#products">View in model list →</a><button class="series-a-filter" type="button" data-jump-model="EDS-4008-2MSC-LV-T">Find model</button></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="products">
+    <span id="models" aria-hidden="true"></span>
+    <div class="wrap">
+      <div class="series-a-section-head">
+        <span class="eyebrow">All models</span>
+        <h2>Select by specification</h2>
+        <p>Filter the full EDS-4008 line-up by PoE support, temperature range, fiber type, or Gigabit uplink. Select up to three models for a focused comparison.</p>
+      </div>
+      <div class="series-a-model-tools" role="group" aria-label="Filter EDS-4008 models">
+        <button class="series-a-filter" type="button" data-model-filter="all" aria-pressed="true">All models · 12</button>
+        <button class="series-a-filter" type="button" data-model-filter="poe" aria-pressed="false">PoE / PoE+ / bt</button>
+        <button class="series-a-filter" type="button" data-model-filter="fiber" aria-pressed="false">Fiber</button>
+        <button class="series-a-filter" type="button" data-model-filter="wide" aria-pressed="false">Wide-temp</button>
+        <button class="series-a-filter" type="button" data-model-filter="gigabit" aria-pressed="false">Gigabit uplink</button>
+        <label class="series-a-search">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <span class="visually-hidden">Search model number</span>
+          <input id="series-model-search" type="search" placeholder="Search model number">
+        </label>
+      </div>
+      <div class="series-a-model-summary">
+        <p id="series-model-count" aria-live="polite"><strong>12</strong> models shown</p>
+        <div class="series-a-compare-bar">
+          <span id="series-compare-count">0 of 3 selected</span>
+          <a class="btn btn-primary" id="series-compare-link" href="compare-lv-hv.html" aria-disabled="true">Compare selected</a>
+        </div>
+      </div>
+      <div class="series-a-model-scroll">
+        <table class="series-a-model-table">
+          <thead><tr><th><span class="visually-hidden">Compare</span></th><th>Model</th><th>Copper ports</th><th>Uplink / fiber</th><th>PoE</th><th>Power input</th><th>Operating temp.</th><th>Documents</th></tr></thead>
+          <tbody>
+            <tr data-model-row data-tags="gigabit fiber" data-name="eds-4008-2gt-2gs-lv"><td><input type="checkbox" data-compare-model value="EDS-4008-2GT-2GS-LV" aria-label="Compare EDS-4008-2GT-2GS-LV"></td><td class="series-a-model-name">EDS-4008-2GT-2GS-LV</td><td>4× 10/100</td><td>2× GbE + 2× SFP</td><td><span class="series-a-pill neutral">—</span></td><td>Dual 12/24/48 VDC</td><td><span class="series-a-pill neutral">−10 to 60°C</span></td><td class="series-a-table-links"><a href="assets/products/moxa-eds-4008-series-datasheet-v1.8.pdf">Datasheet</a><a href="eds-4008-lv.html">Specs</a></td></tr>
+            <tr data-model-row data-tags="poe gigabit fiber" data-name="eds-4008-4p-2gt-2gs-lva"><td><input type="checkbox" data-compare-model value="EDS-4008-4P-2GT-2GS-LVA" aria-label="Compare EDS-4008-4P-2GT-2GS-LVA"></td><td class="series-a-model-name">EDS-4008-4P-2GT-2GS-LVA</td><td>4× 10/100 (bt PoE)</td><td>2× GbE + 2× SFP</td><td><span class="series-a-pill">802.3bt</span></td><td>Dual · 48 VDC PoE</td><td><span class="series-a-pill neutral">−10 to 60°C</span></td><td class="series-a-table-links"><a href="assets/products/moxa-eds-4008-series-datasheet-v1.8.pdf">Datasheet</a><a href="#series-contact">Specs</a></td></tr>
+            <tr data-model-row data-tags="poe gigabit fiber wide" data-name="eds-4008-4p-2gt-2gs-lva-t"><td><input type="checkbox" data-compare-model value="EDS-4008-4P-2GT-2GS-LVA-T" aria-label="Compare EDS-4008-4P-2GT-2GS-LVA-T"></td><td class="series-a-model-name">EDS-4008-4P-2GT-2GS-LVA-T</td><td>4× 10/100 (bt PoE)</td><td>2× GbE + 2× SFP</td><td><span class="series-a-pill">802.3bt</span></td><td>Dual · 48 VDC PoE</td><td><span class="series-a-pill">−40 to 75°C</span></td><td class="series-a-table-links"><a href="assets/products/moxa-eds-4008-series-datasheet-v1.8.pdf">Datasheet</a><a href="#series-contact">Specs</a></td></tr>
+            <tr data-model-row data-tags="fiber" data-name="eds-4008-2msc-hv"><td><input type="checkbox" data-compare-model value="EDS-4008-2MSC-HV" aria-label="Compare EDS-4008-2MSC-HV"></td><td class="series-a-model-name">EDS-4008-2MSC-HV</td><td>6× 10/100</td><td>2× 100FX MM · SC</td><td><span class="series-a-pill neutral">—</span></td><td>Single 110/220 VAC/VDC</td><td><span class="series-a-pill neutral">−10 to 60°C</span></td><td class="series-a-table-links"><a href="assets/products/moxa-eds-4008-series-datasheet-v1.8.pdf">Datasheet</a><a href="eds-4008-hv.html">Specs</a></td></tr>
+            <tr data-model-row data-tags="fiber" data-name="eds-4008-2mst-lv"><td><input type="checkbox" data-compare-model value="EDS-4008-2MST-LV" aria-label="Compare EDS-4008-2MST-LV"></td><td class="series-a-model-name">EDS-4008-2MST-LV</td><td>6× 10/100</td><td>2× 100FX MM · ST</td><td><span class="series-a-pill neutral">—</span></td><td>Dual 12/24/48 VDC</td><td><span class="series-a-pill neutral">−10 to 60°C</span></td><td class="series-a-table-links"><a href="assets/products/moxa-eds-4008-series-datasheet-v1.8.pdf">Datasheet</a><a href="eds-4008-lv.html">Specs</a></td></tr>
+            <tr data-model-row data-tags="fiber wide" data-name="eds-4008-2msc-lv-t"><td><input type="checkbox" data-compare-model value="EDS-4008-2MSC-LV-T" aria-label="Compare EDS-4008-2MSC-LV-T"></td><td class="series-a-model-name">EDS-4008-2MSC-LV-T</td><td>6× 10/100</td><td>2× 100FX MM · SC</td><td><span class="series-a-pill neutral">—</span></td><td>Dual 12/24/48 VDC</td><td><span class="series-a-pill">−40 to 75°C</span></td><td class="series-a-table-links"><a href="assets/products/moxa-eds-4008-series-datasheet-v1.8.pdf">Datasheet</a><a href="eds-4008-lv.html">Specs</a></td></tr>
+            <tr data-model-row data-tags="fiber" data-name="eds-4008-2mst-hv"><td><input type="checkbox" data-compare-model value="EDS-4008-2MST-HV" aria-label="Compare EDS-4008-2MST-HV"></td><td class="series-a-model-name">EDS-4008-2MST-HV</td><td>6× 10/100</td><td>2× 100FX MM · ST</td><td><span class="series-a-pill neutral">—</span></td><td>Single 110/220 VAC/VDC</td><td><span class="series-a-pill neutral">−10 to 60°C</span></td><td class="series-a-table-links"><a href="assets/products/moxa-eds-4008-series-datasheet-v1.8.pdf">Datasheet</a><a href="eds-4008-hv.html">Specs</a></td></tr>
+            <tr data-model-row data-tags="hv" data-name="eds-4008-hv"><td><input type="checkbox" data-compare-model value="EDS-4008-HV" aria-label="Compare EDS-4008-HV"></td><td class="series-a-model-name"><a href="eds-4008-hv.html">EDS-4008-HV</a></td><td>8× 10/100</td><td>—</td><td><span class="series-a-pill neutral">—</span></td><td>88 to 300 VDC · 85 to 264 VAC</td><td><span class="series-a-pill neutral">−10 to 60°C</span></td><td class="series-a-table-links"><a href="assets/products/moxa-eds-4008-series-datasheet-v1.8.pdf">Datasheet</a><a href="eds-4008-hv.html">Specs</a></td></tr>
+            <tr data-model-row data-tags="hv wide" data-name="eds-4008-hv-t"><td><input type="checkbox" data-compare-model value="EDS-4008-HV-T" aria-label="Compare EDS-4008-HV-T"></td><td class="series-a-model-name">EDS-4008-HV-T</td><td>8× 10/100</td><td>—</td><td><span class="series-a-pill neutral">—</span></td><td>88 to 300 VDC · 85 to 264 VAC</td><td><span class="series-a-pill">−40 to 75°C</span></td><td class="series-a-table-links"><a href="assets/products/moxa-eds-4008-series-datasheet-v1.8.pdf">Datasheet</a><a href="eds-4008-hv.html">Specs</a></td></tr>
+            <tr data-model-row data-tags="poe hv" data-name="eds-4008-4p-hv"><td><input type="checkbox" data-compare-model value="EDS-4008-4P-HV" aria-label="Compare EDS-4008-4P-HV"></td><td class="series-a-model-name">EDS-4008-4P-HV</td><td>4× 10/100 (PoE+)</td><td>—</td><td><span class="series-a-pill">802.3at</span></td><td>Single 110/220 VAC/VDC</td><td><span class="series-a-pill neutral">−10 to 60°C</span></td><td class="series-a-table-links"><a href="assets/products/moxa-eds-4008-series-datasheet-v1.8.pdf">Datasheet</a><a href="eds-4008-hv.html">Specs</a></td></tr>
+            <tr data-model-row data-tags="lv" data-name="eds-4008-lv"><td><input type="checkbox" data-compare-model value="EDS-4008-LV" aria-label="Compare EDS-4008-LV"></td><td class="series-a-model-name"><a href="eds-4008-lv.html">EDS-4008-LV</a></td><td>8× 10/100</td><td>—</td><td><span class="series-a-pill neutral">—</span></td><td>9.6 to 60 VDC</td><td><span class="series-a-pill neutral">−10 to 60°C</span></td><td class="series-a-table-links"><a href="assets/products/moxa-eds-4008-series-datasheet-v1.8.pdf">Datasheet</a><a href="eds-4008-lv.html">Specs</a></td></tr>
+            <tr data-model-row data-tags="lv wide" data-name="eds-4008-lv-t"><td><input type="checkbox" data-compare-model value="EDS-4008-LV-T" aria-label="Compare EDS-4008-LV-T"></td><td class="series-a-model-name">EDS-4008-LV-T</td><td>8× 10/100</td><td>—</td><td><span class="series-a-pill neutral">—</span></td><td>9.6 to 60 VDC</td><td><span class="series-a-pill">−40 to 75°C</span></td><td class="series-a-table-links"><a href="assets/products/moxa-eds-4008-series-datasheet-v1.8.pdf">Datasheet</a><a href="eds-4008-lv.html">Specs</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="series-a-model-empty" id="series-model-empty">No models match this filter. Try another specification or clear the search.</div>
+    </div>
+  </section>
+
+  <section id="resources" class="series-a-alt">
+    <div class="wrap">
+      <div class="series-a-section-head">
+        <span class="eyebrow">Resources</span>
+        <h2>Documentation &amp; downloads</h2>
+        <p>Continue from product discovery into technical validation without losing the selected series context.</p>
+      </div>
+      <div class="series-a-resource-grid">
+        <article class="series-a-resource-card"><span class="series-a-resource-type">Datasheet · PDF</span><h3>EDS-4008 Series Datasheet</h3><p>Full port, power, environmental, certification, and ordering information.</p><a class="series-a-link" href="assets/products/moxa-eds-4008-series-datasheet-v1.8.pdf">Download PDF →</a></article>
+        <article class="series-a-resource-card"><span class="series-a-resource-type">Manual · HTML</span><h3>User Manual</h3><p>Installation, configuration, management, redundancy, and troubleshooting guidance.</p><a class="series-a-link" href="manual.html">Open manual →</a></article>
+        <article class="series-a-resource-card"><span class="series-a-resource-type">Software</span><h3>Firmware v3.8</h3><p>Firmware package, release notes, compatibility information, and upgrade guidance.</p><a class="series-a-link" href="search.html?q=EDS-4008%20firmware">Find firmware →</a></article>
+        <article class="series-a-resource-card"><span class="series-a-resource-type">Compliance</span><h3>Declarations &amp; certs</h3><p>CE, FCC, EN 50155, marine cybersecurity, and IEC 62443 documentation.</p><a class="series-a-link" href="search.html?q=EDS-4008%20certifications">View certifications →</a></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="applications">
+    <div class="wrap">
+      <div class="series-a-section-head center">
+        <span class="eyebrow">Application fit</span>
+        <h2>Where the EDS-4008 is deployed</h2>
+        <p>Map the series to common industrial environments before narrowing the final model and power input.</p>
+      </div>
+      <div class="series-a-application-grid">
+        <article class="series-a-application-card"><img src="img/scenario-transport.jpg" alt="Rail and metro infrastructure"><div class="series-a-application-label"><h3>Rail &amp; metro</h3><p>EN 50155-certified onboard and wayside connectivity</p></div></article>
+        <article class="series-a-application-card"><img src="img/scenario-energy.jpg" alt="Power and energy infrastructure"><div class="series-a-application-label"><h3>Power &amp; energy</h3><p>IEC 61850-3 substation automation networks</p></div></article>
+        <article class="series-a-application-card"><img src="img/scenario-manufacturing.jpg" alt="Factory automation line"><div class="series-a-application-label"><h3>Factory automation</h3><p>PROFINET, EtherNet/IP, and Modbus connectivity</p></div></article>
+        <article class="series-a-application-card"><img src="img/connection-abstract.jpg" alt="Smart city network connections"><div class="series-a-application-label"><h3>ITS &amp; smart city</h3><p>NEMA TS2 traffic and surveillance infrastructure</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="series-contact" class="series-a-cta">
+    <div class="wrap">
+      <div>
+        <span class="series-a-kicker">Selection support</span>
+        <h2>Ready to specify the EDS-4008?</h2>
+        <p>Compare the LV and HV power options, validate the selected configuration, or send the project requirements to a Moxa specialist.</p>
+      </div>
+      <div class="series-a-actions">
+        <a class="btn btn-primary btn-lg" href="campaign.html#contact-us">Talk to an expert</a>
+        <a class="btn btn-ghost btn-lg" href="compare-lv-hv.html">Compare LV/HV</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  (() => {
+    const rows = [...document.querySelectorAll("[data-model-row]")];
+    const filters = [...document.querySelectorAll("[data-model-filter]")];
+    const search = document.getElementById("series-model-search");
+    const count = document.getElementById("series-model-count");
+    const empty = document.getElementById("series-model-empty");
+    const compareInputs = [...document.querySelectorAll("[data-compare-model]")];
+    const compareCount = document.getElementById("series-compare-count");
+    const compareLink = document.getElementById("series-compare-link");
+    const MAX_COMPARE = 3;
+    let activeFilter = "all";
+
+    const applyFilters = () => {
+      const query = search.value.trim().toLowerCase();
+      let shown = 0;
+      rows.forEach((row) => {
+        const tags = row.dataset.tags.split(/\s+/);
+        const filterMatch = activeFilter === "all" || tags.includes(activeFilter);
+        const searchMatch = !query || row.dataset.name.includes(query);
+        const visible = filterMatch && searchMatch;
+        row.hidden = !visible;
+        if (visible) shown += 1;
+      });
+      count.innerHTML = `<strong>${shown}</strong> ${shown === 1 ? "model" : "models"} shown`;
+      empty.classList.toggle("is-visible", shown === 0);
+    };
+
+    filters.forEach((button) => {
+      button.addEventListener("click", () => {
+        activeFilter = button.dataset.modelFilter;
+        filters.forEach((item) => item.setAttribute("aria-pressed", item === button ? "true" : "false"));
+        applyFilters();
+      });
+    });
+    search.addEventListener("input", applyFilters);
+
+    document.querySelectorAll("[data-jump-model]").forEach((button) => {
+      button.addEventListener("click", () => {
+        activeFilter = "all";
+        filters.forEach((item) => item.setAttribute("aria-pressed", item.dataset.modelFilter === "all" ? "true" : "false"));
+        search.value = button.dataset.jumpModel;
+        applyFilters();
+        document.getElementById("products").scrollIntoView({behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+      });
+    });
+
+    const syncCompare = (changed) => {
+      let selected = compareInputs.filter((input) => input.checked);
+      if (selected.length > MAX_COMPARE && changed) {
+        changed.checked = false;
+        selected = compareInputs.filter((input) => input.checked);
+      }
+      compareInputs.forEach((input) => {
+        input.disabled = !input.checked && selected.length >= MAX_COMPARE;
+      });
+      compareCount.textContent = `${selected.length} of ${MAX_COMPARE} selected`;
+      const models = selected.map((input) => input.value);
+      compareLink.href = models.length ? `compare-lv-hv.html?models=${encodeURIComponent(models.join(","))}` : "compare-lv-hv.html";
+      compareLink.setAttribute("aria-disabled", models.length < 2 ? "true" : "false");
+    };
+    compareInputs.forEach((input) => input.addEventListener("change", () => syncCompare(input)));
+    compareLink.addEventListener("click", (event) => {
+      if (compareLink.getAttribute("aria-disabled") === "true") event.preventDefault();
+    });
+    applyFilters();
+    syncCompare();
+  })();
+  </script>
 </main>
 <footer class="site-footer" data-component="GlobalFooter">
       <div class="container">
@@ -2149,7 +2591,7 @@ nav.mainnav{gap:0}
             <a href="product-category-ethernet-switches.html">Ethernet Switches</a>
             <a href="product-series-eds-4008.html">EDS-4008 Series</a>
             <a href="compare-lv-hv.html">Compare LV / HV</a>
-            <a href="products.html">Protocol Gateways</a>
+            <a href="product-category-ethernet-switches.html">Protocol Gateways</a>
           </div>
           <div class="footer-col">
             <h3>Solutions</h3>
@@ -2162,15 +2604,15 @@ nav.mainnav{gap:0}
             <h3>Resources</h3>
             <a href="search.html">Search</a>
             <a href="manual.html">Datasheets &amp; Manuals</a>
-            <a href="article.html">Application Notes</a>
+            <a href="campaign.html">Application Notes</a>
             <a href="video.html">Videos</a>
           </div>
           <div class="footer-col">
             <h3>Support</h3>
-            <a href="chatbot.html">AI Advisor</a>
-            <a href="contact-distributor.html#support">Technical Support</a>
-            <a href="contact-distributor.html#contact">Contact Us</a>
-            <a href="contact-distributor.html#distributor">Distributor Network</a>
+            <a href="compare-lv-hv.html">AI Advisor</a>
+            <a href="campaign.html#contact-us">Technical Support</a>
+            <a href="campaign.html#contact-us">Contact Us</a>
+            <a href="campaign.html#contact-us">Distributor Network</a>
           </div>
         </div>
         <div class="footer-bottom">
@@ -2189,22 +2631,22 @@ nav.mainnav{gap:0}
     home: staticPageMatch ? 'homepage.html' : 'moxa_homepage.html',
     search: staticBase + 'search.html',
     searchEthernet: staticBase + 'search.html?q=Ethernet%20Switches',
-    products: staticBase + 'products.html',
+    products: staticBase + 'product-category-ethernet-switches.html',
     microsite: staticBase + 'microsite.html',
     category: staticBase + 'product-category-ethernet-switches.html',
     selector: staticBase + 'product-category-ethernet-switches.html?openSelector=true',
     series: staticBase + 'product-series-eds-4008.html',
     seriesResources: staticBase + 'product-series-eds-4008.html#resources',
     compare: staticBase + 'compare-lv-hv.html',
-    model: staticBase + 'product-model-eds-4008-lv-hv.html',
+    model: staticBase + 'eds-4008-lv.html',
     datasheet: staticBase + 'asset/moxa-eds-4008-series-datasheet-v1.8.pdf',
     manual: staticBase + 'manual.html',
-    article: staticBase + 'article.html',
+    article: staticBase + 'campaign.html',
     video: staticBase + 'video.html',
-    contact: staticBase + 'contact-distributor.html',
-    distributor: staticBase + 'contact-distributor.html#distributor',
-    support: staticBase + 'contact-distributor.html#support',
-    ai: staticBase + 'chatbot.html'
+    contact: staticBase + 'campaign.html#contact-us',
+    distributor: staticBase + 'campaign.html#contact-us',
+    support: staticBase + 'campaign.html#contact-us',
+    ai: staticBase + 'compare-lv-hv.html'
   };
   var s1StateOrder = ['default', 'ethernetInterest', 'eds4008Session'];
   var s1HomepageData = {
@@ -2769,5 +3211,52 @@ nav.mainnav{gap:0}
   }
 })();
 </script>
+<footer class="moxa-global-footer" data-shared-component="GlobalFooter">
+  <div class="moxa-footer-top">
+    <section class="moxa-footer-social-row" id="moxa-follow">
+      <h2 class="moxa-footer-compact-title">Follow Moxa</h2>
+      <div class="moxa-social-list" aria-label="Follow Moxa">
+        <a href="https://www.facebook.com/MoxaInc" aria-label="Follow Moxa on Facebook"><img src="img/social-facebook.svg" alt=""></a>
+        <a href="https://x.com/MoxaInc" aria-label="Follow Moxa on X"><img src="img/social-x.svg" alt=""></a>
+        <a href="https://www.youtube.com/user/MoxaInc" aria-label="Follow Moxa on YouTube"><img src="img/social-youtube.svg" alt=""></a>
+        <a href="https://www.linkedin.com/company/moxa/" aria-label="Follow Moxa on LinkedIn"><img src="img/social-linkedin.svg" alt=""></a>
+      </div>
+    </section>
+    <section class="moxa-subscribe moxa-subscribe-row" id="moxa-subscribe">
+      <div class="moxa-subscribe-copy">
+        <h2 class="moxa-footer-compact-title">Stay connected</h2>
+        <p class="moxa-subscribe-consent">Sign up for the latest updates on Moxa solutions. At Moxa, we have a healthy respect for privacy and will not share your email with anyone.</p>
+      </div>
+      <div class="moxa-subscribe-action">
+        <form class="moxa-subscribe-form" id="moxaSubscribeForm">
+          <label class="moxa-visually-hidden" for="moxaSubscribeEmail">Business email address</label>
+          <input id="moxaSubscribeEmail" type="email" placeholder="Business email address" required>
+          <button type="submit">Sign Up</button>
+        </form>
+        <div class="moxa-subscribe-message" id="moxaSubscribeMessage" aria-live="polite"></div>
+      </div>
+    </section>
+  </div>
+  <div class="moxa-footer-bottom">
+    <div class="moxa-legal-links">
+      <a href="https://www.moxa.com/en/about-us/legal/do-not-share-my-personal-information">Do not share my personal information</a>
+      <a id="cookie-preferences" href="#cookie-preferences">COOKIE PREFERENCES</a>
+      <a href="https://www.moxa.com/en/about-us/legal/privacy-policy">Privacy policy</a>
+      <a href="https://www.moxa.com/en/about-us/legal/terms-of-use">Terms of Use</a>
+      <a href="https://www.moxa.com/en/sitemap">Sitemap</a>
+    </div>
+    <label class="moxa-locale">
+      Country / language
+      <select id="moxaLocale">
+        <option value="global-en" selected>Global / English</option>
+        <option value="us-en">United States / English</option>
+        <option value="tw-zh">台灣 / 繁體中文</option>
+        <option value="cn-zh">中国 / 简体中文</option>
+        <option value="de-de">Deutschland / Deutsch</option>
+      </select>
+    </label>
+  </div>
+</footer>
+<script src="assets/js/moxa-shell.js?v=20260717-lead-form"></script>
 </body>
 </html>
