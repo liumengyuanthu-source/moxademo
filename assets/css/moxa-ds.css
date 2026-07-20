@@ -646,11 +646,36 @@ body.moxa-ds :focus-visible {
 }
 
 .moxa-lead-consent {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  align-items: start;
+  gap: 10px;
   margin: 24px 0;
   padding: 16px;
   border: 1px solid rgba(0, 94, 102, 0.16);
   border-radius: var(--moxa-radius-2);
   background: var(--moxa-teal-100);
+}
+
+.moxa-lead-consent > input {
+  width: 18px;
+  min-height: 18px;
+  margin-top: 2px;
+  padding: 0;
+  accent-color: var(--moxa-teal);
+}
+
+.moxa-lead-field.is-invalid input,
+.moxa-lead-field.is-invalid select,
+.moxa-lead-field.is-invalid textarea,
+.moxa-lead-consent.is-invalid {
+  border-color: #b42318;
+}
+
+.moxa-lead-error {
+  color: #b42318 !important;
+  font-size: 0.75rem !important;
+  font-weight: 750 !important;
 }
 
 .moxa-lead-consent .check-row {

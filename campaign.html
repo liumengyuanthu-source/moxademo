@@ -376,17 +376,17 @@ button{cursor:pointer}
       <div class="section-head center reveal"><div class="kicker">Contact Us</div><h2 id="contactTitle">Request Information</h2><p>Share your network, security, and deployment requirements. A Moxa specialist can help you identify the right secure networking solution.</p></div>
       <div class="contact-layout moxa-lead-layout">
         <aside class="contact-aside moxa-lead-aside reveal"><h3>Plan the next step with confidence.</h3><p>Use this form for product selection, architecture review, specification validation, or a regional sales conversation.</p><ul><li>Secure switch and firewall selection</li><li>IEC 62443-aligned network planning</li><li>MXview One management guidance</li><li>Regional product and certification support</li></ul><div class="moxa-lead-services"><div class="moxa-lead-service"><strong>Solution consultation</strong><span>A Moxa specialist will review your requirements and recommend the right next step.</span></div><div class="moxa-lead-service"><strong>Regional follow-up</strong><span>Your request will be routed to the appropriate sales or engineering team.</span></div></div></aside>
-        <form class="contact-form moxa-lead-form reveal" id="campaignForm">
+        <form class="contact-form moxa-lead-form reveal" id="campaignForm" data-moxa-lead-form novalidate>
           <div class="form-grid">
-            <label class="field"><span>First name *</span><input type="text" name="first_name" autocomplete="given-name" required></label>
-            <label class="field"><span>Email *</span><input type="email" name="work_email" autocomplete="email" required></label>
-            <label class="field"><span>Company *</span><input type="text" name="company" autocomplete="organization" required></label>
-            <label class="field"><span>Industry *</span><select name="industry" required><option value="">Select industry</option><option>Building Automation</option><option>Machinery</option><option>Manufacturing</option><option>Mining, Oil &amp; Gas</option><option>Power &amp; Energy</option><option>Transportation</option><option>Water &amp; Wastewater</option><option>Other</option></select></label>
-            <label class="field full"><span>Country *</span><select name="country" required><option value="">Select country</option><option>China</option><option>Germany</option><option>Japan</option><option>Singapore</option><option>Taiwan</option><option>United Kingdom</option><option>USA</option><option>Other</option></select></label>
-            <label class="field full"><span>Project details *</span><textarea name="project_details" placeholder="Describe your network, security, product, or certification requirements." required></textarea></label>
+            <label class="field moxa-lead-field"><span>First name *</span><input type="text" name="first_name" autocomplete="given-name" required></label>
+            <label class="field moxa-lead-field"><span>Business email *</span><input type="email" name="work_email" autocomplete="email" required></label>
+            <label class="field moxa-lead-field"><span>Company *</span><input type="text" name="company" autocomplete="organization" required></label>
+            <label class="field moxa-lead-field"><span>Industry *</span><select name="industry" required><option value="">Select an industry</option><option>Building Automation</option><option>Machinery</option><option>Manufacturing</option><option>Mining, Oil &amp; Gas</option><option>Power &amp; Energy</option><option>Transportation</option><option>Water &amp; Wastewater</option><option>Other</option></select></label>
+            <label class="field full moxa-lead-field"><span>Country / region *</span><select name="country" required><option value="">Select a country or region</option><option>China</option><option>Germany</option><option>Japan</option><option>Singapore</option><option>Taiwan</option><option>United Kingdom</option><option>United States</option><option>Other</option></select></label>
+            <label class="field full moxa-lead-field"><span>Project details *</span><textarea name="project_details" placeholder="Describe your network, security, product, or certification requirements." required></textarea></label>
           </div>
-          <div class="form-options moxa-lead-consent"><label class="check-row"><input type="checkbox" name="privacy" required><span>I agree that Moxa may process my information to respond to this request. *</span></label></div>
-          <div class="form-actions"><button class="btn btn-primary" type="submit">Submit Request</button><span class="form-status" id="formStatus" role="status" aria-live="polite"></span></div>
+          <label class="form-options check-row moxa-lead-consent"><input type="checkbox" name="privacy" required><span>I agree that Moxa may process my information to respond to this request in line with the Moxa privacy policy. *</span></label>
+          <div class="form-actions"><button class="btn btn-primary" type="submit">Submit Request</button><span class="form-status moxa-lead-status" id="formStatus" role="status" aria-live="polite"></span></div>
         </form>
       </div>
     </div>
@@ -429,7 +429,6 @@ button{cursor:pointer}
   const campaignLinks=[...document.querySelectorAll(".campaign-nav a")];const sections=campaignLinks.map(link=>document.querySelector(link.getAttribute("href"))).filter(Boolean);
   const sectionObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){campaignLinks.forEach(link=>link.classList.toggle("is-active",link.getAttribute("href")==="#"+entry.target.id));}}),{rootMargin:"-38% 0px -55%",threshold:0});sections.forEach(section=>sectionObserver.observe(section));
   const reveals=document.querySelectorAll(".reveal");if(reduce){reveals.forEach(el=>el.classList.add("in"));}else{const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("in");revealObserver.unobserve(entry.target);}}),{threshold:.12});reveals.forEach(el=>revealObserver.observe(el));}
-  document.getElementById("campaignForm")?.addEventListener("submit",event=>{event.preventDefault();document.getElementById("formStatus").textContent="Your request has been prepared for the local PoC.";});
   const backTop=document.getElementById("backTop");
   function updateBackTop(){backTop?.classList.toggle("is-visible",window.scrollY>640);}
   backTop?.addEventListener("click",()=>window.scrollTo({top:0,behavior:reduce?"auto":"smooth"}));
@@ -482,6 +481,7 @@ button{cursor:pointer}
     </label>
   </div>
 </footer>
-<script src="assets/js/moxa-shell.js?v=20260717-lead-form"></script>
+<script src="assets/js/moxa-lead-form.js?v=20260720"></script>
+<script src="assets/js/moxa-shell.js?v=20260720"></script>
 </body>
 </html>
