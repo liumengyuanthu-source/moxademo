@@ -355,6 +355,60 @@ nav.mainnav{display:flex;gap:.25rem;margin-left:.5rem}
     display:none;
   }
 }
+.image-hero-carousel .hero-slide-summer .hero-copy{display:none}
+.image-hero-carousel .hero-slide-summer .banner-hotspots{display:block}
+.image-hero-carousel .hero-slide-summer .banner-hotspot.primary{
+  left:9.15%;top:70.9%;width:16.1%;height:8.4%;
+}
+.image-hero-carousel .hero-slide-summer .summer-cta{
+  width:192px;
+  color:#fff;
+  border-color:transparent;
+  box-shadow:0 14px 34px rgba(0,24,31,.22);
+}
+.image-hero-carousel .summer-sales-a .summer-cta{
+  background:#fa943e;
+}
+.image-hero-carousel .summer-sales-a .summer-cta:hover{
+  background:#e57e28;
+}
+.image-hero-carousel .summer-sales-b .summer-cta{
+  background:#008787;
+}
+.image-hero-carousel .summer-sales-b .summer-cta:hover{
+  background:#006d6d;
+}
+@media (max-width:760px){
+  .image-hero-carousel .hero-slide-summer .hero-copy{
+    display:block;
+    position:absolute;
+    left:20px;
+    right:20px;
+    bottom:70px;
+    width:auto;
+    max-width:none;
+    padding:22px;
+    border-left:4px solid #7ff0ea;
+    background:linear-gradient(90deg,rgba(0,38,44,.9),rgba(0,38,44,.62));
+    box-shadow:0 22px 64px rgba(0,24,31,.24);
+    backdrop-filter:blur(8px) saturate(1.08);
+  }
+  .image-hero-carousel .hero-slide-summer .hero-copy h1{
+    max-width:13ch;
+    font-size:clamp(2.05rem,10vw,3.1rem);
+  }
+  .image-hero-carousel .hero-slide-summer .banner-hotspots{display:none}
+  .image-hero-carousel .hero-slide-summer .hero-imgslot{
+    background:url("img/scenario-energy.jpg") 62% center / cover no-repeat;
+  }
+  .image-hero-carousel .hero-slide-summer .hero-imgslot::after{
+    display:block;
+    background:linear-gradient(180deg,rgba(0,34,34,.08),rgba(0,34,34,.52));
+  }
+  .image-hero-carousel .hero-slide-summer .hero-photo{
+    display:none;
+  }
+}
 .banner-hotspots{
   position:absolute;
   inset:0;
@@ -2263,6 +2317,7 @@ nav.mainnav{gap:0}
   margin-bottom:36px;
 }
 .home-section-head-copy{max-width:720px}
+.home-nowrap{white-space:nowrap;}
 .home-kicker{
   display:flex;
   align-items:center;
@@ -2500,8 +2555,9 @@ nav.mainnav{gap:0}
 
 </style>
 <link rel="stylesheet" href="assets/css/moxa-ds.css?v=20260717-lead-form">
+<link rel="stylesheet" href="assets/css/membership-signup.css?v=20260721-modal">
 </head>
-<body data-moxa-page="homepage">
+<body data-moxa-page="homepage" data-visitor-state="anonymous">
 <!-- ================= HEADER ================= -->
 
     
@@ -2541,7 +2597,7 @@ nav.mainnav{gap:0}
         <a href="https://www.moxa.com/contact-us">Contact Us</a>
         <a href="https://partnerzone.moxa.com/">Partner Zone</a>
         <a href="https://www.moxa.com/en/membership/my-account/profile/personal-info">My Moxa</a>
-        <a href="https://www.moxa.com/membership/sign-in">Sign In</a>
+        <a href="#my-moxa-signup">Sign In</a>
       </nav>
 
       <button class="icon-btn search-expand" id="searchExpand" type="button" aria-label="Open search" aria-expanded="false" aria-controls="globalSearchForm">
@@ -2733,6 +2789,44 @@ nav.mainnav{gap:0}
         </div>
       </div>
     </article>
+
+    <article class="hero-slide hero-slide-summer summer-sales-a" data-hero-slide data-ab-variant="summer-sales-a" data-experiment="experiment_top_cta" data-experience-variant="A" aria-hidden="true">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">2026 SUMMER SALES</span>
+          <h1>Upgrade your industrial network this summer.</h1>
+          <p class="hero-sub">Explore selected Moxa industrial networking solutions and get expert guidance for your next deployment.</p>
+          <div class="hero-cta">
+            <a class="btn btn-lg summer-cta" href="campaign.html#contact-us" data-ab-cta="inquire-now">Inquire Now</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-imgslot">
+            <img class="asset-img hero-photo" src="banner/homepage-summer-sales-a.png" alt="2026 Summer Sales industrial networking solutions with Inquire Now call to action">
+          </div>
+          <div class="banner-hotspots" aria-label="2026 Summer Sales version A action"><a class="banner-hotspot primary" href="campaign.html#contact-us" aria-label="Inquire Now">Inquire Now</a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="hero-slide hero-slide-summer summer-sales-b" data-hero-slide data-ab-variant="summer-sales-b" data-experiment="experiment_top_cta" data-experience-variant="B" aria-hidden="true">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">2026 SUMMER SALES</span>
+          <h1>Upgrade your industrial network this summer.</h1>
+          <p class="hero-sub">Explore selected Moxa industrial networking solutions and get expert guidance for your next deployment.</p>
+          <div class="hero-cta">
+            <a class="btn btn-lg summer-cta" href="campaign.html#contact-us" data-ab-cta="contact-an-expert">Contact an Expert</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-imgslot">
+            <img class="asset-img hero-photo" src="banner/homepage-summer-sales-b.png" alt="2026 Summer Sales industrial networking solutions with Contact an Expert call to action">
+          </div>
+          <div class="banner-hotspots" aria-label="2026 Summer Sales version B action"><a class="banner-hotspot primary" href="campaign.html#contact-us" aria-label="Contact an Expert">Contact an Expert</a></div>
+        </div>
+      </div>
+    </article>
   </div>
 
   <div class="wrap hero-controls" aria-label="Hero banner controls">
@@ -2743,6 +2837,8 @@ nav.mainnav{gap:0}
       <button class="hero-dot is-active" type="button" data-hero-dot="0" role="tab" aria-label="Show banner A" aria-selected="true"></button>
       <button class="hero-dot" type="button" data-hero-dot="1" role="tab" aria-label="Show banner B" aria-selected="false"></button>
       <button class="hero-dot" type="button" data-hero-dot="2" role="tab" aria-label="Show banner C" aria-selected="false"></button>
+      <button class="hero-dot" type="button" data-hero-dot="3" role="tab" aria-label="Show Summer Sales version A" aria-selected="false"></button>
+      <button class="hero-dot" type="button" data-hero-dot="4" role="tab" aria-label="Show Summer Sales version B" aria-selected="false"></button>
     </div>
     <button class="hero-arrow" type="button" data-hero-next aria-label="Next banner">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
@@ -2782,7 +2878,7 @@ nav.mainnav{gap:0}
     <div class="home-section-head reveal">
       <div class="home-section-head-copy">
         <div class="home-kicker">Explore Now</div>
-        <h2 id="exploreTitle">Build stronger industrial networks from the edge to the core.</h2>
+        <h2 id="exploreTitle">Build stronger industrial networks from the edge to <span class="home-nowrap">the core.</span></h2>
         <p>Explore practical guidance for improving wireless resilience and protecting critical operational technology.</p>
       </div>
       <a class="home-text-link" href="microsite.html">Explore all solutions</a>
@@ -3108,6 +3204,10 @@ nav.mainnav{gap:0}
   var heroNext = document.querySelector('[data-hero-next]');
   var heroIndex = 0;
   var heroTimer = null;
+  var heroQuery = new URLSearchParams(window.location.search).get('hero');
+  var heroQueryMap = { summerA: 3, summerB: 4 };
+  var experienceQuery = new URLSearchParams(window.location.search).get('experience');
+  var experienceHeroMap = { A: 3, B: 4 };
   function showHero(index){
     if(!heroSlides.length){ return; }
     heroIndex = (index + heroSlides.length) % heroSlides.length;
@@ -3123,12 +3223,17 @@ nav.mainnav{gap:0}
     });
   }
   function startHeroTimer(){
-    if(reduce || heroSlides.length < 2 || s1HomepageState){ return; }
+    if(reduce || heroSlides.length < 2 || s1HomepageState || heroQuery || experienceQuery){ return; }
     window.clearInterval(heroTimer);
     heroTimer = window.setInterval(function(){ showHero(heroIndex + 1); }, 6200);
   }
   if(heroSlides.length){
-    showHero(Math.max(0, s1StateOrder.indexOf(s1HomepageState)));
+    var initialHeroIndex = Object.prototype.hasOwnProperty.call(experienceHeroMap, experienceQuery)
+      ? experienceHeroMap[experienceQuery]
+      : Object.prototype.hasOwnProperty.call(heroQueryMap, heroQuery)
+        ? heroQueryMap[heroQuery]
+        : Math.max(0, s1StateOrder.indexOf(s1HomepageState));
+    showHero(initialHeroIndex);
     heroDots.forEach(function(dot){
       dot.addEventListener('click', function(){
         showHero(parseInt(dot.getAttribute('data-hero-dot'), 10));
@@ -3146,6 +3251,20 @@ nav.mainnav{gap:0}
     }
     startHeroTimer();
   }
+
+  document.addEventListener('click', function(event){
+    var target = event.target.closest('[data-experiment][data-experience-variant]');
+    if(!target){ return; }
+    var experiment = target.getAttribute('data-experiment');
+    var variant = target.getAttribute('data-experience-variant');
+    var payload = {
+      event: 'moxa_experiment_interaction',
+      experience_variant: variant
+    };
+    payload[experiment] = variant;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(payload);
+  });
 
   /* ---- Floating campaign pop-up + chatbot ---- */
   var promo = document.getElementById('promoPop');
@@ -3809,6 +3928,79 @@ nav.mainnav{gap:0}
   });
 })();
 </script>
+<div class="member-modal" id="myMoxaSignupModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="myMoxaSignupTitle" data-sitecore-component="MembershipRegistrationModal" data-sitecore-interactions="sign-in-trigger,outside-click-close,escape-close,focus-trap,three-step-registration,crm-payload-event" hidden>
+  <div class="member-modal-dialog" tabindex="-1">
+    <div class="member-modal-head">
+      <div class="member-modal-brand">
+        <strong id="myMoxaSignupTitle">Create your My Moxa account</strong>
+        <span>Save resources, quote activity, and support handoffs.</span>
+      </div>
+      <button class="member-modal-close" type="button" aria-label="Close registration" data-member-modal-close>×</button>
+    </div>
+
+    <section class="member-workflow" data-workflow="anonymous-membership-registration" data-success-event="moxa:membership:registered" data-crm-adapter="Salesforce" data-crm-state="simulated-ready">
+      <div class="member-wrap member-shell">
+        <div class="member-progress" aria-label="Registration steps">
+          <button class="member-step is-active" type="button" data-member-step-tab="account-details" aria-controls="memberStepAccount"><span>01</span><b>Account details</b></button>
+          <button class="member-step" type="button" data-member-step-tab="profile-confirmation" aria-controls="memberStepConfirm"><span>02</span><b>Confirm profile</b></button>
+          <button class="member-step" type="button" data-member-step-tab="membership-complete" aria-controls="memberStepComplete"><span>03</span><b>My Moxa ready</b></button>
+        </div>
+
+        <div class="member-panels">
+          <section class="member-panel is-active" id="memberStepAccount" data-step="account-details" aria-labelledby="memberRegistrationTitle">
+            <div class="member-panel-head">
+              <p class="member-eyebrow">Membership registration</p>
+              <h2 id="memberRegistrationTitle">Complete your sign-up form.</h2>
+              <p>Use your business information to create a My Moxa profile.</p>
+            </div>
+            <form class="member-form" id="membershipForm" novalidate>
+              <label><span>First name *</span><input id="member-first-name" name="firstName" type="text" autocomplete="given-name" required></label>
+              <label><span>Last name *</span><input id="member-last-name" name="lastName" type="text" autocomplete="family-name" required></label>
+              <label><span>Business email *</span><input id="member-business-email" name="email" type="email" autocomplete="email" required></label>
+              <label><span>Company *</span><input id="member-company" name="company" type="text" autocomplete="organization" required></label>
+              <label>
+                <span>Industry *</span>
+                <select id="member-industry" name="industry" required>
+                  <option value="">Select an industry</option><option>Manufacturing</option><option>Power &amp; Energy</option><option>Rail</option><option>Marine</option><option>Smart City / ITS</option>
+                </select>
+              </label>
+              <label>
+                <span>Country / region *</span>
+                <select id="member-country" name="country" required>
+                  <option value="">Select a country or region</option><option>United States</option><option>Taiwan</option><option>China</option><option>Germany</option><option>Singapore</option>
+                </select>
+              </label>
+              <label><span>Password *</span><input id="member-password" name="password" type="password" autocomplete="new-password" minlength="8" required></label>
+              <label>
+                <span>Primary interest</span>
+                <select id="member-interest" name="interest"><option>EDS-4008 Series quotation and resources</option><option>Remote I/O portfolio</option><option>Industrial network security</option><option>Manuals and downloads</option></select>
+              </label>
+              <label class="member-consent"><input id="member-consent" name="consent" type="checkbox" required><span>I agree that Moxa may create a My Moxa account and process my information according to the privacy policy. *</span></label>
+              <div class="member-form-actions"><button class="member-btn member-btn-primary" type="button" data-member-continue>Continue to confirmation</button></div>
+              <p class="member-form-status" id="memberFormStatus" aria-live="polite"></p>
+            </form>
+          </section>
+
+          <section class="member-panel" id="memberStepConfirm" data-step="profile-confirmation" aria-labelledby="memberConfirmTitle" hidden>
+            <div class="member-panel-head"><p class="member-eyebrow">Profile confirmation</p><h2 id="memberConfirmTitle">Confirm your information.</h2><p>Review the details below before creating your profile.</p></div>
+            <div class="member-confirm-grid" id="memberConfirmSummary" aria-label="Registration summary"></div>
+            <div class="member-form-actions"><button class="member-btn member-btn-secondary" type="button" data-member-back>Back</button><button class="member-btn member-btn-primary" id="membershipSubmit" type="button" data-analytics-event="membership_registration_submit">Create My Moxa profile</button></div>
+          </section>
+
+          <section class="member-panel" id="memberStepComplete" data-step="membership-complete" aria-labelledby="memberCompleteTitle" hidden>
+            <div class="member-complete-card">
+              <p class="member-eyebrow">Registration complete</p><h2 id="memberCompleteTitle">My Moxa profile created.</h2><p>Your profile is ready for saved resources, quote recovery, personalization, and support handoff.</p>
+              <div class="member-complete-actions"><a class="member-btn member-btn-primary" href="compare-quote.html#quoteWorkflow">Continue to quote workflow</a><button class="member-btn member-btn-secondary" type="button" data-member-modal-close>Return to homepage</button></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <p class="member-modal-account">Already have an account? <a href="https://www.moxa.com/membership/sign-in">Sign in</a></p>
+  </div>
+</div>
+
 <footer class="moxa-global-footer" data-shared-component="GlobalFooter">
   <div class="moxa-footer-top">
     <section class="moxa-footer-social-row" id="moxa-follow">
@@ -3855,6 +4047,8 @@ nav.mainnav{gap:0}
     </label>
   </div>
 </footer>
-<script src="assets/js/moxa-shell.js?v=20260717-lead-form"></script>
+<script src="assets/js/moxa-shell.js?v=20260721-membership-modal"></script>
+<script src="assets/js/membership-signup.js?v=20260721-modal"></script>
+<script src="assets/js/membership-modal.js?v=20260721-modal"></script>
 </body>
 </html>

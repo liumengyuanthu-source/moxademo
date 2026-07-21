@@ -1,0 +1,330 @@
+.cross-sell-context-banner[hidden] {
+  display: none !important;
+}
+
+.cross-sell-context-banner {
+  padding: 18px 0 0;
+  background: linear-gradient(180deg, rgba(239, 248, 248, 0.96), rgba(255, 255, 255, 0));
+}
+
+.cross-sell-context-banner-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: center;
+  border: 1px solid rgba(0, 137, 137, 0.22);
+  border-radius: 4px;
+  background:
+    radial-gradient(circle at 96% 18%, rgba(90, 215, 216, 0.18), transparent 34%),
+    linear-gradient(135deg, rgba(238, 250, 250, 0.96), rgba(255, 255, 255, 0.98));
+  box-shadow: 0 24px 60px -48px rgba(0, 60, 64, 0.45);
+  padding: clamp(20px, 3vw, 32px);
+}
+
+.cross-sell-context-banner span,
+.cross-sell-context,
+.cross-sell-product-card .product-role {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #007878;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.cross-sell-context-banner span::before,
+.cross-sell-context::before {
+  content: "▲";
+  color: #008787;
+  font-size: 0.68rem;
+}
+
+.cross-sell-context-banner h2 {
+  margin: 8px 0 0;
+  color: #12323f;
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.cross-sell-context-banner p {
+  max-width: 820px;
+  margin: 8px 0 0;
+  color: #506a73;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.cross-sell-context-actions,
+.cross-sell-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.cross-sell-context-actions .btn,
+.cross-sell-actions .btn {
+  min-width: 168px;
+  justify-content: center;
+}
+
+.solution-cross-sell {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(54px, 7vw, 92px);
+  background:
+    radial-gradient(circle at 12% 12%, rgba(90, 215, 216, 0.12), transparent 30%),
+    linear-gradient(180deg, #ffffff 0%, #f2f9f9 100%);
+}
+
+.solution-cross-sell::after {
+  content: "";
+  position: absolute;
+  right: -11vw;
+  bottom: -24vw;
+  width: 48vw;
+  height: 48vw;
+  min-width: 520px;
+  min-height: 520px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(0, 135, 135, 0.12), transparent 62%);
+  pointer-events: none;
+}
+
+.cross-sell-panel {
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(0, 137, 137, 0.18);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 28px 70px -56px rgba(0, 48, 54, 0.46);
+  padding: clamp(26px, 4vw, 48px);
+}
+
+.cross-sell-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr) minmax(300px, 0.9fr);
+  gap: clamp(20px, 3vw, 36px);
+  align-items: stretch;
+  margin-top: 18px;
+}
+
+.cross-sell-copy h2 {
+  max-width: 720px;
+  color: #12323f;
+  font-size: clamp(2rem, 3.5vw, 3.35rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.cross-sell-copy p {
+  max-width: 640px;
+  margin-top: 16px;
+  color: #4f6872;
+  font-size: 1.02rem;
+  line-height: 1.62;
+}
+
+.cross-sell-architecture {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cross-sell-architecture li {
+  position: relative;
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  border: 1px solid rgba(0, 137, 137, 0.18);
+  border-radius: 4px;
+  background: linear-gradient(135deg, #ffffff, #effafa);
+  color: #12323f;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  padding: 14px 18px 14px 46px;
+}
+
+.cross-sell-architecture li::before {
+  content: counter(list-item);
+  position: absolute;
+  left: 16px;
+  display: grid;
+  width: 20px;
+  height: 20px;
+  place-items: center;
+  border-radius: 999px;
+  background: #008787;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.cross-sell-architecture li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 25px;
+  bottom: -13px;
+  width: 2px;
+  height: 13px;
+  background: rgba(0, 137, 137, 0.34);
+}
+
+.cross-sell-product-card {
+  display: flex;
+  flex-direction: column;
+  border-left: 4px solid #008787;
+  border-radius: 4px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(90, 215, 216, 0.16), transparent 36%),
+    #f8fbfb;
+  padding: clamp(22px, 3vw, 30px);
+}
+
+.cross-sell-product-card h3 {
+  margin: 12px 0 0;
+  color: #12323f;
+  font-size: clamp(1.55rem, 2.3vw, 2.2rem);
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.cross-sell-product-card ul {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0 24px;
+  padding: 0;
+  list-style: none;
+  color: #4f6872;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.cross-sell-product-card li {
+  position: relative;
+  padding-left: 22px;
+}
+
+.cross-sell-product-card li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #008787;
+  font-weight: 900;
+}
+
+.cross-sell-product-card .cross-sell-actions {
+  margin-top: auto;
+}
+
+.cross-sell-note {
+  margin: 24px 0 0;
+  border-top: 1px solid rgba(0, 137, 137, 0.16);
+  padding-top: 16px;
+  color: #60757d;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.solution-toast {
+  position: fixed;
+  z-index: 1000;
+  right: clamp(18px, 3vw, 38px);
+  bottom: clamp(88px, 8vw, 120px);
+  max-width: min(420px, calc(100vw - 36px));
+  border: 1px solid rgba(0, 137, 137, 0.22);
+  border-left: 4px solid #008787;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 24px 70px -42px rgba(0, 48, 54, 0.62);
+  color: #12323f;
+  font-weight: 800;
+  line-height: 1.35;
+  padding: 16px 18px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  pointer-events: none;
+}
+
+.solution-toast.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1120px) {
+  .cross-sell-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cross-sell-architecture {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .cross-sell-architecture li {
+    align-items: flex-start;
+    padding: 46px 14px 14px;
+  }
+
+  .cross-sell-architecture li::before {
+    top: 16px;
+  }
+
+  .cross-sell-architecture li:not(:last-child)::after {
+    left: auto;
+    right: -13px;
+    bottom: auto;
+    top: 25px;
+    width: 13px;
+    height: 2px;
+  }
+}
+
+@media (max-width: 760px) {
+  .cross-sell-context-banner-inner,
+  .cross-sell-grid,
+  .cross-sell-architecture {
+    grid-template-columns: 1fr;
+  }
+
+  .cross-sell-context-actions,
+  .cross-sell-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .cross-sell-context-actions .btn,
+  .cross-sell-actions .btn {
+    width: 100%;
+  }
+
+  .cross-sell-architecture li {
+    padding: 14px 18px 14px 46px;
+  }
+
+  .cross-sell-architecture li::before {
+    top: auto;
+  }
+
+  .cross-sell-architecture li:not(:last-child)::after {
+    left: 25px;
+    right: auto;
+    bottom: -13px;
+    top: auto;
+    width: 2px;
+    height: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .solution-toast {
+    transition: none;
+  }
+}

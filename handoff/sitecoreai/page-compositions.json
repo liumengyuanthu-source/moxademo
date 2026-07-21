@@ -1,0 +1,135 @@
+{
+  "manifestVersion": "1.1.0",
+  "routeCount": 13,
+  "pageClassCount": 12,
+  "sitecoreAutomatedRouteCount": 12,
+  "externalHtmlDemoRouteCount": 1,
+  "templates": [
+    {"id": "HomePage", "base": "SitePage", "allowedComponents": ["HeroBanner", "CampaignOverlay", "MembershipRegistrationModal", "AiSearchGuide", "FloatingSectionNavigator", "CardGrid", "ConnectivityMetrics"]},
+    {"id": "SearchResultsPage", "base": "SitePage", "allowedComponents": ["FilterPanel", "SearchResults", "MoxaAdvisor"]},
+    {"id": "ProductCategoryPage", "base": "SitePage", "allowedComponents": ["HeroBanner", "FilterPanel", "CardGrid", "ProductComparisonTable", "ResourceDownloadList"]},
+    {"id": "ProductSeriesPage", "base": "SitePage", "allowedComponents": ["HeroBanner", "AnchorNavigation", "ProductSeriesOverview", "ProductComparisonTable", "Product360Viewer", "ResourceDownloadList", "CardGrid", "LeadCaptureForm"]},
+    {"id": "ProductModelPage", "base": "SitePage", "allowedComponents": ["ProductModelOverview", "AnchorNavigation", "ResourceDownloadList", "ProductComparisonTable", "LeadCaptureForm"]},
+    {"id": "CampaignLandingPage", "base": "SitePage", "allowedComponents": ["HeroBanner", "AnchorNavigation", "AccordionGroup", "CardGrid", "LeadCaptureForm"]},
+    {"id": "MicrositeLandingPage", "base": "SitePage", "allowedComponents": ["HeroBanner", "AnchorNavigation", "CardGrid", "VideoExperience", "ProductComparisonTable", "LeadCaptureForm"]},
+    {"id": "VideoLibraryPage", "base": "SitePage", "allowedComponents": ["HeroBanner", "VideoExperience", "FilterPanel", "CardGrid"]},
+    {"id": "TechnicalManualPage", "base": "SitePage", "allowedComponents": ["HeroBanner", "ManualNavigator", "AccordionGroup", "ResourceDownloadList"]},
+    {"id": "ArticlePage", "base": "SitePage", "allowedComponents": ["HeroBanner", "AnchorNavigation", "VideoExperience", "AccordionGroup", "CardGrid"]}
+  ],
+  "sharedPartials": {
+    "header": ["GlobalHeader"],
+    "breadcrumb": ["Breadcrumb"],
+    "footer": ["GlobalFooter"],
+    "advisor": ["MoxaAdvisor"]
+  },
+  "routes": [
+    {
+      "order": 1,
+      "pageClass": "Homepage",
+      "route": "homepage.html",
+      "template": "HomePage",
+      "deploymentTarget": "SitecoreAI",
+      "components": ["HeroBanner", "CampaignOverlay", "MembershipRegistrationModal", "AiSearchGuide", "FloatingSectionNavigator", "CardGrid", "CardGrid", "CardGrid", "ConnectivityMetrics"]
+    },
+    {
+      "order": 2,
+      "pageClass": "Search Results",
+      "route": "search.html",
+      "template": "SearchResultsPage",
+      "deploymentTarget": "SitecoreAI",
+      "components": ["SearchResults", "FilterPanel", "MoxaAdvisor"]
+    },
+    {
+      "order": 3,
+      "pageClass": "EDS-4008 Series",
+      "route": "product-series-eds-4008.html",
+      "template": "ProductSeriesPage",
+      "deploymentTarget": "SitecoreAI",
+      "components": ["HeroBanner", "AnchorNavigation", "ProductSeriesOverview", "ProductComparisonTable", "Product360Viewer", "ResourceDownloadList", "CardGrid", "LeadCaptureForm"]
+    },
+    {
+      "order": 4,
+      "pageClass": "Campaign",
+      "route": "campaign.html",
+      "template": "CampaignLandingPage",
+      "deploymentTarget": "SitecoreAI",
+      "components": ["HeroBanner", "AnchorNavigation", "AccordionGroup", "CardGrid", "CardGrid", "LeadCaptureForm"]
+    },
+    {
+      "order": 5,
+      "pageClass": "Microsite",
+      "route": "microsite.html",
+      "template": "MicrositeLandingPage",
+      "deploymentTarget": "SitecoreAI",
+      "components": ["HeroBanner", "AnchorNavigation", "VideoExperience", "CardGrid", "CardGrid", "CardGrid", "ProductComparisonTable", "LeadCaptureForm"]
+    },
+    {
+      "order": 6,
+      "pageClass": "Video",
+      "route": "video.html",
+      "template": "VideoLibraryPage",
+      "deploymentTarget": "SitecoreAI",
+      "components": ["HeroBanner", "VideoExperience", "FilterPanel", "CardGrid"]
+    },
+    {
+      "order": 7,
+      "pageClass": "Product Category",
+      "route": "product-category-ethernet-switches.html",
+      "template": "ProductCategoryPage",
+      "deploymentTarget": "SitecoreAI",
+      "components": ["HeroBanner", "FilterPanel", "CardGrid", "ProductComparisonTable", "ResourceDownloadList"]
+    },
+    {
+      "order": 8,
+      "pageClass": "Product Model",
+      "route": "eds-4008-lv.html",
+      "template": "ProductModelPage",
+      "deploymentTarget": "SitecoreAI",
+      "datasourceKey": "EDS-4008-LV",
+      "components": ["ProductModelOverview", "AnchorNavigation", "ResourceDownloadList", "ProductComparisonTable", "LeadCaptureForm"]
+    },
+    {
+      "order": 9,
+      "pageClass": "Product Model",
+      "route": "eds-4008-hv.html",
+      "template": "ProductModelPage",
+      "deploymentTarget": "SitecoreAI",
+      "datasourceKey": "EDS-4008-HV",
+      "components": ["ProductModelOverview", "AnchorNavigation", "ResourceDownloadList", "ProductComparisonTable", "LeadCaptureForm"]
+    },
+    {
+      "order": 10,
+      "pageClass": "NPort 5100 Series",
+      "route": "nport-5100-series.html",
+      "template": "ProductSeriesPage",
+      "deploymentTarget": "SitecoreAI",
+      "datasourceKey": "NPort-5100-Series",
+      "components": ["HeroBanner", "AnchorNavigation", "ProductSeriesOverview", "ResourceDownloadList", "CardGrid", "LeadCaptureForm"]
+    },
+    {
+      "order": 11,
+      "pageClass": "Technical Manual",
+      "route": "manual.html",
+      "template": "TechnicalManualPage",
+      "deploymentTarget": "SitecoreAI",
+      "components": ["HeroBanner", "ManualNavigator", "AccordionGroup", "ResourceDownloadList"]
+    },
+    {
+      "order": 12,
+      "pageClass": "AI Comparison",
+      "route": "compare-lv-hv.html",
+      "template": null,
+      "deploymentTarget": "ExternalHtmlDemo",
+      "boundary": "Approved conversation-design demonstration. No claim of native SitecoreAI implementation.",
+      "components": ["ProductComparisonTable", "MoxaAdvisor"]
+    },
+    {
+      "order": 13,
+      "pageClass": "Article",
+      "route": "article.html",
+      "template": "ArticlePage",
+      "deploymentTarget": "SitecoreAI",
+      "components": ["HeroBanner", "AnchorNavigation", "VideoExperience", "AccordionGroup", "CardGrid"]
+    }
+  ]
+}

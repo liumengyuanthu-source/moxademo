@@ -42,6 +42,12 @@
       ["Videos", "video.html#video-library"],
       ["Energy Transition", null],
     ],
+    article: [
+      ["Home", "homepage.html"],
+      ["Resources", "search.html?q=Articles"],
+      ["Articles", "article.html"],
+      ["Taking TSN to the Real World", null],
+    ],
     "eds-4008-lv": [
       ["Home", "homepage.html"],
       ["Products", "homepage.html#featured-products"],
@@ -184,7 +190,7 @@
         title: "Account",
         links: [
           ["My Moxa", "https://www.moxa.com/en/membership/my-account/profile/personal-info"],
-          ["Sign In", "https://www.moxa.com/membership/sign-in"],
+          ["Sign In", "homepage.html#my-moxa-signup"],
           ["Partner Zone", "https://partnerzone.moxa.com/"],
         ],
       },
@@ -367,7 +373,7 @@
           <a href="https://www.moxa.com/contact-us">Contact Us</a>
           <a href="https://partnerzone.moxa.com/">Partner Zone</a>
           <a href="https://www.moxa.com/en/membership/my-account/profile/personal-info">My Moxa</a>
-          <a href="https://www.moxa.com/membership/sign-in">Sign In</a>
+          <a href="homepage.html#my-moxa-signup">Sign In</a>
         </div>
         <button class="moxa-mobile-control" id="moxaSearchToggle" type="button" aria-label="Open search" aria-expanded="false">
           <img src="img/icon-search.svg" alt="">

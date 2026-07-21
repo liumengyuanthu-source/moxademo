@@ -12,6 +12,7 @@
   --rio-radius: 12px;
   --rio-shadow: 0 20px 55px rgba(8, 47, 73, 0.12);
   --rio-ease: cubic-bezier(.22, .61, .36, 1);
+  --rio-heading-body-gap: 24px;
 }
 
 html {
@@ -245,29 +246,34 @@ body[data-moxa-page="microsite"] textarea {
 .rio-metrics {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  gap: 12px;
   margin-top: 28px !important;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .rio-metrics div {
   min-width: 0;
+  min-height: 72px;
+  display: grid;
+  grid-template-rows: 28px minmax(30px, auto);
+  align-content: start;
   padding: 16px 0 0;
 }
 
 .rio-metrics dt {
   color: #fff;
-  font-size: clamp(1.2rem, 1.65vw, 1.5rem);
+  font-size: clamp(1.05rem, 1.45vw, 1.35rem);
   line-height: 1;
   font-weight: 800;
   letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
 .rio-metrics dd {
-  margin-top: 7px;
+  margin-top: 5px;
   color: #abd4d3;
-  font-size: 11px;
+  font-size: 10px;
   line-height: 1.35;
   font-weight: 700;
 }
@@ -285,6 +291,20 @@ body[data-moxa-page="microsite"] textarea {
   margin-bottom: 40px;
 }
 
+.rio-heading-nowrap {
+  width: max-content;
+  max-width: 100%;
+  font-size: clamp(2rem, 3.2vw, 3rem) !important;
+  white-space: nowrap;
+}
+
+.rio-brochure-title {
+  width: max-content;
+  max-width: 100%;
+  font-size: clamp(2rem, 3.1vw, 3rem) !important;
+  white-space: nowrap;
+}
+
 .rio-section-head h2,
 .rio-section-copy h2,
 .rio-brochure-copy h2,
@@ -292,14 +312,29 @@ body[data-moxa-page="microsite"] textarea {
   font-size: clamp(2.2rem, 4vw, 3.6rem);
 }
 
-.rio-section-head > p:last-child,
-.rio-section-copy > p,
-.rio-brochure-copy > p,
-.rio-contact-aside > p {
-  margin-top: 18px;
+.rio-section-head > h2 + p,
+.rio-section-copy > h2 + p,
+.rio-brochure-copy > h2 + p,
+.rio-contact-aside > h2 + p {
   max-width: 760px;
   color: #61777d;
   font-size: 17px;
+}
+
+.rio-section-head > h2 + p {
+  margin-top: var(--rio-heading-body-gap) !important;
+}
+
+.rio-section-copy > h2 + p {
+  margin-top: var(--rio-heading-body-gap) !important;
+}
+
+.rio-brochure-copy > h2 + p {
+  margin-top: var(--rio-heading-body-gap) !important;
+}
+
+.rio-contact-aside > h2 + p {
+  margin-top: var(--rio-heading-body-gap) !important;
 }
 
 .rio-overview-grid {
@@ -663,12 +698,18 @@ body[data-moxa-page="microsite"] textarea {
 .rio-application-grid article > div {
   position: absolute;
   z-index: 1;
-  inset: auto 22px 20px;
+  inset: auto 22px 16px;
+  height: 126px;
+  display: grid;
+  grid-template-rows: 48px 1fr;
+  align-content: start;
 }
 
 body[data-moxa-page="microsite"] .rio-application-grid h3 {
+  margin: 0;
   color: var(--rio-white);
   font-size: 20px;
+  line-height: 1.15;
 }
 
 .rio-application-grid p {
@@ -1036,10 +1077,6 @@ body[data-moxa-page="microsite"] .rio-application-grid h3 {
     gap: 38px;
   }
 
-  .rio-metrics {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .rio-product-grid,
   .rio-application-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1121,7 +1158,18 @@ body[data-moxa-page="microsite"] .rio-application-grid h3 {
   }
 
   .rio-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     margin-top: 28px !important;
+  }
+
+  .rio-heading-nowrap {
+    width: auto;
+    white-space: normal;
+  }
+
+  .rio-brochure-title {
+    width: auto;
+    white-space: normal;
   }
 
   .rio-section {

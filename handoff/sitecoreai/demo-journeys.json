@@ -1,0 +1,106 @@
+{
+  "manifestVersion": "1.0.0",
+  "operationDemoCount": 38,
+  "journeyStageCount": 6,
+  "statusDefinitions": {
+    "implemented": "Visible, interactive HTML evidence exists.",
+    "simulated": "Front-end state exists; live platform integration is still required.",
+    "platform": "Must be proven in the target SitecoreAI or enterprise-service environment.",
+    "external-html": "Approved HTML demonstration outside the native SitecoreAI commitment."
+  },
+  "recommendedDecisions": {
+    "searchDefaultFacets": "Auto-select only the single primary facet inferred from query intent. Keep other relevant facets visible with counts and unchecked.",
+    "sitecoreComponentMode": "Use hybrid BYOC for interactive components and structured Sitecore renderings for content-led components.",
+    "comparisonChatbot": "Keep compare-lv-hv.html as an external HTML conversation-design demonstration.",
+    "deployment": "Generate page compositions and serialized items from manifests; do not assemble 12 pages manually in Page Builder.",
+    "reviewGate": "Stephen reviews component boundaries and target repository mapping while HTML refinement and deployment preparation continue in parallel."
+  },
+  "stages": [
+    {
+      "id": "S1",
+      "name": "Awareness and Orientation",
+      "entry": "homepage.html",
+      "primaryHandoffs": ["search.html", "campaign.html", "product-category-ethernet-switches.html"],
+      "operations": [
+        {"id": 1, "name": "Default homepage orientation", "useCases": ["Homepage-1"], "evidence": ["homepage.html"], "status": "implemented"},
+        {"id": 2, "name": "Regional and recent-search personalization", "useCases": ["Homepage-3"], "evidence": ["homepage.html?demoState=ethernetInterest"], "status": "simulated"},
+        {"id": 3, "name": "Current-session EDS-4008 intent", "useCases": ["Homepage-4"], "evidence": ["homepage.html?demoState=eds4008Session"], "status": "simulated"},
+        {"id": 4, "name": "Campaign preview, A/B, and performance", "useCases": ["Homepage-5", "Homepage-6", "Homepage-8", "Homepage-9"], "evidence": ["homepage.html", "analytics.html"], "status": "platform"},
+        {"id": 5, "name": "Campaign calendar and pop-up", "useCases": ["Homepage-11", "Homepage-13"], "evidence": ["homepage.html", "campaign.html"], "status": "simulated"},
+        {"id": 6, "name": "Unified global navigation", "useCases": ["Global-shell"], "evidence": ["assets/js/moxa-shell.js", "assets/css/moxa-ds.css"], "status": "implemented"}
+      ]
+    },
+    {
+      "id": "S2",
+      "name": "Solution and Campaign Exploration",
+      "entry": "campaign.html",
+      "primaryHandoffs": ["microsite.html", "video.html", "product-category-ethernet-switches.html"],
+      "operations": [
+        {"id": 7, "name": "Remote I/O microsite", "useCases": ["Microsite-1"], "evidence": ["microsite.html"], "status": "implemented"},
+        {"id": 8, "name": "Microsite distribution and embed", "useCases": ["Microsite-2"], "evidence": ["deliverables/Moxa_SitecoreAI_Handoff_20260720"], "status": "simulated"},
+        {"id": 9, "name": "Progressive profiling and CRM routing", "useCases": ["Microsite-3", "Microsite-4", "Microsite-5"], "evidence": ["microsite.html", "assets/js/moxa-lead-form.js"], "status": "simulated"},
+        {"id": 10, "name": "Product-content relationship", "useCases": ["Microsite-6", "Article-7"], "evidence": ["microsite.html", "video.html", "product-series-eds-4008.html"], "status": "simulated"},
+        {"id": 11, "name": "Article authoring and SEO", "useCases": ["Article-1", "Article-2", "Article-3", "Article-4", "Article-5", "Article-6"], "evidence": ["article.html"], "status": "simulated"},
+        {"id": 12, "name": "Article workflow and localization", "useCases": ["Article-8", "Article-9", "Article-10", "Article-11", "Article-12"], "evidence": ["article.html"], "status": "platform"},
+        {"id": 13, "name": "Article conversion states", "useCases": ["Article-13", "Article-16", "Article-17", "Article-18", "Article-20", "Article-21"], "evidence": ["article.html"], "status": "simulated"},
+        {"id": 14, "name": "Energy transition video experience", "useCases": ["Video-1"], "evidence": ["video.html"], "status": "simulated"}
+      ]
+    },
+    {
+      "id": "S3",
+      "name": "Search and Discovery",
+      "entry": "search.html?q=Ethernet%20Switches",
+      "primaryHandoffs": ["product-category-ethernet-switches.html", "product-series-eds-4008.html", "manual.html"],
+      "operations": [
+        {"id": 15, "name": "Answer-first grouped search", "useCases": ["Search-1"], "evidence": ["search.html"], "status": "implemented"},
+        {"id": 16, "name": "Typo correction", "useCases": ["Search-8"], "evidence": ["search.html?demoSearch=typo"], "status": "implemented"},
+        {"id": 17, "name": "Partial SKU and autocomplete", "useCases": ["Search-7"], "evidence": ["search.html?demoSearch=partial"], "status": "simulated"},
+        {"id": 18, "name": "Synonym and taxonomy expansion", "useCases": ["Search-5", "Search-9"], "evidence": ["search.html?demoSearch=synonym"], "status": "implemented"},
+        {"id": 19, "name": "Manual and PDF body search", "useCases": ["Search-6", "Search-10"], "evidence": ["search.html?demoSearch=document", "manual.html"], "status": "simulated"},
+        {"id": 20, "name": "True and filtered no-result recovery", "useCases": ["Search-no-result"], "evidence": ["search.html?demoSearch=no-result"], "status": "implemented"},
+        {"id": 21, "name": "Sponsored result and campaign metrics", "useCases": ["Search-2", "Search-3", "Search-4"], "evidence": ["search.html", "analytics.html"], "status": "simulated"},
+        {"id": 22, "name": "Query-intent facet defaults", "useCases": ["Search-filter-behavior"], "evidence": ["search.html"], "status": "simulated"}
+      ]
+    },
+    {
+      "id": "S4",
+      "name": "Product Evaluation and Technical Validation",
+      "entry": "product-category-ethernet-switches.html",
+      "primaryHandoffs": ["product-series-eds-4008.html", "product-series-eds-4008.html#product-360", "eds-4008-lv.html", "eds-4008-hv.html", "manual.html"],
+      "operations": [
+        {"id": 23, "name": "Ethernet Switch category and selector", "useCases": ["Products-1", "Products-11", "Products-12", "Products-13"], "evidence": ["product-category-ethernet-switches.html"], "status": "simulated"},
+        {"id": 24, "name": "EDS-4008 series evaluation", "useCases": ["Products-2", "Products-3", "Products-4", "Products-5", "Products-6", "Products-7", "Products-9", "Products-10", "Products-17"], "evidence": ["product-series-eds-4008.html"], "status": "implemented"},
+        {"id": 25, "name": "LV and HV model detail governance", "useCases": ["Products-14", "Products-15", "Products-16"], "evidence": ["eds-4008-lv.html", "eds-4008-hv.html"], "status": "simulated"},
+        {"id": 26, "name": "LV versus HV comparison", "useCases": ["Products-8", "Chatbot-2"], "evidence": ["compare-lv-hv.html"], "status": "external-html"},
+        {"id": 27, "name": "HXML manual navigation and search", "useCases": ["Search-6", "Products-15", "Products-16"], "evidence": ["manual.html"], "status": "simulated"},
+        {"id": 28, "name": "Quote and distributor conversion", "useCases": ["Products-18"], "evidence": ["compare-quote.html", "contact-distributor.html"], "status": "simulated"}
+      ]
+    },
+    {
+      "id": "S5",
+      "name": "AI-assisted Technical Guidance",
+      "entry": "chatbot.html",
+      "primaryHandoffs": ["compare-lv-hv.html", "product-series-eds-4008.html", "manual.html"],
+      "operations": [
+        {"id": 29, "name": "Global Moxa Advisor launcher", "useCases": ["AI-shell"], "evidence": ["assets/js/moxa-shell.js"], "status": "implemented"},
+        {"id": 30, "name": "Constraint-based product recommendation", "useCases": ["Chatbot-1"], "evidence": ["chatbot.html", "search.html"], "status": "simulated"},
+        {"id": 31, "name": "Cited LV/HV engineering comparison", "useCases": ["Chatbot-2"], "evidence": ["compare-lv-hv.html"], "status": "external-html"},
+        {"id": 32, "name": "Off-topic refusal", "useCases": ["Chatbot-3"], "evidence": ["chatbot.html"], "status": "implemented"},
+        {"id": 33, "name": "Content freshness and source timestamp", "useCases": ["Chatbot-4"], "evidence": ["chatbot.html", "backend-compliance.html"], "status": "simulated"}
+      ]
+    },
+    {
+      "id": "S6",
+      "name": "Optimization Loop",
+      "entry": "analytics.html",
+      "primaryHandoffs": ["journey.html", "backend-compliance.html", "design-system.html"],
+      "operations": [
+        {"id": 34, "name": "Analytics dashboard and reporting", "useCases": ["Analytics-1", "Analytics-2", "Analytics-3", "Analytics-4", "Analytics-5", "Analytics-6", "Analytics-7", "Analytics-8"], "evidence": ["analytics.html"], "status": "simulated"},
+        {"id": 35, "name": "Customer identity and journey timeline", "useCases": ["Customer-Journey-1", "Customer-Journey-2", "Customer-Journey-3", "Customer-Journey-4"], "evidence": ["journey.html"], "status": "simulated"},
+        {"id": 36, "name": "Repository and lifecycle evidence", "useCases": ["Backend-1", "Backend-2"], "evidence": ["backend-compliance.html"], "status": "simulated"},
+        {"id": 37, "name": "Consent-aware personalization fallback", "useCases": ["Compliance-1"], "evidence": ["backend-compliance.html"], "status": "simulated"},
+        {"id": 38, "name": "Design-system governance", "useCases": ["Design-system-support"], "evidence": ["design-system-v1.html", "handoff/design-system-v1"], "status": "implemented"}
+      ]
+    }
+  ]
+}

@@ -77,6 +77,81 @@ class RemoteIOContractTests(unittest.TestCase):
             r'(?:#fff(?:fff)?|var\(--rio-white\))\s*;',
         )
 
+    def test_hero_metrics_use_four_equal_aligned_columns(self):
+        self.assertRegex(
+            self.microsite_css,
+            r'\.rio-metrics\s*\{[^}]*grid-template-columns:\s*'
+            r'repeat\(4,\s*minmax\(0,\s*1fr\)\)[^}]*\}',
+        )
+        self.assertRegex(
+            self.microsite_css,
+            r'\.rio-metrics\s+div\s*\{[^}]*display:\s*grid;[^}]*'
+            r'grid-template-rows:\s*[^;]+;[^}]*\}',
+        )
+
+    def test_annotated_headings_have_deterministic_desktop_wrapping(self):
+        self.assertIn(
+            '<h2 class="rio-brochure-title" id="brochureTitle">The whole portfolio in five pages</h2>',
+            self.microsite,
+        )
+        self.assertIn('class="rio-heading-nowrap" id="applicationsTitle"', self.microsite)
+        self.assertIn('class="rio-heading-nowrap" id="comparisonTitle"', self.microsite)
+        self.assertRegex(
+            self.microsite_css,
+            r'\.rio-heading-nowrap\s*\{[^}]*white-space:\s*nowrap;',
+        )
+        self.assertRegex(
+            self.microsite_css,
+            r'\.rio-brochure-title\s*\{[^}]*white-space:\s*nowrap;',
+        )
+
+    def test_application_card_copy_uses_a_shared_alignment_grid(self):
+        self.assertRegex(
+            self.microsite_css,
+            r'\.rio-application-grid\s+article\s*>\s*div\s*\{[^}]*'
+            r'display:\s*grid;[^}]*grid-template-rows:\s*[^;]+;',
+        )
+
+    def test_application_card_title_and_body_share_fixed_top_baselines(self):
+        self.assertRegex(
+            self.microsite_css,
+            r'\.rio-application-grid\s+article\s*>\s*div\s*\{[^}]*'
+            r'height:\s*126px;[^}]*grid-template-rows:\s*48px\s+1fr;'
+            r'[^}]*align-content:\s*start;',
+        )
+        self.assertRegex(
+            self.microsite_css,
+            r'body\[data-moxa-page="microsite"\]\s+'
+            r'\.rio-application-grid\s+h3\s*\{[^}]*margin:\s*0;',
+        )
+
+    def test_contact_heading_has_design_system_body_spacing(self):
+        self.assertRegex(
+            self.microsite_css,
+            r'\.rio-contact-aside\s*>\s*h2\s*\+\s*p\s*\{[^}]*'
+            r'margin-top:\s*var\(--rio-heading-body-gap\)\s*!important;',
+        )
+
+    def test_section_headings_share_one_body_spacing_token(self):
+        self.assertRegex(
+            self.microsite_css,
+            r':root\s*\{[^}]*--rio-heading-body-gap:\s*24px\s*;',
+        )
+        for selector in (
+            ".rio-section-head > h2 + p",
+            ".rio-section-copy > h2 + p",
+            ".rio-brochure-copy > h2 + p",
+            ".rio-contact-aside > h2 + p",
+        ):
+            escaped = re.escape(selector).replace(r"\\ ", r"\s*")
+            self.assertRegex(
+                self.microsite_css,
+                escaped
+                + r'\s*\{[^}]*margin-top:\s*'
+                + r'var\(--rio-heading-body-gap\)\s*!important;',
+                selector,
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

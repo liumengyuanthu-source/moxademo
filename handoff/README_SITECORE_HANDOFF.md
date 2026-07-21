@@ -1,6 +1,6 @@
 # Moxa PoC — SitecoreAI Handoff
 
-Prepared for Stephen on 20 July 2026.
+Prepared for Stephen; final interaction update 21 July 2026.
 
 ## Delivery scope
 
@@ -20,9 +20,13 @@ The PoC contains 12 page classes represented by 13 customer-facing routes. The L
 | 10 | NPort 5100 Series | `nport-5100-series.html` | Product Series Page |
 | 11 | HXML Manual | `manual.html` | Technical Manual Page |
 | 12 | LV/HV AI Comparison | `compare-lv-hv.html` | AI Comparison Experience Page |
-| 13 | 360 Product Media | `product-360.html` | Product Media Page |
+| 13 | TSN Article | `article.html` | Article Page |
 
 `index.html` is the review entry point. The repository also includes supporting prototypes, audit reports, source screenshots, design-system evidence, and test files. Keep those files for traceability; do not treat them as additional production routes.
+
+The 360-degree viewer is embedded in `product-series-eds-4008.html`. `product-360.html` remains only as supporting component evidence and is not a formal customer-facing route.
+
+Membership registration is a **homepage modal component**, not a route. Open it from the global Sign In entry or `homepage.html#my-moxa-signup`. Do not recreate a standalone membership page.
 
 ## Start here
 
@@ -30,9 +34,11 @@ The PoC contains 12 page classes represented by 13 customer-facing routes. The L
 2. Use `ROUTE_COMPONENT_TEMPLATE_MATRIX.csv` as the machine-readable implementation matrix.
 3. Read `INTEGRATION_CHECKLIST.md` before connecting Search, AI, forms, consent, locale, identity, analytics, and media.
 4. Read `PACKAGE_CONTENTS.md` before copying or removing files.
-5. Serve the site over HTTP for review. Direct `file://` viewing can restrict browser behavior.
-6. Use `assets/css/moxa-ds.css` and `assets/js/moxa-shell.js` as the shared design-system and shell references.
-7. Use `assets/css/microsite-remote-io.css`, `assets/js/microsite-remote-io.js`, and `assets/js/moxa-lead-form.js` as the Remote I/O and shared lead-form references.
+5. Read `CHANGELOG_20260721.md` for the final visual and functional changes.
+6. Read `INTERACTION_AND_MOTION_SPEC.md` and `sitecoreai/interaction-contract.json` before replacing JavaScript with SitecoreAI components.
+7. Serve the site over HTTP for review. Direct `file://` viewing can restrict browser behavior.
+8. Use `assets/css/moxa-ds.css` and `assets/js/moxa-shell.js` as the shared design-system and shell references.
+9. Use `assets/css/microsite-remote-io.css`, `assets/js/microsite-remote-io.js`, and `assets/js/moxa-lead-form.js` as the Remote I/O and shared lead-form references.
 
 ## Shared contracts that must remain consistent
 
@@ -40,6 +46,7 @@ The PoC contains 12 page classes represented by 13 customer-facing routes. The L
 - One clickable breadcrumb system.
 - One compact global footer with social icons, subscription, legal links, and default country/language.
 - One shared lead-capture schema for Campaign and Microsite: First name, Business email, Company, Industry, Country/region, Project details, Privacy consent.
+- One homepage-only Membership Registration Modal with three states, focus management, and a CRM-ready success event.
 - One design-token layer for typography, spacing, buttons, cards, inputs, focus states, radii, and colors.
 
 ## Implementation boundary

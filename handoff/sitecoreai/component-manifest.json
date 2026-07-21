@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "manifestVersion": "1.1.0",
+  "generatedFor": "Moxa SitecoreAI PoC",
+  "designSystem": {
+    "tokens": "handoff/design-system-v1/tokens.json",
+    "sharedCss": "assets/css/moxa-ds.css",
+    "sharedShell": "assets/js/moxa-shell.js",
+    "contentWidth": 1240,
+    "baseSpacingPx": 8
+  },
+  "implementationPolicy": {
+    "preferredRenderingMode": "hybrid",
+    "contentDrivenComponents": "Sitecore rendering with structured datasource",
+    "interactiveComponents": "SitecoreAI BYOC hybrid component",
+    "forms": "Sitecore Forms plus approved CRM adapter",
+    "noManualPageAssembly": true,
+    "notes": "Page compositions are generated from page-compositions.json after templates, renderings, datasources, and media are serialized."
+  },
+  "components": [
+    {
+      "id": "GlobalHeader",
+      "group": "Moxa Global",
+      "deploymentMode": "BYOC-hybrid",
+      "source": "assets/js/moxa-shell.js",
+      "genScript": {"startingPoint": "SiteNav", "decision": "refactor", "changes": ["Moxa two-row information hierarchy", "search with Ask AI mode", "utility links", "bounded mega menu", "close on scroll/outside click/Escape"]},
+      "properties": {"logo": "image", "searchPlaceholder": "string", "askAiLabel": "string", "utilityLinks": "link[]", "navigationGroups": "navigationGroup[]", "contactCta": "link"}
+    },
+    {
+      "id": "GlobalFooter",
+      "group": "Moxa Global",
+      "deploymentMode": "BYOC-hybrid",
+      "source": "assets/js/moxa-shell.js",
+      "genScript": {"startingPoint": "Footer", "decision": "refactor", "changes": ["compact horizontal layout", "icon-only social links", "subscription row", "legal links", "default country/language"]},
+      "properties": {"socialLinks": "socialLink[]", "subscriptionTitle": "string", "subscriptionCopy": "richText", "legalLinks": "link[]", "localeOptions": "localeOption[]", "defaultLocale": "string"}
+    },
+    {
+      "id": "Breadcrumb",
+      "group": "Moxa Global",
+      "deploymentMode": "Sitecore-rendering",
+      "source": "assets/js/moxa-shell.js",
+      "genScript": {"startingPoint": "Breadcrumb", "decision": "reuse-reskin", "changes": ["automatic item hierarchy", "current-page state", "Moxa spacing and focus tokens"]},
+      "properties": {"items": "breadcrumbItem[]", "currentLabelOverride": "string"}
+    },
+    {
+      "id": "MoxaAdvisor",
+      "group": "Moxa AI",
+      "deploymentMode": "BYOC-client",
+      "source": "assets/js/moxa-shell.js",
+      "genScript": {"startingPoint": "AI assistant pattern", "decision": "adapt", "changes": ["Moxa bot identity", "guided product prompts", "engineering-source handoff", "support escalation"]},
+      "properties": {"title": "string", "welcomeMessage": "richText", "quickPrompts": "prompt[]", "endpoint": "string", "supportLink": "link"}
+    },
+    {
+      "id": "HeroBanner",
+      "group": "Moxa Content",
+      "deploymentMode": "BYOC-hybrid",
+      "source": "homepage.html",
+      "genScript": {"startingPoint": "HeroBanner / SplitContentBanner", "decision": "generalize", "changes": ["Moxa image-first variants", "focal point", "primary/secondary CTA", "audience state key", "responsive live-text fallback"]},
+      "properties": {"eyebrow": "string", "title": "string", "accentText": "string", "description": "richText", "desktopImage": "image", "mobileImage": "image", "focalPoint": "string", "primaryCta": "link", "secondaryCta": "link", "theme": "enum", "audienceKey": "string"}
+    },
+    {
+      "id": "CampaignOverlay",
+      "group": "Moxa Campaign",
+      "deploymentMode": "BYOC-client",
+      "source": "homepage.html",
+      "genScript": {"startingPoint": "Modal / SiteCta", "decision": "adapt", "changes": ["campaign schedule fields", "frequency cap", "dismiss state", "analytics identifiers", "non-blocking placement"]},
+      "properties": {"campaignId": "string", "image": "image", "eyebrow": "string", "title": "string", "description": "richText", "cta": "link", "startDate": "datetime", "endDate": "datetime", "frequencyCap": "number", "audienceKey": "string"}
+    },
+    {
+      "id": "AiSearchGuide",
+      "group": "Moxa Search",
+      "deploymentMode": "BYOC-client",
+      "source": "homepage.html",
+      "genScript": {"startingPoint": "AI search pattern", "decision": "adapt", "changes": ["industrial query examples", "quick-intent chips", "search/AI routing", "analytics events"]},
+      "properties": {"title": "string", "description": "richText", "placeholder": "string", "submitLabel": "string", "quickIntents": "link[]", "searchEndpoint": "string", "aiEndpoint": "string"}
+    },
+    {
+      "id": "FloatingSectionNavigator",
+      "group": "Moxa Navigation",
+      "deploymentMode": "BYOC-client",
+      "source": "homepage.html",
+      "genScript": {"startingPoint": "none", "decision": "new", "changes": ["IntersectionObserver state", "compact labels", "keyboard-accessible anchors"]},
+      "properties": {"items": "anchorItem[]", "compact": "boolean"}
+    },
+    {
+      "id": "CardGrid",
+      "group": "Moxa Content",
+      "deploymentMode": "Sitecore-rendering",
+      "source": "homepage.html; microsite.html; video.html; campaign.html; article.html",
+      "genScript": {"startingPoint": "ImageCardGrid", "decision": "reuse-reskin", "changes": ["product/solution/resource/video/application variants", "Moxa aspect ratios", "overlay contrast", "consistent CTA treatment"]},
+      "properties": {"eyebrow": "string", "title": "string", "description": "richText", "items": "card[]", "variant": "enum", "columns": "number"}
+    },
+    {
+      "id": "ConnectivityMetrics",
+      "group": "Moxa Content",
+      "deploymentMode": "BYOC-client",
+      "source": "homepage.html",
+      "genScript": {"startingPoint": "StatCounterGrid", "decision": "adapt", "changes": ["count-up motion", "reduced-motion fallback", "glass panels", "Moxa gradient"]},
+      "properties": {"eyebrow": "string", "title": "string", "description": "richText", "metrics": "metric[]", "animate": "boolean"}
+    },
+    {
+      "id": "AnchorNavigation",
+      "group": "Moxa Navigation",
+      "deploymentMode": "BYOC-client",
+      "source": "product-series-eds-4008.html; campaign.html; microsite.html",
+      "genScript": {"startingPoint": "SiteTabs", "decision": "adapt", "changes": ["sticky section anchors", "active state", "optional action area", "responsive overflow"]},
+      "properties": {"title": "string", "items": "anchorItem[]", "actions": "link[]", "stickyOffset": "number"}
+    },
+    {
+      "id": "AccordionGroup",
+      "group": "Moxa Content",
+      "deploymentMode": "BYOC-client",
+      "source": "campaign.html; manual.html; article.html",
+      "genScript": {"startingPoint": "Accordions", "decision": "adapt", "changes": ["plus/minus icon", "smooth height transition", "optional image", "ARIA state"]},
+      "properties": {"items": "accordionItem[]", "allowMultiple": "boolean", "initialOpenIndex": "number"}
+    },
+    {
+      "id": "FilterPanel",
+      "group": "Moxa Search",
+      "deploymentMode": "BYOC-client",
+      "source": "search.html; product-category-ethernet-switches.html; video.html",
+      "genScript": {"startingPoint": "SelectorProduct", "decision": "adapt", "changes": ["industrial attributes", "facet counts", "mobile drawer", "query-intent default rule"]},
+      "properties": {"facets": "facet[]", "queryIntent": "string", "defaultSelectionMode": "enum", "showCounts": "boolean", "resetLabel": "string"}
+    },
+    {
+      "id": "SearchResults",
+      "group": "Moxa Search",
+      "deploymentMode": "BYOC-client",
+      "source": "search.html",
+      "genScript": {"startingPoint": "search listing", "decision": "adapt-new", "changes": ["grouped results", "best match", "typo/synonym transparency", "document snippets", "no-result recovery"]},
+      "properties": {"query": "string", "endpoint": "string", "resultGroups": "searchGroup[]", "promotedResult": "searchResult", "emptyState": "emptyState", "pageSize": "number"}
+    },
+    {
+      "id": "ProductSeriesOverview",
+      "group": "Moxa Product",
+      "deploymentMode": "Sitecore-rendering",
+      "source": "product-series-eds-4008.html; nport-5100-series.html",
+      "genScript": {"startingPoint": "SiteTabs / series-page patterns", "decision": "adapt", "changes": ["structured product truth", "model selector", "resource versions", "application fit", "series-specific configuration"]},
+      "properties": {"series": "productSeries", "models": "productModel[]", "features": "feature[]", "specifications": "specGroup[]", "resources": "resource[]", "applications": "application[]"}
+    },
+    {
+      "id": "ProductModelOverview",
+      "group": "Moxa Product",
+      "deploymentMode": "Sitecore-rendering",
+      "source": "eds-4008-lv.html; eds-4008-hv.html",
+      "genScript": {"startingPoint": "model-page patterns", "decision": "adapt", "changes": ["one reusable model template", "source-governed specs", "gallery", "downloads", "related models", "quote/compare/360 handoffs"]},
+      "properties": {"model": "productModel", "gallery": "image[]", "specifications": "specGroup[]", "resources": "resource[]", "relatedModels": "itemRef[]", "actions": "link[]"}
+    },
+    {
+      "id": "ProductComparisonTable",
+      "group": "Moxa Product",
+      "deploymentMode": "BYOC-hybrid",
+      "source": "compare-lv-hv.html; product-series-eds-4008.html",
+      "genScript": {"startingPoint": "PriceComparisonTable", "decision": "reuse-reskin", "changes": ["engineering dimensions", "difference highlighting", "sticky labels", "explicit source references"]},
+      "properties": {"title": "string", "columns": "comparisonColumn[]", "rows": "comparisonRow[]", "highlightDifferences": "boolean", "sourceLinks": "link[]"}
+    },
+    {
+      "id": "ResourceDownloadList",
+      "group": "Moxa Product",
+      "deploymentMode": "Sitecore-rendering",
+      "source": "product-series-eds-4008.html; eds-4008-lv.html; eds-4008-hv.html; manual.html",
+      "genScript": {"startingPoint": "FilterableDownloadSection", "decision": "refactor", "changes": ["document type", "version", "language", "lifecycle status", "source authority", "download analytics"]},
+      "properties": {"title": "string", "resources": "resource[]", "showFilters": "boolean", "activeOnly": "boolean"}
+    },
+    {
+      "id": "VideoExperience",
+      "group": "Moxa Media",
+      "deploymentMode": "BYOC-client",
+      "source": "video.html; article.html",
+      "genScript": {"startingPoint": "VideoPlayer / YoutubeVideoPlayer", "decision": "adapt", "changes": ["featured episode", "playlist", "chapters", "transcript", "library search/filter/sort", "progress analytics"]},
+      "properties": {"featuredVideo": "video", "playlist": "video[]", "chapters": "chapter[]", "transcript": "richText", "filters": "taxonomy[]", "relatedContent": "itemRef[]"}
+    },
+    {
+      "id": "ManualNavigator",
+      "group": "Moxa Documentation",
+      "deploymentMode": "BYOC-hybrid",
+      "source": "manual.html",
+      "genScript": {"startingPoint": "SideBarMenu / Accordions", "decision": "adapt", "changes": ["HXML topic tree", "search within manual", "stable anchors", "alerts/tables", "version metadata"]},
+      "properties": {"manual": "manualMetadata", "topics": "manualTopic[]", "searchEnabled": "boolean", "download": "link", "returnPaths": "link[]"}
+    },
+    {
+      "id": "Product360Viewer",
+      "group": "Moxa Media",
+      "deploymentMode": "BYOC-client",
+      "source": "product-series-eds-4008.html; product-360.html",
+      "genScript": {"startingPoint": "none", "decision": "new", "changes": ["embedded EDS-4008 series component", "36-frame sequence", "drag/range/button/keyboard controls", "live status", "fallback image", "analytics event"]},
+      "properties": {"productName": "string", "frames": "image[]", "initialFrame": "number", "fallbackImage": "image", "analyticsEvent": "string", "relatedActions": "link[]"}
+    },
+    {
+      "id": "LeadCaptureForm",
+      "group": "Moxa Forms",
+      "deploymentMode": "Sitecore-Forms",
+      "source": "assets/js/moxa-lead-form.js",
+      "genScript": {"startingPoint": "LeadsForm", "decision": "refactor", "changes": ["single Campaign/Microsite schema", "progressive profiling", "privacy consent", "campaign/product context", "CRM routing"]},
+      "properties": {"title": "string", "description": "richText", "fields": "formField[]", "privacyText": "richText", "successMessage": "richText", "crmRoute": "string", "campaignId": "string"}
+    },
+    {
+      "id": "MembershipRegistrationModal",
+      "group": "Moxa Identity",
+      "deploymentMode": "BYOC-client",
+      "source": "homepage.html; assets/css/membership-signup.css; assets/js/membership-modal.js; assets/js/membership-signup.js",
+      "genScript": {"startingPoint": "Modal / Multi-step Form", "decision": "adapt", "changes": ["homepage Sign In trigger only", "three-step registration", "outside-click and Escape close", "focus trap and focus return", "profile confirmation", "CRM payload event without visible debug payload", "lightweight existing-account link"]},
+      "properties": {"title": "string", "description": "richText", "fields": "formField[]", "privacyText": "richText", "signInLink": "link", "successActions": "link[]", "crmEndpoint": "string", "crmAdapter": "string", "successEvent": "string"}
+    }
+  ]
+}

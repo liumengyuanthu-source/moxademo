@@ -20,7 +20,7 @@ Shared launcher, bot identity, guided actions, bilingual content support, and ha
 
 ## 2. Shared presentation renderings
 
-- Hero family: Home, Category, Series, Model, Campaign, Microsite, Video, Manual, Product Media.
+- Hero family: Home, Category, Series, Model, Campaign, Microsite, Video, Manual, Article.
 - Section Header: eyebrow, title, description, alignment, and theme.
 - Card family: Product, Solution, Resource, Application, Video, Feature, Metric, Contact.
 - CTA Band: title, copy, primary/secondary actions.
@@ -33,7 +33,9 @@ Shared launcher, bot identity, guided actions, bilingual content support, and ha
 
 ### Homepage
 
-Home Hero; Campaign Pop-up; AI-guided Search; Floating Navigator; Explore Now; Featured Product; Trending at Moxa; Connectivity Metrics; Global Footer.
+Home Hero; Campaign Pop-up; homepage-only Membership Registration Modal; AI-guided Search; Floating Navigator; Explore Now; Featured Product; Trending at Moxa; Connectivity Metrics; Global Footer.
+
+Membership modal behavior: the global Sign In entry opens Account details → Confirm profile → My Moxa ready. Close button, outside click, and Escape close the modal; focus is trapped and returned; successful registration dispatches `moxa:membership:registered`. The production component must submit through approved identity/CRM adapters and must not expose a debug payload.
 
 ### Search Results
 
@@ -41,7 +43,7 @@ Search Summary; Facet Filters; Result Groups; Result Cards; Best Match; Empty St
 
 ### Product Category — Ethernet Switches
 
-Category Hero; Selection Guide; Filter Controls; Product Family Grid; Comparison CTA; Resource Cards.
+Compact text-only Category Hero (approved Concept 3); full nine-row Category List with title and source description; port, speed, connection, physical, and advanced Filter Controls; live count, reset, and no-result state; category routing.
 
 ### Product Series — EDS-4008 and NPort 5100
 
@@ -79,9 +81,13 @@ Compact Manual Banner; Manual Search; Table of Contents; stable anchors; Documen
 
 Conversation Shell; Prompt; Assistant Message; Specification Table; explicit Source Links immediately after the answer; Follow-up Prompts. Use the shared Moxa bot identity.
 
-### 360 Product Media
+### Article
 
-Media Hero; 36-frame Viewer; drag/button/range/keyboard controls; status announcement; fallback image; related actions; analytics event.
+Article Hero; Table of Contents; structured body; in-page Video; FAQ Accordion; five-point Feedback; Related Article Carousel. The related carousel moves one card per action and disables arrows when the list does not exceed the visible capacity.
+
+### Embedded 360 Product Media
+
+The EDS-4008 Series page includes the 36-frame Viewer as a reusable component with drag/button/range/keyboard controls, status announcement, fallback image, and analytics event. Do not create a separate Sitecore page for the viewer.
 
 ## 4. Suggested Sitecore datasource templates
 

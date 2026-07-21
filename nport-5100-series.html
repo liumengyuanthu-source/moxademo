@@ -2072,6 +2072,7 @@ nav.mainnav{gap:0}
 </style>
 
 <link rel="stylesheet" href="assets/css/moxa-ds.css?v=20260717-lead-form">
+<link rel="stylesheet" href="assets/css/moxa-cross-sell.css?v=20260721-cross-sell">
 </head>
 <body data-moxa-page="nport-5100-series">
 <header class="header" data-component="GlobalHeader">
@@ -2174,6 +2175,21 @@ nav.mainnav{gap:0}
   </article>
 </section>
 <main class="detail-page">
+  <section class="cross-sell-context-banner" data-cross-sell-context-banner hidden aria-live="polite">
+    <div class="wrap">
+      <div class="cross-sell-context-banner-inner">
+        <div>
+          <span>Continue architecture</span>
+          <h2 data-cross-sell-context-title>Recommended from your EDS-4008 network scenario</h2>
+          <p data-cross-sell-context-copy>You are building a managed industrial Ethernet network. NPort 5100 can help bring existing serial devices into the same architecture.</p>
+        </div>
+        <div class="cross-sell-context-actions">
+          <button class="btn btn-primary" type="button" data-action="add-both-to-solution">Add both to solution</button>
+          <a class="btn btn-ghost" href="product-series-eds-4008.html" data-action="return-to-source">Back to source product</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
 <section class="compact-section" id="overview"><div class="wrap"><nav class="tabbar" aria-label="Product sections"><a class="is-active" href="#overview">Overview</a><a class="" href="#specifications">Specifications</a><a class="" href="#resources">Resources</a><a class="" href="#models">Models</a></nav><div class="official-copy">
   <span class="eyebrow">Introduction</span>
@@ -2184,6 +2200,39 @@ nav.mainnav{gap:0}
   <h3>Adjustable Termination and Pull High/Low Resistors</h3>
   <p>For RS-485 environments, termination and pull high/low resistor settings help protect signal quality in critical installations.</p>
 </div></div></section>
+<section class="solution-cross-sell" data-cross-sell-product="nport-5100" aria-labelledby="nportCrossSellTitle">
+  <div class="wrap">
+    <div class="cross-sell-panel">
+      <span class="cross-sell-context">Recommended solution component</span>
+      <div class="cross-sell-grid">
+        <div class="cross-sell-copy">
+          <h2 id="nportCrossSellTitle">Complete the Connection with a Managed Industrial Network</h2>
+          <p>NPort 5100 brings serial devices onto Ethernet. EDS-4008 helps connect and manage them through a reliable industrial network backbone.</p>
+        </div>
+        <ol class="cross-sell-architecture" aria-label="Recommended architecture">
+          <li>Legacy Serial Device</li>
+          <li>NPort 5100 Series</li>
+          <li>EDS-4008 Series</li>
+          <li>Control Network</li>
+        </ol>
+        <article class="cross-sell-product-card">
+          <span class="product-role">Managed industrial Ethernet backbone</span>
+          <h3>EDS-4008 Series</h3>
+          <ul>
+            <li>Managed Ethernet connectivity</li>
+            <li>Network redundancy and backbone availability</li>
+            <li>Industrial network management</li>
+          </ul>
+          <div class="cross-sell-actions">
+            <a class="btn btn-primary" href="product-series-eds-4008.html?from=nport-5100&amp;journey=complete-architecture" data-cross-sell-primary>View EDS-4008 Series</a>
+            <button class="btn btn-ghost" type="button" data-action="add-both-to-solution">Add Both to Solution</button>
+          </div>
+        </article>
+      </div>
+      <p class="cross-sell-note">Recommended as a complementary architecture. Final model selection should be validated by configuration and project requirements.</p>
+    </div>
+  </div>
+</section>
 <section class="resource-proof"><div class="wrap"><div class="sec-head"><span class="eyebrow">Features and Benefits</span><h2>Official feature list</h2></div><div class="detail-grid">
 <article class="detail-card"><span class="state-pill">Feature</span><h3>Small size</h3><p>Small size for easy installation.</p></article><article class="detail-card"><span class="state-pill">Feature</span><h3>Real COM/TTY</h3><p>Real COM and TTY drivers for Windows, Linux, and macOS.</p></article><article class="detail-card"><span class="state-pill">Feature</span><h3>Versatile modes</h3><p>Standard TCP/IP interface with TCP Server, TCP Client, UDP, Pair Connection, and Ethernet Modem modes.</p></article>
 </div></div></section><section id="specifications"><div class="wrap"><div class="sec-head"><span class="eyebrow">Specifications</span><h2>Serial-to-Ethernet fields</h2></div><table class="detail-table"><thead><tr><th>Category</th><th>Value</th></tr></thead><tbody><tr><td>Ethernet ports</td><td>1 x 10/100BaseT(X) RJ45</td></tr><tr><td>Serial standards</td><td>NPort 5110: RS-232; NPort 5130: RS-422/485; NPort 5150: RS-232/422/485</td></tr><tr><td>Configuration</td><td>Telnet, web browser, or Windows utility</td></tr><tr><td>Network management</td><td>SNMP MIB-II</td></tr></tbody></table></div></section>
@@ -2870,5 +2919,6 @@ nav.mainnav{gap:0}
   </div>
 </footer>
 <script src="assets/js/moxa-shell.js?v=20260717-lead-form"></script>
+<script src="assets/js/moxa-cross-sell.js?v=20260721-cross-sell"></script>
 </body>
 </html>

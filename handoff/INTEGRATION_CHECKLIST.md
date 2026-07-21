@@ -38,6 +38,8 @@
 - [ ] Connect legal and cookie controls to the consent-management platform.
 - [ ] Resolve default country/language through the Sitecore site and language context.
 - [ ] Connect Partner Zone, My Moxa, and Sign In to production identity flows.
+- [ ] Implement Membership Registration as a homepage Sign In modal only; do not create a standalone route.
+- [ ] Preserve three-step validation, focus trap/return, `moxa:membership:registered`, and a server-side Salesforce/CRM adapter; do not render the payload to visitors.
 
 ## Analytics
 
@@ -48,6 +50,7 @@
 - [ ] Product finder, filters, compare, and quote actions.
 - [ ] Resource and brochure downloads.
 - [ ] Lead, contact, and subscription submissions.
+- [ ] Membership modal open, step progression, completion, sign-in switch, and CRM handoff.
 - [ ] Video play/progress/completion.
 - [ ] `moxa:360-frame-change`.
 
@@ -71,3 +74,4 @@
 - [ ] Test search facets and result groups.
 - [ ] Test LV/HV AI comparison table and source links.
 - [ ] Test all 36 product frames and keyboard controls.
+- [ ] Test homepage membership modal by click, hash deep link, outside click, Escape, keyboard focus, invalid/valid fields, confirmation, completion, and sign-in switch.

@@ -2022,6 +2022,10 @@ nav.mainnav{gap:0}
 .media-card .body{padding:1.2rem}
 .product-row{display:grid;grid-template-columns:170px minmax(0,1fr) auto;gap:1.1rem;align-items:center;border:1px solid var(--gray-line);border-radius:14px;background:#fff;padding:1rem}
 .product-row img{width:100%;height:118px;object-fit:cover;border-radius:10px;background:var(--green-050)}
+.product-row>div{min-width:0}
+.product-row .state-pill{margin-bottom:10px}
+.product-row h3{margin:0 0 8px;font-size:1.125rem;line-height:1.25;letter-spacing:-.012em}
+.product-row p{max-width:64ch;color:#536a73;font-size:.9375rem;line-height:1.5}
 .search-results-list{display:grid;gap:1rem}
 .search-results-list .product-row{grid-template-columns:180px minmax(0,1fr) auto}
 .detail-page .result-group{display:grid;gap:.85rem;padding-block:0}
@@ -2058,7 +2062,7 @@ nav.mainnav{gap:0}
 .result-group .product-row{border-radius:18px;box-shadow:0 10px 28px rgba(24,62,66,.045);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
 .result-group .product-row:hover{transform:translateY(-2px);border-color:#9dc9ca;box-shadow:0 18px 38px rgba(24,62,66,.09)}
 .result-group[data-result-group="products"] .product-row img{height:124px;object-position:68% 70%}
-.result-meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.result-meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
 .result-meta span{padding:5px 8px;border:1px solid #d7e7e7;border-radius:999px;background:#f4f9f9;color:#506b72;font-size:.72rem;font-weight:750}
 .spec-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
 .spec-item{border:1px solid var(--gray-line);border-radius:12px;padding:1rem;background:#fff}
@@ -2099,7 +2103,8 @@ nav.mainnav{gap:0}
 .microsite-product.two{left:34%;top:4%;width:min(42%,260px)}
 .microsite-product.three{right:4%;bottom:12%}
 .microsite-diagram{position:absolute;z-index:1;right:0;top:14%;width:58%;opacity:.46;border-radius:8px}
-@media(max-width:900px){.detail-grid,.detail-grid.two,.detail-grid.four,.detail-layout,.viewer-box,.product-row,.search-results-list .product-row,.filter-panel,.spec-list,.model-card,.product-detail-hero .wrap,.microsite-hero .wrap,.search-results-summary{grid-template-columns:1fr}.detail-aside{position:static}.search-summary-visual{min-height:260px}.product-detail-hero .wrap,.microsite-hero .wrap{min-height:auto}.product-detail-visual,.microsite-visual{min-height:300px}.product-detail-copy h1,.microsite-copy h1{font-size:clamp(2.65rem,14vw,4.6rem)}}
+@media(max-width:1100px){.search-results-list .product-row{grid-template-columns:160px minmax(0,1fr);gap:20px;align-items:start;padding:20px}.search-results-list .product-row>.btn{grid-column:2;justify-self:start;margin-top:4px}}
+@media(max-width:900px){.detail-grid,.detail-grid.two,.detail-grid.four,.detail-layout,.viewer-box,.product-row,.search-results-list .product-row,.filter-panel,.spec-list,.model-card,.product-detail-hero .wrap,.microsite-hero .wrap,.search-results-summary{grid-template-columns:1fr}.search-results-list .product-row>.btn{grid-column:1}.detail-aside{position:static}.search-summary-visual{min-height:260px}.product-detail-hero .wrap,.microsite-hero .wrap{min-height:auto}.product-detail-visual,.microsite-visual{min-height:300px}.product-detail-copy h1,.microsite-copy h1{font-size:clamp(2.65rem,14vw,4.6rem)}}
 @media(max-width:560px){.search-summary-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.search-results-summary{border-radius:18px}.search-summary-copy{padding:26px 22px}.search-summary-visual{min-height:220px}}
 </style>
 
@@ -2214,14 +2219,14 @@ nav.mainnav{gap:0}
   </div>
 </section>
 <div class="detail-layout"><aside class="detail-aside"><span class="eyebrow">Refine results</span>
-  <label class="filter-check is-hit"><input type="checkbox" checked disabled><span>Products</span><span class="filter-count">4</span></label>
-  <label class="filter-check is-hit"><input type="checkbox" checked disabled><span>Documents</span><span class="filter-count">3</span></label>
-  <label class="filter-check is-hit"><input type="checkbox" checked disabled><span>Videos</span><span class="filter-count">1</span></label>
-  <label class="filter-check is-hit"><input type="checkbox" checked disabled><span>Campaigns</span><span class="filter-count">1</span></label>
-  <label class="filter-check"><input type="checkbox" disabled><span>Articles</span><span class="filter-count">0</span></label>
-  <label class="filter-check"><input type="checkbox" disabled><span>FAQs</span><span class="filter-count">0</span></label>
-  <label class="filter-check"><input type="checkbox" disabled><span>Software</span><span class="filter-count">0</span></label>
-  <label class="filter-check"><input type="checkbox" disabled><span>Support</span><span class="filter-count">0</span></label>
+  <label class="filter-check is-hit"><input type="checkbox" checked data-search-facet="products"><span>Products</span><span class="filter-count">4</span></label>
+  <label class="filter-check"><input type="checkbox" data-search-facet="documents"><span>Documents</span><span class="filter-count">3</span></label>
+  <label class="filter-check"><input type="checkbox" data-search-facet="videos"><span>Videos</span><span class="filter-count">1</span></label>
+  <label class="filter-check"><input type="checkbox" data-search-facet="campaigns"><span>Campaigns</span><span class="filter-count">1</span></label>
+  <label class="filter-check"><input type="checkbox" disabled data-search-facet="articles"><span>Articles</span><span class="filter-count">0</span></label>
+  <label class="filter-check"><input type="checkbox" disabled data-search-facet="faqs"><span>FAQs</span><span class="filter-count">0</span></label>
+  <label class="filter-check"><input type="checkbox" disabled data-search-facet="software"><span>Software</span><span class="filter-count">0</span></label>
+  <label class="filter-check"><input type="checkbox" disabled data-search-facet="support"><span>Support</span><span class="filter-count">0</span></label>
 </aside><div class="search-results-list">
   <section class="result-group" data-result-group="products"><div class="result-group-head"><h2>Products</h2><span>4 results</span></div>
     <article class="product-row"><img src="img/hero-product-selection.png" alt="EDS-4008 industrial Ethernet switch family"><div><span class="state-pill">Best match</span><h3>EDS-4008 Series</h3><p>4 FE, 4 FE-to-1GbE-port managed Ethernet switches with 802.3bt PoE options.</p><div class="result-meta"><span>Managed Ethernet</span><span>8-port platform</span><span>PoE options</span></div></div><a class="btn btn-primary" href="product-series-eds-4008.html">View series</a></article>
@@ -2229,15 +2234,15 @@ nav.mainnav{gap:0}
     <article class="product-row"><img src="img/hero-product-selection.png" alt="EDS-4008-HV industrial Ethernet switch"><div><span class="state-pill">Model page</span><h3>EDS-4008-HV</h3><p>High-voltage model with 8 10/100BaseT(X) ports and AC/DC power input.</p><div class="result-meta"><span>HV model</span><span>AC/DC input</span><span>DIN rail</span></div></div><a class="btn btn-ghost" href="eds-4008-hv.html">View model</a></article>
     <article class="product-row"><img src="img/hero-product-selection.png" alt="Industrial Ethernet switch selection overview"><div><span class="state-pill">Category</span><h3>Ethernet Switches</h3><p>Industrial Ethernet switches category page with Search By filters and product family routing.</p><div class="result-meta"><span>Product family</span><span>Managed &amp; unmanaged</span><span>Selection filters</span></div></div><a class="btn btn-ghost" href="product-category-ethernet-switches.html">Browse category</a></article>
   </section>
-  <section class="result-group"><div class="result-group-head"><h2>Documents</h2><span>3 results</span></div>
+  <section class="result-group" data-result-group="documents"><div class="result-group-head"><h2>Documents</h2><span>3 results</span></div>
     <article class="product-row"><img src="asset/generated-hero/hero-search-docs.png" alt="Documentation search"><div><span class="state-pill">Datasheet</span><h3>EDS-4008 Series Datasheet v1.8</h3><p>Official EDS-4008 Series datasheet from the provided Moxa PoC testing materials.</p></div><a class="btn btn-ghost" href="assets/products/moxa-eds-4008-series-datasheet-v1.8.pdf">PDF</a></article>
     <article class="product-row"><img src="asset/generated-hero/hero-search-docs.png" alt="Manual result"><div><span class="state-pill">Manual</span><h3>EDS-4008 Series User Manual</h3><p>Documentation page for overview, installation, configuration, security, and resources.</p></div><a class="btn btn-ghost" href="manual.html">Open</a></article>
     <article class="product-row"><img src="asset/generated-hero/hero-search-docs.png" alt="Compare documentation"><div><span class="state-pill">Comparison</span><h3>EDS-4008 LV/HV Compare UI</h3><p>Model comparison table for LV, LV-T, HV, and HV-T variants.</p></div><a class="btn btn-ghost" href="compare-lv-hv.html">Compare</a></article>
   </section>
-  <section class="result-group"><div class="result-group-head"><h2>Videos</h2><span>1 result</span></div>
+  <section class="result-group" data-result-group="videos"><div class="result-group-head"><h2>Videos</h2><span>1 result</span></div>
     <article class="product-row"><img src="assets/video/FireShot Capture 070 - Get Acquainted With the MGate G2 New Web GUI - Moxa - [www.moxa.com].png" alt="MGate G2 New Web GUI video result"><div><span class="state-pill">Video</span><h3>Get Acquainted With the MGate G2 New Web GUI</h3><p>Video detail page using the supplied Moxa PoC video poster and transcript document.</p></div><a class="btn btn-ghost" href="video.html">Watch</a></article>
   </section>
-  <section class="result-group"><div class="result-group-head"><h2>Campaigns</h2><span>1 result</span></div>
+  <section class="result-group" data-result-group="campaigns"><div class="result-group-head"><h2>Campaigns</h2><span>1 result</span></div>
     <article class="product-row"><img src="assets/popup/Secure-Networking-Solutions-banner-380px.png" alt="Secure Networking Solutions campaign banner"><div><span class="state-pill">Campaign</span><h3>Secure Your OT Networks</h3><p>Campaign page connected from the homepage popup banner and official Moxa secure networking storyline.</p></div><a class="btn btn-ghost" href="campaign.html">Explore</a></article>
   </section>
 </div></div></div></section>
@@ -2301,6 +2306,37 @@ nav.mainnav{gap:0}
       var term = searchQueryInput && searchQueryInput.value.trim() ? searchQueryInput.value.trim() : searchQuery;
       window.location.href = "search.html?q=" + encodeURIComponent(term);
     });
+  }
+  var facetInputs = Array.prototype.slice.call(document.querySelectorAll('[data-search-facet]:not(:disabled)'));
+  var resultGroups = Array.prototype.slice.call(document.querySelectorAll('[data-result-group]'));
+  var resultCounts = { products: 4, documents: 3, videos: 1, campaigns: 1 };
+  function inferPrimaryFacet(term){
+    var normalized = String(term || '').toLowerCase();
+    if(/datasheet|manual|document|pdf|hxml/.test(normalized)){ return 'documents'; }
+    if(/video|webinar|watch/.test(normalized)){ return 'videos'; }
+    if(/campaign|security week|selection guide/.test(normalized)){ return 'campaigns'; }
+    return 'products';
+  }
+  function updateFacetResults(){
+    var selected = facetInputs.filter(function(input){ return input.checked; }).map(function(input){ return input.getAttribute('data-search-facet'); });
+    if(!selected.length){
+      var fallback = facetInputs.find(function(input){ return input.getAttribute('data-search-facet') === inferPrimaryFacet(searchQuery); });
+      if(fallback){ fallback.checked = true; selected = [fallback.getAttribute('data-search-facet')]; }
+    }
+    facetInputs.forEach(function(input){
+      var label = input.closest('.filter-check');
+      if(label){ label.classList.toggle('is-hit', input.checked); }
+    });
+    resultGroups.forEach(function(group){ group.hidden = selected.indexOf(group.getAttribute('data-result-group')) === -1; });
+    var total = selected.reduce(function(sum, key){ return sum + (resultCounts[key] || 0); }, 0);
+    var title = document.getElementById('searchResultsSummaryTitle');
+    if(title){ title.firstChild.nodeValue = total + ' total results for “'; }
+  }
+  if(facetInputs.length){
+    var primaryFacet = inferPrimaryFacet(searchQuery);
+    facetInputs.forEach(function(input){ input.checked = input.getAttribute('data-search-facet') === primaryFacet; });
+    facetInputs.forEach(function(input){ input.addEventListener('change', updateFacetResults); });
+    updateFacetResults();
   }
   var staticPageMatch = window.location.pathname.indexOf('moxa-figma-static-pages%204') !== -1 || window.location.pathname.indexOf('moxa-figma-static-pages 4') !== -1;
   var staticBase = staticPageMatch ? '' : 'moxa-figma-static-pages 4/';

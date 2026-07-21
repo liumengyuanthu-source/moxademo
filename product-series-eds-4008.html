@@ -2033,9 +2033,14 @@ nav.mainnav{gap:0}
 .model-card{display:grid;grid-template-columns:150px minmax(0,1fr);gap:1rem;align-items:center}
 .model-card img{width:100%;max-height:120px;object-fit:contain}
 .viewer-box{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:1.2rem;align-items:center}
-.viewer-stage{min-height:440px;border:1px solid var(--gray-line);border-radius:16px;background:linear-gradient(180deg,#fff,var(--green-050));display:grid;place-items:center;overflow:hidden}
+.viewer-stage{min-height:440px;border:1px solid var(--gray-line);border-radius:16px;background:linear-gradient(180deg,#fff,var(--green-050));display:grid;place-items:center;overflow:hidden;cursor:ew-resize;touch-action:pan-y;user-select:none}
+.viewer-stage:focus-visible{outline:3px solid rgba(0,139,139,.28);outline-offset:4px;border-color:var(--green)}
 .viewer-stage img{width:min(760px,100%);height:auto}
 .range{width:100%;accent-color:var(--green)}
+.spin-controls{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:.75rem;align-items:center;margin-top:1.2rem}
+.spin-button{width:44px;height:44px;border:1px solid var(--gray-line);border-radius:50%;background:#fff;color:var(--green);font:800 1.25rem/1 inherit;cursor:pointer;transition:transform .2s var(--ease),background .2s var(--ease),color .2s var(--ease)}
+.spin-button:hover,.spin-button:focus-visible{transform:translateY(-2px);background:var(--green);color:#fff}
+.spin-status{margin-top:.75rem;font-weight:800;color:var(--green)!important}
 .search-line{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.4rem}
 .search-line input{flex:1;min-width:260px;border:1.5px solid var(--gray-line);border-radius:12px;padding:.9rem 1rem;font:inherit}
 .campaign-shot{width:min(380px,100%);margin:auto;filter:drop-shadow(0 28px 48px rgba(0,80,80,.18))}
@@ -2072,26 +2077,20 @@ nav.mainnav{gap:0}
 .series-a-page{background:#fff;color:var(--ink)}
 .series-a-page section{padding-block:clamp(64px,7vw,104px)}
 .series-a-page .series-a-compact{padding-block:clamp(38px,5vw,66px)}
-.series-a-hero{position:relative;overflow:hidden;padding:0!important;background:radial-gradient(circle at 84% 12%,rgba(89,213,205,.26),transparent 36%),linear-gradient(145deg,#effafa 0%,#fff 54%,#eef6f7 100%);border-bottom:1px solid var(--gray-line)}
-.series-a-hero::after{content:"";position:absolute;right:-8%;top:-22%;width:52%;aspect-ratio:1;border:1px solid rgba(0,135,135,.12);border-radius:50%;box-shadow:0 0 0 80px rgba(0,135,135,.035),0 0 0 160px rgba(0,135,135,.025)}
-.series-a-hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.95fr) minmax(420px,1.05fr);gap:clamp(2rem,5vw,5.5rem);align-items:center;min-height:620px;padding-block:clamp(54px,7vw,90px)}
-.series-a-hero-copy{max-width:650px}
+.series-a-hero{position:relative;overflow:hidden;padding:0!important;background:radial-gradient(circle at 86% 10%,rgba(89,213,205,.2),transparent 34%),linear-gradient(145deg,#effafa 0%,#fff 58%,#eef6f7 100%);border-bottom:1px solid var(--gray-line)}
+.series-a-hero::after{content:"";position:absolute;right:-10%;top:-30%;width:48%;aspect-ratio:1;border:1px solid rgba(0,135,135,.1);border-radius:50%;box-shadow:0 0 0 80px rgba(0,135,135,.028),0 0 0 160px rgba(0,135,135,.018)}
+.series-a-hero .wrap{position:relative;z-index:1;display:block;min-height:auto;padding-block:clamp(56px,7vw,88px)}
+.series-a-hero-copy{max-width:850px}
 .series-a-kicker{display:inline-flex;align-items:center;gap:.55rem;color:var(--green);font-size:.74rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
 .series-a-kicker::before{content:"";width:18px;height:2px;background:linear-gradient(90deg,var(--green),#51ccc4)}
-.series-a-hero h1{margin:.7rem 0 .8rem;font-size:clamp(3.2rem,6vw,6rem);line-height:.93;letter-spacing:-.055em;color:#092f3f}
-.series-a-hero h1 span{display:block;margin-bottom:.65rem;font-size:.18em;line-height:1.2;letter-spacing:.11em;text-transform:uppercase;color:var(--green)}
+.series-a-hero h1{margin:0 0 .9rem;font-size:clamp(3.2rem,6vw,6rem);line-height:.93;letter-spacing:-.055em;color:#092f3f}
 .series-a-hero .series-a-lede{max-width:650px;color:#526b74;font-size:clamp(1.05rem,1.45vw,1.24rem);line-height:1.62}
 .series-a-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
 .series-a-actions .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px}
-.series-a-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;margin-top:2rem}
+.series-a-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;max-width:620px;margin-top:2rem}
 .series-a-stat{min-height:92px;padding:1rem;border:1px solid rgba(0,135,135,.16);border-radius:16px;background:rgba(255,255,255,.72);backdrop-filter:blur(12px);box-shadow:0 18px 50px -42px rgba(0,63,72,.5)}
 .series-a-stat strong{display:block;color:#0b515d;font-size:1.45rem;letter-spacing:-.03em}
 .series-a-stat span{display:block;margin-top:.25rem;color:#60757d;font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
-.series-a-hero-media{position:relative;min-height:440px;display:grid;place-items:center}
-.series-a-hero-media::before{content:"";position:absolute;inset:8% 2% 3% 9%;border-radius:32px;background:linear-gradient(145deg,rgba(255,255,255,.88),rgba(214,241,239,.78));border:1px solid rgba(0,135,135,.15);box-shadow:0 42px 90px -58px rgba(0,69,78,.75)}
-.series-a-hero-media img{position:relative;width:112%;max-width:none;transform:translateX(-1%);border-radius:26px;clip-path:inset(2% 1% 2% 1% round 26px);filter:saturate(.92) contrast(1.02)}
-.series-a-cert{position:absolute;z-index:2;right:2%;top:7%;display:flex;align-items:center;gap:.55rem;padding:.7rem .9rem;border-radius:999px;background:#fff;color:#0a5c65;font-size:.76rem;font-weight:900;box-shadow:0 18px 45px -28px rgba(0,55,66,.65)}
-.series-a-cert::before{content:"✓";display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#dff7f3;color:var(--green)}
 .series-a-anchor{position:sticky;top:104px;z-index:20;padding:0!important;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--gray-line);box-shadow:0 12px 32px -30px rgba(0,55,60,.4)}
 .series-a-anchor .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:64px}
 .series-a-anchor ul{display:flex;gap:.2rem;align-items:center;list-style:none;margin:0;padding:0;overflow-x:auto}
@@ -2182,13 +2181,14 @@ nav.mainnav{gap:0}
 .series-a-cta .btn-primary{background:#fff;color:#075a61}
 .series-a-cta .btn-ghost{border-color:rgba(255,255,255,.65);background:transparent;color:#fff}
 @media(max-width:1100px){.series-a-feature-grid,.series-a-resource-grid,.series-a-application-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.series-a-hero .wrap{grid-template-columns:1fr 1fr}.series-a-popular-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.series-a-popular-card:last-child{grid-column:1/-1;max-width:calc(50% - .6rem)}}
-@media(max-width:900px){.series-a-hero .wrap,.series-a-cta .wrap{grid-template-columns:1fr}.series-a-hero-media{min-height:360px}.series-a-anchor{top:104px}.series-a-anchor-actions{display:none}.series-a-cta .series-a-actions{justify-content:flex-start}.series-a-search{order:10;width:100%;margin-left:0}.series-a-popular-grid{grid-template-columns:1fr}.series-a-popular-card:last-child{grid-column:auto;max-width:none}}
+@media(max-width:900px){.series-a-hero .wrap,.series-a-cta .wrap{grid-template-columns:1fr}.series-a-anchor{top:104px}.series-a-anchor-actions{display:none}.series-a-cta .series-a-actions{justify-content:flex-start}.series-a-search{order:10;width:100%;margin-left:0}.series-a-popular-grid{grid-template-columns:1fr}.series-a-popular-card:last-child{grid-column:auto;max-width:none}}
 @media(max-width:900px){#applications .series-a-section-head h2{white-space:normal}}
-@media(max-width:640px){.series-a-page section{padding-block:54px}.series-a-hero .wrap{padding-block:42px;min-height:auto}.series-a-hero h1{font-size:clamp(2.85rem,16vw,4.4rem)}.series-a-stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:.45rem}.series-a-stat{min-height:90px;padding:.75rem .5rem;text-align:center}.series-a-stat strong{font-size:1.08rem}.series-a-stat span{font-size:.6rem;line-height:1.35}.series-a-hero-media{min-height:240px}.series-a-anchor{top:104px}.series-a-anchor .wrap{padding-inline:12px}.series-a-anchor ul{padding-block:.35rem}.series-a-anchor a{padding:.6rem .7rem}.series-a-feature-grid,.series-a-resource-grid,.series-a-application-grid{grid-template-columns:1fr}.series-a-application-card{min-height:250px}.series-a-model-summary{align-items:flex-start;flex-direction:column}.series-a-compare-bar{width:100%;justify-content:space-between}.series-a-model-tools{padding:.8rem}.series-a-actions{width:100%}.series-a-actions .btn{flex:1;min-width:150px}.series-a-cta .series-a-actions{flex-direction:column;align-items:stretch}.series-a-cta .series-a-actions .btn{width:100%}}
+@media(max-width:640px){.series-a-page section{padding-block:54px}.series-a-hero .wrap{padding-block:42px;min-height:auto}.series-a-hero h1{font-size:clamp(2.85rem,16vw,4.4rem)}.series-a-stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:.45rem}.series-a-stat{min-height:90px;padding:.75rem .5rem;text-align:center}.series-a-stat strong{font-size:1.08rem}.series-a-stat span{font-size:.6rem;line-height:1.35}.series-a-anchor{top:104px}.series-a-anchor .wrap{padding-inline:12px}.series-a-anchor ul{padding-block:.35rem}.series-a-anchor a{padding:.6rem .7rem}.series-a-feature-grid,.series-a-resource-grid,.series-a-application-grid{grid-template-columns:1fr}.series-a-application-card{min-height:250px}.series-a-model-summary{align-items:flex-start;flex-direction:column}.series-a-compare-bar{width:100%;justify-content:space-between}.series-a-model-tools{padding:.8rem}.series-a-actions{width:100%}.series-a-actions .btn{flex:1;min-width:150px}.series-a-cta .series-a-actions{flex-direction:column;align-items:stretch}.series-a-cta .series-a-actions .btn{width:100%}}
 @media(prefers-reduced-motion:reduce){.series-a-feature,.series-a-application-card img,.series-a-filter{transition:none!important}.series-a-feature:hover,.series-a-application-card:hover img{transform:none!important}}
 </style>
 
 <link rel="stylesheet" href="assets/css/moxa-ds.css?v=20260717-lead-form">
+<link rel="stylesheet" href="assets/css/moxa-cross-sell.css?v=20260721-cross-sell">
 </head>
 <body data-moxa-page="eds-4008-series">
 <header class="header" data-component="GlobalHeader">
@@ -2287,33 +2287,36 @@ nav.mainnav{gap:0}
 <section class="series-a-hero" aria-label="EDS-4008 Series overview">
   <div class="wrap">
     <div class="series-a-hero-copy">
-      <span class="series-a-kicker">Layer 2 managed switch series</span>
-      <h1><span>Industrial Ethernet</span>EDS-4008 Series</h1>
+      <h1>EDS-4008 Series</h1>
       <p class="series-a-lede">8-port managed Fast Ethernet switches with optional Gigabit uplinks, fiber connectivity, and full 802.3af/at/bt PoE—built for reliable industrial networks in harsh environments.</p>
-      <div class="series-a-actions">
-        <a class="btn btn-primary btn-lg" href="#products">Compare all models</a>
-        <a class="btn btn-ghost btn-lg" href="assets/products/moxa-eds-4008-series-datasheet-v1.8.pdf">Download datasheet</a>
-      </div>
-      <div class="series-a-stats" aria-label="EDS-4008 series key facts">
-        <div class="series-a-stat"><strong>8</strong><span>Fast Ethernet ports</span></div>
-        <div class="series-a-stat"><strong>12</strong><span>Models in series</span></div>
-        <div class="series-a-stat"><strong>−40–75°C</strong><span>Wide-temp options</span></div>
-      </div>
-    </div>
-    <div class="series-a-hero-media">
-      <img src="asset/generated-hero/hero-product-selection.png" alt="Moxa industrial Ethernet switch selection">
-      <span class="series-a-cert">IEC 62443-4-2 SL2</span>
     </div>
   </div>
 </section>
 
 <main class="series-a-page">
+  <section class="cross-sell-context-banner" data-cross-sell-context-banner hidden aria-live="polite">
+    <div class="wrap">
+      <div class="cross-sell-context-banner-inner">
+        <div>
+          <span>Continue architecture</span>
+          <h2 data-cross-sell-context-title>Recommended from your NPort 5100 connectivity scenario</h2>
+          <p data-cross-sell-context-copy>You are building a serial-to-Ethernet architecture. EDS-4008 can provide the managed industrial Ethernet backbone for the next stage of the network.</p>
+        </div>
+        <div class="cross-sell-context-actions">
+          <button class="btn btn-primary" type="button" data-action="add-both-to-solution">Add both to solution</button>
+          <a class="btn btn-ghost" href="nport-5100-series.html" data-action="return-to-source">Back to source product</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <nav class="series-a-anchor" aria-label="On this page">
     <div class="wrap">
       <ul>
         <li><a href="#overview">Overview</a></li>
         <li><a href="#highlights">Popular configurations</a></li>
         <li><a href="#products">All models</a></li>
+        <li><a href="#product-360">360 view</a></li>
         <li><a href="#resources">Resources</a></li>
         <li><a href="#applications">Applications</a></li>
       </ul>
@@ -2352,6 +2355,40 @@ nav.mainnav{gap:0}
           <h3>−40 to 75°C</h3>
           <p>Fanless wide-temperature variants are designed for harsh rail, power, roadside, and factory environments.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="solution-cross-sell" data-cross-sell-product="eds-4008" aria-labelledby="edsCrossSellTitle">
+    <div class="wrap">
+      <div class="cross-sell-panel">
+        <span class="cross-sell-context">Recommended solution component</span>
+        <div class="cross-sell-grid">
+          <div class="cross-sell-copy">
+            <h2 id="edsCrossSellTitle">Bring Legacy Serial Devices onto Your Ethernet Network</h2>
+            <p>EDS-4008 provides the managed Ethernet backbone. NPort 5100 helps connect existing serial devices to that network without replacing legacy equipment.</p>
+          </div>
+          <ol class="cross-sell-architecture" aria-label="Recommended architecture">
+            <li>Legacy Serial Device</li>
+            <li>NPort 5100 Series</li>
+            <li>EDS-4008 Series</li>
+            <li>Control Network</li>
+          </ol>
+          <article class="cross-sell-product-card">
+            <span class="product-role">Serial-to-Ethernet device connectivity</span>
+            <h3>NPort 5100 Series</h3>
+            <ul>
+              <li>RS-232 / RS-422 / RS-485 connectivity</li>
+              <li>Serial-to-Ethernet conversion</li>
+              <li>Existing software continuity</li>
+            </ul>
+            <div class="cross-sell-actions">
+              <a class="btn btn-primary" href="nport-5100-series.html?from=eds-4008&amp;journey=complete-architecture" data-cross-sell-primary>View NPort 5100 Series</a>
+              <button class="btn btn-ghost" type="button" data-action="add-both-to-solution">Add Both to Solution</button>
+            </div>
+          </article>
+        </div>
+        <p class="cross-sell-note">Recommended as a complementary architecture. Final model selection should be validated by configuration and project requirements.</p>
       </div>
     </div>
   </section>
@@ -2460,6 +2497,33 @@ nav.mainnav{gap:0}
         </table>
       </div>
       <div class="series-a-model-empty" id="series-model-empty">No models match this filter. Try another specification or clear the search.</div>
+    </div>
+  </section>
+
+  <section id="product-360" class="series-a-alt" data-sitecore-component="Product360Viewer" data-sitecore-interactions="pointer-drag,range-input,keyboard-arrows,previous-next,frame-change-event" aria-labelledby="product360Title">
+    <div class="wrap">
+      <div class="series-a-section-head">
+        <span class="eyebrow">360-degree product view</span>
+        <h2 id="product360Title">Inspect the EDS-4008 from every angle</h2>
+        <p>Drag across the product, use the slider, or press the arrow keys to review the supplied 36-frame product set without leaving the series page.</p>
+      </div>
+      <div class="viewer-box" data-frames="assets/360/frame-01.png|assets/360/frame-02.png|assets/360/frame-03.png|assets/360/frame-04.png|assets/360/frame-05.png|assets/360/frame-06.png|assets/360/frame-07.png|assets/360/frame-08.png|assets/360/frame-09.png|assets/360/frame-10.png|assets/360/frame-11.png|assets/360/frame-12.png|assets/360/frame-13.png|assets/360/frame-14.png|assets/360/frame-15.png|assets/360/frame-16.png|assets/360/frame-17.png|assets/360/frame-18.png|assets/360/frame-19.png|assets/360/frame-20.png|assets/360/frame-21.png|assets/360/frame-22.png|assets/360/frame-23.png|assets/360/frame-24.png|assets/360/frame-25.png|assets/360/frame-26.png|assets/360/frame-27.png|assets/360/frame-28.png|assets/360/frame-29.png|assets/360/frame-30.png|assets/360/frame-31.png|assets/360/frame-32.png|assets/360/frame-33.png|assets/360/frame-34.png|assets/360/frame-35.png|assets/360/frame-36.png" data-analytics-event="product360_frame_change">
+        <div class="viewer-stage" id="spin-stage" tabindex="0" role="group" aria-label="360-degree EDS-4008 product viewer" aria-describedby="spin-instructions spin-status">
+          <img id="spin-image" src="assets/360/frame-01.png" alt="EDS-4008 product, viewing angle 1 of 36">
+          <noscript><img src="assets/360/frame-01.png" alt="Static front view of the EDS-4008 product"></noscript>
+        </div>
+        <div class="detail-card">
+          <span class="state-pill">Interactive product view</span>
+          <h3>Rotate the product</h3>
+          <p id="spin-instructions">Drag, use the slider, or press Left and Right. Home and End jump to the first and last frame.</p>
+          <div class="spin-controls">
+            <button class="spin-button" type="button" data-spin-previous aria-label="Show previous product angle">←</button>
+            <input id="spin-range" class="range" type="range" min="0" max="35" value="0" aria-label="Rotate product image">
+            <button class="spin-button" type="button" data-spin-next aria-label="Show next product angle">→</button>
+          </div>
+          <p class="spin-status" id="spin-status" aria-live="polite">Frame 1 of 36</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -2577,6 +2641,44 @@ nav.mainnav{gap:0}
     applyFilters();
     syncCompare();
   })();
+  </script>
+  <script>
+  (function(){
+    var spinBox=document.querySelector('#product-360 [data-frames]');
+    if(!spinBox){return;}
+    var frames=spinBox.getAttribute('data-frames').split('|');
+    var image=document.getElementById('spin-image');
+    var range=document.getElementById('spin-range');
+    var stage=document.getElementById('spin-stage');
+    var status=document.getElementById('spin-status');
+    var previous=spinBox.querySelector('[data-spin-previous]');
+    var next=spinBox.querySelector('[data-spin-next]');
+    var frameIndex=0;
+    var pointerX=null;
+    function renderFrame(source,emitEvent){
+      image.src=frames[frameIndex]||frames[0];
+      image.alt='EDS-4008 product, viewing angle '+(frameIndex+1)+' of '+frames.length;
+      range.value=String(frameIndex);
+      status.textContent='Frame '+(frameIndex+1)+' of '+frames.length;
+      if(emitEvent){spinBox.dispatchEvent(new CustomEvent('moxa:product360:framechange',{bubbles:true,detail:{component:'Product360Viewer',event:'product360_frame_change',frame:frameIndex+1,totalFrames:frames.length,source:source}}));}
+    }
+    function setFrame(value,source){frameIndex=Math.max(0,Math.min(frames.length-1,value));renderFrame(source,true);}
+    function stepFrame(delta,source){frameIndex=(frameIndex+delta+frames.length)%frames.length;renderFrame(source,true);}
+    range.addEventListener('input',function(event){setFrame(Number(event.target.value),'range');});
+    previous.addEventListener('click',function(){stepFrame(-1,'previous-button');});
+    next.addEventListener('click',function(){stepFrame(1,'next-button');});
+    stage.addEventListener('keydown',function(event){
+      if(event.key==='ArrowLeft'){event.preventDefault();stepFrame(-1,'keyboard');}
+      if(event.key==='ArrowRight'){event.preventDefault();stepFrame(1,'keyboard');}
+      if(event.key==='Home'){event.preventDefault();setFrame(0,'keyboard');}
+      if(event.key==='End'){event.preventDefault();setFrame(frames.length-1,'keyboard');}
+    });
+    stage.addEventListener('pointerdown',function(event){pointerX=event.clientX;stage.setPointerCapture(event.pointerId);});
+    stage.addEventListener('pointermove',function(event){if(pointerX===null){return;}var distance=event.clientX-pointerX;if(Math.abs(distance)>=14){stepFrame(distance>0?1:-1,'pointer-drag');pointerX=event.clientX;}});
+    stage.addEventListener('pointerup',function(){pointerX=null;});
+    stage.addEventListener('pointercancel',function(){pointerX=null;});
+    renderFrame('initial',false);
+  }());
   </script>
 </main>
 <footer class="site-footer" data-component="GlobalFooter">
@@ -3258,5 +3360,6 @@ nav.mainnav{gap:0}
   </div>
 </footer>
 <script src="assets/js/moxa-shell.js?v=20260717-lead-form"></script>
+<script src="assets/js/moxa-cross-sell.js?v=20260721-cross-sell"></script>
 </body>
 </html>

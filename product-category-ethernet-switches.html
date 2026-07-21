@@ -2017,6 +2017,233 @@ nav.mainnav{gap:0}
 .filter-check input{width:18px;height:18px;accent-color:var(--green)}
 .filter-check.is-hit{color:var(--green)}
 .filter-count{margin-left:auto;color:var(--gray);font-size:.78rem;font-weight:700}
+.ethernet-hero{
+  position:relative;
+  overflow:hidden;
+  background:#f2f8f8;
+  border-bottom:1px solid var(--gray-line);
+  padding-block:clamp(32px,4vw,52px);
+}
+.ethernet-hero .wrap{
+  display:block;
+}
+.ethernet-hero-copy{max-width:900px}
+.ethernet-breadcrumb{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.55rem;
+  align-items:center;
+  margin-bottom:1.25rem;
+  color:var(--gray);
+  font-size:.84rem;
+}
+.ethernet-breadcrumb a{color:var(--green-700);font-weight:700}
+.ethernet-breadcrumb span:not(:last-child)::after{
+  content:"›";
+  margin-left:.55rem;
+  color:#9aa8a8;
+}
+.ethernet-hero h1{
+  color:var(--ink);
+  font-size:clamp(2.35rem,5vw,4.5rem);
+  letter-spacing:-.035em;
+  margin-bottom:.9rem;
+}
+.ethernet-hero p{
+  max-width:72ch;
+  color:#274347;
+  font-size:clamp(1rem,1.45vw,1.16rem);
+  line-height:1.58;
+}
+.ethernet-category-section{
+  background:#fff;
+  border-top:1px solid var(--gray-line);
+  border-bottom:1px solid var(--gray-line);
+  padding-block:clamp(44px,6vw,72px);
+}
+.ethernet-category-layout{
+  display:grid;
+  grid-template-columns:280px minmax(0,1fr);
+  gap:clamp(28px,3vw,48px);
+  align-items:start;
+}
+.ethernet-filter-aside{
+  position:sticky;
+  top:126px;
+  padding:1.35rem;
+  border:1px solid var(--gray-line);
+  border-radius:16px;
+  background:#fff;
+  box-shadow:0 22px 50px -46px rgba(0,60,60,.55);
+}
+.ethernet-filter-aside h2{
+  margin:0 0 2rem;
+  color:#333;
+  font-size:1.1rem;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+}
+.ethernet-filter-reset{
+  float:right;
+  transform:translateY(-.3rem);
+  border:0;
+  background:#fff;
+  color:var(--gray);
+  font-weight:800;
+  font-size:.8rem;
+  padding:.45rem .7rem;
+  cursor:pointer;
+}
+.ethernet-filter-group{
+  border-bottom:1px solid rgba(114,113,113,.24);
+  padding:1.05rem 0;
+}
+.ethernet-filter-group summary{
+  list-style:none;
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  cursor:pointer;
+  color:#2c3838;
+  font-size:1rem;
+  font-weight:700;
+}
+.ethernet-filter-group summary::-webkit-details-marker{display:none}
+.ethernet-filter-group summary::after{
+  content:"+";
+  color:var(--green);
+  font-weight:900;
+}
+.ethernet-filter-group[open] summary::after{content:"−"}
+.ethernet-port-range{
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  margin:.85rem 0 .55rem;
+  color:var(--green);
+  font-weight:800;
+}
+.ethernet-range-input{width:100%;accent-color:var(--green);cursor:pointer}
+.ethernet-range-labels{
+  display:flex;
+  justify-content:space-between;
+  color:var(--gray);
+  font-size:.86rem;
+}
+.ethernet-select{
+  width:100%;
+  margin-top:.9rem;
+  border:1px solid #d2dada;
+  background:#fff;
+  color:#334;
+  padding:.75rem .9rem;
+  font:inherit;
+}
+.ethernet-checks{
+  display:grid;
+  gap:.62rem;
+  margin-top:.9rem;
+}
+.ethernet-checks button{
+  display:grid;
+  grid-template-columns:20px minmax(0,1fr);
+  gap:.68rem;
+  align-items:center;
+  border:0;
+  background:transparent;
+  padding:.12rem 0;
+  text-align:left;
+  font:inherit;
+  color:#333;
+  cursor:pointer;
+}
+.ethernet-checks button::before{
+  content:"";
+  width:18px;
+  height:18px;
+  border:2px solid #b7c0c0;
+  background:#fff;
+}
+.ethernet-checks button[aria-pressed="true"]::before{
+  border-color:var(--green);
+  background:linear-gradient(135deg,var(--green),#37c6c6);
+  box-shadow:inset 0 0 0 3px #fff;
+}
+.ethernet-category-main{min-width:0}
+.ethernet-category-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:1rem;
+  margin-bottom:1.65rem;
+}
+.ethernet-category-head h2{
+  color:#2e3535;
+  font-size:1.1rem;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+}
+.ethernet-category-head span{
+  color:var(--green);
+  font-weight:800;
+  font-size:.9rem;
+}
+.ethernet-category-list{
+  display:grid;
+  gap:.85rem;
+}
+.ethernet-category-card{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(190px,235px) minmax(0,1fr);
+  gap:clamp(24px,4vw,52px);
+  align-items:start;
+  min-height:118px;
+  background:#fff;
+  border:1px solid var(--gray-line);
+  border-left:4px solid var(--green);
+  border-radius:2px;
+  padding:1.4rem 1.55rem;
+  transition:background .18s var(--ease), border-color .18s var(--ease), opacity .18s ease;
+}
+.ethernet-category-card:hover,
+.ethernet-category-card:focus-within{
+  background:var(--green-050);
+  border-color:var(--green-300);
+  border-left-color:var(--green);
+}
+.ethernet-category-card.is-hidden{display:none}
+.ethernet-category-card h3{
+  margin:0;
+  color:var(--green);
+  font-size:1.1rem;
+  line-height:1.28;
+  letter-spacing:-.01em;
+}
+.ethernet-category-card h3 a{
+  color:inherit;
+  text-decoration:none;
+}
+.ethernet-category-card h3 a:hover{text-decoration:underline;text-underline-offset:4px}
+.ethernet-category-card p{
+  color:#243738;
+  font-size:.92rem;
+  line-height:1.52;
+}
+.ethernet-no-results{
+  margin-top:1rem;
+  padding:1.4rem;
+  border:1px dashed var(--green-300);
+  border-radius:14px;
+  background:var(--green-050);
+  color:var(--gray);
+}
+.ethernet-active-note{
+  margin-top:1rem;
+  color:var(--gray);
+  font-size:.9rem;
+}
+.ethernet-active-note strong{color:var(--green)}
 .media-card{border:1px solid var(--gray-line);border-radius:16px;background:#fff;overflow:hidden}
 .media-card img{width:100%;aspect-ratio:16/10;object-fit:cover;background:var(--green-050)}
 .media-card .body{padding:1.2rem}
@@ -2068,7 +2295,8 @@ nav.mainnav{gap:0}
 .microsite-product.two{left:34%;top:4%;width:min(42%,260px)}
 .microsite-product.three{right:4%;bottom:12%}
 .microsite-diagram{position:absolute;z-index:1;right:0;top:14%;width:58%;opacity:.46;border-radius:8px}
-@media(max-width:900px){.detail-grid,.detail-grid.two,.detail-grid.four,.detail-layout,.viewer-box,.product-row,.search-results-list .product-row,.filter-panel,.spec-list,.model-card,.product-detail-hero .wrap,.microsite-hero .wrap{grid-template-columns:1fr}.detail-aside{position:static}.product-detail-hero .wrap,.microsite-hero .wrap{min-height:auto}.product-detail-visual,.microsite-visual{min-height:300px}.product-detail-copy h1,.microsite-copy h1{font-size:clamp(2.65rem,14vw,4.6rem)}}
+@media(max-width:900px){.detail-grid,.detail-grid.two,.detail-grid.four,.detail-layout,.viewer-box,.product-row,.search-results-list .product-row,.filter-panel,.spec-list,.model-card,.product-detail-hero .wrap,.microsite-hero .wrap,.ethernet-category-layout,.ethernet-category-card{grid-template-columns:1fr}.detail-aside,.ethernet-filter-aside{position:static}.product-detail-hero .wrap,.microsite-hero .wrap{min-height:auto}.product-detail-visual,.microsite-visual{min-height:300px}.product-detail-copy h1,.microsite-copy h1{font-size:clamp(2.65rem,14vw,4.6rem)}.ethernet-category-card{gap:.75rem}.ethernet-category-section{padding-block:42px}}
+@media(max-width:640px){.ethernet-hero{padding-block:30px}.ethernet-category-card{padding:1.15rem}.ethernet-filter-aside{padding:0}.ethernet-category-head{align-items:flex-start;flex-direction:column}}
 </style>
 
 <link rel="stylesheet" href="assets/css/moxa-ds.css?v=20260717-lead-form">
@@ -2156,63 +2384,200 @@ nav.mainnav{gap:0}
   </div>
 </header>
 
-<section class="hero hero-carousel image-hero-carousel detail-hero" aria-label="Ethernet Switches | Moxa hero">
-  <article class="hero-slide hero-slide-eds is-active" aria-hidden="false">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <span class="eyebrow">Products / Industrial Network Infrastructure</span>
-        <h1>Ethernet Switches</h1>
-        <p class="hero-sub">Moxa provides industrial Ethernet switches for reliability, redundancy, security, management, and price-to-performance requirements.</p>
-        <div class="hero-cta"><a class="btn btn-primary btn-lg" href="product-series-eds-4008.html">Open EDS-4008</a><a class="btn btn-ghost btn-lg" href="compare-lv-hv.html">Compare LV/HV</a></div>
-      </div>
-      <div class="hero-visual" aria-hidden="true">
-        <div class="hero-imgslot">
-          <img class="asset-img hero-photo" src="asset/generated-hero/hero-product-selection.png" alt="Ethernet Switches">
-        </div>
-      </div>
+<section class="ethernet-hero" aria-label="Ethernet Switches category hero" data-selected-concept="3" data-sitecore-component="ProductCategoryHero" data-sitecore-interactions="responsive-layout">
+  <div class="wrap">
+    <div class="ethernet-hero-copy">
+      <nav class="ethernet-breadcrumb" aria-label="Breadcrumb">
+        <span><a href="homepage.html">Home</a></span>
+        <span><a href="products.html">Products</a></span>
+        <span><a href="products.html#network-infrastructure">Industrial Network Infrastructure</a></span>
+        <span>Ethernet Switches</span>
+      </nav>
+      <h1>Ethernet Switches</h1>
+      <p>Moxa provides a wide range of industrial Ethernet switches that feature industrial-grade reliability, network redundancy, strengthened security, easy management, and competitive price-to-performance ratios. Our comprehensive portfolio includes unmanaged switches, managed switches, PoE switches, rackmount switches, and EN 50155 switches designed for use in the rail industry.</p>
     </div>
-  </article>
+  </div>
 </section>
 <main class="detail-page">
 
-<section class="compact-section"><div class="wrap official-copy">
-  <span class="eyebrow">Official category content</span>
-  <h2>Industrial Ethernet switches for demanding environments.</h2>
-  <p>Moxa provides a wide range of industrial Ethernet switches that feature industrial-grade reliability, network redundancy, strengthened security, easy management, and competitive price-to-performance ratios. The portfolio includes unmanaged switches, managed switches, PoE switches, rackmount switches, and EN 50155 switches designed for rail applications.</p>
-</div></section>
-<section class="finder"><div class="wrap"><div class="finder-card">
-  <span class="eyebrow">Search By</span><h2>Technical filters</h2>
-  <div class="filter-panel" data-filter-panel>
-    <div class="filter-group"><h3>Ethernet Interface</h3><div class="filter-tags"><button type="button" data-filter="100m" aria-pressed="false">100M</button><button type="button" data-filter="1g" aria-pressed="false">1G</button><button type="button" data-filter="2.5g" aria-pressed="false">2.5G</button><button type="button" data-filter="10g" aria-pressed="false">10G</button><button type="button" data-filter="dsl" aria-pressed="false">DSL</button><button type="button" data-filter="fiber" aria-pressed="false">Fiber</button><button type="button" data-filter="m12" aria-pressed="false">M12</button><button type="button" data-filter="poe" aria-pressed="false">PoE</button><button type="button" data-filter="ptp" aria-pressed="false">PTP</button></div></div>
-    <div class="filter-group"><h3>Physical Characteristics</h3><div class="filter-tags"><button type="button" data-filter="din" aria-pressed="false">DIN-rail mounting</button><button type="button" data-filter="rack" aria-pressed="false">Rack mounting</button><button type="button" data-filter="wall" aria-pressed="false">Wall mounting</button></div></div>
-    <div class="filter-group"><h3>Advanced Options</h3><div class="filter-tags"><button type="button" data-filter="standard-temp" aria-pressed="false">Standard temperature</button><button type="button" data-filter="wide-temp" aria-pressed="false">Wide temperature</button><button type="button" data-filter="security" aria-pressed="false">Industrial cybersecurity</button><button type="button" data-filter="maritime" aria-pressed="false">Maritime</button><button type="button" data-filter="substation" aria-pressed="false">Power substation</button><button type="button" data-filter="rail-onboard" aria-pressed="false">Rail onboard</button><button type="button" data-filter="rail-wayside" aria-pressed="false">Rail wayside</button></div></div>
+<section class="ethernet-category-section" id="ethernet-product-categories" aria-labelledby="ethernetCategoryTitle">
+  <div class="wrap ethernet-category-layout">
+    <aside class="ethernet-filter-aside" aria-label="Search by product attributes" data-sitecore-component="ProductCategoryFilters" data-sitecore-interactions="port-range,facet-toggle,live-count,reset,no-result-state">
+      <button class="ethernet-filter-reset" type="button" data-ethernet-reset>RESET</button>
+      <h2>SEARCH BY</h2>
+
+      <details class="ethernet-filter-group" open>
+        <summary>Ethernet Interface</summary>
+        <div class="ethernet-port-range"><label for="ethernetPortRange">Total No. of Ports</label><output id="ethernetPortOutput" for="ethernetPortRange">0 - 64</output></div>
+        <input class="ethernet-range-input" id="ethernetPortRange" type="range" min="0" max="64" value="64" step="1" data-ethernet-port-range aria-label="Maximum total number of ports">
+        <div class="ethernet-range-labels"><span>0</span><span>64</span></div>
+        <label class="visually-hidden" for="ethernetSpeed">Highest Speed</label>
+        <select class="ethernet-select" id="ethernetSpeed" data-ethernet-select>
+          <option value="">-- Highest Speed --</option>
+          <option value="fast">Fast Ethernet</option>
+          <option value="gigabit">Gigabit Ethernet</option>
+          <option value="10gbe">10GbE</option>
+        </select>
+        <div class="ethernet-checks" aria-label="Connections">
+          <button type="button" data-ethernet-filter="dsl" aria-pressed="false">DSL</button>
+          <button type="button" data-ethernet-filter="fiber" aria-pressed="false">Fiber</button>
+          <button type="button" data-ethernet-filter="m12" aria-pressed="false">M12</button>
+          <button type="button" data-ethernet-filter="poe" aria-pressed="false">PoE</button>
+          <button type="button" data-ethernet-filter="ptp" aria-pressed="false">PTP</button>
+        </div>
+      </details>
+
+      <details class="ethernet-filter-group">
+        <summary>Physical Characteristics</summary>
+        <div class="ethernet-checks">
+          <button type="button" data-ethernet-filter="din" aria-pressed="false">DIN-rail mounting</button>
+          <button type="button" data-ethernet-filter="rack" aria-pressed="false">Rack mounting</button>
+          <button type="button" data-ethernet-filter="embedded" aria-pressed="false">Embedded module</button>
+        </div>
+      </details>
+
+      <details class="ethernet-filter-group">
+        <summary>Advanced Options</summary>
+        <div class="ethernet-checks">
+          <button type="button" data-ethernet-filter="security" aria-pressed="false">Security</button>
+          <button type="button" data-ethernet-filter="rail" aria-pressed="false">Rail certified</button>
+          <button type="button" data-ethernet-filter="spe-apl" aria-pressed="false">SPE / APL</button>
+        </div>
+      </details>
+
+      <p class="ethernet-active-note"><strong id="active-filter-summary" data-category-count>9 categories</strong> shown. Select filters to narrow the list.</p>
+    </aside>
+
+    <div class="ethernet-category-main">
+      <div class="ethernet-category-head">
+        <h2 id="ethernetCategoryTitle">PRODUCT CATEGORIES (9)</h2>
+        <span id="ethernetVisibleCount" aria-live="polite">9 shown</span>
+      </div>
+
+      <div class="ethernet-category-list" data-sitecore-component="ProductCategoryList" data-sitecore-interactions="filter-result-rendering,category-routing">
+        <article class="ethernet-category-card reveal" data-category-tags="fast,gigabit,din" data-port-min="5">
+          <div class="ethernet-category-title"><h3><a href="search.html?q=Unmanaged%20Switches">Unmanaged Switches</a></h3></div>
+          <p class="ethernet-category-description">Moxa has a large portfolio of industrial unmanaged switches that have been specifically designed for industrial Ethernet infrastructure. Our unmanaged Ethernet switches uphold the stringent standards that are required for operational reliability in harsh environments.</p>
+        </article>
+
+        <article class="ethernet-category-card reveal" data-category-tags="fast,gigabit,din,security" data-port-min="5">
+          <div class="ethernet-category-title"><h3><a href="search.html?q=Layer%202%20Smart%20Switches">Layer 2 Smart Switches</a></h3></div>
+          <p class="ethernet-category-description">Moxa's smart switches simplify daily tasks with easy configuration, quick installation, and field-site monitoring. Designed for easy connections, SCADA/HMI monitoring, and enhanced controllability, Moxa's Layer 2 smart switches support multiple industrial protocols such as PROFINET, Modbus, and EtherNet/IP, and also support several mounting methods.</p>
+        </article>
+
+        <article class="ethernet-category-card reveal" data-category-tags="fast,gigabit,poe,ptp,fiber,m12,din,security,rail" data-port-min="8">
+          <div class="ethernet-category-title"><h3><a href="product-series-eds-4008.html">Layer 2 Managed Switches</a></h3></div>
+          <p class="ethernet-category-description">Moxa's Layer 2 managed switches feature industrial-grade reliability, network redundancy, and security features based on the IEC 62443 standard. We offer toughened, industry-specific products with multiple industry certifications, such as parts of the EN 50155 standard for rail applications, IEC 61850-3 for power automation systems, and NEMA TS2 for intelligent transportation systems.</p>
+        </article>
+
+        <article class="ethernet-category-card reveal" data-category-tags="gigabit,10gbe,fiber,ptp,rack,security,rail" data-port-min="24">
+          <div class="ethernet-category-title"><h3><a href="search.html?q=Layer%203%20Managed%20Switches">Layer 3 Managed Switches</a></h3></div>
+          <p class="ethernet-category-description">Moxa's Layer 3 managed switches feature industrial-grade reliability, multicast availability, and security enhancements based on the IEC 62443 standard. We offer toughened industry-specific products with multiple industry certifications, such as parts of the EN 50155 standard for rail applications, IEC 61850-3 for power automation systems, and NEMA TS2 for intelligent transportation systems.</p>
+        </article>
+
+        <article class="ethernet-category-card reveal" data-category-tags="fast,gigabit,poe,din,security" data-port-min="8">
+          <div class="ethernet-category-title"><h3><a href="search.html?q=PoE%20Switches">PoE Switches</a></h3></div>
+          <p class="ethernet-category-description">We provide a wide range of PoE/PoE+/PoE++ switches with up to 90 W output per port to deliver high-speed data transmission while powering high-power devices over long distances. With an industrial-grade design, our PoE switches provide surge protection of 4 kV per LAN port. Additionally, Smart PoE management features simplify PoE network deployment and maintenance.</p>
+        </article>
+
+        <article class="ethernet-category-card reveal" data-category-tags="fast,gigabit,m12,ptp,din,rail" data-port-min="8">
+          <div class="ethernet-category-title"><h3><a href="search.html?q=EN%2050155%20Switches">EN 50155 Switches</a></h3></div>
+          <p class="ethernet-category-description">Moxa is an IRIS-certified company that offers a large portfolio of rugged Ethernet switches that comply with the mandatory sections of the EN 50155 standard. These products have been deployed in many rail and metro systems around the world. With our innovative solutions and technologies, we help train builders achieve overall transport safety, efficiency, and significant cost and time savings on railway operation and maintenance.</p>
+        </article>
+
+        <article class="ethernet-category-card reveal" data-category-tags="gigabit,10gbe,fiber,rack,security" data-port-min="24">
+          <div class="ethernet-category-title"><h3><a href="search.html?q=Rackmount%20Switches">Rackmount Switches</a></h3></div>
+          <p class="ethernet-category-description">Industrial rackmount switches provide modular flexibility with 24 to 64-port routing and up to 10GbE switching capabilities, security features based on the IEC 62443 standard, and millisecond-level, fast multicast traffic redundancy to strengthen IIoT infrastructure such as power, transportation, manufacturing, and surveillance applications.</p>
+        </article>
+
+        <article class="ethernet-category-card reveal" data-category-tags="embedded,fast,gigabit" data-port-min="2">
+          <div class="ethernet-category-title"><h3><a href="search.html?q=Ethernet%20Embedded%20Modules">Ethernet Embedded Modules</a></h3></div>
+          <p class="ethernet-category-description">Our Ethernet embedded modules are designed for device manufacturers who want to enhance the performance and reliability of their solutions, and want to make them suitable for use in applications with harsh conditions.</p>
+        </article>
+
+        <article class="ethernet-category-card reveal" data-category-tags="spe-apl,fast,din" data-port-min="8">
+          <div class="ethernet-category-title"><h3><a href="search.html?q=Two-wire%20Ethernet%20Switches">Two-wire Ethernet Switches (SPE/APL)</a></h3></div>
+          <p class="ethernet-category-description">Our Single Pair Ethernet (SPE) and Ethernet-APL (APL) switches target field applications like process automation, leveraging 10BASE-T1L to deliver power and data over a single twisted-pair cable with PoDL support for SPE. These switches simplify both cabling and network architecture while extending Ethernet to the field, seamlessly connecting field instruments to the control center for a truly unified IT/OT network.</p>
+        </article>
+      </div>
+      <p class="ethernet-no-results" id="ethernetNoResults" hidden>No product categories match the selected filters. Reset the filters or increase the port range.</p>
+    </div>
   </div>
-  <div class="active-filter-line"><span><strong id="active-filter-summary">No filters selected.</strong> Click any option to narrow the series below.</span><button class="filter-reset" type="button" data-filter-reset>Clear filters</button></div>
-</div></div></section>
-<section><div class="wrap"><div class="sec-head"><span class="eyebrow">Series in this category</span><h2>Move from category to model validation.</h2><p>These cards keep the homepage visual system while preserving the official category structure: filter, category, series, model.</p></div><div class="detail-grid">
-  <article class="media-card" data-tags="100m,1g,poe,din,wall,standard-temp,wide-temp,security"><img src="assets/360/frame-01.png" alt="EDS-4008 Series product"><div class="body"><span class="state-pill">Layer 2 Managed Switches</span><h3>EDS-4008 Series</h3><p>4 FE, 4 FE-to-1GbE-port managed Ethernet switches with 802.3bt PoE options.</p><a class="go" href="product-series-eds-4008.html">Open series <span>&rarr;</span></a></div></article>
-  <article class="media-card" data-tags="1g,10g,fiber,din,rack,wide-temp,security,substation,rail-wayside"><img src="img/family-network.jpg" alt="Industrial switch family"><div class="body"><span class="state-pill">Managed Ethernet</span><h3>EDS-G4000 Series</h3><p>Gigabit-ready managed switch family for secure industrial backbone projects.</p><a class="go" href="search.html?q=EDS-G4000">View family <span>&rarr;</span></a></div></article>
-  <article class="media-card" data-tags="100m,1g,2.5g,10g,dsl,fiber,m12,poe,ptp,din,rack,wall,standard-temp,wide-temp,security,maritime,substation,rail-onboard,rail-wayside"><img src="asset/generated-hero/hero-product-selection.png" alt="Ethernet switch selection"><div class="body"><span class="state-pill">Search results</span><h3>Relevant products</h3><p>Compare product specifications and narrow by port count, media, temperature, and certifications.</p><a class="go" href="search.html?q=Ethernet%20Switches">Search <span>&rarr;</span></a></div></article>
-</div></div></section>
+</section>
 <script>
 (function(){
-  var buttons=[].slice.call(document.querySelectorAll('[data-filter]'));
-  var cards=[].slice.call(document.querySelectorAll('[data-tags]'));
-  var summary=document.getElementById('active-filter-summary');
-  function apply(){
-    var selected=buttons.filter(function(btn){return btn.getAttribute('aria-pressed')==='true';}).map(function(btn){return btn.getAttribute('data-filter');});
-    var labels=buttons.filter(function(btn){return btn.getAttribute('aria-pressed')==='true';}).map(function(btn){return btn.textContent.trim();});
-    cards.forEach(function(card){
-      var tags=(card.getAttribute('data-tags')||'').split(',');
-      var match=!selected.length || selected.every(function(tag){return tags.indexOf(tag)>-1;});
-      card.classList.toggle('is-hidden',!match);
+  var filterButtons = Array.prototype.slice.call(document.querySelectorAll('[data-ethernet-filter]'));
+  var speedSelect = document.querySelector('[data-ethernet-select]');
+  var categories = Array.prototype.slice.call(document.querySelectorAll('[data-category-tags]'));
+  var summary = document.getElementById('active-filter-summary');
+  var visibleCount = document.getElementById('ethernetVisibleCount');
+  var reset = document.querySelector('[data-ethernet-reset]');
+  var portRange = document.querySelector('[data-ethernet-port-range]');
+  var portOutput = document.getElementById('ethernetPortOutput');
+  var noResults = document.getElementById('ethernetNoResults');
+
+  function selectedFilters(){
+    var filters = filterButtons.filter(function(button){
+      return button.getAttribute('aria-pressed') === 'true';
+    }).map(function(button){
+      return button.getAttribute('data-ethernet-filter');
     });
-    var visible=cards.filter(function(card){return !card.classList.contains('is-hidden');}).length;
-    summary.textContent=selected.length ? labels.join(', ') + ' - ' + visible + ' matching series' : 'No filters selected.';
+    if(speedSelect && speedSelect.value){ filters.push(speedSelect.value); }
+    return filters;
   }
-  buttons.forEach(function(btn){btn.addEventListener('click',function(){btn.setAttribute('aria-pressed',btn.getAttribute('aria-pressed')==='true'?'false':'true');apply();});});
-  var reset=document.querySelector('[data-filter-reset]');
-  if(reset){reset.addEventListener('click',function(){buttons.forEach(function(btn){btn.setAttribute('aria-pressed','false');});apply();});}
+
+  function applyEthernetFilters(){
+    var filters = selectedFilters();
+    var maxPorts = portRange ? parseInt(portRange.value, 10) : 64;
+    var labels = filterButtons.filter(function(button){
+      return button.getAttribute('aria-pressed') === 'true';
+    }).map(function(button){
+      return button.textContent.trim();
+    });
+    if(speedSelect && speedSelect.value){
+      labels.push(speedSelect.options[speedSelect.selectedIndex].textContent.trim());
+    }
+    var shown = 0;
+    categories.forEach(function(category){
+      var tags = (category.getAttribute('data-category-tags') || '').split(',');
+      var minPorts = parseInt(category.getAttribute('data-port-min') || '0', 10);
+      var matchesTags = !filters.length || filters.every(function(filter){ return tags.indexOf(filter) !== -1; });
+      var isMatch = matchesTags && minPorts <= maxPorts;
+      category.classList.toggle('is-hidden', !isMatch);
+      if(isMatch){ shown += 1; }
+    });
+    if(portOutput){ portOutput.textContent = '0 - ' + maxPorts; }
+    if(summary){
+      summary.textContent = (filters.length ? labels.join(', ') : 'All attributes') + ' · 0–' + maxPorts + ' ports · ' + shown + ' categories';
+    }
+    if(visibleCount){
+      visibleCount.textContent = shown + ' shown';
+    }
+    if(noResults){ noResults.hidden = shown !== 0; }
+  }
+
+  filterButtons.forEach(function(button){
+    button.addEventListener('click', function(){
+      var pressed = button.getAttribute('aria-pressed') === 'true';
+      button.setAttribute('aria-pressed', pressed ? 'false' : 'true');
+      applyEthernetFilters();
+    });
+  });
+  if(speedSelect){
+    speedSelect.addEventListener('change', applyEthernetFilters);
+  }
+  if(portRange){
+    portRange.addEventListener('input', applyEthernetFilters);
+  }
+  if(reset){
+    reset.addEventListener('click', function(){
+      filterButtons.forEach(function(button){ button.setAttribute('aria-pressed', 'false'); });
+      if(speedSelect){ speedSelect.value = ''; }
+      if(portRange){ portRange.value = '64'; }
+      applyEthernetFilters();
+    });
+  }
+  applyEthernetFilters();
 })();
 </script>
 
