@@ -62,6 +62,13 @@
       ["EDS-4008 Series", "product-series-eds-4008.html"],
       ["EDS-4008-HV", null],
     ],
+    "eds-4008-lv-t": [
+      ["Home", "homepage.html"],
+      ["Products", "homepage.html#featured-products"],
+      ["Ethernet Switches", "product-category-ethernet-switches.html"],
+      ["EDS-4008 Series", "product-series-eds-4008.html"],
+      ["EDS-4008-LV-T", null],
+    ],
     "nport-5100-series": [
       ["Home", "homepage.html"],
       ["Products", "homepage.html#featured-products"],
@@ -111,6 +118,7 @@
         links: [
           ["EDS-4008-LV", "eds-4008-lv.html"],
           ["EDS-4008-HV", "eds-4008-hv.html"],
+          ["EDS-4008-LV-T", "eds-4008-lv-t.html"],
           ["LV/HV AI Compare", "compare-lv-hv.html"],
         ],
       },
