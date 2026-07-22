@@ -2020,14 +2020,15 @@ nav.mainnav{gap:0}
 .media-card{border:1px solid var(--gray-line);border-radius:16px;background:#fff;overflow:hidden}
 .media-card img{width:100%;aspect-ratio:16/10;object-fit:cover;background:var(--green-050)}
 .media-card .body{padding:1.2rem}
-.product-row{display:grid;grid-template-columns:170px minmax(0,1fr) auto;gap:1.1rem;align-items:center;border:1px solid var(--gray-line);border-radius:14px;background:#fff;padding:1rem}
-.product-row img{width:100%;height:118px;object-fit:cover;border-radius:10px;background:var(--green-050)}
+.product-row{display:grid;grid-template-columns:minmax(0,1fr) var(--result-action-width,152px);gap:clamp(1.5rem,3vw,3rem);align-items:center;border:1px solid var(--gray-line);border-radius:14px;background:#fff;padding:clamp(1.25rem,2vw,1.65rem)}
 .product-row>div{min-width:0}
 .product-row .state-pill{margin-bottom:10px}
 .product-row h3{margin:0 0 8px;font-size:1.125rem;line-height:1.25;letter-spacing:-.012em}
 .product-row p{max-width:64ch;color:#536a73;font-size:.9375rem;line-height:1.5}
 .search-results-list{display:grid;gap:1rem}
-.search-results-list .product-row{grid-template-columns:180px minmax(0,1fr) auto}
+.search-results-list .product-row{grid-template-columns:minmax(0,1fr) var(--result-action-width,152px)}
+.search-results-list .product-row>div{min-width:0;display:grid;align-content:start;justify-items:start}
+.search-results-list .product-row>.btn{width:var(--result-action-width,152px);min-height:44px;display:inline-flex;align-items:center;justify-content:center;justify-self:end}
 .detail-page .result-group{display:grid;gap:.85rem;padding-block:0}
 .result-group+.result-group{margin-top:1.25rem}
 .result-group-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;border-bottom:1px solid var(--gray-line);padding-bottom:.7rem}
@@ -2035,9 +2036,8 @@ nav.mainnav{gap:0}
 .result-group-head span{font-size:.82rem;color:var(--gray);font-weight:800;text-transform:uppercase;letter-spacing:.08em}
 .search-results-section{padding-top:clamp(38px,5vw,64px)!important}
 .search-results-summary{
-  display:grid;
-  grid-template-columns:minmax(0,1.08fr) minmax(340px,.92fr);
-  min-height:300px;
+  display:block;
+  min-height:0;
   margin-bottom:32px;
   overflow:hidden;
   border:1px solid #cfe2e3;
@@ -2103,8 +2103,8 @@ nav.mainnav{gap:0}
 .microsite-product.two{left:34%;top:4%;width:min(42%,260px)}
 .microsite-product.three{right:4%;bottom:12%}
 .microsite-diagram{position:absolute;z-index:1;right:0;top:14%;width:58%;opacity:.46;border-radius:8px}
-@media(max-width:1100px){.search-results-list .product-row{grid-template-columns:160px minmax(0,1fr);gap:20px;align-items:start;padding:20px}.search-results-list .product-row>.btn{grid-column:2;justify-self:start;margin-top:4px}}
-@media(max-width:900px){.detail-grid,.detail-grid.two,.detail-grid.four,.detail-layout,.viewer-box,.product-row,.search-results-list .product-row,.filter-panel,.spec-list,.model-card,.product-detail-hero .wrap,.microsite-hero .wrap,.search-results-summary{grid-template-columns:1fr}.search-results-list .product-row>.btn{grid-column:1}.detail-aside{position:static}.search-summary-visual{min-height:260px}.product-detail-hero .wrap,.microsite-hero .wrap{min-height:auto}.product-detail-visual,.microsite-visual{min-height:300px}.product-detail-copy h1,.microsite-copy h1{font-size:clamp(2.65rem,14vw,4.6rem)}}
+@media(max-width:1100px){.search-results-list .product-row{grid-template-columns:minmax(0,1fr) var(--result-action-width,144px);gap:20px;align-items:start;padding:20px}}
+@media(max-width:900px){.detail-grid,.detail-grid.two,.detail-grid.four,.detail-layout,.viewer-box,.product-row,.search-results-list .product-row,.filter-panel,.spec-list,.model-card,.product-detail-hero .wrap,.microsite-hero .wrap,.search-results-summary{grid-template-columns:1fr}.search-results-list .product-row>.btn{grid-column:1;justify-self:start}.detail-aside{position:static}.product-detail-hero .wrap,.microsite-hero .wrap{min-height:auto}.product-detail-visual,.microsite-visual{min-height:300px}.product-detail-copy h1,.microsite-copy h1{font-size:clamp(2.65rem,14vw,4.6rem)}}
 @media(max-width:560px){.search-summary-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.search-results-summary{border-radius:18px}.search-summary-copy{padding:26px 22px}.search-summary-visual{min-height:220px}}
 </style>
 
@@ -2200,22 +2200,17 @@ nav.mainnav{gap:0}
   <div class="finder-input"><label class="field"><input id="searchQueryInput" value="EDS-4008 datasheet" aria-label="Search query"></label><button class="btn btn-primary btn-lg" id="searchQuerySubmit" type="button">Search</button></div>
   <div class="chips"><button class="chip">Ethernet switches</button><button class="chip">EDS-4008 Series</button><button class="chip">Layer 2 managed switches</button><button class="chip">EDS-4008 Datasheet</button></div>
 </div></div></section>
-<section class="search-results-section"><div class="wrap">
+<section class="search-results-section" data-search-layout="text-only"><div class="wrap">
 <section class="search-results-summary" aria-labelledby="searchResultsSummaryTitle">
   <div class="search-summary-copy">
     <span class="eyebrow">Search results summary</span>
     <h1 id="searchResultsSummaryTitle">9 total results for “<span data-search-query>EDS-4008 datasheet</span>”</h1>
-    <p>Products are prioritized first, followed by the technical documents, videos, and campaign resources needed to evaluate the EDS-4008 path.</p>
     <div class="search-summary-metrics" aria-label="Result count by content type">
       <div class="search-summary-metric"><strong data-summary-count="products">4</strong><span>Products</span></div>
       <div class="search-summary-metric"><strong data-summary-count="documents">3</strong><span>Documents</span></div>
       <div class="search-summary-metric"><strong data-summary-count="videos">1</strong><span>Video</span></div>
       <div class="search-summary-metric"><strong data-summary-count="campaigns">1</strong><span>Campaign</span></div>
     </div>
-  </div>
-  <div class="search-summary-visual">
-    <img src="img/hero-product-selection.png" alt="Industrial Ethernet switch families ready for product selection">
-    <div class="search-summary-label"><span>Top match</span><strong>EDS-4008 managed Ethernet switch family</strong></div>
   </div>
 </section>
 <div class="detail-layout"><aside class="detail-aside"><span class="eyebrow">Refine results</span>
@@ -2229,21 +2224,21 @@ nav.mainnav{gap:0}
   <label class="filter-check"><input type="checkbox" disabled data-search-facet="support"><span>Support</span><span class="filter-count">0</span></label>
 </aside><div class="search-results-list">
   <section class="result-group" data-result-group="products"><div class="result-group-head"><h2>Products</h2><span>4 results</span></div>
-    <article class="product-row"><img src="img/hero-product-selection.png" alt="EDS-4008 industrial Ethernet switch family"><div><span class="state-pill">Best match</span><h3>EDS-4008 Series</h3><p>4 FE, 4 FE-to-1GbE-port managed Ethernet switches with 802.3bt PoE options.</p><div class="result-meta"><span>Managed Ethernet</span><span>8-port platform</span><span>PoE options</span></div></div><a class="btn btn-primary" href="product-series-eds-4008.html">View series</a></article>
-    <article class="product-row"><img src="img/hero-product-selection.png" alt="EDS-4008-LV industrial Ethernet switch"><div><span class="state-pill">Model page</span><h3>EDS-4008-LV</h3><p>Low-voltage model with 8 10/100BaseT(X) ports and 9.6 to 60 VDC operating voltage.</p><div class="result-meta"><span>LV model</span><span>9.6–60 VDC</span><span>DIN rail</span></div></div><a class="btn btn-ghost" href="eds-4008-lv.html">View model</a></article>
-    <article class="product-row"><img src="img/hero-product-selection.png" alt="EDS-4008-HV industrial Ethernet switch"><div><span class="state-pill">Model page</span><h3>EDS-4008-HV</h3><p>High-voltage model with 8 10/100BaseT(X) ports and AC/DC power input.</p><div class="result-meta"><span>HV model</span><span>AC/DC input</span><span>DIN rail</span></div></div><a class="btn btn-ghost" href="eds-4008-hv.html">View model</a></article>
-    <article class="product-row"><img src="img/hero-product-selection.png" alt="Industrial Ethernet switch selection overview"><div><span class="state-pill">Category</span><h3>Ethernet Switches</h3><p>Industrial Ethernet switches category page with Search By filters and product family routing.</p><div class="result-meta"><span>Product family</span><span>Managed &amp; unmanaged</span><span>Selection filters</span></div></div><a class="btn btn-ghost" href="product-category-ethernet-switches.html">Browse category</a></article>
+    <article class="product-row"><div><span class="state-pill">Best match</span><h3>EDS-4008 Series</h3><p>4 FE, 4 FE-to-1GbE-port managed Ethernet switches with 802.3bt PoE options.</p><div class="result-meta"><span>Managed Ethernet</span><span>8-port platform</span><span>PoE options</span></div></div><a class="btn btn-primary" href="product-series-eds-4008.html">View series</a></article>
+    <article class="product-row"><div><span class="state-pill">Model page</span><h3>EDS-4008-LV</h3><p>Low-voltage model with 8 10/100BaseT(X) ports and 9.6 to 60 VDC operating voltage.</p><div class="result-meta"><span>LV model</span><span>9.6–60 VDC</span><span>DIN rail</span></div></div><a class="btn btn-ghost" href="eds-4008-lv.html">View model</a></article>
+    <article class="product-row"><div><span class="state-pill">Model page</span><h3>EDS-4008-HV</h3><p>High-voltage model with 8 10/100BaseT(X) ports and AC/DC power input.</p><div class="result-meta"><span>HV model</span><span>AC/DC input</span><span>DIN rail</span></div></div><a class="btn btn-ghost" href="eds-4008-hv.html">View model</a></article>
+    <article class="product-row"><div><span class="state-pill">Category</span><h3>Ethernet Switches</h3><p>Industrial Ethernet switches category page with Search By filters and product family routing.</p><div class="result-meta"><span>Product family</span><span>Managed &amp; unmanaged</span><span>Selection filters</span></div></div><a class="btn btn-ghost" href="product-category-ethernet-switches.html">Browse category</a></article>
   </section>
   <section class="result-group" data-result-group="documents"><div class="result-group-head"><h2>Documents</h2><span>3 results</span></div>
-    <article class="product-row"><img src="asset/generated-hero/hero-search-docs.png" alt="Documentation search"><div><span class="state-pill">Datasheet</span><h3>EDS-4008 Series Datasheet v1.8</h3><p>Official EDS-4008 Series datasheet from the provided Moxa PoC testing materials.</p></div><a class="btn btn-ghost" href="assets/products/moxa-eds-4008-series-datasheet-v1.8.pdf">PDF</a></article>
-    <article class="product-row"><img src="asset/generated-hero/hero-search-docs.png" alt="Manual result"><div><span class="state-pill">Manual</span><h3>EDS-4008 Series User Manual</h3><p>Documentation page for overview, installation, configuration, security, and resources.</p></div><a class="btn btn-ghost" href="manual.html">Open</a></article>
-    <article class="product-row"><img src="asset/generated-hero/hero-search-docs.png" alt="Compare documentation"><div><span class="state-pill">Comparison</span><h3>EDS-4008 LV/HV Compare UI</h3><p>Model comparison table for LV, LV-T, HV, and HV-T variants.</p></div><a class="btn btn-ghost" href="compare-lv-hv.html">Compare</a></article>
+    <article class="product-row"><div><span class="state-pill">Datasheet</span><h3>EDS-4008 Series Datasheet v1.8</h3><p>Official EDS-4008 Series datasheet from the provided Moxa PoC testing materials.</p></div><a class="btn btn-ghost" href="assets/products/moxa-eds-4008-series-datasheet-v1.8.pdf">PDF</a></article>
+    <article class="product-row"><div><span class="state-pill">Manual</span><h3>EDS-4008 Series User Manual</h3><p>Documentation page for overview, installation, configuration, security, and resources.</p></div><a class="btn btn-ghost" href="manual.html">Open</a></article>
+    <article class="product-row"><div><span class="state-pill">Comparison</span><h3>EDS-4008 LV/HV Compare UI</h3><p>Model comparison table for LV, LV-T, HV, and HV-T variants.</p></div><a class="btn btn-ghost" href="compare-lv-hv.html">Compare</a></article>
   </section>
   <section class="result-group" data-result-group="videos"><div class="result-group-head"><h2>Videos</h2><span>1 result</span></div>
-    <article class="product-row"><img src="assets/video/FireShot Capture 070 - Get Acquainted With the MGate G2 New Web GUI - Moxa - [www.moxa.com].png" alt="MGate G2 New Web GUI video result"><div><span class="state-pill">Video</span><h3>Get Acquainted With the MGate G2 New Web GUI</h3><p>Video detail page using the supplied Moxa PoC video poster and transcript document.</p></div><a class="btn btn-ghost" href="video.html">Watch</a></article>
+    <article class="product-row"><div><span class="state-pill">Video</span><h3>Get Acquainted With the MGate G2 New Web GUI</h3><p>Video detail page using the supplied Moxa PoC video poster and transcript document.</p></div><a class="btn btn-ghost" href="video.html">Watch</a></article>
   </section>
   <section class="result-group" data-result-group="campaigns"><div class="result-group-head"><h2>Campaigns</h2><span>1 result</span></div>
-    <article class="product-row"><img src="assets/popup/Secure-Networking-Solutions-banner-380px.png" alt="Secure Networking Solutions campaign banner"><div><span class="state-pill">Campaign</span><h3>Secure Your OT Networks</h3><p>Campaign page connected from the homepage popup banner and official Moxa secure networking storyline.</p></div><a class="btn btn-ghost" href="campaign.html">Explore</a></article>
+    <article class="product-row"><div><span class="state-pill">Campaign</span><h3>Secure Your OT Networks</h3><p>Campaign page connected from the homepage popup banner and official Moxa secure networking storyline.</p></div><a class="btn btn-ghost" href="campaign.html">Explore</a></article>
   </section>
 </div></div></div></section>
 

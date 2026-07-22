@@ -1,0 +1,126 @@
+/* EDS-4008 Series refinement — 2026-07-22
+   Text-first hero, aligned product media, explicit model comparison, and
+   desktop heading rhythm. The interactive filters and 360 viewer are intact. */
+
+.series-a-hero .wrap {
+  padding-block: clamp(48px, 6vw, 76px);
+}
+
+.series-a-hero-copy {
+  max-width: 900px;
+}
+
+.series-a-hero h1 {
+  max-width: 18ch;
+  margin-bottom: 14px;
+  font-size: clamp(2.75rem, 5vw, 4.75rem);
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+
+.series-a-hero .series-a-lede {
+  max-width: 720px;
+  font-size: clamp(1rem, 1.3vw, 1.18rem);
+  line-height: 1.6;
+}
+
+.series-a-page .series-a-section-head h2 {
+  font-size: clamp(2.2rem, 3.8vw, 3.55rem);
+}
+
+.series-a-page .solution-cross-sell .cross-sell-copy h2 {
+  max-width: 15ch;
+  font-size: clamp(1.8rem, 2.8vw, 2.65rem);
+  line-height: 1.02;
+  letter-spacing: -.035em;
+}
+
+.series-a-page .solution-cross-sell .cross-sell-copy p,
+.series-a-page .solution-cross-sell .cross-sell-product-card {
+  font-size: .92rem;
+}
+
+.series-a-popular-grid {
+  align-items: stretch;
+}
+
+.series-a-popular-card {
+  min-width: 0;
+}
+
+.series-a-popular-media {
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+  padding: clamp(1rem, 2vw, 1.5rem);
+}
+
+.series-a-popular-media .series-a-device {
+  width: min(78%, 252px);
+  min-height: 112px;
+  transform: perspective(650px) rotateX(5deg) rotateY(-8deg);
+}
+
+.series-a-popular-body {
+  min-height: 310px;
+}
+
+.series-a-model-summary {
+  align-items: flex-end;
+}
+
+.series-a-compare-bar {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) auto auto;
+  gap: 10px 14px;
+  align-items: center;
+  max-width: 760px;
+}
+
+.series-a-compare-help {
+  color: #61757d;
+  font-size: .78rem;
+  line-height: 1.4;
+}
+
+.series-a-compare-bar .btn {
+  min-width: 190px;
+  text-align: center;
+}
+
+#product-360 .series-a-section-head,
+#resources .series-a-section-head {
+  max-width: 980px;
+}
+
+@media (min-width: 900px) {
+  .series-a-hero h1,
+  #product360Title,
+  #resources .series-a-section-head h2 {
+    white-space:nowrap;
+  }
+}
+
+@media (max-width: 900px) {
+  .series-a-hero h1 {
+    max-width: none;
+    font-size: clamp(2.55rem, 12vw, 4rem);
+  }
+
+  .series-a-popular-body {
+    min-height: 0;
+  }
+
+  .series-a-model-summary {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .series-a-compare-bar {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .series-a-compare-bar .btn {
+    width: 100%;
+  }
+}
