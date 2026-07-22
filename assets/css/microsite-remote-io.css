@@ -83,10 +83,10 @@ body[data-moxa-page="microsite"] textarea {
 .rio-anchor {
   position: sticky;
   top: 116px;
-  z-index: 990;
+  z-index: 105;
   border-bottom: 1px solid var(--rio-line);
   background: rgba(255, 255, 255, 0.97);
-  box-shadow: 0 10px 28px rgba(8, 47, 73, 0.06);
+  box-shadow: 0 12px 28px rgba(14, 48, 53, 0.06);
   backdrop-filter: blur(14px);
 }
 
@@ -94,15 +94,8 @@ body[data-moxa-page="microsite"] textarea {
   min-height: 56px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 28px;
-}
-
-.rio-anchor-title {
-  color: var(--rio-ink);
-  font-size: 13px;
-  font-weight: 800;
-  white-space: nowrap;
+  justify-content: flex-start;
+  gap: 4px;
 }
 
 .rio-anchor-links {
@@ -121,17 +114,19 @@ body[data-moxa-page="microsite"] textarea {
   height: 56px;
   display: flex;
   align-items: center;
-  padding-inline: 14px;
+  padding-inline: 17px;
   border-bottom: 3px solid transparent;
-  color: #5c737a;
+  color: #566e74;
   font-size: 13px;
-  font-weight: 750;
+  font-weight: 800;
   text-decoration: none;
   white-space: nowrap;
 }
 
 .rio-anchor-links a:hover,
-.rio-anchor-links a.is-active {
+.rio-anchor-links a:focus-visible,
+.rio-anchor-links a.is-active,
+.rio-anchor-links a[aria-current="page"] {
   border-bottom-color: var(--rio-teal);
   color: var(--rio-teal-dark);
 }
@@ -1094,10 +1089,6 @@ body[data-moxa-page="microsite"] .rio-application-grid h3 {
 
   .rio-anchor {
     top: 64px;
-  }
-
-  .rio-anchor-title {
-    display: none;
   }
 
   .rio-anchor-inner {

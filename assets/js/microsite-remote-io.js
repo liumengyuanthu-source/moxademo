@@ -239,7 +239,15 @@
       (entries) => {
         const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
         if (!visible) return;
-        links.forEach((link) => link.classList.toggle("is-active", link.dataset.section === visible.target.id));
+        links.forEach((link) => {
+          const active = link.dataset.section === visible.target.id;
+          link.classList.toggle("is-active", active);
+          if (active) {
+            link.setAttribute("aria-current", "page");
+          } else {
+            link.removeAttribute("aria-current");
+          }
+        });
       },
       { rootMargin: "-30% 0px -58%", threshold: [0.01, 0.2, 0.5] }
     );

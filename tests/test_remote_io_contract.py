@@ -69,6 +69,29 @@ class RemoteIOContractTests(unittest.TestCase):
         self.assertNotIn('<header class="header"', self.microsite)
         self.assertNotIn('<footer class="footer"', self.microsite)
 
+    def test_internal_anchor_navigation_matches_campaign_tab_bar(self):
+        self.assertIn('class="rio-anchor"', self.microsite)
+        self.assertNotIn('class="rio-anchor-title"', self.microsite)
+        for label in (
+            "Overview",
+            "Why Moxa",
+            "Portfolio",
+            "Applications",
+            "Selection Guide",
+            "Contact Us",
+        ):
+            self.assertIn(f">{label}</a>", self.microsite)
+        self.assertRegex(
+            self.microsite_css,
+            r"\.rio-anchor-inner\s*\{[^}]*justify-content:\s*flex-start;[^}]*"
+            r"gap:\s*4px;",
+        )
+        self.assertRegex(
+            self.microsite_css,
+            r"\.rio-anchor-links\s+a\s*\{[^}]*height:\s*56px;[^}]*"
+            r"padding-inline:\s*17px;[^}]*font-weight:\s*800;",
+        )
+
     def test_application_card_titles_stay_white_over_images(self):
         self.assertRegex(
             self.microsite_css,
