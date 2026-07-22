@@ -111,6 +111,15 @@ class RemoteIOContractTests(unittest.TestCase):
             r'\.rio-metrics\s+div\s*\{[^}]*display:\s*grid;[^}]*'
             r'grid-template-rows:\s*[^;]+;[^}]*\}',
         )
+        self.assertRegex(
+            self.microsite_css,
+            r'\.rio-metrics\s+dt\s*\{[^}]*font-size:\s*'
+            r'clamp\(0\.98rem,\s*1\.18vw,\s*1\.15rem\);',
+        )
+        self.assertRegex(
+            self.microsite_css,
+            r'\.rio-metrics\s+dd\s*\{[^}]*font-size:\s*9\.5px;',
+        )
 
     def test_annotated_headings_have_deterministic_desktop_wrapping(self):
         self.assertIn(
@@ -158,7 +167,7 @@ class RemoteIOContractTests(unittest.TestCase):
     def test_section_headings_share_one_body_spacing_token(self):
         self.assertRegex(
             self.microsite_css,
-            r':root\s*\{[^}]*--rio-heading-body-gap:\s*24px\s*;',
+            r':root\s*\{[^}]*--rio-heading-body-gap:\s*28px\s*;',
         )
         for selector in (
             ".rio-section-head > h2 + p",

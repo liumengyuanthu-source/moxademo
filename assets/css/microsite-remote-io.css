@@ -12,7 +12,7 @@
   --rio-radius: 12px;
   --rio-shadow: 0 20px 55px rgba(8, 47, 73, 0.12);
   --rio-ease: cubic-bezier(.22, .61, .36, 1);
-  --rio-heading-body-gap: 24px;
+  --rio-heading-body-gap: 28px;
 }
 
 html {
@@ -242,22 +242,22 @@ body[data-moxa-page="microsite"] textarea {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
-  margin-top: 28px !important;
+  margin-top: 24px !important;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .rio-metrics div {
   min-width: 0;
-  min-height: 72px;
+  min-height: 60px;
   display: grid;
-  grid-template-rows: 28px minmax(30px, auto);
+  grid-template-rows: 24px minmax(24px, auto);
   align-content: start;
-  padding: 16px 0 0;
+  padding: 12px 0 0;
 }
 
 .rio-metrics dt {
   color: #fff;
-  font-size: clamp(1.05rem, 1.45vw, 1.35rem);
+  font-size: clamp(0.98rem, 1.18vw, 1.15rem);
   line-height: 1;
   font-weight: 800;
   letter-spacing: -0.03em;
@@ -266,10 +266,10 @@ body[data-moxa-page="microsite"] textarea {
 }
 
 .rio-metrics dd {
-  margin-top: 5px;
+  margin-top: 4px;
   color: #abd4d3;
-  font-size: 10px;
-  line-height: 1.35;
+  font-size: 9.5px;
+  line-height: 1.28;
   font-weight: 700;
 }
 
@@ -289,14 +289,14 @@ body[data-moxa-page="microsite"] textarea {
 .rio-heading-nowrap {
   width: max-content;
   max-width: 100%;
-  font-size: clamp(2rem, 3.2vw, 3rem) !important;
+  font-size: clamp(2rem, 2.85vw, 2.6rem) !important;
   white-space: nowrap;
 }
 
 .rio-brochure-title {
   width: max-content;
   max-width: 100%;
-  font-size: clamp(2rem, 3.1vw, 3rem) !important;
+  font-size: clamp(2rem, 2.8vw, 2.55rem) !important;
   white-space: nowrap;
 }
 
