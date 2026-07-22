@@ -127,12 +127,13 @@
             <p class="video-eyebrow">Video library</p>
             <h2 id="library-title">More from Moxa</h2>
           </div>
-          <div class="video-library-controls">
-            <label>
+          <div class="video-library-controls" aria-label="Video library filters">
+            <label class="video-search-field">
               <span class="moxa-visually-hidden">Search videos</span>
+              <img src="img/icon-search.svg" alt="" aria-hidden="true">
               <input id="videoLibrarySearch" type="search" placeholder="Search videos">
             </label>
-            <label>
+            <label class="video-select-field">
               <span class="moxa-visually-hidden">Sort videos</span>
               <select id="videoSort">
                 <option value="featured">Featured</option>
