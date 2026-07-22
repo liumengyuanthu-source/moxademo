@@ -117,6 +117,802 @@
     @media(max-width:900px){.series-a-cta .wrap{grid-template-columns:1fr}.series-a-anchor{top:104px}.series-a-anchor-actions{display:none}.series-a-cta .series-a-actions{justify-content:flex-start}.series-a-search{order:10;width:100%;margin-left:0}.series-a-popular-grid{grid-template-columns:1fr}.series-a-popular-card:last-child{grid-column:auto;max-width:none}}
     @media(max-width:640px){.series-a-page section{padding-block:54px}.series-a-hero .wrap{padding-block:42px;min-height:auto}.series-a-hero h1{font-size:clamp(2.85rem,16vw,4.4rem)}.series-a-anchor{top:104px}.series-a-anchor .wrap{padding-inline:12px}.series-a-anchor ul{padding-block:.35rem}.series-a-anchor a{padding:.6rem .7rem}.series-a-feature-grid,.series-a-resource-grid,.series-a-application-grid{grid-template-columns:1fr}.series-a-application-card{min-height:250px}.series-a-model-summary{align-items:flex-start;flex-direction:column}.series-a-compare-bar{width:100%;justify-content:space-between}.series-a-model-tools{padding:.8rem}.series-a-actions{width:100%}.series-a-actions .btn{flex:1;min-width:150px}.series-a-cta .series-a-actions{flex-direction:column;align-items:stretch}.series-a-cta .series-a-actions .btn{width:100%}}
     @media(prefers-reduced-motion:reduce){.series-a-feature,.series-a-application-card img,.series-a-filter{transition:none!important}.series-a-feature:hover,.series-a-application-card:hover img{transform:none!important}}
+    /* NPort 5100 spacing audit: keep the page on the same design-system rail as the EDS-4008 series page. */
+    body[data-moxa-page="nport-5100-series"]{
+      --nport-wrap-width:min(1240px,calc(100% - clamp(40px,8vw,128px)));
+      --nport-section-space:clamp(70px,7vw,96px);
+      --nport-card-gap:clamp(18px,2vw,24px);
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-hero > .wrap,
+    body[data-moxa-page="nport-5100-series"] .series-a-anchor > .wrap,
+    body[data-moxa-page="nport-5100-series"] .series-a-page > section > .wrap,
+    body[data-moxa-page="nport-5100-series"] .cross-sell-context-banner > .wrap{
+      width:var(--nport-wrap-width);
+      max-width:var(--nport-wrap-width);
+      margin-inline:auto;
+      padding-inline:0!important;
+      box-sizing:border-box;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-page section{
+      padding-block:var(--nport-section-space);
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-page .series-a-compact{
+      padding-block:clamp(44px,5vw,68px);
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-hero .wrap{
+      padding-block:clamp(60px,7vw,88px);
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-hero-copy{
+      max-width:760px;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-hero h1{
+      max-width:760px;
+      margin-bottom:1rem;
+      font-size:clamp(3rem,5.15vw,5.15rem);
+      line-height:.98;
+      letter-spacing:-.052em;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-hero .series-a-lede{
+      max-width:720px;
+      font-size:clamp(1.05rem,1.2vw,1.18rem);
+      line-height:1.66;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-anchor .wrap{
+      min-height:62px;
+      align-items:stretch;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-anchor ul{
+      gap:0;
+      align-self:stretch;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-anchor a{
+      display:flex;
+      align-items:center;
+      height:100%;
+      padding:0 1.05rem;
+      border-radius:0;
+      border-bottom:3px solid transparent;
+      color:#536a72;
+      text-decoration:none;
+      transition:color .18s ease,border-color .18s ease,background .18s ease;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-anchor li:first-child a,
+    body[data-moxa-page="nport-5100-series"] .series-a-anchor a:hover,
+    body[data-moxa-page="nport-5100-series"] .series-a-anchor a:focus-visible{
+      background:transparent;
+      border-bottom-color:var(--series-green);
+      color:var(--series-green);
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-anchor-actions .btn{
+      min-width:142px;
+      height:44px;
+      justify-content:center;
+      align-self:center;
+      padding:0 1rem;
+      border-radius:8px;
+      text-decoration:none;
+      font-size:.88rem;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-section-head{
+      max-width:780px;
+      margin-bottom:clamp(1.8rem,3vw,2.45rem);
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-section-head.center{
+      max-width:900px;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-section-head h2{
+      max-width:900px;
+      font-size:clamp(2.15rem,3.6vw,3.75rem);
+      line-height:1.06;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-section-head p{
+      max-width:780px;
+      margin-top:.9rem;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-section-head.center p{
+      margin-inline:auto;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-feature-grid,
+    body[data-moxa-page="nport-5100-series"] .series-a-popular-grid,
+    body[data-moxa-page="nport-5100-series"] .series-a-resource-grid,
+    body[data-moxa-page="nport-5100-series"] .series-a-application-grid{
+      gap:var(--nport-card-gap);
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-feature,
+    body[data-moxa-page="nport-5100-series"] .series-a-resource-card{
+      padding:clamp(1.25rem,1.8vw,1.55rem);
+    }
+    body[data-moxa-page="nport-5100-series"] .solution-cross-sell .cross-sell-panel{
+      max-width:100%;
+    }
+    body[data-moxa-page="nport-5100-series"] .solution-cross-sell .cross-sell-grid{
+      gap:clamp(24px,3vw,40px);
+      align-items:stretch;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-model-tools,
+    body[data-moxa-page="nport-5100-series"] .series-a-model-summary,
+    body[data-moxa-page="nport-5100-series"] .series-a-model-scroll,
+    body[data-moxa-page="nport-5100-series"] .series-a-model-empty{
+      max-width:100%;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-model-tools{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:nowrap;
+      padding:.8rem .9rem;
+      gap:1rem;
+      border-radius:18px;
+      background:#f8fcfc;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-model-tools > button{
+      flex:0 0 auto;
+      height:38px;
+      padding:0 1rem;
+      font-size:.82rem;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-search{
+      flex:0 1 340px;
+      margin-left:auto;
+      min-width:260px;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-search .visually-hidden{
+      position:absolute!important;
+      width:1px!important;
+      height:1px!important;
+      padding:0!important;
+      margin:-1px!important;
+      overflow:hidden!important;
+      clip:rect(0,0,0,0)!important;
+      white-space:nowrap!important;
+      border:0!important;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-model-summary{
+      align-items:center;
+      gap:1.25rem;
+      margin-bottom:1rem;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-compare-bar{
+      gap:.8rem;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    body[data-moxa-page="nport-5100-series"] #series-compare-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:190px;
+      height:40px;
+      padding:0 1rem;
+      border:1px solid var(--series-green);
+      border-radius:8px;
+      background:var(--series-green);
+      color:#fff!important;
+      -webkit-text-fill-color:#fff;
+      text-decoration:none!important;
+      font-weight:900;
+      font-size:.86rem;
+      box-shadow:0 12px 24px -20px rgba(0,119,116,.8);
+    }
+    body[data-moxa-page="nport-5100-series"] #series-compare-link[aria-disabled="true"]{
+      border-color:#c7dddd;
+      background:#eef7f6;
+      color:#6a7f86!important;
+      -webkit-text-fill-color:#6a7f86;
+      box-shadow:none;
+      cursor:not-allowed;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-model-table th,
+    body[data-moxa-page="nport-5100-series"] .series-a-model-table td{
+      padding:1rem .95rem;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-cta .wrap{
+      grid-template-columns:minmax(0,1fr) minmax(340px,auto);
+      gap:clamp(28px,4vw,56px);
+      align-items:center;
+      padding-block:clamp(64px,7vw,88px);
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-cta h2{
+      max-width:680px;
+      margin:.55rem 0 1rem;
+      font-size:clamp(2.2rem,3.6vw,3.75rem);
+      line-height:1.04;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-cta p{
+      max-width:760px;
+      line-height:1.6;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-cta .series-a-actions{
+      display:flex;
+      justify-content:flex-end;
+      gap:.9rem;
+      margin:0;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-cta .series-a-actions .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:174px;
+      height:48px;
+      padding:0 1.2rem;
+      border-radius:8px;
+      text-decoration:none;
+      font-size:.9rem;
+      font-weight:900;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-cta .btn-primary{
+      background:#fff;
+      color:#007875!important;
+      -webkit-text-fill-color:#007875;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-cta .btn-ghost{
+      border-color:rgba(255,255,255,.72);
+      color:#fff!important;
+      -webkit-text-fill-color:#fff;
+    }
+    body[data-moxa-page="nport-5100-series"] #applications .series-a-section-head.center{
+      max-width:1180px;
+    }
+    body[data-moxa-page="nport-5100-series"] #applications .series-a-section-head.center h2{
+      max-width:none;
+      white-space:nowrap;
+      font-size:clamp(2.25rem,3.5vw,3.45rem);
+    }
+    body[data-moxa-page="nport-5100-series"] #applications .series-a-section-head.center p{
+      max-width:none;
+      white-space:nowrap;
+      font-size:1rem;
+    }
+    @media(max-width:900px){
+      body[data-moxa-page="nport-5100-series"]{
+        --nport-wrap-width:min(1240px,calc(100% - 40px));
+      }
+      body[data-moxa-page="nport-5100-series"] .series-a-cta .wrap{
+        grid-template-columns:1fr;
+      }
+      body[data-moxa-page="nport-5100-series"] .series-a-cta .series-a-actions{
+        justify-content:flex-start;
+      }
+      body[data-moxa-page="nport-5100-series"] .series-a-anchor > .wrap{
+        width:100%;
+        max-width:100%;
+        padding-inline:20px!important;
+      }
+      body[data-moxa-page="nport-5100-series"] .series-a-model-tools{
+        flex-wrap:wrap;
+        border-radius:18px;
+      }
+      body[data-moxa-page="nport-5100-series"] .series-a-search{
+        flex:1 1 100%;
+        min-width:100%;
+      }
+      body[data-moxa-page="nport-5100-series"] #applications .series-a-section-head.center h2,
+      body[data-moxa-page="nport-5100-series"] #applications .series-a-section-head.center p{
+        white-space:normal;
+      }
+    }
+    @media(max-width:640px){
+      body[data-moxa-page="nport-5100-series"]{
+        --nport-wrap-width:calc(100% - 28px);
+        --nport-section-space:54px;
+      }
+      body[data-moxa-page="nport-5100-series"] .series-a-hero h1{
+        font-size:clamp(2.7rem,15vw,4.1rem);
+      }
+      body[data-moxa-page="nport-5100-series"] .series-a-section-head h2{
+        font-size:clamp(2rem,10vw,3rem);
+      }
+    }
+    /* Final NPort alignment pass: mirror the approved EDS-4008 series system without changing the global header/footer. */
+    body[data-moxa-page="nport-5100-series"]{
+      --nport-wrap-width:min(1240px,calc(100% - clamp(44px,8vw,128px)));
+      --nport-section-space:clamp(76px,7vw,104px);
+      --nport-ease:cubic-bezier(.22,.61,.36,1);
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-hero > .wrap,
+    body[data-moxa-page="nport-5100-series"] .series-a-anchor > .wrap,
+    body[data-moxa-page="nport-5100-series"] .series-a-page > section > .wrap,
+    body[data-moxa-page="nport-5100-series"] .cross-sell-context-banner > .wrap{
+      width:var(--nport-wrap-width);
+      max-width:1240px;
+      margin-inline:auto;
+      padding-inline:0!important;
+      box-sizing:border-box;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-hero{
+      min-height:330px;
+      background:
+        radial-gradient(circle at 84% 8%,rgba(97,225,216,.24),transparent 35%),
+        radial-gradient(circle at 79% 45%,rgba(0,135,135,.08),transparent 42%),
+        linear-gradient(145deg,#f4fbfa 0%,#ffffff 58%,#edf8f7 100%);
+      border-bottom:1px solid #dbe8e8;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-hero::after{
+      right:-8%;
+      top:-34%;
+      width:48%;
+      opacity:.9;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-hero .wrap{
+      display:flex;
+      align-items:center;
+      min-height:330px;
+      padding-block:clamp(68px,7vw,92px);
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-hero-copy{
+      max-width:760px;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-hero h1{
+      margin:0 0 1rem;
+      max-width:760px;
+      font-size:clamp(4.1rem,6vw,5.8rem);
+      line-height:.96;
+      letter-spacing:-.06em;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-hero .series-a-lede{
+      max-width:720px;
+      font-size:clamp(1.08rem,1.35vw,1.2rem);
+      line-height:1.65;
+      color:#526b74;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-anchor{
+      top:104px;
+      padding:0!important;
+      background:rgba(255,255,255,.95);
+      border-bottom:1px solid #dbe8e8;
+      box-shadow:0 12px 32px -30px rgba(0,55,60,.4);
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-anchor .wrap{
+      min-height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-anchor ul{
+      display:flex;
+      align-items:center;
+      gap:.2rem;
+      margin:0;
+      padding:0;
+      list-style:none;
+      overflow-x:auto;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-anchor a{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      height:64px;
+      padding:0 .9rem;
+      border-radius:0;
+      border-bottom:3px solid transparent;
+      color:#50666f;
+      font-size:.87rem;
+      font-weight:800;
+      text-decoration:none!important;
+      white-space:nowrap;
+      background:transparent;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-anchor li:first-child a,
+    body[data-moxa-page="nport-5100-series"] .series-a-anchor a:hover,
+    body[data-moxa-page="nport-5100-series"] .series-a-anchor a:focus-visible{
+      color:#008f8a;
+      border-bottom-color:#008f8a;
+      background:transparent;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-anchor-actions{
+      display:flex;
+      align-items:center;
+      gap:.65rem;
+      margin-left:auto;
+      flex-shrink:0;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-anchor-actions .btn{
+      height:44px;
+      min-width:142px;
+      padding:0 1rem;
+      border-radius:8px;
+      border:1px solid #008f8a;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size:.88rem;
+      font-weight:900;
+      text-decoration:none!important;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-anchor-actions .btn-primary{
+      background:#008f8a;
+      color:#fff!important;
+      -webkit-text-fill-color:#fff;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-anchor-actions .btn-ghost{
+      background:#fff;
+      color:#075a61!important;
+      -webkit-text-fill-color:#075a61;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-page section{
+      padding-block:var(--nport-section-space);
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-section-head{
+      max-width:840px;
+      margin-bottom:clamp(2rem,3vw,2.75rem);
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-section-head h2{
+      margin:.55rem 0 1rem;
+      font-size:clamp(2.5rem,4.25vw,4.2rem);
+      line-height:1.04;
+      letter-spacing:-.048em;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-section-head p{
+      max-width:820px;
+      line-height:1.66;
+    }
+    body[data-moxa-page="nport-5100-series"] .solution-cross-sell .cross-sell-panel{
+      padding:clamp(38px,4.5vw,56px);
+      border:1px solid #cfe3e2;
+      border-radius:2px;
+      background:#fff;
+      box-shadow:0 30px 80px -62px rgba(0,58,66,.52);
+    }
+    body[data-moxa-page="nport-5100-series"] .solution-cross-sell .cross-sell-grid{
+      display:grid;
+      grid-template-columns:minmax(250px,.82fr) minmax(300px,.9fr) minmax(280px,.82fr);
+      gap:clamp(28px,3.2vw,44px);
+      align-items:stretch;
+    }
+    body[data-moxa-page="nport-5100-series"] .solution-cross-sell .cross-sell-copy h2{
+      font-size:clamp(2.2rem,3.45vw,3.55rem);
+      line-height:1.08;
+      letter-spacing:-.045em;
+    }
+    body[data-moxa-page="nport-5100-series"] .cross-sell-architecture{
+      display:grid;
+      gap:.9rem;
+      margin:0;
+      padding:0;
+      list-style:none;
+      counter-reset:nport-cross-sell-step;
+    }
+    body[data-moxa-page="nport-5100-series"] .cross-sell-architecture li{
+      min-height:82px;
+      display:grid;
+      grid-template-columns:28px minmax(0,1fr);
+      align-items:center;
+      column-gap:1rem;
+      padding:1rem 1.2rem 1rem 1.25rem;
+      border:1px solid #cfe3e2;
+      border-radius:4px;
+      background:linear-gradient(145deg,#f8fefe,#eef9f8);
+      color:#0b3342;
+      font-weight:900;
+      line-height:1.25;
+    }
+    body[data-moxa-page="nport-5100-series"] .cross-sell-architecture li::before{
+      counter-increment:nport-cross-sell-step;
+      content:counter(nport-cross-sell-step);
+      width:24px;
+      height:24px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      justify-self:start;
+      border-radius:999px;
+      background:#008f8a;
+      color:#fff;
+      font-size:.72rem;
+      font-weight:900;
+      line-height:1;
+      position:static;
+      margin:0;
+      transform:none;
+    }
+    body[data-moxa-page="nport-5100-series"] .cross-sell-architecture li span{
+      display:block;
+      min-width:0;
+    }
+    body[data-moxa-page="nport-5100-series"] .cross-sell-product-card{
+      display:flex;
+      flex-direction:column;
+      padding:clamp(24px,2.4vw,32px);
+      border-left:4px solid #008f8a;
+      border-radius:0 16px 16px 0;
+      background:linear-gradient(145deg,#f8fefe,#f1f9f8);
+    }
+    body[data-moxa-page="nport-5100-series"] .cross-sell-actions{
+      margin-top:auto;
+      display:grid;
+      gap:.75rem;
+    }
+    body[data-moxa-page="nport-5100-series"] .cross-sell-actions .btn{
+      min-width:220px;
+      height:46px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:8px;
+      text-decoration:none!important;
+      font-weight:900;
+      border:1px solid #008f8a!important;
+      box-shadow:none!important;
+      transition:background .18s var(--nport-ease), color .18s var(--nport-ease), border-color .18s var(--nport-ease), transform .18s var(--nport-ease);
+    }
+    body[data-moxa-page="nport-5100-series"] .cross-sell-actions .btn-primary{
+      background:#008f8a!important;
+      color:#fff!important;
+      -webkit-text-fill-color:#fff!important;
+    }
+    body[data-moxa-page="nport-5100-series"] .cross-sell-actions .btn-primary:hover{
+      background:#006f6b!important;
+      border-color:#006f6b!important;
+      transform:translateY(-1px);
+    }
+    body[data-moxa-page="nport-5100-series"] .cross-sell-actions .btn-ghost{
+      background:#fff!important;
+      color:#006f6b!important;
+      -webkit-text-fill-color:#006f6b!important;
+    }
+    body[data-moxa-page="nport-5100-series"] .cross-sell-actions .btn-ghost:hover{
+      background:#eefafa!important;
+      color:#005d59!important;
+      -webkit-text-fill-color:#005d59!important;
+      transform:translateY(-1px);
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-popular-grid{
+      gap:1.15rem;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-popular-card{
+      min-height:520px;
+      border-radius:22px;
+      box-shadow:0 28px 60px -52px rgba(0,58,66,.6);
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-popular-media{
+      min-height:190px;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-popular-body{
+      padding:1.45rem;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-card-foot{
+      margin-top:auto;
+      padding-top:2rem;
+      align-items:center;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-card-foot .series-a-link{
+      font-size:.86rem;
+      line-height:1;
+      white-space:nowrap;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-card-foot .series-a-filter{
+      min-width:110px;
+      height:38px;
+      padding:0 .95rem;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-model-tools{
+      display:flex;
+      align-items:center;
+      gap:.7rem;
+      flex-wrap:wrap;
+      margin-bottom:1.25rem;
+      padding:1rem;
+      border:1px solid #dbe7e7;
+      border-radius:18px;
+      background:#f9fcfc;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-model-tools > button{
+      min-height:38px;
+      padding:.55rem .9rem;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-search{
+      margin-left:auto;
+      min-width:280px;
+      flex:0 1 330px;
+      height:44px;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-search input{
+      height:44px;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-model-summary{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      margin-bottom:1rem;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-compare-bar{
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      gap:.8rem;
+      flex-wrap:wrap;
+    }
+    body[data-moxa-page="nport-5100-series"] #series-compare-link{
+      height:44px;
+      min-width:220px;
+      padding:0 1.15rem;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid #008f8a;
+      border-radius:8px;
+      background:#008f8a;
+      color:#fff!important;
+      -webkit-text-fill-color:#fff;
+      font-size:.9rem;
+      font-weight:900;
+      text-decoration:none!important;
+    }
+    body[data-moxa-page="nport-5100-series"] #series-compare-link[aria-disabled="true"]{
+      opacity:.56;
+      cursor:not-allowed;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-resource-card{
+      min-height:230px;
+      padding:1.3rem;
+      border-radius:18px;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-card-foot .series-a-link,
+    body[data-moxa-page="nport-5100-series"] .series-a-resource-card .series-a-link{
+      display:inline-flex;
+      width:max-content;
+      align-items:center;
+      color:#007a76!important;
+      -webkit-text-fill-color:#007a76;
+      text-decoration:none!important;
+      border-bottom:0!important;
+      padding-bottom:0;
+      transition:color .18s ease,transform .18s ease;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-resource-card .series-a-link{
+      margin-top:auto;
+      padding-top:1rem;
+      line-height:1.2;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-card-foot .series-a-link:hover,
+    body[data-moxa-page="nport-5100-series"] .series-a-resource-card .series-a-link:hover{
+      color:#005d59!important;
+      -webkit-text-fill-color:#005d59;
+      transform:translateY(-1px);
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-table-links a{
+      display:inline-block;
+      color:#007a76!important;
+      -webkit-text-fill-color:#007a76;
+      text-decoration:none!important;
+      border-bottom:0!important;
+      padding-bottom:0;
+      line-height:1.15;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-table-links a:hover{
+      color:#005d59!important;
+      -webkit-text-fill-color:#005d59;
+    }
+    body[data-moxa-page="nport-5100-series"] #applications .series-a-section-head.center{
+      max-width:1220px;
+    }
+    body[data-moxa-page="nport-5100-series"] #applications .series-a-section-head.center h2{
+      max-width:none;
+      white-space:nowrap;
+      font-size:clamp(2.65rem,4.2vw,4.2rem);
+    }
+    body[data-moxa-page="nport-5100-series"] #applications .series-a-section-head.center p{
+      max-width:none;
+      white-space:nowrap;
+      line-height:1.55;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-cta{
+      padding-block:0!important;
+      background:radial-gradient(circle at 80% 10%,rgba(65,211,201,.32),transparent 38%),linear-gradient(135deg,#063c49,#087577 70%,#00918c);
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-cta .wrap{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto;
+      align-items:center;
+      gap:clamp(36px,5vw,80px);
+      padding-block:clamp(70px,7vw,96px)!important;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-cta h2{
+      max-width:760px;
+      margin:0;
+      color:#fff;
+      font-size:clamp(3rem,5vw,5.1rem);
+      line-height:1;
+      letter-spacing:-.055em;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-cta p{
+      max-width:740px;
+      margin-top:1.05rem;
+      color:rgba(255,255,255,.78);
+      font-size:1rem;
+      line-height:1.6;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-cta .series-a-actions{
+      display:flex;
+      justify-content:flex-end;
+      gap:.9rem;
+      margin:0;
+      flex-wrap:wrap;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-cta .series-a-actions .btn{
+      height:52px;
+      min-width:180px;
+      padding:0 1.25rem;
+      border-radius:8px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      text-decoration:none!important;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-cta .btn-primary{
+      background:#fff;
+      color:#075a61!important;
+      -webkit-text-fill-color:#075a61;
+    }
+    body[data-moxa-page="nport-5100-series"] .series-a-cta .btn-ghost{
+      background:transparent;
+      border:1px solid rgba(255,255,255,.65);
+      color:#fff!important;
+      -webkit-text-fill-color:#fff;
+    }
+    @media(max-width:1100px){
+      body[data-moxa-page="nport-5100-series"] #applications .series-a-section-head.center h2,
+      body[data-moxa-page="nport-5100-series"] #applications .series-a-section-head.center p{
+        white-space:normal;
+      }
+      body[data-moxa-page="nport-5100-series"] .solution-cross-sell .cross-sell-grid{
+        grid-template-columns:1fr;
+      }
+    }
+    @media(max-width:900px){
+      body[data-moxa-page="nport-5100-series"] .series-a-anchor > .wrap{
+        width:100%;
+        max-width:100%;
+        padding-inline:20px!important;
+      }
+      body[data-moxa-page="nport-5100-series"] .series-a-anchor-actions{
+        display:none;
+      }
+      body[data-moxa-page="nport-5100-series"] .series-a-search{
+        margin-left:0;
+        flex:1 1 100%;
+        min-width:100%;
+      }
+      body[data-moxa-page="nport-5100-series"] .series-a-model-summary{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+      body[data-moxa-page="nport-5100-series"] .series-a-compare-bar{
+        justify-content:flex-start;
+      }
+      body[data-moxa-page="nport-5100-series"] .series-a-cta .wrap{
+        grid-template-columns:1fr;
+      }
+      body[data-moxa-page="nport-5100-series"] .series-a-cta .series-a-actions{
+        justify-content:flex-start;
+      }
+    }
+    @media(max-width:640px){
+      body[data-moxa-page="nport-5100-series"]{
+        --nport-wrap-width:calc(100% - 28px);
+      }
+      body[data-moxa-page="nport-5100-series"] .series-a-hero h1{
+        font-size:clamp(2.7rem,15vw,4.1rem);
+      }
+      body[data-moxa-page="nport-5100-series"] .series-a-section-head h2{
+        font-size:clamp(2rem,10vw,3rem);
+      }
+      body[data-moxa-page="nport-5100-series"] .series-a-card-foot,
+      body[data-moxa-page="nport-5100-series"] .series-a-cta .series-a-actions{
+        align-items:stretch;
+        flex-direction:column;
+      }
+      body[data-moxa-page="nport-5100-series"] .series-a-card-foot .series-a-filter,
+      body[data-moxa-page="nport-5100-series"] .series-a-cta .series-a-actions .btn{
+        width:100%;
+      }
+    }
   </style>
 </head>
 <body data-moxa-page="nport-5100-series">
@@ -204,10 +1000,10 @@
               <p>NPort 5100 brings serial devices onto Ethernet. EDS-4008 helps connect and manage them with an industrial switch layer that keeps those devices visible and protected.</p>
             </div>
             <ol class="cross-sell-architecture" aria-label="Recommended architecture">
-              <li>Legacy Serial Device</li>
-              <li>NPort 5100 Series</li>
-              <li>EDS-4008 Series</li>
-              <li>Control Network</li>
+              <li><span>Legacy Serial Device</span></li>
+              <li><span>NPort 5100 Series</span></li>
+              <li><span>EDS-4008 Series</span></li>
+              <li><span>Control Network</span></li>
             </ol>
             <article class="cross-sell-product-card">
               <span class="product-role">Managed Ethernet backbone</span>
@@ -223,7 +1019,6 @@
               </div>
             </article>
           </div>
-          <p class="cross-sell-note">Recommended as a complementary architecture. Final model selection should be validated by configuration and project requirements.</p>
         </div>
       </div>
     </section>
