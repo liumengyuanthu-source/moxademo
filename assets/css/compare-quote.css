@@ -1,0 +1,620 @@
+:root {
+  --quote-deep: #083f4b;
+  --quote-deep-2: #006d70;
+  --quote-soft: #eef7f6;
+  --quote-line: #d4e3e3;
+  --quote-focus: #40cbd0;
+}
+
+.quote-page {
+  min-height: 70vh;
+  color: var(--moxa-ink);
+  background: var(--moxa-white);
+}
+
+.quote-wrap {
+  width: min(100% - 40px, var(--moxa-content));
+  margin-inline: auto;
+}
+
+.quote-intro {
+  padding-block: clamp(48px, 7vw, 86px);
+  color: var(--moxa-white);
+  background:
+    radial-gradient(circle at 88% 18%, rgba(64, 203, 208, 0.22), transparent 30%),
+    linear-gradient(120deg, var(--quote-deep) 0%, #075967 58%, var(--quote-deep-2) 100%);
+}
+
+.quote-intro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+  align-items: end;
+  gap: clamp(32px, 6vw, 84px);
+}
+
+.quote-eyebrow,
+.quote-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--moxa-teal-700);
+  font-size: 0.76rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.quote-eyebrow::before,
+.quote-kicker::before {
+  content: "";
+  width: 28px;
+  height: 2px;
+  background: currentColor;
+}
+
+.quote-intro .quote-eyebrow {
+  color: #91eeee;
+}
+
+.quote-intro h1 {
+  max-width: 780px;
+  margin: 1rem 0 0;
+  color: var(--moxa-white);
+  font-size: clamp(2.75rem, 5.4vw, 5.6rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.quote-intro p {
+  max-width: 500px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(1rem, 1.5vw, 1.18rem);
+  line-height: 1.65;
+}
+
+.quote-workflow {
+  padding-block: clamp(54px, 7vw, 96px);
+  background: linear-gradient(180deg, #f6fafa 0%, #ffffff 48%);
+}
+
+.quote-section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--moxa-space-6);
+  margin-bottom: var(--moxa-space-6);
+}
+
+.quote-section-heading h2 {
+  max-width: 760px;
+  margin: 0.9rem 0 0;
+  color: var(--moxa-ink);
+  font-size: clamp(2rem, 4vw, 3.9rem);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.045em;
+}
+
+.quote-step-status {
+  margin: 0 0 0.45rem;
+  color: var(--moxa-muted);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.quote-progress {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--quote-line);
+  border-radius: var(--moxa-radius-2) var(--moxa-radius-2) 0 0;
+  background: var(--quote-line);
+  list-style: none;
+}
+
+.quote-progress li {
+  min-height: 88px;
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  align-items: center;
+  gap: var(--moxa-space-3);
+  padding: 1.1rem 1.25rem;
+  color: #5c7078;
+  background: #f7f9f9;
+}
+
+.quote-progress span {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #bfd3d4;
+  border-radius: 50%;
+  color: #4b6870;
+  background: var(--moxa-white);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.quote-progress strong {
+  font-size: 0.92rem;
+  line-height: 1.3;
+}
+
+.quote-progress li.is-active {
+  color: var(--moxa-white);
+  background: var(--moxa-teal-700);
+}
+
+.quote-progress li.is-active span {
+  border-color: var(--quote-focus);
+  color: var(--moxa-ink);
+  background: #9af0ec;
+}
+
+.quote-progress li.is-complete {
+  color: #075f63;
+  background: #e7f5f4;
+}
+
+.quote-progress li.is-complete span {
+  border-color: var(--moxa-teal);
+  color: var(--moxa-white);
+  background: var(--moxa-teal);
+}
+
+.quote-shell {
+  border: 1px solid var(--quote-line);
+  border-top: 0;
+  border-radius: 0 0 var(--moxa-radius-2) var(--moxa-radius-2);
+  background: var(--moxa-white);
+  box-shadow: 0 24px 70px rgba(8, 47, 73, 0.1);
+}
+
+.quote-panel {
+  padding: clamp(28px, 5vw, 64px);
+}
+
+.quote-panel[hidden] {
+  display: none;
+}
+
+.quote-panel-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--moxa-space-6);
+  margin-bottom: var(--moxa-space-6);
+}
+
+.quote-panel-heading h3,
+.quote-complete h3 {
+  margin: 0.8rem 0 0.65rem;
+  color: var(--moxa-ink);
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.quote-panel-heading p,
+.quote-complete > p {
+  max-width: 720px;
+  margin: 0;
+  color: var(--moxa-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.quote-count,
+.quote-security-note {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 34px;
+  padding-inline: 0.8rem;
+  border: 1px solid #bfdddd;
+  border-radius: var(--moxa-radius-pill);
+  color: var(--moxa-teal-700);
+  background: var(--quote-soft);
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.quote-items {
+  display: grid;
+  gap: var(--moxa-space-4);
+}
+
+.quote-item,
+.quote-accessory {
+  display: grid;
+  align-items: center;
+  gap: var(--moxa-space-5);
+  padding: 1.35rem;
+  border: 1px solid var(--quote-line);
+  border-radius: var(--moxa-radius-2);
+  background: #fbfdfd;
+}
+
+.quote-item {
+  grid-template-columns: 72px minmax(0, 1fr) 110px;
+}
+
+.quote-accessory {
+  grid-template-columns: 104px minmax(0, 1fr) auto;
+}
+
+.quote-item-icon,
+.quote-accessory-visual {
+  display: grid;
+  place-items: center;
+  color: var(--moxa-teal-700);
+  background: var(--quote-soft);
+}
+
+.quote-item-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--moxa-radius-1);
+}
+
+.quote-item-icon svg {
+  width: 48px;
+  height: 48px;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.quote-accessory-visual {
+  width: 104px;
+  height: 104px;
+  border-radius: var(--moxa-radius-2);
+}
+
+.quote-accessory-visual svg {
+  width: 64px;
+  height: 64px;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.quote-item-copy h4,
+.quote-accessory h4 {
+  margin: 0.45rem 0 0.35rem;
+  color: var(--moxa-ink);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.quote-item-copy p,
+.quote-accessory p {
+  margin: 0;
+  color: var(--moxa-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.quote-tag {
+  color: var(--moxa-teal-700);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.quote-quantity {
+  display: grid;
+  gap: 0.45rem;
+  color: #425e66;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.quote-quantity input {
+  width: 88px;
+  min-height: 44px;
+  padding: 0 0.75rem;
+  border: 1px solid #abc8ca;
+  border-radius: var(--moxa-radius-1);
+  color: var(--moxa-ink);
+  background: var(--moxa-white);
+  font-weight: 700;
+}
+
+.quote-accessory-action {
+  display: flex;
+  align-items: end;
+  gap: var(--moxa-space-3);
+}
+
+.quote-button {
+  min-width: 170px;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.2rem;
+  border: 1px solid var(--moxa-teal);
+  border-radius: var(--moxa-radius-1);
+  font: 800 0.84rem/1.2 var(--moxa-font);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 180ms ease, background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.quote-button-primary {
+  color: var(--moxa-white);
+  background: var(--moxa-teal);
+  box-shadow: 0 10px 22px rgba(0, 107, 107, 0.15);
+}
+
+.quote-button-secondary {
+  color: var(--moxa-teal-700);
+  background: var(--moxa-white);
+}
+
+.quote-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(0, 107, 107, 0.2);
+}
+
+.quote-button:disabled {
+  border-color: #cbd8da;
+  color: #8a9a9f;
+  background: #edf2f2;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.quote-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--moxa-space-3);
+  margin-top: var(--moxa-space-6);
+  padding-top: var(--moxa-space-5);
+  border-top: 1px solid var(--quote-line);
+}
+
+.quote-form {
+  max-width: 980px;
+}
+
+.quote-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem 1.25rem;
+}
+
+.quote-field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.quote-field-full {
+  grid-column: 1 / -1;
+}
+
+.quote-field label {
+  color: var(--moxa-ink);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.quote-field label span {
+  color: #b43d1f;
+}
+
+.quote-field input,
+.quote-field select,
+.quote-field textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid #a9c2c6;
+  border-radius: var(--moxa-radius-1);
+  color: var(--moxa-ink);
+  background: var(--moxa-white);
+  font: 500 0.95rem/1.4 var(--moxa-font);
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.quote-field textarea {
+  min-height: 132px;
+  resize: vertical;
+}
+
+.quote-field input:focus,
+.quote-field select:focus,
+.quote-field textarea:focus {
+  border-color: var(--moxa-teal);
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(0, 135, 135, 0.12);
+}
+
+.quote-field input[aria-invalid="true"],
+.quote-field select[aria-invalid="true"],
+.quote-field textarea[aria-invalid="true"] {
+  border-color: #b43d1f;
+}
+
+.quote-consent {
+  max-width: 980px;
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: start;
+  margin-top: var(--moxa-space-5);
+  padding: 1rem;
+  border: 1px solid var(--quote-line);
+  border-radius: var(--moxa-radius-1);
+  color: #4d6870;
+  background: var(--quote-soft);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.quote-consent input {
+  width: 18px;
+  height: 18px;
+  margin: 0.1rem 0 0;
+  accent-color: var(--moxa-teal);
+}
+
+.quote-form-message {
+  min-height: 1.5em;
+  margin: 0.75rem 0 0;
+  color: #a43a20;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.quote-complete {
+  max-width: 850px;
+  margin-inline: auto;
+  padding-block: clamp(54px, 8vw, 96px);
+  text-align: center;
+}
+
+.quote-complete-icon {
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  color: var(--moxa-white);
+  background: var(--moxa-teal);
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.quote-complete .quote-kicker {
+  justify-content: center;
+}
+
+.quote-complete > p {
+  margin-inline: auto;
+}
+
+.quote-reference {
+  width: min(100%, 420px);
+  display: grid;
+  gap: 0.4rem;
+  margin: var(--moxa-space-6) auto 0;
+  padding: 1.15rem;
+  border: 1px solid var(--quote-line);
+  border-radius: var(--moxa-radius-1);
+  background: var(--quote-soft);
+}
+
+.quote-reference span {
+  color: var(--moxa-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.quote-reference strong {
+  color: var(--moxa-teal-700);
+  font-size: 1.2rem;
+}
+
+.quote-actions-centered {
+  justify-content: center;
+}
+
+@media (max-width: 860px) {
+  .quote-intro-grid,
+  .quote-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-intro-grid {
+    align-items: start;
+  }
+
+  .quote-section-heading,
+  .quote-panel-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .quote-progress {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .quote-item,
+  .quote-accessory {
+    grid-template-columns: 72px minmax(0, 1fr);
+  }
+
+  .quote-item .quote-quantity,
+  .quote-accessory-action {
+    grid-column: 2;
+  }
+
+  .quote-accessory-visual {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+@media (max-width: 560px) {
+  .quote-wrap {
+    width: min(100% - 28px, var(--moxa-content));
+  }
+
+  .quote-progress {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-progress li {
+    min-height: 66px;
+  }
+
+  .quote-item,
+  .quote-accessory {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-item-icon,
+  .quote-accessory-visual {
+    width: 64px;
+    height: 64px;
+  }
+
+  .quote-item .quote-quantity,
+  .quote-accessory-action {
+    grid-column: auto;
+  }
+
+  .quote-accessory-action,
+  .quote-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .quote-button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quote-button {
+    transition: none;
+  }
+
+  .quote-button:hover:not(:disabled) {
+    transform: none;
+  }
+}

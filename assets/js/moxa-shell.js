@@ -81,6 +81,12 @@
       ["EDS-4008 Series", "product-series-eds-4008.html"],
       ["AI Model Comparison", null],
     ],
+    "compare-quote": [
+      ["Home", "homepage.html"],
+      ["Products", "homepage.html#featured-products"],
+      ["EDS-4008 Series", "product-series-eds-4008.html"],
+      ["Request a Quote", null],
+    ],
     "product-360": [
       ["Home", "homepage.html"],
       ["Products", "homepage.html#featured-products"],
